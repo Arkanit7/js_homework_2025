@@ -1,0 +1,40 @@
+{
+  "name": "gulp-pug-scss-ts",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Mirrors files inside the src folder.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build"
+  },
+  "keywords": [
+    "gulp",
+    "js"
+  ],
+  "author": "Arkanit",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@prettier/plugin-pug": "^3.2.0",
+    "browser-sync": "^3.0.3",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
+    "gulp": "^5.0.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^6.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "prettier": "^3.4.2",
+    "sass": "^1.83.4",
+    "stylelint": "^16.14.1",
+    "stylelint-color-format": "^1.1.0",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-standard-scss": "^14.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-use-logical-spec": "^5.0.1"
+  },
+  "dependencies": {
+    "temml": "^0.10.32"
+  }
+}
