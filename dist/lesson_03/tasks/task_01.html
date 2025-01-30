@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання №01 | JS 2025</title>
+    <link rel="stylesheet" href="../../styles/style.css">
+  </head>
+  <body>
+    <div class="l-compose">
+      <aside class="l-compose__aside">
+        <nav class="c-sidebar l-compose__sidebar">
+          <ul class="c-sidebar__list u-flow-200">
+            <li class="c-sidebar__item"><a class="c-pill" href="../index.html">До списку завдань</a></li>
+            <li class="c-sidebar__item"><a class="c-pill c-pill--current" href="./task_01.html" aria-current="page">Завдання №01</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_02.html">Завдання №02</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_03.html">Завдання №03</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_04.html">Завдання №04</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_05.html">Завдання №05</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_06.html">Завдання №06</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_07.html">Завдання №07</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="l-compose__main">
+        <div class="l-container">
+          <div class="s-prose">
+            <h1>Завдання №01</h1>
+            <p>З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.</p>
+            <hr>
+            <h2>Рішення:</h2>
+            <script>// Крок 0. Позначення величин
+// firstChildName - ім'я першої дитини : string
+// secondChildName - ім'я другої дитини : string
+// firstChildCandies - кількість цукерок першої дитини : number
+// secondChildCandies - кількість цукерок другої дитини : number
+
+// Крок 1. Введення даних
+const firstChildName = prompt("Введіть ім'я першої дитини", 'Перша')
+const secondChildName = prompt("Введіть ім'я другої дитини", 'Друга')
+const firstChildCandies = parseInt(
+  prompt(`Скільки цукерок у ${firstChildName}?`, '15'),
+)
+const secondChildCandies = parseInt(
+  prompt(`Скільки цукерок у ${secondChildName}?`, '25'),
+)
+
+// Крок 2. Обчислення
+let whoHasTheMostCandies = ''
+
+if (firstChildCandies > secondChildCandies)
+  whoHasTheMostCandies = firstChildName
+else if (firstChildCandies < secondChildCandies)
+  whoHasTheMostCandies = secondChildName
+else whoHasTheMostCandies = 'Кількість цукерок однакова'
+
+// Тернарний оператор (складно читати)
+// whoHasTheMostCandies =
+//   firstChildCandies > secondChildCandies
+//     ? firstChildName
+//     : firstChildCandies < secondChildCandies
+//       ? secondChildName
+//       : 'Кількість цукерок однакова'
+
+// Крок 3. Виведення результату
+document.write(`<p>${whoHasTheMostCandies}</p>`)
+
+            </script>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

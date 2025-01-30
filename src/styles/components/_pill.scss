@@ -1,0 +1,21 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+.c-pill {
+  display: inline-block;
+  padding-inline: 0.5rem;
+  padding-block: 0.25rem;
+  border-radius: 0.25rem;
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
+
+  @include hover-focus {
+    color: black;
+    background-color: map.get(map.get($color, "yellow"), "400");
+  }
+
+  &--current {
+    color: black;
+    background-color: map.get(map.get($color, "yellow"), "300");
+  }
+}

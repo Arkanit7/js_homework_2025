@@ -1,0 +1,13 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '03'
+    const tasks = ["01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+  hr
+  h2 Рішення:
+  script
+    include ./scripts/_task_03.js

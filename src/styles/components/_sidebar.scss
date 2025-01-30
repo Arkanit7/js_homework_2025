@@ -1,0 +1,20 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+.c-sidebar {
+  overflow: auto;
+  inline-size: 15rem;
+  padding: 1rem;
+  background-color: map.get(map.get($color, "zinc"), "950");
+
+  @include media-width-to("md") {
+    transform: translateX(-100%);
+  }
+
+  &__list {
+  }
+
+  &__item {
+    display: grid;
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання №03 | JS 2025</title>
+    <link rel="stylesheet" href="../../styles/style.css">
+  </head>
+  <body>
+    <div class="l-compose">
+      <aside class="l-compose__aside">
+        <nav class="c-sidebar l-compose__sidebar">
+          <ul class="c-sidebar__list u-flow-200">
+            <li class="c-sidebar__item"><a class="c-pill" href="../index.html">До списку завдань</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_00.html">Завдання №00</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_01.html">Завдання №01</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_02.html">Завдання №02</a></li>
+            <li class="c-sidebar__item"><a class="c-pill c-pill--current" href="./task_03.html" aria-current="page">Завдання №03</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_04.html">Завдання №04</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_05.html">Завдання №05</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_06.html">Завдання №06</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_07.html">Завдання №07</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="l-compose__main">
+        <div class="l-container">
+          <div class="s-prose">
+            <h1>Завдання №03</h1>
+            <p>
+              Дано вартість одиниці товару і кількість. Знайти загальну вартість
+              та ПДВ (5% від загальної вартості).
+            </p>
+            <hr>
+            <h2>Рішення:</h2>
+            <script>
+              // Крок 0. Позначення величин
+              // pricePerUnit : number
+              // amount : number
+              // VAT : number
+              // total : number
+              // totalVat : number
+              // Крок 1. Введення необхідних даних
+              const VAT = 5 / 100;
+              const pricePerUnit = parseFloat(prompt("Введіть вартість за одиницю товару", "49"));
+              const amount = parseInt(prompt("Введіть кількість товарів", "7"));
+              // Крок 2. Обчислення результатів
+              const total = pricePerUnit * amount;
+              const totalVat = total * VAT;
+              // Крок 3. Виведення результатів
+              document.write(`<p>Загальна вартість: ${total.toFixed(2)}</p>`);
+              document.write(`<p>ПДВ: ${totalVat.toFixed(2)}</p>`);
+            </script>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

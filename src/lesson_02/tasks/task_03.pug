@@ -1,0 +1,30 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '03'
+    const tasks = ["00", "01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p
+    | Дано вартість одиниці товару і кількість. Знайти загальну вартість
+    | та ПДВ (5% від загальної вартості).
+  hr
+  h2 Рішення:
+  script.
+    // Крок 0. Позначення величин
+    // pricePerUnit : number
+    // amount : number
+    // VAT : number
+    // total : number
+    // totalVat : number
+    // Крок 1. Введення необхідних даних
+    const VAT = 5 / 100;
+    const pricePerUnit = parseFloat(prompt("Введіть вартість за одиницю товару", "49"));
+    const amount = parseInt(prompt("Введіть кількість товарів", "7"));
+    // Крок 2. Обчислення результатів
+    const total = pricePerUnit * amount;
+    const totalVat = total * VAT;
+    // Крок 3. Виведення результатів
+    document.write(`<p>Загальна вартість: ${total.toFixed(2)}</p>`);
+    document.write(`<p>ПДВ: ${totalVat.toFixed(2)}</p>`);

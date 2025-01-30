@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання №02 | JS 2025</title>
+    <link rel="stylesheet" href="../../styles/style.css">
+  </head>
+  <body>
+    <div class="l-compose">
+      <aside class="l-compose__aside">
+        <nav class="c-sidebar l-compose__sidebar">
+          <ul class="c-sidebar__list u-flow-200">
+            <li class="c-sidebar__item"><a class="c-pill" href="../index.html">До списку завдань</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_01.html">Завдання №01</a></li>
+            <li class="c-sidebar__item"><a class="c-pill c-pill--current" href="./task_02.html" aria-current="page">Завдання №02</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_03.html">Завдання №03</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_04.html">Завдання №04</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_05.html">Завдання №05</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_06.html">Завдання №06</a></li>
+            <li class="c-sidebar__item"><a class="c-pill" href="./task_07.html">Завдання №07</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="l-compose__main">
+        <div class="l-container">
+          <div class="s-prose">
+            <h1>Завдання №02</h1>
+            <p>З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.</p>
+            <hr>
+            <h2>Рішення:</h2>
+            <script>// Крок 0. Позначення величин
+// productPrice - ціна товару : number
+// money - доступні гроші : number
+// wantToGamble - взяти участь у лотереї : boolean
+// gamblePrice - ціна участі в лотереї : number
+
+// Крок 1. Введення даних
+const gamblePrice = 4
+const money = parseFloat(prompt('Введіть кількість грошей', '12000'))
+const productPrice = parseFloat(prompt('Введіть ціну товару', '10000'))
+
+// Крок 2. Обчислення
+if (money < productPrice) {
+  document.write('У вас недостатньо коштів!')
+} else if (money - productPrice >= gamblePrice) {
+  const wantToGamble = confirm(
+    'Відмінний вибір! Бажаєте взяти участь в лотереї?',
+  )
+
+  if (wantToGamble)
+    document.write(
+      'Схоже що ви програли усі гроші так і не купивши бажаного товару...',
+    )
+  else document.write('Ви купили товар!')
+} else {
+  document.write(
+    'Ви купили товар! Та схоже у вас зовсім не залишилось грошей...',
+  )
+}
+
+            </script>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

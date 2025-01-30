@@ -1,0 +1,14 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '07'
+    const tasks = ["01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+
+  hr
+  h2 Рішення:
+  script
+    include ./scripts/_task_07.js

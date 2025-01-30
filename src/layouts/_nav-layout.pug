@@ -1,0 +1,21 @@
+block frontmatter
+
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{ title } | JS 2025
+    block styles
+      link(rel="stylesheet", href="../styles/style.css")
+
+    block scripts
+  body
+    block main
+      .l-container
+        .s-prose.u-text-center
+          h1 #{ title }
+          ul
+            each task in tasks
+              li
+                a.c-pill(href=`./tasks/task_${task}.html`) Завдання №#{ task }

@@ -1,0 +1,25 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '07'
+    const tasks = ["00", "01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p
+    | Знайти суму випадкового номера місяця (від 1 до 12) та випадкового
+    | номера дня (від 0 до 6).
+  hr
+  h2 Рішення:
+  script.
+    // Крок 0. Позначення величин
+    // randomMonthNumber : number
+    // randomDayNumber : number
+    // dayAndMonthSum : number
+    // Крок 1. Введення необхідних даних
+    const randomMonthNumber = 1 + Math.floor(Math.random() * 12);
+    const randomDayNumber = Math.floor(Math.random() * 6);
+    // Крок 2. Обчислення результатів
+    const dayAndMonthSum = randomDayNumber + randomMonthNumber;
+    // Крок 3. Виведення результатів
+    document.write(`Сума: ${dayAndMonthSum}`);

@@ -1,0 +1,159 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '06'
+    const tasks = ["01", "02", "03", "04", "05", "06", "07"]
+
+block append styles
+  link(rel="stylesheet", href="../styles/receipt.css")
+
+block content
+  p
+    | З клавіатури вводяться вартість товару та кількість одиниць 3
+    | товарів. Обчислити вартість кожного товару окремо та загальну
+    | вартість. Вивести чек (як у супермаркеті) використовуючи елементи
+    | розмітки.
+  hr
+  h2 Рішення:
+  script.
+    // Крок 0. Позначення величин
+    // priceProductA : number
+    // amountProductA : number
+    // totalPriceProductA : number
+    // priceProductB : number
+    // amountProductB : number
+    // totalPriceProductB : number
+    // priceProductC : number
+    // amountProductC : number
+    // totalPriceProductC : number
+    // totalPrice : number
+    // Крок 1. Введення необхідних даних
+    const priceProductA = parseFloat(prompt("Введіть вартість за одиницю товару №1", "19.99"));
+    const amountProductA = parseInt(prompt("Введіть кількість товарів №1", "7"));
+    const priceProductB = parseFloat(prompt("Введіть вартість за одиницю товару №2", "9.99"));
+    const amountProductB = parseInt(prompt("Введіть кількість товарів №2", "3"));
+    const priceProductC = parseFloat(prompt("Введіть вартість за одиницю товару №3", "30000"));
+    const amountProductC = parseInt(prompt("Введіть кількість товарів №3", "2"));
+    // Крок 2. Обчислення результатів
+    const totalPriceProductA = priceProductA * amountProductA;
+    const totalPriceProductB = priceProductB * amountProductB;
+    const totalPriceProductC = priceProductC * amountProductC;
+    const totalPrice = totalPriceProductA + totalPriceProductB + totalPriceProductC;
+    // Крок 3. Виведення результатів
+    document.write(`
+    <article class="receipt _box">
+    <header class="header-receipt | u-flow-300 u-text-center">
+    <p>Магазин "JavaScript"</p>
+    <h3 class="header-receipt__title | u-font-bolder">
+    ФОП Бедренко Борис Богданович
+    </h3>
+    <address>
+    <p>Торгова точка</p>
+    <p>Україна, м. Львів, пр. В'ячеслава Чорновола, 7</p>
+    <p>ІД 1111111111</p>
+    </address>
+    </header>
+    <div>
+    <ul class="u-flow-400">
+    `);
+    // Продукт А
+    document.write(`
+    <li>
+    <div>
+    <div>
+    <span>${amountProductA.toFixed(2)}</span>
+    x
+    <span>${priceProductA.toFixed(2)}</span>
+    </div>
+    <div class="u-font-bolder u-flex u-content-between u-gap-400">
+    <span>Алгоритм</span>
+    <span>${totalPriceProductA.toFixed(2)}</span>
+    </div>
+    </div>
+    </li>
+    `);
+    // Продукт B
+    document.write(`
+    <li>
+    <div>
+    <div>
+    <span>${amountProductB.toFixed(2)}</span>
+    x
+    <span>${priceProductB.toFixed(2)}</span>
+    </div>
+    <div class="u-font-bolder u-flex u-content-between u-gap-400">
+    <span>Лексема</span>
+    <span>${totalPriceProductB.toFixed(2)}</span>
+    </div>
+    </div>
+    </li>
+    `);
+    // Продукт C
+    document.write(`
+    <li>
+    <div>
+    <div>
+    <span>${amountProductC.toFixed(2)}</span>
+    x
+    <span>${priceProductC.toFixed(2)}</span>
+    </div>
+    <div class="u-font-bolder u-flex u-content-between u-gap-400">
+    <span>Літерал</span>
+    <span>${totalPriceProductC.toFixed(2)}</span>
+    </div>
+    </div>
+    </li>
+    `);
+    document.write(`
+    </ul>
+    </div>
+    <div class="u-flow-300">
+    <div>Продаж</div>
+    <div class="u-flex u-content-between u-gap-400">
+    <span>Готівка</span><span>${totalPrice.toFixed(2)} грн.</span>
+    </div>
+    </div>
+    <div class="u-flow-400">
+    <div class="u-text-500 u-font-bolder u-flex u-content-between u-gap-400">
+    <span class="u-uppercase"> Сума </span>
+    <span> ${totalPrice.toFixed(2)} грн.</span>
+    </div>
+    <ul class="u-flow-300">
+    <li>
+    <div class="u-flex u-content-between u-gap-400">
+    <span>До сплати</span>
+    <span>${totalPrice.toFixed(2)} грн.</span>
+    </div>
+    </li>
+    <li>
+    <div class="u-flex u-content-between u-gap-400">
+    <span>фіск. номер чека: CYks4ldjf</span>
+    </div>
+    </li>
+    <li>
+    <div class="u-flex u-content-between u-gap-400">
+    <span>27-01-2025 14:45:07</span>
+    </div>
+    </li>
+    </ul>
+    </div>
+    <div>
+    <div>Коментар:</div>
+    <div>Гарного вам дня!</div>
+    </div>
+    <div class="code-receipt">
+    <div class="code-receipt__picture">
+    <img
+    class="code-receipt__img"
+    src="../images/qr_code.png"
+    alt="QR код"
+    />
+    </div>
+    </div>
+    <div>
+    <p>Режим роботи: Онлайн</p>
+    <p>ФН ПРРО 999997988976877</p>
+    </div>
+    </article>
+    `);

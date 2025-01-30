@@ -1,0 +1,13 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '01'
+    const tasks = ["01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.
+  hr
+  h2 Рішення:
+  script
+    include ./scripts/_task_01.js

@@ -1,0 +1,122 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+/* { utility classes } */
+
+@each $key, $value in map.get($config, "spacing") {
+  .u-flow-#{$key} {
+    & > * + * {
+      margin-block-start: $value;
+    }
+  }
+
+  .u-mb-#{$key} {
+    margin-block: $value;
+  }
+
+  .u-mbs-#{$key} {
+    margin-block-start: $value;
+  }
+
+  .u-mbe-#{$key} {
+    margin-block-end: $value;
+  }
+
+  .u-mi-#{$key} {
+    margin-inline: $value;
+  }
+
+  .u-mis-#{$key} {
+    margin-inline-start: $value;
+  }
+
+  .u-mie-#{$key} {
+    margin-inline-end: $value;
+  }
+
+  .u-pb-#{$key} {
+    padding-block: $value;
+  }
+
+  .u-pbs-#{$key} {
+    padding-block-start: $value;
+  }
+
+  .u-pbe-#{$key} {
+    padding-block-end: $value;
+  }
+
+  .u-pi-#{$key} {
+    padding-inline: $value;
+  }
+
+  .u-pis-#{$key} {
+    padding-inline-start: $value;
+  }
+
+  .u-pie-#{$key} {
+    padding-inline-end: $value;
+  }
+
+  .u-gap-#{$key} {
+    gap: $value;
+  }
+}
+
+@each $key, $value in map.get($config, "font-family") {
+  .u-font-#{$key} {
+    font-family: $value;
+  }
+}
+
+@each $key, $value in map.get($config, "font-size") {
+  .u-text-#{$key} {
+    font-size: $value;
+  }
+}
+
+@each $key-master, $value-master in map.get($config, "color") {
+  @each $key, $value in $value-master {
+    .u-text-#{$key-master}-#{$key} {
+      color: $value;
+    }
+
+    .u-bg-#{$key-master}-#{$key} {
+      background-color: $value;
+    }
+  }
+}
+
+.u-uppercase {
+  text-transform: uppercase;
+}
+
+.u-font-bolder {
+  font-weight: bolder;
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-content-between {
+  justify-content: space-between;
+}
+
+.u-content-center {
+  justify-content: center;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-text-start {
+  text-align: start;
+}
+
+.u-text-end {
+  text-align: end;
+}
+
+/* { end of utility classes } */

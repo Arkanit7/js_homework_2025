@@ -1,0 +1,25 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '02'
+    const tasks = ["00", "01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p
+    | Дано рік народження (дата: 1 січня) та поточний рік. Знайти
+    | кількість років.
+  hr
+  h2 Рішення:
+  script.
+    // Крок 0. Позначення величин
+    // yearOfBirth : number
+    // currentYear : number
+    // yearsOld : number
+    // Крок 1. Введення необхідних даних
+    const yearOfBirth = parseInt(prompt("Введіть рік народження", "1997"));
+    const currentYear = 2025;
+    // Крок 2. Обчислення результатів
+    const yearsOld = currentYear - yearOfBirth;
+    // Крок 3. Виведення результатів
+    document.write(`Кількість років: ${yearsOld}.`);

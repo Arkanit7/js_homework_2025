@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "config" as *;
+
+@mixin media-width-from($breakpoint) {
+  @media (#{map.get($screens, $breakpoint)} <= width) {
+    @content;
+  }
+}
+
+@mixin media-width-to($breakpoint) {
+  @media (width < #{map.get($screens, $breakpoint)}) {
+    @content;
+  }
+}
+
+@mixin hover-focus {
+  &:focus {
+    @content;
+  }
+
+  &:hover {
+    @media (any-hover: hover) {
+      @content;
+    }
+  }
+}

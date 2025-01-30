@@ -1,0 +1,13 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '04'
+    const tasks = ["01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
+  hr
+  h2 Рішення:
+  script
+    include ./scripts/_task_04.js

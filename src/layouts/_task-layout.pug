@@ -1,0 +1,32 @@
+block frontmatter
+
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Завдання №#{ number } | JS 2025
+    block styles
+      link(rel="stylesheet", href="../../styles/style.css")
+
+    block scripts
+  body
+    .l-compose
+      aside.l-compose__aside
+        nav.c-sidebar.l-compose__sidebar
+          ul.c-sidebar__list.u-flow-200
+            li.c-sidebar__item
+              a.c-pill(href="../index.html") До списку завдань
+            each task in tasks
+              - const isCurrent = task === number;
+              li.c-sidebar__item
+                a.c-pill(
+                  href=`./task_${ task }.html`,
+                  class=isCurrent && "c-pill--current",
+                  aria-current=isCurrent && "page"
+                ) Завдання №#{ task }
+      main.l-compose__main
+        .l-container
+          .s-prose
+            h1 Завдання №#{ number }
+            block content

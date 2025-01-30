@@ -1,0 +1,23 @@
+-
+  const lessons = [
+    { href:"./lesson_02/", title: 'Урок №2' },
+    { href: "./lesson_03/", title: 'Урок №3' },
+  ]
+
+doctype html
+head
+  meta(charset="UTF-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  title Головна | JS 2025
+  link(rel="stylesheet", href="./styles/style.css")
+body
+  main
+    .s-prose
+      .l-container.u-text-center
+        header
+          h1 Домашні роботи з курсу по JavaScript 2025
+          p Учень Борис
+        ol.u-mbs-400
+          each lesson in lessons
+            li
+              a.c-pill(href=lesson.href)= lesson.title

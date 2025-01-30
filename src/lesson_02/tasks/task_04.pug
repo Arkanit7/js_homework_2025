@@ -1,0 +1,26 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '04'
+    const tasks = ["00", "01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p
+    | Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів
+  hr
+  h2 Рішення:
+  script.
+    // Крок 0. Позначення величин
+    // lengthCm : number
+    // lengthM : number
+    // lengthKm : number
+    // Крок 1. Введення необхідних даних
+    const lengthCm = parseFloat(prompt("Введіть довжину у сантиметрах", "25"));
+    // Крок 2. Обчислення результатів
+    const lengthM = lengthCm / 100;
+    const lengthKm = lengthM / 1000;
+    // Крок 3. Виведення результатів
+    document.write(`<p>Довжина у сантиметрах: ${lengthCm} см;</p>`);
+    document.write(`<p>Довжина у метрах: ${lengthM} м;</p>`);
+    document.write(`<p>Довжина у кілометрах: ${lengthKm} км;</p>`);

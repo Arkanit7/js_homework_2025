@@ -1,0 +1,13 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '06'
+    const tasks = ["01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+  hr
+  h2 Рішення:
+  script
+    include ./scripts/_task_06.js

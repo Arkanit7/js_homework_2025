@@ -1,0 +1,25 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  -
+    const number = '05'
+    const tasks = ["00", "01", "02", "03", "04", "05", "06", "07"]
+
+block content
+  p
+    | Дано кількість секунд, що пройшла від початку доби. Визначити
+    | скільки це годин і хвилин.
+  hr
+  h2 Рішення:
+  script.
+    // Крок 0. Позначення величин
+    // seconds : number
+    // minutes : number
+    // hours : number
+    // Крок 1. Введення необхідних даних
+    const seconds = parseInt(prompt("Скільки пройшло секунд?", "3600"));
+    // Крок 2. Обчислення результатів
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    // Крок 3. Виведення результатів
+    document.write(`<p>Часу пройшло: ${hours} годин та ${minutes} хвилин.</p>`);
