@@ -78,7 +78,7 @@ const watcher = () => {
 const mainTasks = gulp.series(gulp.parallel(html, css, copy))
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(server, watcher))
-
+const build = gulp.series(reset, mainTasks)
 // Default tasks
 gulp.task('default', dev)
-gulp.task('build', dev)
+gulp.task('build', build)
