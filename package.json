@@ -5,8 +5,8 @@
   "description": "Mirrors files inside the src folder.",
   "main": "gulpfile.js",
   "scripts": {
-    "dev": "gulp",
-    "build": "gulp build"
+    "dev": "gulp dev",
+    "build": "gulp build --build"
   },
   "keywords": [
     "gulp",
@@ -16,14 +16,21 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@fullhuman/postcss-purgecss": "^7.0.2",
     "@prettier/plugin-pug": "^3.2.0",
+    "autoprefixer": "^10.4.20",
     "browser-sync": "^3.0.3",
+    "cssnano": "^7.0.6",
     "eslint": "^9.19.0",
     "globals": "^15.14.0",
     "gulp": "^5.0.0",
+    "gulp-if": "^3.0.0",
+    "gulp-postcss": "^10.0.0",
     "gulp-pug": "^5.0.0",
     "gulp-sass": "^6.0.0",
     "gulp-sourcemaps": "^3.0.0",
+    "gulp-version-number": "^0.2.4",
+    "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.4.2",
     "sass": "^1.83.4",
     "stylelint": "^16.14.1",

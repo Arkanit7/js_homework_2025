@@ -1,16 +1,24 @@
 import gulp from 'gulp'
+import ifPlugin from 'gulp-if' // Condition
+
 // html
 import pug from 'gulp-pug'
+import versionNumber from 'gulp-version-number'
+
 // css
 import sourcemaps from 'gulp-sourcemaps'
 import * as sass from 'sass'
 import gulpSass from 'gulp-sass'
+import postcss from 'gulp-postcss'
+
 // local server
 import browserSync from 'browser-sync'
 
 import reset from './gulp/reset.js'
 
 import temml from 'temml'
+
+const isProduction = process.argv.includes('--build')
 
 const renderMathToMathML = (mathString, inline = true) => {
   return temml.renderToString(mathString, { displayMode: !inline })
@@ -21,7 +29,7 @@ const html = () =>
     .src(['./src/**/*.pug', '!./src/**/_*.pug'])
     .pipe(
       pug({
-        pretty: true, // format html
+        pretty: !isProduction,
         verbose: true, // show compiled files in console
         basedir: './src/', // The root directory of all absolute inclusion.
         filters: {
@@ -36,6 +44,20 @@ const html = () =>
         },
       }),
     )
+    // Cache busting
+    .pipe(
+      ifPlugin(
+        isProduction,
+        versionNumber({
+          value: '%DT%',
+          append: {
+            key: 'v',
+            cover: 0,
+            to: ['css', 'js', 'img'],
+          },
+        }),
+      ),
+    )
     .pipe(gulp.dest('./dist/'))
     .pipe(browserSync.stream())
 
@@ -43,9 +65,10 @@ const scss = gulpSass(sass)
 const css = () =>
   gulp
     .src(['./src/**/*.scss', '!./src/**/_*.scss'])
-    .pipe(sourcemaps.init())
+    .pipe(ifPlugin(!isProduction, sourcemaps.init()))
     .pipe(scss().on('error', scss.logError))
-    .pipe(sourcemaps.write('./'))
+    .pipe(ifPlugin(isProduction, postcss()))
+    .pipe(ifPlugin(!isProduction, sourcemaps.write('./')))
     .pipe(gulp.dest('./dist/'))
     .pipe(browserSync.stream())
 
@@ -80,5 +103,5 @@ const mainTasks = gulp.series(gulp.parallel(html, css, copy))
 const dev = gulp.series(reset, mainTasks, gulp.parallel(server, watcher))
 const build = gulp.series(reset, mainTasks)
 // Default tasks
-gulp.task('default', dev)
+gulp.task('dev', dev)
 gulp.task('build', build)
