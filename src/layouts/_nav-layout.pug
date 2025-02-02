@@ -11,11 +11,13 @@ html(lang="uk")
 
     block scripts
   body
-    block main
+    main.u-pb-800
       .l-container
-        .s-prose.u-text-center
-          h1 #{ title }
-          ul
+        .u-text-center.u-flow-600
+          h1.c-title #{ title }
+          ul.u-flow-200
+            li
+              a.c-pill(href="../") До списку робіт
             each task in tasks
               li
                 a.c-pill(href=`./tasks/${task.href}`)= task.title

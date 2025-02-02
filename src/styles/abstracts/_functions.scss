@@ -8,3 +8,27 @@
 @function get-spacing($spacing) {
   @return map.get(map.get($config, "spacing"), $spacing);
 }
+
+@function get-font-size($font-size) {
+  @return map.get(map.get($config, "font-size"), $font-size);
+}
+
+@function get-font-weight($font-weight) {
+  @return map.get(map.get($config, "font-weight"), $font-weight);
+}
+
+@function get-line-height($line-height) {
+  @return map.get(map.get($config, "line-height"), $line-height);
+}
+
+@function get-font-family($font-family) {
+  @return map.get(map.get($config, "font-family"), $font-family);
+}
+
+@function get-screen($screen) {
+  @return map.get(map.get($config, "screens"), $screen);
+}
+
+@function get-border-radius($border-radius) {
+  @return map.get(map.get($config, "border-radius"), $border-radius);
+}

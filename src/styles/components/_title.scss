@@ -1,0 +1,15 @@
+@use "../abstracts" as *;
+
+.c-title {
+  font-weight: get-font-weight("bold");
+  font-size: get-font-size("450");
+  line-height: get-line-height("none");
+
+  @include media-width-from("sm") {
+    font-size: get-font-size("500");
+  }
+
+  @include media-width-from("lg") {
+    font-size: get-font-size("550");
+  }
+}

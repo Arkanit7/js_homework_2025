@@ -1,0 +1,85 @@
+@use "../abstracts" as *;
+
+.card {
+  display: block;
+
+  // .card__inner
+  &__inner {
+    display: grid;
+    gap: get-spacing("200");
+  }
+
+  // .card__header
+
+  &__header {
+    transition: color 0.3s;
+  }
+
+  // .card__image
+
+  &__image {
+    position: relative;
+    order: -1;
+    overflow: hidden;
+    aspect-ratio: 21/9;
+    border-radius: 1rem;
+    transition: box-shadow 0.3s;
+
+    img {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      inline-size: 100%;
+      block-size: 100%;
+    }
+  }
+
+  &:hover &__header {
+    @media (any-hover) {
+      color: get-color("yellow", "500");
+
+      @include dark-mode {
+        color: get-color("yellow", "400");
+      }
+    }
+  }
+
+  &:hover &__image {
+    @media (any-hover) {
+      box-shadow: 0 0 1rem 0.125rem get-color("yellow", "500");
+
+      @include dark-mode {
+        box-shadow: 0 0 0.5rem 0 get-color("yellow", "400");
+      }
+    }
+  }
+}
+
+.header-card {
+  line-height: get-line-height("tight");
+
+  & > * + * {
+    margin-block-start: get-spacing("100");
+  }
+
+  // .header-card__title
+
+  &__title {
+    font-weight: get-font-weight("bold");
+    font-size: get-font-size("400");
+
+    @include media-width-from("sm") {
+      font-size: get-font-size("450");
+    }
+
+    @include media-width-from("lg") {
+      font-size: get-font-size("500");
+    }
+  }
+
+  // .header-card__published
+
+  &__published {
+    color: get-color("gray", "500");
+  }
+}

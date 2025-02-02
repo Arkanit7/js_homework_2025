@@ -25,8 +25,7 @@ html(lang="uk")
                   class=isCurrent && "c-pill--current",
                   aria-current=isCurrent && "page"
                 )= task.title
-      main.l-compose__main
-        .l-container
-          .s-prose
-            h1= currentTask.title
-            block content
+      main.l-compose__main.u-pb-800
+        .s-prose
+          h1= currentTask.title
+          block content

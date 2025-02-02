@@ -1,8 +1,35 @@
 -
   const lessons = [
-    { href:"./lesson_02/", title: 'Домашня робота №2', tags: ['cool'], datetime: new Date("2025-01-28") },
-    { href: "./lesson_03/", title: 'Домашня робота №3', tags: ['cute'], datetime: new Date("2025-01-30") },
+    {
+      href: './lesson_02/',
+      title: 'Домашня робота №2',
+      img: { src: 'homework-placeholder-2.jpg', alt: '' },
+      number: 2,
+      datetime: new Date('2025-01-28'),
+    },
+    {
+      href: './lesson_03/',
+      title: 'Домашня робота №3',
+      img: { src: 'homework-placeholder-3.jpg', alt: '' },
+      number: 3,
+      datetime: new Date('2025-01-30'),
+    },
+    //- {
+    //-   href: './lesson_05/',
+    //-   title: 'Домашня робота №5',
+    //-   img: { src: 'homework-placeholder-5.jpg', alt: '' },
+    //-   number: 5,
+    //-   datetime: new Date('2025-01-28'),
+    //- },
+    //- {
+    //-   href: './lesson_06/',
+    //-   title: 'Домашня робота №6',
+    //-   img: { src: 'homework-placeholder-6.jpg', alt: '' },
+    //-   number: 6,
+    //-   datetime: new Date('2025-01-30'),
+    //- },
   ]
+
 
 doctype html
 head
@@ -13,19 +40,21 @@ head
   link(rel="stylesheet", href="./styles/style.css")
 
 body
-  main
-    .s-prose
-      .l-container.u-text-center
-        header
-          h1 Домашні роботи з курсу по JavaScript 2025
-          p Учень Борис
-        ol.l-cards.u-mbs-400
-          each lesson in lessons
-            li.l-cards__item
-              article.card
+  main.u-pb-800
+    .l-container
+      .u-text-center.u-flow-200
+        h1.c-title Домашні роботи з курсу по JavaScript 2025
+        p Учень Борис
+      ol.l-cards.u-mbs-600
+        each lesson in lessons.sort((a,b)=>b.number - a.number)
+          li.l-cards__item
+            a.card(href=lesson.href)
+              article.card__inner
                 header.card__header
                   .header-card
-                    h2.header-card__title
-                      a(href=lesson.href)= lesson.title
+                    h2.header-card__title= lesson.title
                     p.header-card__published Опубліковано
+                      |
                       time(datetime=lesson.datetime)= lesson.datetime.toLocaleDateString("uk-UA", { year: "numeric", month: "long", day: "2-digit" })
+                .card__image
+                  img(src=`./images/${lesson.img.src}`, alt=lesson.img.alt)

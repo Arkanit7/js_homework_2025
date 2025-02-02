@@ -5,7 +5,7 @@
   overflow: auto;
   inline-size: 15rem;
   padding: 1rem;
-  background-color: get-color("zinc", "100");
+  background-color: get-color("zinc", "300");
 
   @media (prefers-color-scheme: dark) {
     background-color: get-color("zinc", "950");

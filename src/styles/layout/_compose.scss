@@ -1,0 +1,25 @@
+@use "../abstracts" as *;
+
+.l-compose {
+  display: grid;
+  grid-template-areas: "aside main";
+  grid-template-columns: 0 1fr;
+
+  @include media-width-from("md") {
+    grid-template-columns: 15rem 1fr;
+  }
+
+  &__aside {
+    grid-area: "aside";
+  }
+
+  &__sidebar {
+    position: fixed;
+    inset-inline-start: 0;
+    inset-block: 0;
+  }
+
+  &__main {
+    grid-area: "main";
+  }
+}

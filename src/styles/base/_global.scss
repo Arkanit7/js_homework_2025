@@ -6,19 +6,34 @@
 }
 
 body {
-  font-size: map.get($font-size, "400");
+  font-size: get-font-size("300");
   font-family: map.get($font-family, "primary");
   line-height: 1.5;
+  background-color: get-color("zinc", "100");
+
+  @include dark-mode {
+    background-color: get-color("zinc", "900");
+  }
+
+  @include media-width-from("sm") {
+    font-size: get-font-size("350");
+  }
+
+  @include media-width-from("lg") {
+    font-size: get-font-size("400");
+  }
 }
 
 .l-container {
-  max-inline-size: 75ch;
+  max-inline-size: get-screen("lg");
   margin-inline: auto;
   padding-inline: 1rem;
 }
 
 .s-prose {
-  padding-block: 1.8rem;
+  max-inline-size: get-screen("md");
+  margin-inline: auto;
+  padding-inline: 1rem;
 
   & :where(h1, h2, h3, h4, h5, h6) {
     font-weight: bolder;
@@ -29,26 +44,28 @@ body {
   }
 
   h1 {
-    font-size: map.get($font-size, "450");
+    font-size: get-font-size("450");
+    line-height: get-line-height("none");
 
     @include media-width-from("sm") {
-      font-size: map.get($font-size, "500");
+      font-size: get-font-size("500");
     }
 
     @include media-width-from("lg") {
-      font-size: map.get($font-size, "550");
+      font-size: get-font-size("550");
     }
   }
 
   h2 {
-    font-size: map.get($font-size, "400");
+    font-size: get-font-size("400");
+    line-height: get-line-height("thin");
 
     @include media-width-from("sm") {
-      font-size: map.get($font-size, "450");
+      font-size: get-font-size("450");
     }
 
     @include media-width-from("lg") {
-      font-size: map.get($font-size, "500");
+      font-size: get-font-size("500");
     }
   }
 
@@ -59,29 +76,5 @@ body {
 
   * + li {
     margin-block-start: map.get($spacing, "100");
-  }
-}
-
-.l-compose {
-  display: grid;
-  grid-template-areas: "aside main";
-  grid-template-columns: 0 1fr;
-
-  @include media-width-from("md") {
-    grid-template-columns: 15rem 1fr;
-  }
-
-  &__aside {
-    grid-area: "aside";
-  }
-
-  &__sidebar {
-    position: fixed;
-    inset-inline-start: 0;
-    inset-block: 0;
-  }
-
-  &__main {
-    grid-area: "main";
   }
 }

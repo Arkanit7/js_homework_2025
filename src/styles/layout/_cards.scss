@@ -1,0 +1,23 @@
+@use "../abstracts" as *;
+
+.l-cards {
+  display: grid;
+  gap: get-spacing("500");
+
+  @include media-width-from("sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-width-from("md") {
+    gap: get-spacing("600");
+  }
+
+  @include media-width-from("lg") {
+    gap: get-spacing("900");
+  }
+
+  // .l-cards__item
+
+  &__item {
+  }
+}
