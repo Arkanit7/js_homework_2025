@@ -32,29 +32,30 @@
 
 
 doctype html
-head
-  meta(charset="UTF-8")
-  meta(name="viewport", content="width=device-width, initial-scale=1.0")
-  title Головна | JS 2025
-  link(rel="icon", type="image/x-icon", href="./favicon.ico")
-  link(rel="stylesheet", href="./styles/style.css")
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Головна | JS 2025
+    link(rel="icon", type="image/x-icon", href="./favicon.ico")
+    link(rel="stylesheet", href="./styles/style.css")
 
-body
-  main.u-pb-800
-    .l-container
-      .u-text-center.u-flow-200
-        h1.c-title Домашні роботи з курсу по JavaScript 2025
-        p Учень Борис
-      ol.l-cards.u-mbs-600
-        each lesson in lessons.sort((a,b)=>b.number - a.number)
-          li.l-cards__item
-            a.card(href=lesson.href)
-              article.card__inner
-                header.card__header
-                  .header-card
-                    h2.header-card__title= lesson.title
-                    p.header-card__published Опубліковано
-                      |
-                      time(datetime=lesson.datetime)= lesson.datetime.toLocaleDateString("uk-UA", { year: "numeric", month: "long", day: "2-digit" })
-                .card__image
-                  img(src=`./images/${lesson.img.src}`, alt=lesson.img.alt)
+  body
+    main.u-pb-800
+      .l-container
+        .u-text-center.u-flow-200
+          h1.c-title Домашні роботи з курсу по JavaScript 2025
+          p Учень Борис
+        ol.l-cards.u-mbs-600
+          each lesson in lessons.sort((a,b)=>b.number - a.number)
+            li.l-cards__item
+              a.card(href=lesson.href)
+                article.card__inner
+                  header.card__header
+                    .header-card
+                      h2.header-card__title= lesson.title
+                      p.header-card__published Опубліковано
+                        |
+                        time(datetime=lesson.datetime)= lesson.datetime.toLocaleDateString("uk-UA", { year: "numeric", month: "long", day: "2-digit" })
+                  .card__image
+                    img(src=`./images/${lesson.img.src}`, alt=lesson.img.alt)
