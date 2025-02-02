@@ -34,6 +34,14 @@
     }
   }
 
+  &:focus-visible &__header {
+    color: get-color("yellow", "500");
+
+    @include dark-mode {
+      color: get-color("yellow", "400");
+    }
+  }
+
   &:hover &__header {
     @media (any-hover) {
       color: get-color("yellow", "500");
@@ -41,6 +49,14 @@
       @include dark-mode {
         color: get-color("yellow", "400");
       }
+    }
+  }
+
+  &:focus-visible &__image {
+    box-shadow: 0 0 1rem 0.125rem get-color("yellow", "500");
+
+    @include dark-mode {
+      box-shadow: 0 0 0.5rem 0 get-color("yellow", "400");
     }
   }
 
