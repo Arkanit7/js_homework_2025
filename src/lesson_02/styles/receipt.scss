@@ -1,19 +1,16 @@
 .receipt {
-  border-block: 2px dashed #999;
-  border-inline: 2px solid #999;
-  padding-block: 2rem;
   padding-inline: 1rem;
-  background-color: white;
+  padding-block: 2rem;
+  border-inline: 2px solid hsl(0deg 0% 60%);
+  border-block: 2px dashed hsl(0deg 0% 60%);
   color: black;
   font-family: "Courier New", Courier, monospace;
+  background-color: white;
 
   & > * + * {
-    border-block-start: 1px solid #999;
+    margin-block-start: 1rem;
     padding-block-start: 1rem;
-  }
-
-  & > *:where(:not(:last-child)) {
-    padding-block-end: 1rem;
+    border-block-start: 1px solid hsl(0deg 0% 60%);
   }
 }
 
@@ -40,15 +37,15 @@
 }
 
 .code-receipt__picture {
+  position: relative;
   inline-size: 10rem;
   aspect-ratio: 1;
-  position: relative;
 }
 
 .code-receipt__img {
   position: absolute;
   inset: 0;
+  object-fit: contain;
   inline-size: 100%;
   block-size: 100%;
-  object-fit: contain;
 }

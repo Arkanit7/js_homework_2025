@@ -1,7 +1,7 @@
 -
   const lessons = [
-    { href:"./lesson_02/", title: 'Урок №2' },
-    { href: "./lesson_03/", title: 'Урок №3' },
+    { href:"./lesson_02/", title: 'Домашня робота №2', tags: ['cool'], datetime: new Date("2025-01-28") },
+    { href: "./lesson_03/", title: 'Домашня робота №3', tags: ['cute'], datetime: new Date("2025-01-30") },
   ]
 
 doctype html
@@ -17,7 +17,13 @@ body
         header
           h1 Домашні роботи з курсу по JavaScript 2025
           p Учень Борис
-        ol.u-mbs-400
+        ol.l-cards.u-mbs-400
           each lesson in lessons
-            li
-              a.c-pill(href=lesson.href)= lesson.title
+            li.l-cards__item
+              article.card
+                header.card__header
+                  .header-card
+                    h2.header-card__title
+                      a(href=lesson.href)= lesson.title
+                    p.header-card__published Опубліковано
+                      time(datetime=lesson.datetime)= lesson.datetime.toLocaleDateString("uk-UA", { year: "numeric", month: "long", day: "2-digit" })

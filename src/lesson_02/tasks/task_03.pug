@@ -1,9 +1,9 @@
 extends ../../layouts/_task-layout.pug
 
 block frontmatter
+  include ../_collection
   -
-    const number = '03'
-    const tasks = ["00", "01", "02", "03", "04", "05", "06", "07"]
+    const currentTask = tasks.find(task=>task.number === 3)
 
 block content
   p

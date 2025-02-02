@@ -1,9 +1,9 @@
 extends ../../layouts/_task-layout.pug
 
 block frontmatter
+  include ../_collection
   -
-    const number = '05'
-    const tasks = ["01", "02", "03", "04", "05", "06", "07"]
+    const currentTask = tasks.find(task=>task.number === 5)
 
 block content
   p З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.

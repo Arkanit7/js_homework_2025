@@ -5,7 +5,11 @@
   overflow: auto;
   inline-size: 15rem;
   padding: 1rem;
-  background-color: map.get(map.get($color, "zinc"), "950");
+  background-color: get-color("zinc", "100");
+
+  @media (prefers-color-scheme: dark) {
+    background-color: get-color("zinc", "950");
+  }
 
   @include media-width-to("md") {
     transform: translateX(-100%);

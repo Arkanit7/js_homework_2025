@@ -1,9 +1,9 @@
 extends ../../layouts/_task-layout.pug
 
 block frontmatter
+  include ../_collection
   -
-    const number = '03'
-    const tasks = ["01", "02", "03", "04", "05", "06", "07"]
+    const currentTask = tasks.find(task=>task.number === 3)
 
 block content
   p Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.

@@ -5,7 +5,7 @@ html(lang="uk")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Завдання №#{ number } | JS 2025
+    title #{ currentTask.title } | JS 2025
     block styles
       link(rel="stylesheet", href="../../styles/style.css")
 
@@ -18,15 +18,15 @@ html(lang="uk")
             li.c-sidebar__item
               a.c-pill(href="../index.html") До списку завдань
             each task in tasks
-              - const isCurrent = task === number;
+              - const isCurrent = task.number === currentTask.number;
               li.c-sidebar__item
                 a.c-pill(
-                  href=`./task_${ task }.html`,
+                  href=`./${ task.href }`,
                   class=isCurrent && "c-pill--current",
                   aria-current=isCurrent && "page"
-                ) Завдання №#{ task }
+                )= task.title
       main.l-compose__main
         .l-container
           .s-prose
-            h1 Завдання №#{ number }
+            h1= currentTask.title
             block content
