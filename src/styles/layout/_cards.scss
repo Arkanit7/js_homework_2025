@@ -4,7 +4,7 @@
   display: grid;
   gap: get-spacing("500");
 
-  @include media-width-from("sm") {
+  @include media-width-from("2xs") {
     grid-template-columns: repeat(2, 1fr);
   }
 

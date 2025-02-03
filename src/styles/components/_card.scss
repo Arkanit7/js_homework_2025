@@ -22,7 +22,7 @@
     order: -1;
     overflow: hidden;
     aspect-ratio: 21/9;
-    border-radius: 1rem;
+    border-radius: get-border-radius("2xl");
     transition: box-shadow 0.3s;
 
     img {
@@ -82,14 +82,14 @@
 
   &__title {
     font-weight: get-font-weight("bold");
-    font-size: get-font-size("400");
+    font-size: get-font-size("350");
 
     @include media-width-from("sm") {
-      font-size: get-font-size("450");
+      font-size: get-font-size("400");
     }
 
     @include media-width-from("lg") {
-      font-size: get-font-size("500");
+      font-size: get-font-size("450");
     }
   }
 
