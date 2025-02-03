@@ -408,9 +408,3 @@ $config: (
     "10": 2.5rem,
   ),
 );
-$font-size: map.get($config, "font-size");
-$color: map.get($config, "color");
-$spacing: map.get($config, "spacing");
-$font-weight: map.get($config, "font-weight");
-$font-family: map.get($config, "font-family");
-$screens: map.get($config, "screens");

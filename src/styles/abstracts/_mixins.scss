@@ -1,14 +1,15 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 
 @mixin media-width-from($breakpoint) {
-  @media (#{map.get($screens, $breakpoint)} <= width) {
+  @media (#{get-screen($breakpoint)} <= width) {
     @content;
   }
 }
 
 @mixin media-width-to($breakpoint) {
-  @media (width < #{map.get($screens, $breakpoint)}) {
+  @media (width < #{get-screen($breakpoint)}) {
     @content;
   }
 }

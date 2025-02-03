@@ -7,7 +7,7 @@
 
 body {
   font-size: get-font-size("300");
-  font-family: map.get($font-family, "primary");
+  font-family: get-font-family("primary");
   line-height: 1.5;
   background-color: get-color("zinc", "100");
 
@@ -40,7 +40,7 @@ body {
   }
 
   & > * + * {
-    margin-block-start: map.get($spacing, "200");
+    margin-block-start: get-spacing("200");
   }
 
   h1 {
@@ -75,6 +75,6 @@ body {
   }
 
   * + li {
-    margin-block-start: map.get($spacing, "100");
+    margin-block-start: get-spacing("100");
   }
 }
