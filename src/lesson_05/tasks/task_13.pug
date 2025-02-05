@@ -1,0 +1,13 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === 13)
+
+block content
+  p Морський бій. Комп'ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель.
+
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_13.js")

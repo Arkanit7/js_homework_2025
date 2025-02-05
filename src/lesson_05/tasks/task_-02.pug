@@ -1,0 +1,12 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === -2)
+
+block content
+  p Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати яких чисел більше: парних чи непарних.
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_-02.js")

@@ -5,29 +5,6 @@ block frontmatter
   -
     const currentTask = tasks.find(task=>task.number === 1)
 
-block append styles
-  style.
-    table {
-      border-collapse: collapse;
-      inline-size: 100%;
-    }
-    td,
-    th {
-      border: 1px solid #ccc;
-      text-align: left;
-      padding: 8px;
-    }
-    tr:nth-child(even),
-    thead tr {
-      background-color: #eee;
-    }
-    @media (prefers-color-scheme: dark) {
-      tr:nth-child(even),
-      thead tr {
-        background-color: #333;
-      }
-    }
-
 block content
   p
     | Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у

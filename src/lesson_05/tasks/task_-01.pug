@@ -1,0 +1,12 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === -1)
+
+block content
+  p Вивести на екран номери місяців весни і літа (від 3 до 8)
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_-01.js")

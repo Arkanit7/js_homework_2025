@@ -20,7 +20,7 @@
   }
 
   &:hover {
-    @media (any-hover: hover) {
+    @media (any-hover) {
       @content;
     }
   }

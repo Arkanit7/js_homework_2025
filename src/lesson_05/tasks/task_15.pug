@@ -1,0 +1,12 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === 15)
+
+block content
+  p Користувач поступово вводить показники температури протягом року. Знайти середню температуру.
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_15.js")

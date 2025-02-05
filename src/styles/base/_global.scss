@@ -35,6 +35,13 @@ body {
   margin-inline: auto;
   padding-inline: 1rem;
 
+  @media (prefers-color-scheme: dark) {
+    tr:nth-child(even),
+    thead tr {
+      background-color: hsl(0deg 0% 20%);
+    }
+  }
+
   & :where(h1, h2, h3, h4, h5, h6) {
     font-weight: bolder;
   }
@@ -76,5 +83,76 @@ body {
 
   * + li {
     margin-block-start: get-spacing("100");
+  }
+
+  ol,
+  ul,
+  dl,
+  menu,
+  dir {
+    padding: revert;
+  }
+
+  li {
+    list-style: revert;
+  }
+
+  input {
+    padding-inline: get-spacing("150");
+    padding-block: get-spacing("50");
+    border: 1px solid get-color("yellow", "300");
+    border-radius: get-border-radius("lg");
+    background-color: get-color("zinc", "300");
+
+    @include dark-mode {
+      background-color: get-color("zinc", "800");
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  button {
+    padding-inline: get-spacing("500");
+    padding-block: get-spacing("250");
+    border-radius: get-border-radius("lg");
+    color: get-color("zinc", "950");
+    background-color: get-color("yellow", "400");
+    transition-property: transform, background-color, box-shadow;
+    transition-duration: 0.3s;
+
+    @include hover-focus {
+      background-color: get-color("yellow", "700");
+    }
+
+    &:active {
+      transform: translateY(3px);
+    }
+
+    &:not(:active) {
+      box-shadow: 0 3px 0 0 get-color("yellow", "900");
+    }
+  }
+
+  table {
+    inline-size: 100%;
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    padding: 8px;
+    border: 1px solid get-color("zinc", "400");
+    text-align: start;
+  }
+
+  thead tr,
+  tr:nth-child(even) {
+    background-color: get-color("zinc", "300");
+
+    @include dark-mode {
+      background-color: get-color("zinc", "800");
+    }
   }
 }

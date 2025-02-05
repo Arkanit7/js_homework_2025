@@ -1,0 +1,12 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === 05)
+
+block content
+  p Вивести таблицю
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_05.js")

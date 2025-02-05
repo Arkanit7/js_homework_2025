@@ -1,0 +1,12 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === 10)
+
+block content
+  p Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_10.js")

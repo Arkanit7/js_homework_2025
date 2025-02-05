@@ -1,0 +1,12 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === 02)
+
+block content
+  p Створити 10 елементів для введення цін продуктів
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_02.js")

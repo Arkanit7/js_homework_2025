@@ -18,6 +18,8 @@ import reset from './gulp/reset.js'
 
 import temml from 'temml'
 
+import create from './gulp/create.js'
+
 const isProduction = process.argv.includes('--build')
 
 const renderMathToMathML = (mathString, inline = true) => {
@@ -105,3 +107,4 @@ const build = gulp.series(reset, mainTasks)
 // Default tasks
 gulp.task('dev', dev)
 gulp.task('build', build)
+gulp.task('create', create)

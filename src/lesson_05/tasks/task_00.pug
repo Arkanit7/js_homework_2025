@@ -1,0 +1,12 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === 0)
+
+block content
+  p Вивести на екран 8 кнопок з написом “Hello”.
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_00.js")

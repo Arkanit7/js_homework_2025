@@ -1,0 +1,17 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task=>task.number === 1)
+
+block content
+  p Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових чисел вводиться користувачем. Приклад:
+  ul
+    li 12
+    li 21
+    li 34
+    li 51
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_01.js")
