@@ -1,8 +1,9 @@
+@use "../../styles/abstracts" as *;
+
 .receipt {
   padding-inline: 1rem;
   padding-block: 2rem;
-  border-inline: 2px solid hsl(0deg 0% 60%);
-  border-block: 2px dashed hsl(0deg 0% 60%);
+  border: 2px solid get-color("gray", "600");
   color: black;
   font-family: "Courier New", Courier, monospace;
   background-color: white;
@@ -10,23 +11,13 @@
   & > * + * {
     margin-block-start: 1rem;
     padding-block-start: 1rem;
-    border-block-start: 1px solid hsl(0deg 0% 60%);
+    border-block-start: 1px dashed get-color("gray", "600");
   }
 }
 
 .receipt._box {
   max-inline-size: 35ch;
-}
-
-/* --- */
-
-.header-receipt {
-}
-
-.header-receipt__title {
-  * + & {
-    margin-block-start: 1rem;
-  }
+  margin-inline: auto;
 }
 
 /* --- */
