@@ -15,17 +15,36 @@ html(lang="uk")
     .l-compose
       aside.l-compose__aside
         nav.c-sidebar.l-compose__sidebar
-          ul.c-sidebar__list.u-flow-200
+          ul.c-sidebar__list.u-flow-500
             li.c-sidebar__item
               a.c-pill(href="../index.html") До списку завдань
-            each task in tasks
-              - const isCurrent = task.number === currentTask.number;
-              li.c-sidebar__item
-                a.c-pill(
-                  href=`./${ task.href }`,
-                  class=isCurrent && "c-pill--current",
-                  aria-current=isCurrent && "page"
-                )= task.title
+
+            if tasks.some(task=>task.featured)
+              ul.u-flow-200
+                li.c-sidebar__item На перевірку:
+
+                each task in tasks.filter(task=>task.featured)
+                  - const isCurrent = task.number === currentTask.number;
+                  li.c-sidebar__item
+                    a.c-pill(
+                      href=`./${ task.href }`,
+                      class=isCurrent && "c-pill--current",
+                      aria-current=isCurrent && "page"
+                    )= task.title
+
+            ul.u-flow-200
+              if tasks.some(task=>task.featured)
+                li.c-sidebar__item Усі завдання
+
+              each task in tasks
+                - const isCurrent = task.number === currentTask.number;
+                li.c-sidebar__item
+                  a.c-pill(
+                    href=`./${ task.href }`,
+                    class=isCurrent && "c-pill--current",
+                    aria-current=isCurrent && "page"
+                  )= task.title
+
       main.l-compose__main.u-pb-800
         .s-prose
           h1= currentTask.title
