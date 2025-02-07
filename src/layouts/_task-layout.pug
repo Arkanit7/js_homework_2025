@@ -1,3 +1,5 @@
+include ../mixins/_index
+
 block frontmatter
 
 doctype html
@@ -27,12 +29,7 @@ html(lang="uk")
                   each task in tasks.filter(task=>task.featured)
                     - const isCurrent = task.number === currentTask.number;
                     li.c-sidebar__item
-                      a.c-pill(
-                        href=`./${ task.href }`,
-                        class=isCurrent && "c-pill--current",
-                        aria-current=isCurrent && "page"
-                      )= task.title
-
+                      +Pill(task, isCurrent)
             li
               ol.u-flow-200
                 if tasks.some(task=>task.featured)
@@ -41,11 +38,7 @@ html(lang="uk")
                 each task in tasks
                   - const isCurrent = task.number === currentTask.number;
                   li.c-sidebar__item
-                    a.c-pill(
-                      href=`./${ task.href }`,
-                      class=isCurrent && "c-pill--current",
-                      aria-current=isCurrent && "page"
-                    )= task.title
+                    +Pill(task, isCurrent)
 
       main.l-compose__main.u-pb-800
         .s-prose

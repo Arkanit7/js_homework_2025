@@ -1,0 +1,27 @@
+@use "../abstracts" as *;
+
+.l-tasks {
+  display: grid;
+  gap: get-spacing("250");
+
+  @include media-width-from("2xs") {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(100%, get-width("7200")), 1fr)
+    );
+  }
+
+  @include media-width-from("md") {
+    gap: get-spacing("300");
+  }
+
+  @include media-width-from("lg") {
+    gap: get-spacing("400");
+  }
+
+  // .l-tasks__item
+
+  &__item {
+    display: grid;
+  }
+}

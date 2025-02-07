@@ -1,0 +1,74 @@
+@use "../abstracts" as *;
+
+.c-card-task {
+  padding-inline: get-spacing("200");
+  padding-block: get-spacing("200");
+  border: 1px solid get-color("yellow", "900");
+  border-radius: get-border-radius("md");
+  transition: box-shadow 0.3s;
+
+  @include dark-mode {
+    border: 1px solid get-color("yellow", "800");
+  }
+
+  @include media-width-from("sm") {
+    padding-inline: get-spacing("300");
+    padding-block: get-spacing("300");
+  }
+
+  @include media-width-from("lg") {
+    padding-inline: get-spacing("400");
+    padding-block: get-spacing("400");
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 1rem 0.125rem get-color("yellow", "500");
+
+    @include dark-mode {
+      box-shadow: 0 0 0.5rem 0 get-color("yellow", "400");
+    }
+  }
+
+  &:hover {
+    @media (any-hover) {
+      box-shadow: 0 0 1rem 0.125rem get-color("yellow", "500");
+
+      @include dark-mode {
+        box-shadow: 0 0 0.5rem 0 get-color("yellow", "400");
+      }
+    }
+  }
+
+  // .c-card-task__inner
+
+  &__inner {
+    & > * + * {
+      margin-block-start: get-spacing("200");
+    }
+  }
+
+  // .c-card-task__title
+
+  &__title {
+    font-weight: get-font-weight("bold");
+    font-size: get-font-size("300");
+    line-height: get-line-height("none");
+
+    @include media-width-from("sm") {
+      font-size: get-font-size("350");
+    }
+
+    @include media-width-from("lg") {
+      font-size: get-font-size("400");
+    }
+  }
+
+  // .c-card-task__text
+
+  &__text {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}

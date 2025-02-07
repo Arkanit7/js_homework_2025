@@ -1,0 +1,6 @@
+mixin Pill(task, isCurrent)
+  a.c-pill(
+    href=`./${ task.href }`,
+    class=isCurrent && "c-pill--current",
+    aria-current=isCurrent && "page"
+  )= task.title

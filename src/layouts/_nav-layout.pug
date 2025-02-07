@@ -1,3 +1,5 @@
+include ../mixins/_index
+
 block frontmatter
 
 doctype html
@@ -14,23 +16,21 @@ html(lang="uk")
   body
     main.u-pb-800
       .l-container
-        .u-text-center.u-flow-800
-          h1.c-title #{ title }
+        .u-flow-800
+          h1.c-title.u-text-center #{ title }
 
           if tasks.some(task=>task.featured)
             .u-flow-300
               h2.c-subtitle Завдання на перевірку:
-              ul.u-flow-200
+              ul.l-tasks
                 each task in tasks.filter(task=>task.featured)
-                  li
-                    a.c-pill(href=`./tasks/${task.href}`)= task.title
+                  li.l-tasks__item
+                    +CardTask(task)
 
           .u-flow-300
             if tasks.some(task=>task.featured)
               h2.c-subtitle Усі завдання:
-            ul.u-flow-200
-              li
-                a.c-pill(href="../") До списку робіт
+            ul.l-tasks
               each task in tasks
-                li
-                  a.c-pill(href=`./tasks/${task.href}`)= task.title
+                li.l-tasks__item
+                  +CardTask(task)

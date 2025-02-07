@@ -18,10 +18,6 @@ body {
   @include media-width-from("sm") {
     font-size: get-font-size("350");
   }
-
-  @include media-width-from("lg") {
-    font-size: get-font-size("400");
-  }
 }
 
 .l-container {
@@ -36,8 +32,8 @@ body {
   padding-inline: 1rem;
 
   @media (prefers-color-scheme: dark) {
-    tr:nth-child(even),
-    thead tr {
+    thead tr,
+    tr:nth-child(even) {
       background-color: hsl(0deg 0% 20%);
     }
   }
