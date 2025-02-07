@@ -14,17 +14,13 @@
 */
 
 if (confirm('Почати тестування?')) {
-  const CREDIT = 29
-  let debit = 0
+  let credit = 2000
 
-  while (CREDIT > debit) {
-    const userDeposit = parseFloat(
-      prompt(`До сплати ${CREDIT - debit}\nСкільки грошей дати?`, '9'),
-    )
-    debit += userDeposit
-  }
+  do {
+    credit -= parseFloat(prompt(`Сплатіть ${credit}\nСкільки грошей дати?`, ''))
+  } while (credit > 0)
 
-  document.write(`Ви сплатили ${CREDIT} за товари!`)
+  document.write(`<p>Ви оплатили товар.`)
 
-  if (debit > CREDIT) document.write(` Ось ваша решта: ${debit - CREDIT}.`)
+  if (credit < 0) document.write(`<p>Ось ваша решта ${-credit}`)
 }
