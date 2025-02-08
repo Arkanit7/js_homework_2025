@@ -1,17 +1,19 @@
 @use "../abstracts" as *;
 
 .card {
-  display: block;
-
   // .card__inner
   &__inner {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: get-spacing("200");
+    block-size: 100%;
   }
 
   // .card__header
 
   &__header {
+    display: grid;
+    flex: auto;
     transition: color 0.3s;
   }
 
@@ -72,6 +74,9 @@
 }
 
 .header-card {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
   line-height: get-line-height("tight");
 
   & > * + * {
@@ -81,6 +86,7 @@
   // .header-card__title
 
   &__title {
+    flex: auto;
     font-weight: get-font-weight("bold");
     font-size: get-font-size("350");
 

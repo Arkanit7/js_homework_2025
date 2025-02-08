@@ -3,9 +3,12 @@
 
 .c-pill {
   display: inline-block;
+  overflow: hidden;
   padding-inline: get-spacing("200");
   padding-block: get-spacing("100");
   border-radius: get-border-radius("lg");
+  text-overflow: ellipsis;
+  white-space: nowrap;
   transition-property: color, background-color;
   transition-duration: 0.3s;
 
