@@ -1,0 +1,12 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = tasks.find(task => task.id === 2)
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_02.js")

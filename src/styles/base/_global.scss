@@ -46,6 +46,11 @@ body {
     margin-block-start: get-spacing("200");
   }
 
+  pre {
+    overflow-y: auto;
+    inline-size: 100%;
+  }
+
   h1 {
     font-size: get-font-size("450");
     line-height: get-line-height("none");

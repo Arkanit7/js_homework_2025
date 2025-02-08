@@ -35,7 +35,7 @@ html(lang="uk")
                 if tasks.some(task=>task.featured)
                   li.c-sidebar__item Усі завдання
 
-                each task in tasks
+                each task in tasks.sort((a, b) => b.id - a.id)
                   - const isCurrent = task.id === currentTask.id;
                   li.c-sidebar__item
                     +Pill(task, isCurrent)
