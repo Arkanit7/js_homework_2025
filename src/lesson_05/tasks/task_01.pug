@@ -3,7 +3,7 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === 1)
+    const currentTask = tasks.find(task => task.id === 1)
 
 block content
   p Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових чисел вводиться користувачем. Приклад:

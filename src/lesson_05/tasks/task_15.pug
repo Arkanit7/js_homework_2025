@@ -3,7 +3,7 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === 15)
+    const currentTask = tasks.find(task => task.id === 15)
 
 block content
   p Користувач поступово вводить показники температури протягом року. Знайти середню температуру.

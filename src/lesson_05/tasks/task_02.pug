@@ -3,7 +3,7 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === 02)
+    const currentTask = tasks.find(task => task.id === 02)
 
 block content
   p Створити 10 елементів для введення цін продуктів

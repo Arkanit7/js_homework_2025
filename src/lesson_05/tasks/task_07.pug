@@ -3,7 +3,7 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === 07)
+    const currentTask = tasks.find(task => task.id === 07)
 
 block content
   p Вивести на екран N абзаців (N вводиться користувачем) за зразком:

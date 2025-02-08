@@ -27,7 +27,7 @@ html(lang="uk")
                   li.c-sidebar__item На перевірку:
 
                   each task in tasks.filter(task=>task.featured)
-                    - const isCurrent = task.number === currentTask.number;
+                    - const isCurrent = task.id === currentTask.id;
                     li.c-sidebar__item
                       +Pill(task, isCurrent)
             li
@@ -36,7 +36,7 @@ html(lang="uk")
                   li.c-sidebar__item Усі завдання
 
                 each task in tasks
-                  - const isCurrent = task.number === currentTask.number;
+                  - const isCurrent = task.id === currentTask.id;
                   li.c-sidebar__item
                     +Pill(task, isCurrent)
 

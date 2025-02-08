@@ -3,7 +3,7 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === 08)
+    const currentTask = tasks.find(task => task.id === 08)
 
 block content
   p Користувач загадує число. За 3 спроби комп'ютер намагається вгадати число користувача (використати confirm).

@@ -3,7 +3,7 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === 11)
+    const currentTask = tasks.find(task => task.id === 11)
 
 block content
   p Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.

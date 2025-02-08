@@ -3,7 +3,7 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === 04)
+    const currentTask = tasks.find(task => task.id === 04)
 
 block content
   p Вивести таблицю з 3 рядків і 7 стовпців

@@ -3,7 +3,7 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === 0)
+    const currentTask = tasks.find(task => task.id === 0)
 
 block content
   p Вивести на екран 8 кнопок з написом “Hello”.

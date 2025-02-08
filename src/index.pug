@@ -17,7 +17,7 @@ html(lang="uk")
           h1.c-title Домашні роботи з курсу по JavaScript 2025
           p Учень Борис
         ol.l-cards.u-mbs-600
-          each lesson in lessons.sort((a,b)=>b.number - a.number)
+          each lesson in lessons.sort((a,b)=>b.id - a.id)
             li.l-cards__item
               a.card(href=lesson.href)
                 article.card__inner
