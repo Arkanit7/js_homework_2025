@@ -1,4 +1,5 @@
-include ../mixins/_index
+include /mixins/_index
+include ../_collection
 
 block frontmatter
 
@@ -14,23 +15,36 @@ html(lang="uk")
 
     block scripts
   body
-    main.u-pb-800
-      .l-container
-        .u-flow-800
-          h1.c-title.u-text-center #{ title }
+    .l-compose
+      aside.l-compose__aside
+        nav.c-sidebar.l-compose__sidebar
+          ul.c-sidebar__list.u-flow-500
+            li.c-sidebar__item
+              a.c-pill(href="../index.html") До списку робіт
+            li
+              ol.u-flow-200
+                each lesson in lessons.sort((a,b)=>b.number - a.number)
+                  - const isCurrent = lesson.number === currentLesson.number;
+                  li.c-sidebar__item
+                    +Pill({ ...lesson, href: "../" + lesson.href }, isCurrent)
 
-          if tasks.some(task=>task.featured)
+      main.l-compose__main.u-pb-800
+        .l-container
+          .u-flow-800
+            h1.c-title.u-text-center #{ title }
+
+            if tasks.some(task=>task.featured)
+              .u-flow-300
+                h2.c-subtitle Завдання на перевірку:
+                ul.l-tasks
+                  each task in tasks.filter(task=>task.featured)
+                    li.l-tasks__item
+                      +CardTask(task)
+
             .u-flow-300
-              h2.c-subtitle Завдання на перевірку:
+              if tasks.some(task=>task.featured)
+                h2.c-subtitle Усі завдання:
               ul.l-tasks
-                each task in tasks.filter(task=>task.featured)
+                each task in tasks
                   li.l-tasks__item
                     +CardTask(task)
-
-          .u-flow-300
-            if tasks.some(task=>task.featured)
-              h2.c-subtitle Усі завдання:
-            ul.l-tasks
-              each task in tasks
-                li.l-tasks__item
-                  +CardTask(task)

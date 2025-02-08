@@ -1,2 +1,15 @@
 include ./_CardTask.pug
 include ./_Pill.pug
+
+mixin add-prefix(prefix, attributes)
+  // Merge existing attributes with the modified ones
+  - var mergedAttributes = Object.assign({}, attributes);
+
+  // Modify href and src attributes if they exist
+  if mergedAttributes.href
+    - mergedAttributes.href = prefix + mergedAttributes.href;
+  if mergedAttributes.src
+    - mergedAttributes.src = prefix + mergedAttributes.src;
+
+  // Output the element with the modified attributes
+  block(mergedAttributes)
