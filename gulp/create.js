@@ -1,19 +1,22 @@
 import process from 'process'
 import fs from 'node:fs'
 
-const taskTemplate = (number) =>
+const taskTemplate = (id) =>
   `extends ../../layouts/_task-layout.pug
 
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task => task.id === ${number})
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === ${id}),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === ${id})
 
 block content
   p!= currentTask.description
   hr
   h2 Рішення:
-  script(src="./scripts/task_${number}.js")
+  script(src="./scripts/task_${id}.js")
 `
 const SCRIPT_TEMPLATE = ``
 
