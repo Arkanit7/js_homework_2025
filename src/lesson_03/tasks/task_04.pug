@@ -3,7 +3,11 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task => task.id === 4)
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 4),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 4)
+
 
 block content
   p З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).

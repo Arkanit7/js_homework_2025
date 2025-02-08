@@ -6,7 +6,7 @@
   grid-template-columns: 0 1fr;
 
   @include media-width-from("md") {
-    grid-template-columns: 15rem 1fr;
+    grid-template-columns: 14rem 1fr;
   }
 
   &__aside {

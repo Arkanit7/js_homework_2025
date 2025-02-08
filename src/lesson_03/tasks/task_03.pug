@@ -3,7 +3,11 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task => task.id === 3)
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 3),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 3)
+
 
 block content
   p Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.

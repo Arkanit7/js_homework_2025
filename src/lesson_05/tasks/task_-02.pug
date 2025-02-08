@@ -3,7 +3,11 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task=>task.number === -2)
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === -2),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === -2)
+
 
 block content
   p Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати яких чисел більше: парних чи непарних.

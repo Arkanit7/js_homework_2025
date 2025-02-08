@@ -3,7 +3,11 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task => task.id === 1)
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 1),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 1)
+
 
 block content
   p= currentTask.description

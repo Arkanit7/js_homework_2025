@@ -3,7 +3,11 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task => task.id === 1)
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 1),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 1)
+
 
 block content
   p З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.

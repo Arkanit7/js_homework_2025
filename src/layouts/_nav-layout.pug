@@ -18,11 +18,11 @@ html(lang="uk")
     .l-compose
       aside.l-compose__aside
         nav.c-sidebar.l-compose__sidebar
-          ul.c-sidebar__list.u-flow-500
+          ul.c-sidebar__list.u-flow-250
             li.c-sidebar__item
               a.c-pill(href="../index.html") До списку робіт
             li
-              ol.u-flow-200
+              ol.u-flow-50
                 each lesson in lessons.sort((a,b)=>b.id - a.id)
                   - const isCurrent = lesson.id === currentLesson.id;
                   li.c-sidebar__item
@@ -33,18 +33,10 @@ html(lang="uk")
           .u-flow-800
             h1.c-title.u-text-center #{ currentLesson.title }
 
-            if tasks.some(task=>task.featured)
+            each group in taskGroups
               .u-flow-300
-                h2.c-subtitle Завдання на перевірку:
+                h2.c-subtitle!= group.title
                 ul.l-tasks
-                  each task in tasks.filter(task=>task.featured)
+                  each task in group.tasks
                     li.l-tasks__item
                       +CardTask(task)
-
-            .u-flow-300
-              if tasks.some(task=>task.featured)
-                h2.c-subtitle Усі завдання:
-              ul.l-tasks
-                each task in tasks
-                  li.l-tasks__item
-                    +CardTask(task)

@@ -3,7 +3,11 @@ extends ../../layouts/_task-layout.pug
 block frontmatter
   include ../_collection
   -
-    const currentTask = tasks.find(task => task.id === 06)
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 06),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 06)
+
 
 block content
   p Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком

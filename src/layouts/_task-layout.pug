@@ -17,28 +17,18 @@ html(lang="uk")
     .l-compose
       aside.l-compose__aside
         nav.c-sidebar.l-compose__sidebar
-          ul.c-sidebar__list.u-flow-500
+          ul.c-sidebar__list.u-flow-250
             li.c-sidebar__item
               a.c-pill(href="../index.html") До списку завдань
 
-            if tasks.some(task=>task.featured)
-              li
-                ul.u-flow-200
-                  li.c-sidebar__item На перевірку:
-
-                  each task in tasks.filter(task=>task.featured)
+            each group in taskGroups
+              li.u-flow-200
+                p!= group.title
+                ol.u-flow-50
+                  each task in group.tasks
                     - const isCurrent = task.id === currentTask.id;
                     li.c-sidebar__item
                       +Pill(task, isCurrent)
-            li
-              ol.u-flow-200
-                if tasks.some(task=>task.featured)
-                  li.c-sidebar__item Усі завдання
-
-                each task in tasks.sort((a, b) => b.id - a.id)
-                  - const isCurrent = task.id === currentTask.id;
-                  li.c-sidebar__item
-                    +Pill(task, isCurrent)
 
       main.l-compose__main.u-pb-800
         .s-prose
