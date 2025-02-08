@@ -8,7 +8,7 @@ html(lang="uk")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title #{ title } | JS 2025
+    title #{ currentLesson.title } | JS 2025
     link(rel="icon", type="image/x-icon", href="../favicon.ico")
     block styles
       link(rel="stylesheet", href="../styles/style.css")
@@ -31,7 +31,7 @@ html(lang="uk")
       main.l-compose__main.u-pb-800
         .l-container
           .u-flow-800
-            h1.c-title.u-text-center #{ title }
+            h1.c-title.u-text-center #{ currentLesson.title }
 
             if tasks.some(task=>task.featured)
               .u-flow-300
