@@ -1,12 +1,10 @@
 const integer = parseInt(prompt('Введіть число', '27'))
-let isPower = false
+let threeToPower = 1
 
-for (let i = 0; i <= integer; i++) {
-  if (3 ** i === integer) {
-    isPower = true
-    break
-  }
+for (let power = 1; threeToPower < integer; power++) {
+  threeToPower = 3 ** power
 }
 
-if (isPower) document.write(`Так, число ${integer} є степенем числа 3`)
+if (threeToPower === integer)
+  document.write(`Так, число ${integer} є степенем числа 3`)
 else document.write(`Ні, число ${integer} не є степенем числа 3`)
