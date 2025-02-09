@@ -19,5 +19,5 @@ if (confirm('Почати тестування?')) {
     vehicleCount++
   } while (crates > 0)
 
-  alert(`Усі ${vehicleCount} машин поїхали, а склад спорожнів...`)
+  alert(`Усі ${vehicleCount - 1} машин поїхали, а склад спорожнів...`)
 }
