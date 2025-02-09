@@ -1,0 +1,15 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 24),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 24)
+
+block content
+  p!= currentTask.description
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_24.js")
