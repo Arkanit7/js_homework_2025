@@ -17,15 +17,14 @@ html(lang="uk")
       script(src="../scripts/script.js", defer) 
   body
     .l-wrapper
-      .l-wrapper__search
-        +Search
-
+      .l-wrapper__header
+        +Header({search:true})
       .l-compose
         aside.l-compose__aside
           nav.c-sidebar.l-compose__sidebar
             ul.c-sidebar__list.u-flow-250
               li.c-sidebar__item
-                a.c-pill(href="../index.html") До списку робіт
+                a.c-pill(href="../index.html") &#8592; До списку робіт
               li
                 ol.u-flow-50
                   each lesson in lessons.sort((a,b)=>b.id - a.id)

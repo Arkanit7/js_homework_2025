@@ -1,0 +1,9 @@
+mixin Header({search})
+  header.c-header
+    .c-header__inner
+      a.c-header__brand(href=`${ROOT}`) 
+        img(src=`${ROOT}images/js_logo.webp`, alt="")
+        span.c-header__text JavaScript 2025
+      if (search)
+        .c-header__search
+          +Search

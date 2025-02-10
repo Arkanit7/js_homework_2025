@@ -16,7 +16,7 @@
   &__sidebar {
     position: fixed;
     inset-inline-start: 0;
-    inset-block: 0;
+    inset-block: $header-height 0;
   }
 
   &__main {

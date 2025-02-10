@@ -4,12 +4,10 @@
   overflow: clip;
   min-block-size: 100%;
 
-  // .l-wrapper__search
+  // .l-wrapper__header
 
-  &__search {
-    position: absolute;
-    inset-inline-end: get-spacing("400");
-    inset-block-start: get-spacing("800");
-    inline-size: get-width("5000");
+  &__header {
+    position: sticky;
+    inset-block-start: 0;
   }
 }

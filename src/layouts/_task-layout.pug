@@ -16,12 +16,15 @@ html(lang="uk")
       script(src="../../scripts/script.js", defer) 
   body
     .l-wrapper
+      .l-wrapper__header
+        +Header({search:false})
+
       .l-compose
         aside.l-compose__aside
           nav.c-sidebar.l-compose__sidebar
             ul.c-sidebar__list.u-flow-250
               li.c-sidebar__item
-                a.c-pill(href="../index.html") До списку завдань
+                a.c-pill(href="../index.html") &#8592; До списку завдань
 
               each group in taskGroups
                 li.u-flow-200

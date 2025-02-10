@@ -1,0 +1,70 @@
+@use "../abstracts" as *;
+
+.c-header {
+  display: grid;
+  align-content: center;
+  block-size: $header-height;
+  padding-block: get-spacing("200");
+  border-block-end: 1px solid get-color("zinc", "950");
+  background-color: get-color("zinc", "300");
+
+  @media (prefers-color-scheme: dark) {
+    background-color: get-color("zinc", "800");
+  }
+
+  // .c-header__inner
+
+  &__inner {
+    display: grid;
+    grid-template-areas: "aside main";
+    gap: 1rem;
+    align-items: center;
+    padding-inline: get-spacing("400");
+
+    @include media-width-from("md") {
+      grid-template-columns: 14rem get-width("6000");
+    }
+  }
+
+  // .c-header__brand
+
+  &__brand {
+    display: flex;
+    grid-area: aside;
+    gap: get-spacing("200");
+    align-items: center;
+    font-weight: bolder;
+    transition: color 0.3s;
+
+    &:focus-visible {
+      color: get-color("yellow", "400");
+    }
+
+    &:hover {
+      @media (any-hover) {
+        color: get-color("yellow", "400");
+      }
+    }
+
+    img,
+    svg {
+      object-fit: contain;
+      inline-size: get-width("800");
+      block-size: get-width("800");
+    }
+  }
+
+  // .c-header__text
+
+  &__text {
+    @include media-width-to("xs") {
+      display: none;
+    }
+  }
+
+  // .c-header__search
+
+  &__search {
+    grid-area: main;
+  }
+}

@@ -8,7 +8,7 @@
   background-color: get-color("zinc", "300");
 
   @media (prefers-color-scheme: dark) {
-    background-color: get-color("zinc", "950");
+    background-color: get-color("zinc", "800");
   }
 
   @include media-width-to("md") {
