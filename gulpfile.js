@@ -32,8 +32,11 @@ const html = () =>
     .pipe(
       pug({
         pretty: !isProduction,
-        verbose: true, // show compiled files in console
+        verbose: false, // show compiled files in console
         basedir: './src/', // The root directory of all absolute inclusion.
+        data: {
+          ROOT: isProduction ? '/js_homework_2025/' : '/',
+        },
         filters: {
           math: (math, options) => {
             try {
