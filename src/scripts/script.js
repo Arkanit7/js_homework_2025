@@ -1,5 +1,7 @@
-const currentGroup = taskGroups.find((group) =>
-  group.tasks.find((task) => task.id === $1),
-)
+const scrollToCurrentTask = () => {
+  const currentTask = document.querySelector('.c-pill--current')
 
-const currentTask = currentGroup.tasks.find((task) => task.id === $1)
+  if (currentTask) currentTask.scrollIntoView()
+}
+
+scrollToCurrentTask()
