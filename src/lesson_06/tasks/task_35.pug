@@ -1,0 +1,25 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 35),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 35)
+
+block content
+  p!= currentTask.description
+  <ul>
+    <li>сажнів у метри (1 сажень дорівнює 2,1366 м)
+    <li>дюймів у сантиметри (1 дюйм дорівнює 2,5 см)
+    <li>футів у метри (1 фут дорівнює 0,3048 м)
+    <li>драхм у грами (1 драхма дорівнює 3,7325 г)
+    <li>унцій у грами (1 унція дорівнює 29,86 г)
+    <li>фунтів у кілограми (1 фунт дорівнює 0,40951 кг)
+    <li>аршинів у метри (1 аршин дорівнює 0,7112 м)
+    <li>золотників у грами (1 золотник дорівнює 4,2657 г)
+    <li>дюймів у міліметри (1 дюйм дорівнює 25,3995 мм)
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_35.js")
