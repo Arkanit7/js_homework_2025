@@ -1,0 +1,55 @@
+@use "../abstracts" as *;
+
+.c-search {
+  position: relative;
+  display: grid;
+  grid-template-areas: "stack";
+  align-items: center;
+
+  // color: get-color("gray", "400");
+
+  // .c-search__field
+
+  &__field {
+    grid-area: stack;
+    padding-inline: get-spacing("1000") get-spacing("300");
+    padding-block: get-spacing("100");
+    border: 1px solid get-color("yellow", "950");
+    border-radius: get-border-radius("md");
+    background-color: get-color("zinc", "300");
+    transition: border-color 0.3s;
+
+    @include dark-mode {
+      border: 1px solid get-color("yellow", "800");
+      background-color: get-color("zinc", "950");
+    }
+
+    &:focus-visible {
+      border-color: get-color("yellow", "800");
+
+      @include dark-mode {
+        border-color: get-color("yellow", "400");
+      }
+    }
+
+    &:hover {
+      @media (any-hover) {
+        border-color: get-color("yellow", "800");
+
+        @include dark-mode {
+          border-color: get-color("yellow", "400");
+        }
+      }
+    }
+  }
+
+  // .c-search__icon
+
+  &__icon {
+    grid-area: stack;
+    inline-size: get-width("400");
+    block-size: get-width("400");
+    margin-inline-start: get-spacing("300");
+    pointer-events: none;
+  }
+}

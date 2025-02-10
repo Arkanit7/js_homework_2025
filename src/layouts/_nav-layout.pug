@@ -17,6 +17,9 @@ html(lang="uk")
       script(src="../scripts/script.js", defer) 
   body
     .l-wrapper
+      .l-wrapper__search
+        +Search
+
       .l-compose
         aside.l-compose__aside
           nav.c-sidebar.l-compose__sidebar
@@ -40,5 +43,5 @@ html(lang="uk")
                   h2.c-subtitle!= group.title
                   ul.l-tasks
                     each task in group.tasks
-                      li.l-tasks__item
+                      li.l-tasks__item.js-search-task
                         +CardTask(task)

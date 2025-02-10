@@ -3,4 +3,13 @@
 .l-wrapper {
   overflow: clip;
   min-block-size: 100%;
+
+  // .l-wrapper__search
+
+  &__search {
+    position: absolute;
+    inset-inline-end: get-spacing("400");
+    inset-block-start: get-spacing("800");
+    inline-size: get-width("5000");
+  }
 }
