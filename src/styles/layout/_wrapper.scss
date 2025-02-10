@@ -1,0 +1,6 @@
+@use "../abstracts" as *;
+
+.l-wrapper {
+  overflow: clip;
+  min-block-size: 100%;
+}

@@ -15,25 +15,26 @@ html(lang="uk")
     block scripts
       script(src="../../scripts/script.js", defer) 
   body
-    .l-compose
-      aside.l-compose__aside
-        nav.c-sidebar.l-compose__sidebar
-          ul.c-sidebar__list.u-flow-250
-            li.c-sidebar__item
-              a.c-pill(href="../index.html") До списку завдань
+    .l-wrapper
+      .l-compose
+        aside.l-compose__aside
+          nav.c-sidebar.l-compose__sidebar
+            ul.c-sidebar__list.u-flow-250
+              li.c-sidebar__item
+                a.c-pill(href="../index.html") До списку завдань
 
-            each group in taskGroups
-              li.u-flow-200
-                p!= group.title
-                ol.u-flow-50
-                  each task in group.tasks
-                    - const isCurrent = task.id === currentTask.id;
-                    li.c-sidebar__item
-                      +Pill(task, isCurrent)
+              each group in taskGroups
+                li.u-flow-200
+                  p!= group.title
+                  ol.u-flow-50
+                    each task in group.tasks
+                      - const isCurrent = task.id === currentTask.id;
+                      li.c-sidebar__item
+                        +Pill(task, isCurrent)
 
-      main.l-compose__main.u-pb-800
-        .s-prose
-          h1= currentTask.title
-          block content
+        main.l-compose__main.u-pb-800
+          .s-prose
+            h1= currentTask.title
+            block content
 
-        block breakaway
+          block breakaway

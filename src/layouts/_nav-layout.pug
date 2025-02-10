@@ -16,28 +16,29 @@ html(lang="uk")
     block scripts
       script(src="../scripts/script.js", defer) 
   body
-    .l-compose
-      aside.l-compose__aside
-        nav.c-sidebar.l-compose__sidebar
-          ul.c-sidebar__list.u-flow-250
-            li.c-sidebar__item
-              a.c-pill(href="../index.html") До списку робіт
-            li
-              ol.u-flow-50
-                each lesson in lessons.sort((a,b)=>b.id - a.id)
-                  - const isCurrent = lesson.id === currentLesson.id;
-                  li.c-sidebar__item
-                    +Pill({ ...lesson, href: "../" + lesson.href }, isCurrent)
+    .l-wrapper
+      .l-compose
+        aside.l-compose__aside
+          nav.c-sidebar.l-compose__sidebar
+            ul.c-sidebar__list.u-flow-250
+              li.c-sidebar__item
+                a.c-pill(href="../index.html") До списку робіт
+              li
+                ol.u-flow-50
+                  each lesson in lessons.sort((a,b)=>b.id - a.id)
+                    - const isCurrent = lesson.id === currentLesson.id;
+                    li.c-sidebar__item
+                      +Pill({ ...lesson, href: "../" + lesson.href }, isCurrent)
 
-      main.l-compose__main.u-pb-800
-        .l-container
-          .u-flow-800
-            h1.c-title.u-text-center #{ currentLesson.title }
+        main.l-compose__main.u-pb-800
+          .l-container
+            .u-flow-800
+              h1.c-title.u-text-center #{ currentLesson.title }
 
-            each group in taskGroups
-              .u-flow-300
-                h2.c-subtitle!= group.title
-                ul.l-tasks
-                  each task in group.tasks
-                    li.l-tasks__item
-                      +CardTask(task)
+              each group in taskGroups
+                .u-flow-300
+                  h2.c-subtitle!= group.title
+                  ul.l-tasks
+                    each task in group.tasks
+                      li.l-tasks__item
+                        +CardTask(task)
