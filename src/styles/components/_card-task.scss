@@ -3,12 +3,12 @@
 .c-card-task {
   padding-inline: get-spacing("200");
   padding-block: get-spacing("200");
-  border: 1px solid get-color("yellow", "900");
+  border: 1px solid get-color("neutral", "950");
   border-radius: get-border-radius("md");
-  transition: box-shadow 0.3s;
+  transition: border-color 0.3s;
 
   @include dark-mode {
-    border: 1px solid get-color("yellow", "800");
+    border: 1px solid get-color("neutral", "50");
   }
 
   @include media-width-from("sm") {
@@ -22,19 +22,19 @@
   }
 
   &:focus-visible {
-    box-shadow: 0 0 1rem 0.125rem get-color("yellow", "500");
+    border-color: get-color("emerald", "500");
 
     @include dark-mode {
-      box-shadow: 0 0 0.5rem 0 get-color("yellow", "400");
+      border-color: get-color("yellow", "400");
     }
   }
 
   &:hover {
     @media (any-hover) {
-      box-shadow: 0 0 1rem 0.125rem get-color("yellow", "500");
+      border-color: get-color("emerald", "500");
 
       @include dark-mode {
-        box-shadow: 0 0 0.5rem 0 get-color("yellow", "400");
+        border-color: get-color("yellow", "400");
       }
     }
   }
@@ -53,6 +53,7 @@
     font-weight: get-font-weight("bold");
     font-size: get-font-size("300");
     line-height: get-line-height("none");
+    transition: color 0.3s;
 
     @include media-width-from("sm") {
       font-size: get-font-size("350");
@@ -60,6 +61,22 @@
 
     @include media-width-from("lg") {
       font-size: get-font-size("400");
+    }
+  }
+
+  &:focus-visible &__title {
+    color: get-color("emerald", "500");
+
+    @include dark-mode {
+      color: get-color("yellow", "400");
+    }
+  }
+
+  &:hover &__title {
+    color: get-color("emerald", "500");
+
+    @include dark-mode {
+      color: get-color("yellow", "400");
     }
   }
 

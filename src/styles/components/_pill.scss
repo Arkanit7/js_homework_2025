@@ -14,11 +14,19 @@
 
   @include hover-focus {
     color: black;
-    background-color: get-color("yellow", "400");
+    background-color: get-color("emerald", "500");
+
+    @include dark-mode {
+      background-color: get-color("yellow", "400");
+    }
   }
 
   &--current {
     color: black;
-    background-color: get-color("yellow", "300");
+    background-color: get-color("emerald", "500");
+
+    @include dark-mode {
+      background-color: get-color("yellow", "300");
+    }
   }
 }

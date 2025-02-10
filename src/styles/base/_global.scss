@@ -9,7 +9,7 @@ body {
   font-size: get-font-size("300");
   font-family: get-font-family("primary");
   line-height: 1.5;
-  background-color: get-color("zinc", "100");
+  background-color: get-color("neutral", "50");
 
   @include dark-mode {
     background-color: get-color("zinc", "950");
