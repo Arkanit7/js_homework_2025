@@ -12,7 +12,7 @@ body {
   background-color: get-color("neutral", "50");
 
   @include dark-mode {
-    background-color: get-color("zinc", "950");
+    background-color: get-color("zinc", "900");
   }
 
   @include media-width-from("sm") {

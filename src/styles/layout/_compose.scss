@@ -17,6 +17,7 @@
     position: fixed;
     inset-inline-start: 0;
     inset-block: $header-height 0;
+    z-index: 100;
   }
 
   &__main {

@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+
+.c-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background-color: get-color("neutral", "950");
+  opacity: 0.4;
+  transition-property: visibility, opacity;
+  transition-duration: 0.4s;
+
+  &:not(.is-visible) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -3,16 +3,21 @@
 
 .c-sidebar {
   overflow: auto;
-  inline-size: 14rem;
+  inline-size: min(100%, 14rem);
   padding: 1rem;
   background-color: get-color("neutral", "300");
+  transition-property: visibility, transform;
+  transition-duration: 0.5s;
 
   @media (prefers-color-scheme: dark) {
     background-color: get-color("zinc", "800");
   }
 
-  @include media-width-to("md") {
-    transform: translateX(-100%);
+  &:not(.is-expanded) {
+    @include media-width-to("md") {
+      visibility: hidden;
+      transform: translateX(-100%);
+    }
   }
 
   &__list {

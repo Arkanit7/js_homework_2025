@@ -15,14 +15,17 @@
   // .c-header__inner
 
   &__inner {
-    display: grid;
-    grid-template-areas: "aside main";
+    display: flex;
     gap: 1rem;
     align-items: center;
     padding-inline: get-spacing("400");
+  }
 
+  // .c-header__sidebar-button
+
+  &__sidebar-button {
     @include media-width-from("md") {
-      grid-template-columns: 14rem get-width("6000");
+      display: none;
     }
   }
 
@@ -30,11 +33,15 @@
 
   &__brand {
     display: flex;
-    grid-area: aside;
+    flex: none;
     gap: get-spacing("200");
     align-items: center;
     font-weight: bolder;
     transition: color 0.3s;
+
+    @include media-width-from("md") {
+      flex-basis: 14rem;
+    }
 
     &:focus-visible {
       color: get-color("emerald", "500");
@@ -73,6 +80,5 @@
   // .c-header__search
 
   &__search {
-    grid-area: main;
   }
 }

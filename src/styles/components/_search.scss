@@ -21,7 +21,7 @@
 
     @include dark-mode {
       border: 1px solid get-color("neutral", "50");
-      background-color: get-color("zinc", "950");
+      background-color: get-color("zinc", "900");
     }
 
     &:focus-visible {

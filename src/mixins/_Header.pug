@@ -1,6 +1,10 @@
 mixin Header({search})
   header.c-header
     .c-header__inner
+      .c-header__sidebar-button
+        button.c-burger.js-sidebar-toggle(type="button") 
+          span.c-burger__icon
+            span.c-burger__line
       a.c-header__brand(href=`${ROOT}`) 
         img(src=`${ROOT}images/js_logo.webp`, alt="")
         span.c-header__text JavaScript 2025

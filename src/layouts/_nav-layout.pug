@@ -21,7 +21,7 @@ html(lang="uk")
         +Header({search:true})
       .l-compose
         aside.l-compose__aside
-          nav.c-sidebar.l-compose__sidebar
+          nav.c-sidebar.l-compose__sidebar.js-sidebar
             ul.c-sidebar__list.u-flow-250
               li.c-sidebar__item
                 a.c-pill(href="../index.html") &#8592; До списку робіт
@@ -44,3 +44,5 @@ html(lang="uk")
                     each task in group.tasks
                       li.l-tasks__item.js-search-task
                         +CardTask(task)
+
+    .c-overlay.js-overlay

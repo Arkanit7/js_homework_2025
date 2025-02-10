@@ -34,3 +34,29 @@ const search = () => {
 }
 
 search()
+
+const handleSidebar = (toggle, sidebar, overlay) => {
+  toggle.classList.toggle('is-expanded')
+  sidebar.classList.toggle('is-expanded')
+  overlay.classList.toggle('is-visible')
+}
+
+const sidebarToggle = () => {
+  const sidebar = document.querySelector('.js-sidebar')
+  const toggleButton = document.querySelector('.js-sidebar-toggle')
+  const overlay = document.querySelector('.js-overlay')
+
+  if (!sidebar) return
+  if (!toggleButton) return
+  if (!overlay) return
+
+  toggleButton.addEventListener('click', (e) => {
+    handleSidebar(toggleButton, sidebar, overlay)
+  })
+
+  overlay.addEventListener('click', (e) => {
+    handleSidebar(toggleButton, sidebar, overlay)
+  })
+}
+
+sidebarToggle()

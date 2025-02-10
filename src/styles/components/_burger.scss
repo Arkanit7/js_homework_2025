@@ -1,0 +1,75 @@
+@use "../abstracts" as *;
+
+.c-burger {
+  display: block;
+
+  // padding-inline: rem(6px);
+  // padding-block: rem(10px);
+  transition: color 0.3s;
+
+  &:focus-visible {
+    color: get-color("emerald", "500");
+
+    @include dark-mode {
+      color: get-color("yellow", "400");
+    }
+  }
+
+  &:hover {
+    @media (any-hover) {
+      color: get-color("emerald", "500");
+
+      @include dark-mode {
+        color: get-color("yellow", "400");
+      }
+    }
+  }
+
+  &__icon {
+    position: relative;
+    display: block;
+    inline-size: em(32px, 16px);
+    block-size: em(24px, 16px);
+  }
+
+  &__icon::before,
+  &__line,
+  &__icon::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    block-size: 0.2em;
+    border-radius: 0.125em;
+    background-color: currentcolor;
+    transition:
+      transform 0.3s,
+      inset 0.3s;
+  }
+
+  &__icon::before {
+    inset-block-start: 0;
+  }
+
+  &__line {
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__icon::after {
+    inset-block-end: 0;
+  }
+
+  &.is-expanded &__icon::before {
+    inset-block-start: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  &.is-expanded &__icon::after {
+    inset-block-end: 50%;
+    transform: translateY(50%) rotate(45deg);
+  }
+
+  &.is-expanded &__line {
+    transform: translateY(-50%) scaleX(0);
+  }
+}

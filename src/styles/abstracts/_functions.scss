@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:meta";
+@use "sass:list";
 @use "sass:map";
 @use "variables" as *;
 @use "config" as *;
@@ -36,4 +39,139 @@
 
 @function get-width($width) {
   @return map.get($config, "width", $width);
+}
+
+// 1 rem = $fs-root px
+$fs-root: 16px !default;
+
+@function strip-units($number) {
+  @if meta.type-of($number) == "number" and not math.is-unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+/// Rounds number with a certain precision
+@function precision($number, $decimals: 4) {
+  $power: math.pow(10, $decimals);
+
+  @return math.div(math.round($number * $power), $power);
+}
+
+@function percent($divisor, $dividend) {
+  $percentage: math.percentage(math.div($divisor, $dividend));
+
+  @return precision($percentage);
+}
+
+@function divide($divisor, $dividend) {
+  $quotient: math.div($divisor, $dividend);
+
+  @return precision($quotient);
+}
+
+@function _px($value) {
+  $support: "px" "rem" "em";
+  $value-unit: math.unit($value);
+
+  @if not list.index($support, $value-unit) {
+    @error "Can't convert '#{$value}' to px! Supported units: #{$support}.";
+  }
+
+  @if $value-unit == "px" {
+    @return $value;
+  }
+
+  @return strip-units($value) * $fs-root;
+}
+
+/// Converts number to pixels
+@function px($value-list) {
+  @if meta.type-of($value-list) != "list" {
+    @return _px($value-list);
+  }
+
+  $px-list: ();
+
+  @each $item in $value-list {
+    $px-list: list.append($px-list, _px($item));
+  }
+
+  @return $px-list;
+}
+
+@function _rem($value) {
+  $support: "px" "rem" "em";
+  $value-unit: math.unit($value);
+
+  @if not list.index($support, $value-unit) {
+    @error "Can't convert '#{$value}' to rem! Supported units: #{$support}.";
+  }
+
+  @if $value-unit == "rem" {
+    @return $value;
+  }
+
+  @if $value-unit == "em" {
+    @return strip-units($value) * 1rem;
+  }
+
+  @return strip-units(math.div($value, $fs-root)) * 1rem;
+}
+
+/// Converts number to rem
+@function rem($value-list) {
+  @if meta.type-of($value-list) != "list" {
+    @return _rem($value-list);
+  }
+
+  $rem-list: ();
+
+  @each $item in $value-list {
+    $rem-list: list.append($rem-list, _rem($item));
+  }
+
+  @return $rem-list;
+}
+
+@function _em($value, $relative: 16px) {
+  $result: math.div(rem($value), rem($relative)) * 1em;
+
+  @return precision($result);
+}
+
+/// Converts number to em
+@function em($value-list, $base: 16px) {
+  @if meta.type-of($value-list) != "list" {
+    @return _em($value-list, $base);
+  }
+
+  $em-list: ();
+
+  @each $item in $value-list {
+    $em-list: list.append($em-list, _em($item, $base));
+  }
+
+  @return $em-list;
+}
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+///
+@function tint($color, $percentage) {
+  @return color.mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+///
+@function shade($color, $percentage) {
+  @return color.mix(black, $color, $percentage);
 }
