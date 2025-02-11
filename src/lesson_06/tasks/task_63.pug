@@ -9,7 +9,7 @@ block frontmatter
     const currentTask = currentGroup.tasks.find((task) => task.id === 63)
 
 block content
-  p= currentTask.description
+  p!= currentTask.description
   hr
   h2 Рішення:
   script(src="./scripts/task_63.js")
