@@ -1,0 +1,20 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 64),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 64)
+
+block content
+  p!= currentTask.description
+  ol
+    li Сказати «Привіт».
+    li Сказати «Зачекай».
+    li Сказати «До побачення».
+    li Вихід.
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_64.js")

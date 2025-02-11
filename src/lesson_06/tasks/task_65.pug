@@ -1,0 +1,24 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 65),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 65)
+
+block content
+  p!= currentTask.description
+  ol
+    li Ініціалізація (сума=0)
+    li Додати 2
+    li Додати 3
+    li Відняти 2
+    li Відняти 3.
+    li Вивести суму
+    li Вихід.
+
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_65.js")
