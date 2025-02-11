@@ -1,10 +1,12 @@
 let startNumber = 13
 const END_NUMBER = 99
+const MULTIPLE = 13
 let product = 1
 
-if (startNumber % 13 !== 0) startNumber += 13 - (startNumber % 13)
+if (startNumber % MULTIPLE !== 0)
+  startNumber += MULTIPLE - (startNumber % MULTIPLE)
 
-for (let number = startNumber; number <= END_NUMBER; number += 13) {
+for (let number = startNumber; number <= END_NUMBER; number += MULTIPLE) {
   if (number % 2 !== 0) product *= number
 }
 

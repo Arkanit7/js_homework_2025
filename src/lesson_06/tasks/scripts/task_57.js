@@ -7,6 +7,8 @@ const dailyIncrease =
   ) / 100
 let day = 1
 let distance = 0
+const MILESTONE = 200
+const FIRST_DAY_DISTANCE = 10
 
 document.write(`
   <table>
@@ -27,8 +29,8 @@ document.write(`
 `)
 
 for (
-  let dailyRange = 10;
-  distance < 200;
+  let dailyRange = FIRST_DAY_DISTANCE;
+  distance < MILESTONE;
   day++, dailyRange *= 1 + dailyIncrease
 ) {
   distance += dailyRange
@@ -53,4 +55,4 @@ document.write(`
 `)
 
 document.write(`<p>Спортсмен пробіг ${distance.toFixed(2)} км.`)
-document.write(`<p>200 км. було подолано на ${day - 1} день`)
+document.write(`<p>${MILESTONE} км. було подолано на ${day - 1} день`)

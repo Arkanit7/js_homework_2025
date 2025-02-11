@@ -13,8 +13,6 @@ document.write(`
           </b>
         </td>
       </tr>
-
-
 `)
 
 for (let number = 1; number <= 9; number++) {

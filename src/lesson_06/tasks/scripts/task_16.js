@@ -20,6 +20,6 @@ if (confirm('Почати тестування?')) {
 
     currentDirection = currentNumber - previousNumber > 0
 
-    // Якщо ще визначено напрям для порівняння, то їдемо далі
+    // Якщо ще не визначено напрям для порівняння (null), то їдемо далі
   } while (previousDirection === currentDirection || previousDirection === null)
 }

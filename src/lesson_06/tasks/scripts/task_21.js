@@ -5,7 +5,7 @@ if (confirm('Почати тестування?')) {
   do {
     const load = parseInt(
       prompt(
-        `Є ${crates} ящиків. \nСкільки вантажити на машину №${vehicleCount} ?`,
+        `Є ${crates} ящиків.\nСкільки вантажити на машину №${vehicleCount} ?`,
         '5',
       ),
     )

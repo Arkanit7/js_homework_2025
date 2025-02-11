@@ -1,7 +1,16 @@
-for (let i = 10; i <= 99; i++) {
-  for (let j = 10; j <= 99; j++) {
-    const gluedNumber = Number('' + i + j)
+for (
+  let firstCoupleOfDigits = 10;
+  firstCoupleOfDigits <= 99;
+  firstCoupleOfDigits++
+) {
+  for (
+    let lastCoupleOfDigits = 10;
+    lastCoupleOfDigits <= 99;
+    lastCoupleOfDigits++
+  ) {
+    const gluedNumber = Number('' + firstCoupleOfDigits + lastCoupleOfDigits)
 
-    if (gluedNumber % (i * j) === 0) document.write(`<p>` + gluedNumber)
+    if (gluedNumber % (firstCoupleOfDigits * lastCoupleOfDigits) === 0)
+      document.write(`<p>` + gluedNumber)
   }
 }

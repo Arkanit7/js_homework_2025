@@ -9,11 +9,11 @@ let inside = false
 do {
   const digit = number % 10
 
-  // видалити крайню цифру для наступної ітерації
-  number = Math.floor(number / 10)
-
   // зупинити додавання, при останній сімці
   if (inside && digit === 7) break
+
+  // видалити крайню цифру для наступної ітерації
+  number = Math.floor(number / 10)
 
   // почати додавати при першій сімці
   if (digit === 7) {
