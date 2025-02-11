@@ -50,11 +50,11 @@ const sidebarToggle = () => {
   if (!toggleButton) return
   if (!overlay) return
 
-  toggleButton.addEventListener('click', (e) => {
+  toggleButton.addEventListener('click', () => {
     handleSidebar(toggleButton, sidebar, overlay)
   })
 
-  overlay.addEventListener('click', (e) => {
+  overlay.addEventListener('click', () => {
     handleSidebar(toggleButton, sidebar, overlay)
   })
 }
