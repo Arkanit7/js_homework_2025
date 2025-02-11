@@ -14,13 +14,12 @@
     grid-area: stack;
     padding-inline: get-spacing("1000") get-spacing("300");
     padding-block: get-spacing("100");
-    border: 1px solid get-color("neutral", "950");
-    border-radius: get-border-radius("md");
+    border: 1px solid get-color("neutral", "700");
+    border-radius: get-border-radius("lg");
     background-color: get-color("zinc", "300");
     transition: border-color 0.3s;
 
     @include dark-mode {
-      border: 1px solid get-color("neutral", "50");
       background-color: get-color("zinc", "900");
     }
 

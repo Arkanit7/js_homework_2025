@@ -3,13 +3,9 @@
 .c-card-task {
   padding-inline: get-spacing("200");
   padding-block: get-spacing("200");
-  border: 1px solid get-color("neutral", "950");
-  border-radius: get-border-radius("md");
+  border: 1px solid get-color("neutral", "700");
+  border-radius: get-border-radius("lg");
   transition: border-color 0.3s;
-
-  @include dark-mode {
-    border: 1px solid get-color("neutral", "50");
-  }
 
   @include media-width-from("sm") {
     padding-inline: get-spacing("300");
