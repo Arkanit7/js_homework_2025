@@ -1,6 +1,6 @@
 if (confirm('Почати тестування?')) {
   const SIZE = 10
-  let ammo = parseInt(prompt('Кількість снарядів 🖍️:', '50🖍️'))
+  let ammo = parseInt(prompt('Кількість снарядів 🖍️:', '20🖍️'))
   let playerLife = 100
   let tankLife = 100
   let shotsCount = 0
@@ -8,7 +8,7 @@ if (confirm('Почати тестування?')) {
   let shotX,
     tankX = Math.floor(Math.random() * (SIZE - 1))
 
-  while (shotsCount < ammo) {
+  while (shotsCount < ammo && playerLife > 0) {
     let field = `🧱Танчики🧱
     Снаряди: ${ammo - shotsCount}🖍️
     Ваше життя: ${playerLife}❤️
@@ -40,12 +40,10 @@ if (confirm('Почати тестування?')) {
       break
     }
 
+    // Ймовірність попадання у гармату гравця (33.3%)
     const tankShotX = 0 + Math.floor(Math.random() * 4)
 
     if (tankShotX === 0) playerLife -= 30
-    if (playerLife < 0) {
-      break
-    }
   }
 
   if (hasWon)
