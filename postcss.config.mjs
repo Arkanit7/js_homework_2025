@@ -8,6 +8,9 @@ export default {
   plugins: [
     purgecss({
       content: ['./src/**/*.{pug,html}', './src/**/*.js'],
+      safelist: {
+        standard: [/^receipt/, /^c-cube/, /^l-cubes/],
+      },
     }),
     postcssSortMediaQueries,
     autoprefixer({
