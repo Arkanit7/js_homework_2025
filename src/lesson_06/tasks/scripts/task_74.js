@@ -8,7 +8,7 @@ if (confirm('Почати тестування?')) {
 
     switch (back) {
       case 0:
-        backColor = 'red'
+        backColor = 'rose'
         break
       case 1:
         backColor = 'yellow'
@@ -26,7 +26,7 @@ if (confirm('Почати тестування?')) {
 
       switch (left) {
         case 0:
-          leftColor = 'red'
+          leftColor = 'rose'
           break
         case 1:
           leftColor = 'yellow'
@@ -44,7 +44,7 @@ if (confirm('Почати тестування?')) {
 
         switch (bottom) {
           case 0:
-            bottomColor = 'red'
+            bottomColor = 'rose'
             break
           case 1:
             bottomColor = 'yellow'
@@ -62,7 +62,7 @@ if (confirm('Почати тестування?')) {
 
           switch (top) {
             case 0:
-              topColor = 'red'
+              topColor = 'rose'
               break
             case 1:
               topColor = 'yellow'
@@ -80,7 +80,7 @@ if (confirm('Почати тестування?')) {
 
             switch (right) {
               case 0:
-                rightColor = 'red'
+                rightColor = 'rose'
                 break
               case 1:
                 rightColor = 'yellow'
@@ -98,7 +98,7 @@ if (confirm('Почати тестування?')) {
 
               switch (front) {
                 case 0:
-                  frontColor = 'red'
+                  frontColor = 'rose'
                   break
                 case 1:
                   frontColor = 'yellow'
@@ -115,12 +115,12 @@ if (confirm('Почати тестування?')) {
                 <div class="l-cubes__item">
                   <div class="c-cube">
                     <div class="c-cube__inner">
-                      <div class="c-cube__side c-cube__side--face--front c-cube__side--background--${frontColor}"></div>
-                      <div class="c-cube__side c-cube__side--face--back c-cube__side--background--${backColor}"></div>
-                      <div class="c-cube__side c-cube__side--face--left c-cube__side--background--${leftColor}"></div>
-                      <div class="c-cube__side c-cube__side--face--right c-cube__side--background--${rightColor}"></div>
-                      <div class="c-cube__side c-cube__side--face--top c-cube__side--background--${topColor}"></div>
-                      <div class="c-cube__side c-cube__side--face--bottom c-cube__side--background--${bottomColor}"></div>
+                      <div class="c-cube__side c-cube__side--face--front u-bg-${frontColor}-500"></div>
+                      <div class="c-cube__side c-cube__side--face--back u-bg-${backColor}-500"></div>
+                      <div class="c-cube__side c-cube__side--face--left u-bg-${leftColor}-500"></div>
+                      <div class="c-cube__side c-cube__side--face--right u-bg-${rightColor}-500"></div>
+                      <div class="c-cube__side c-cube__side--face--top u-bg-${topColor}-500"></div>
+                      <div class="c-cube__side c-cube__side--face--bottom u-bg-${bottomColor}-500"></div>
                     </div>
                   </div>
                 </div>`)
