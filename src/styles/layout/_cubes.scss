@@ -1,9 +1,9 @@
 @use "../abstracts" as *;
 
 .l-cubes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 3rem);
-  gap: get-spacing("1000");
+  display: flex;
+  flex-wrap: wrap;
+  gap: get-spacing("400");
 
   // .l-cubes__item
 

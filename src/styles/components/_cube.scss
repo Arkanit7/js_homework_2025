@@ -1,65 +1,54 @@
 @use "../abstracts" as *;
 
 .c-cube {
-  $c-cube-size: 3rem;
+  $c-cube-size: 2rem;
 
   position: relative;
-  inline-size: $c-cube-size;
-  aspect-ratio: 1;
-  transform-style: preserve-3d;
-  animation: rotate 10s linear infinite both paused;
+  inline-size: $c-cube-size * 4;
+  block-size: $c-cube-size * 3;
 
-  @include hover-focus {
-    animation-play-state: running;
-  }
-
-  @keyframes rotate {
-    from {
-      transform: rotateX(-45deg) rotateY(-45deg);
-    }
-
-    to {
-      transform: rotateX(1turn) rotateY(1turn);
-    }
+  &__inner {
+    position: absolute;
+    inset-inline-start: $c-cube-size * 2;
+    inset-block-start: $c-cube-size;
+    inline-size: $c-cube-size;
+    block-size: $c-cube-size;
   }
 
   // .c-cube__side
 
   &__side {
     position: absolute;
-    inset: 0;
-
-    // box-shadow: inset 0 0 get-spacing("100") get-color("neutral", "950");
-
-    border: get-spacing("50") solid get-color("neutral", "950");
-    perspective: 1000px;
-    backface-visibility: hidden;
+    inline-size: $c-cube-size;
+    aspect-ratio: 1;
+    box-shadow: inset 0 0 get-spacing("50") get-color("neutral", "950");
+    transition: transform 1s;
 
     // .c-cube__side--background
 
     &--background {
-      // .c-cube__side--background--0
+      // .c-cube__side--background--red
 
-      &--0 {
-        background-color: get-color("rose", "400");
+      &--red {
+        background-color: get-color("red", "500");
       }
 
-      // .c-cube__side--background--1
+      // .c-cube__side--background--yellow
 
-      &--1 {
-        background-color: get-color("yellow", "400");
+      &--yellow {
+        background-color: get-color("yellow", "500");
       }
 
-      // .c-cube__side--background--2
+      // .c-cube__side--background--blue
 
-      &--2 {
-        background-color: get-color("blue", "400");
+      &--blue {
+        background-color: get-color("blue", "500");
       }
 
-      // .c-cube__side--background--3
+      // .c-cube__side--background--emerald
 
-      &--3 {
-        background-color: get-color("emerald", "400");
+      &--emerald {
+        background-color: get-color("emerald", "500");
       }
     }
 
@@ -69,37 +58,97 @@
       // .c-cube__side--top
 
       &--top {
-        transform: translateY(divide($c-cube-size, -2)) rotateX(90deg);
+        inset-block-start: -$c-cube-size;
       }
 
       // .c-cube__side--bottom
 
       &--bottom {
-        transform: translateY(divide($c-cube-size, 2)) rotateX(270deg);
+        inset-block-end: -$c-cube-size;
       }
 
       // .c-cube__side--left
 
       &--left {
-        transform: translateX(divide($c-cube-size, -2)) rotateY(270deg);
+        inset-inline-start: -$c-cube-size;
       }
 
       // .c-cube__side--right
 
       &--right {
-        transform: translateX(divide($c-cube-size, 2)) rotateY(90deg);
+        inset-inline-end: -$c-cube-size;
       }
 
       // .c-cube__side--front
 
       &--front {
-        transform: translateZ(divide($c-cube-size, 2));
       }
 
       // .c-cube__side--back
 
       &--back {
-        transform: translateZ(divide($c-cube-size, -2)) rotateX(180deg);
+        inset-inline-start: -2 * $c-cube-size;
+      }
+    }
+  }
+
+  &:hover &__inner {
+    @media (any-hover) {
+      transform-style: preserve-3d;
+      animation: rotate 10s linear infinite both;
+
+      @keyframes rotate {
+        to {
+          transform: rotateX(1turn) rotateY(1turn);
+        }
+      }
+    }
+  }
+
+  &:hover &__side {
+    @media (any-hover) {
+      perspective: 1000px;
+
+      &--face {
+        // .c-cube__side--top
+
+        &--top {
+          transform: rotateX(90deg);
+          transform-origin: bottom;
+        }
+
+        // .c-cube__side--bottom
+
+        &--bottom {
+          transform: rotateX(-90deg);
+          transform-origin: top;
+        }
+
+        // .c-cube__side--left
+
+        &--left {
+          transform: rotateY(-90deg);
+          transform-origin: right;
+        }
+
+        // .c-cube__side--right
+
+        &--right {
+          transform: rotateY(90deg);
+          transform-origin: left;
+        }
+
+        // .c-cube__side--front
+
+        &--front {
+        }
+
+        // .c-cube__side--back
+
+        &--back {
+          transform: translateX(100%) translateZ(-$c-cube-size) rotateY(-180deg);
+          transform-origin: right;
+        }
       }
     }
   }
