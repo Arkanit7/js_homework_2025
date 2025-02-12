@@ -1,0 +1,24 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 74),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 74)
+
+block content
+  p!= currentTask.description
+  hr
+  h2 Рішення:
+  //- .l-cubes
+  //-   .l-cubes__item
+  //-     .c-cube
+  //-       .c-cube__side.c-cube__side--face--front
+  //-       .c-cube__side.c-cube__side--face--back
+  //-       .c-cube__side.c-cube__side--face--left
+  //-       .c-cube__side.c-cube__side--face--right
+  //-       .c-cube__side.c-cube__side--face--top
+  //-       .c-cube__side.c-cube__side--face--bottom
+  script(src="./scripts/task_74.js")

@@ -1,0 +1,12 @@
+@use "../abstracts" as *;
+
+.l-cubes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 3rem);
+  gap: get-spacing("1000");
+
+  // .l-cubes__item
+
+  .l-cubes__item {
+  }
+}

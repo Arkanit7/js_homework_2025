@@ -1,0 +1,106 @@
+@use "../abstracts" as *;
+
+.c-cube {
+  $c-cube-size: 3rem;
+
+  position: relative;
+  inline-size: $c-cube-size;
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  animation: rotate 10s linear infinite both paused;
+
+  @include hover-focus {
+    animation-play-state: running;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotateX(-45deg) rotateY(-45deg);
+    }
+
+    to {
+      transform: rotateX(1turn) rotateY(1turn);
+    }
+  }
+
+  // .c-cube__side
+
+  &__side {
+    position: absolute;
+    inset: 0;
+
+    // box-shadow: inset 0 0 get-spacing("100") get-color("neutral", "950");
+
+    border: get-spacing("50") solid get-color("neutral", "950");
+    perspective: 1000px;
+    backface-visibility: hidden;
+
+    // .c-cube__side--background
+
+    &--background {
+      // .c-cube__side--background--0
+
+      &--0 {
+        background-color: get-color("rose", "400");
+      }
+
+      // .c-cube__side--background--1
+
+      &--1 {
+        background-color: get-color("yellow", "400");
+      }
+
+      // .c-cube__side--background--2
+
+      &--2 {
+        background-color: get-color("blue", "400");
+      }
+
+      // .c-cube__side--background--3
+
+      &--3 {
+        background-color: get-color("emerald", "400");
+      }
+    }
+
+    // .c-cube__side--face
+
+    &--face {
+      // .c-cube__side--top
+
+      &--top {
+        transform: translateY(divide($c-cube-size, -2)) rotateX(90deg);
+      }
+
+      // .c-cube__side--bottom
+
+      &--bottom {
+        transform: translateY(divide($c-cube-size, 2)) rotateX(270deg);
+      }
+
+      // .c-cube__side--left
+
+      &--left {
+        transform: translateX(divide($c-cube-size, -2)) rotateY(270deg);
+      }
+
+      // .c-cube__side--right
+
+      &--right {
+        transform: translateX(divide($c-cube-size, 2)) rotateY(90deg);
+      }
+
+      // .c-cube__side--front
+
+      &--front {
+        transform: translateZ(divide($c-cube-size, 2));
+      }
+
+      // .c-cube__side--back
+
+      &--back {
+        transform: translateZ(divide($c-cube-size, -2)) rotateX(180deg);
+      }
+    }
+  }
+}
