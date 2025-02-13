@@ -2,18 +2,17 @@
 const originalNumber = parseInt(
   prompt('Введіть число з двома сімками', '2679328712'),
 )
-let number = originalNumber
+
 let digitSum = 0
 let inside = false
 
-do {
+// повторювати доки number не 0 (доки він ще є)
+// для кожної наступної ітерації "зрізати" останню цифру для number
+for (let number = originalNumber; number; number = Math.floor(number / 10)) {
   const digit = number % 10
 
   // зупинити додавання, при останній сімці
   if (inside && digit === 7) break
-
-  // видалити крайню цифру для наступної ітерації
-  number = Math.floor(number / 10)
 
   // почати додавати при першій сімці
   if (digit === 7) {
@@ -22,7 +21,7 @@ do {
   }
 
   if (inside) digitSum += digit
-} while (number) // повторювати доки number не 0 (доки він ще є)
+}
 
 document.write(
   `Сума чисел між двома 7 для числа ${originalNumber} = ${digitSum}`,
