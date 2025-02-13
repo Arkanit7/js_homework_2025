@@ -1,12 +1,12 @@
 if (confirm('Почати тестування?')) {
   const SIZE = 10
   let ammo = parseInt(prompt('Кількість патронів 🖍️:', '5🖍️'))
-  let shotsCount = 0
+  let shotsCount = 1
   let hasWon = false
   let shotX,
     rabbitX = Math.floor(Math.random() * (SIZE - 1))
 
-  while (shotsCount < ammo) {
+  for (; shotsCount <= ammo; shotsCount++) {
     let field = `🎯Тир🎯
 Патрони: ${ammo - shotsCount}🖍️
 ──────────────────────
@@ -19,11 +19,7 @@ if (confirm('Почати тестування?')) {
     }
 
     field += '🌳\n──────────────────────'
-
     shotX = parseInt(prompt(`${field}\nПозиція пострілу (1-${SIZE}):`, '5')) - 1
-
-    shotsCount++
-
     rabbitX += -3 + Math.floor(Math.random() * 7)
 
     // Заєць не може вистрибнути з поля

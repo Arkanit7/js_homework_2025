@@ -1,17 +1,19 @@
 if (confirm('Почати тестування?')) {
   const SIZE = 5
   let shotsCount = 0
-  let shotX, shotY
   const shipX = Math.floor(Math.random() * SIZE)
   const shipY = Math.floor(Math.random() * SIZE)
 
+  // ## Поле
+  // кожен рядок row репрезентує поле
+  // 0 - це вода, 1 - це позиція пострілу
   let row0 = 100000
   let row1 = 100000
   let row2 = 100000
   let row3 = 100000
   let row4 = 100000
 
-  for (; shotX !== shipX || shotY !== shipY; shotsCount++) {
+  for (let shotX, shotY; shotX !== shipX || shotY !== shipY; shotsCount++) {
     let battlefield = `⚓Морський бій⚓
 ───────────
 ⚔️1  2   3   4   5
@@ -67,6 +69,7 @@ if (confirm('Почати тестування?')) {
       parseInt(prompt(`${battlefield}\nПозиція пострілу Y (1-${SIZE})`, '1')) -
       1
 
+    // додати до відповідного рядка shotY та колонки shotX цифру
     switch (shotY) {
       case 0:
         row0 += 10 ** shotX
