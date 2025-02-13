@@ -1,0 +1,13 @@
+@use "../../../styles/abstracts" as *;
+
+.s-squares {
+  position: relative;
+  aspect-ratio: 1;
+  border: 0.125rem solid get-color("neutral", "500");
+}
+
+.s-squares > * {
+  position: absolute;
+  aspect-ratio: 1;
+  background-color: hsl(120deg 100% 50%);
+}

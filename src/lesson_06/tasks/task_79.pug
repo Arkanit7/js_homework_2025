@@ -1,0 +1,20 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 79),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 79)
+
+block append styles
+  link(rel="stylesheet", href="./styles/squares.css")
+
+block content
+  p!= currentTask.description
+  img(src="./images/square_spiral.webp", alt="Спіраль з кубів")
+  hr
+  h2 Рішення:
+  .s-squares
+    script(src="./scripts/task_79.js")
