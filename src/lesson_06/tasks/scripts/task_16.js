@@ -17,7 +17,6 @@ if (confirm('Почати тестування?')) {
     if (previousNumber === currentNumber) break
 
     previousDirection = currentDirection
-
     currentDirection = currentNumber - previousNumber > 0
 
     // Якщо ще не визначено напрям для порівняння (null), то їдемо далі
