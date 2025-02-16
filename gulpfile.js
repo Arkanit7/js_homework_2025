@@ -35,7 +35,7 @@ const html = () =>
         verbose: false, // show compiled files in console
         basedir: './src/', // The root directory of all absolute inclusion.
         data: {
-          ROOT: isProduction ? '/js_homework_2025/' : '/',
+          root: isProduction ? '/js_homework_2025/' : '/',
         },
         filters: {
           math: (math, options) => {
