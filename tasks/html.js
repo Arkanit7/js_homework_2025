@@ -9,10 +9,6 @@ import process from 'node:process'
 
 const isProduction = process.argv.includes('--build')
 
-const renderMathToMathML = (mathString, inline = true) => {
-  return temml.renderToString(mathString, { displayMode: !inline })
-}
-
 const html = () =>
   gulp
     .src(path.src.html)
@@ -25,9 +21,11 @@ const html = () =>
           root: isProduction ? '/js_homework_2025/' : '/',
         },
         filters: {
-          math: (math, options) => {
+          math: (mathString, options = {}) => {
+            const { inline = true } = options
+
             try {
-              return renderMathToMathML(math, options.inline)
+              return temml.renderToString(mathString, { displayMode: !inline })
             } catch (error) {
               console.error('Temml rendering error:', error)
               return `<span style="color:red">Temml rendering error: ${error.message}</span>`
