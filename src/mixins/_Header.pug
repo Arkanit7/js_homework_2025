@@ -1,4 +1,6 @@
-mixin Header({search})
+mixin Header(options = {})
+  - const { search = false } = options;
+
   header.c-header
     .c-header__inner
       .c-header__sidebar-button
