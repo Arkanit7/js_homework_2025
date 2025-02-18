@@ -1,5 +1,6 @@
 import gulp from 'gulp'
 import paths from '../config/paths.js'
+import newer from 'gulp-newer'
 import pug from 'gulp-pug'
 import versionNumber from 'gulp-version-number'
 import ifPlugin from 'gulp-if'
@@ -12,6 +13,7 @@ const isProduction = process.argv.includes('--build')
 const html = () =>
   gulp
     .src(paths.src.html)
+    .pipe(newer({ dest: paths.dist.html, ext: '.html' }))
     .pipe(
       pug({
         pretty: !isProduction,
