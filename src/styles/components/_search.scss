@@ -16,7 +16,7 @@
     padding-block: get-spacing("100");
     border: 1px solid get-color("neutral", "700");
     border-radius: get-border-radius("lg");
-    background-color: get-color("zinc", "300");
+    background-color: get-color("stone", "300");
     transition: border-color 0.3s;
 
     @include dark-mode {

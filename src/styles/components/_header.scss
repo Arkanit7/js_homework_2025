@@ -5,10 +5,11 @@
   align-content: center;
   block-size: $header-height;
   padding-block: get-spacing("200");
-  border-block-end: 1px solid get-color("zinc", "950");
-  background-color: get-color("neutral", "300");
+  border-block-end: 1px solid get-color("stone", "400");
+  background-color: get-color("stone", "200");
 
   @media (prefers-color-scheme: dark) {
+    border-block-end: 1px solid get-color("zinc", "950");
     background-color: get-color("zinc", "800");
   }
 
