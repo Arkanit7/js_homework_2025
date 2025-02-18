@@ -99,6 +99,18 @@
   display: flex;
 }
 
+.u-flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.u-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.u-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
 .u-content-between {
   justify-content: space-between;
 }
