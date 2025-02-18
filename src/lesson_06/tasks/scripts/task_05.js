@@ -1,9 +1,10 @@
 const TIMES = 12
 
-document.write('<pre class="u-text-center">')
+for (let row = 1; row <= TIMES; row++) {
+  for (let col = 1; col <= TIMES; col++) {
+    if (row >= col) document.write(`&nbsp;`)
+    else document.write(`o`)
+  }
 
-for (let i = TIMES; i > 0; i--) {
-  document.write(`${'o'.repeat(i)}\n`)
+  document.write(`<br>`)
 }
-
-document.write('</pre>')

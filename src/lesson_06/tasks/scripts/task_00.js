@@ -1,9 +1,6 @@
 const START_CHAR = 'A'
 const SIZE = 5
-
 const startCharCode = START_CHAR.charCodeAt(0)
-
-document.write('<pre>')
 
 for (let row = 0; row < SIZE; row++) {
   for (
@@ -13,9 +10,7 @@ for (let row = 0; row < SIZE; row++) {
   ) {
     const character = String.fromCharCode(charCode)
 
-    document.write(`${character} `)
+    document.write(character + ' ')
   }
-  document.write(`\n`)
+  document.write('<br>')
 }
-
-document.write('</pre>')

@@ -1,3 +1,5 @@
+'use strict'
+
 const SQUARES_AMOUNT = 90
 const ORIGINAL_SQUARE_SIZE = 30
 const DECREASE_RATE = 0.09
@@ -6,11 +8,15 @@ let hue = 120
 let gap = 2
 let currentSize = ORIGINAL_SQUARE_SIZE
 let previousSize
-let area = 'top'
-let insetInlineStart = 'auto'
-let insetInlineEnd = 100 - currentSize
-let insetBlockStart = 'auto'
-let insetBlockEnd = 100 - currentSize
+let area = 'top' // в якій чверті квадрат
+
+// позиція квадрата
+let leftPosition = 'auto'
+let rightPosition = 100 - currentSize
+let topPosition = 'auto'
+let bottomPosition = 100 - currentSize
+
+// межі для кожної зі сторін
 let sizeTopLeft = ORIGINAL_SQUARE_SIZE
 let sizeTopRight = 0
 let sizeBottomRight = 0
@@ -21,10 +27,10 @@ for (let cubeCount = 1; cubeCount <= SQUARES_AMOUNT; cubeCount++) {
   <div
     style="
       inline-size: ${currentSize + '%'};
-      inset-inline-start: ${Number(insetInlineStart) ? insetInlineStart + '%' : 'auto'};
-      inset-inline-end: ${Number(insetInlineEnd) ? insetInlineEnd + '%' : 'auto'};
-      inset-block-start: ${Number(insetBlockStart) ? insetBlockStart + '%' : 'auto'};
-      inset-block-end: ${Number(insetBlockEnd) ? insetBlockEnd + '%' : 'auto'};
+      inset-inline-start: ${Number(leftPosition) ? leftPosition + '%' : 'auto'};
+      inset-inline-end: ${Number(rightPosition) ? rightPosition + '%' : 'auto'};
+      inset-block-start: ${Number(topPosition) ? topPosition + '%' : 'auto'};
+      inset-block-end: ${Number(bottomPosition) ? bottomPosition + '%' : 'auto'};
       background-color: hsl(${hue}deg 100% 50%);
     ">
   </div>
@@ -35,53 +41,55 @@ for (let cubeCount = 1; cubeCount <= SQUARES_AMOUNT; cubeCount++) {
   gap *= 1 - DECREASE_RATE
   hue += 17
 
+  // обертати квадрат, якщо він виліз вперся у сусідній
   switch (area) {
     case 'top':
-      if (insetInlineEnd - currentSize - gap < sizeTopRight) {
+      if (rightPosition - currentSize - gap < sizeTopRight) {
         area = 'right'
-        insetInlineStart = 100 - insetInlineEnd - previousSize
-        sizeTopRight = 100 - insetInlineStart
-        insetInlineEnd = 'auto'
+        leftPosition = 100 - rightPosition - previousSize
+        sizeTopRight = 100 - leftPosition
+        rightPosition = 'auto'
       }
       break
     case 'right':
-      if (insetBlockEnd - currentSize - gap < sizeBottomRight) {
+      if (bottomPosition - currentSize - gap < sizeBottomRight) {
         area = 'bottom'
-        insetBlockStart = 100 - insetBlockEnd - previousSize
-        sizeBottomRight = 100 - insetBlockStart
-        insetBlockEnd = 'auto'
+        topPosition = 100 - bottomPosition - previousSize
+        sizeBottomRight = 100 - topPosition
+        bottomPosition = 'auto'
       }
       break
     case 'bottom':
-      if (insetInlineStart - currentSize - gap < sizeBottomLeft) {
+      if (leftPosition - currentSize - gap < sizeBottomLeft) {
         area = 'left'
-        insetInlineEnd = 100 - insetInlineStart - previousSize
-        sizeBottomLeft = 100 - insetInlineEnd
-        insetInlineStart = 'auto'
+        rightPosition = 100 - leftPosition - previousSize
+        sizeBottomLeft = 100 - rightPosition
+        leftPosition = 'auto'
       }
       break
     case 'left':
-      if (insetBlockStart - currentSize - gap < sizeTopLeft) {
+      if (topPosition - currentSize - gap < sizeTopLeft) {
         area = 'top'
-        insetBlockEnd = 100 - insetBlockStart - previousSize
-        sizeTopLeft = 100 - insetBlockEnd
-        insetBlockStart = 'auto'
+        bottomPosition = 100 - topPosition - previousSize
+        sizeTopLeft = 100 - bottomPosition
+        topPosition = 'auto'
       }
       break
   }
 
+  // крок квадрата
   switch (area) {
     case 'top':
-      insetInlineEnd -= gap + currentSize
+      rightPosition -= gap + currentSize
       break
     case 'right':
-      insetBlockEnd -= gap + currentSize
+      bottomPosition -= gap + currentSize
       break
     case 'bottom':
-      insetInlineStart -= gap + currentSize
+      leftPosition -= gap + currentSize
       break
     case 'left':
-      insetBlockStart -= gap + currentSize
+      topPosition -= gap + currentSize
       break
   }
 }

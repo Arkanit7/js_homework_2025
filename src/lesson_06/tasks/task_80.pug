@@ -10,7 +10,7 @@ block frontmatter
 
 block content
   p!= currentTask.description
-  .u-flex.u-gap-800
+  .u-flex.u-flex-wrap.u-gap-800
     img(src="./images/matrix_one.webp", alt="Матриця з чисел №1")
     img(src="./images/matrix_two.webp", alt="Матриця з чисел №2")
   hr
@@ -34,4 +34,5 @@ block content
         }
       }
 
-  script(src="./scripts/task_80.js")
+  .u-flex.u-flex-wrap.u-gap-800
+    script(src="./scripts/task_80.js")
