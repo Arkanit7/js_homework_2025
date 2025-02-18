@@ -1,7 +1,7 @@
 const srcFolder = './src/'
 const buildFolder = './dist/'
 
-const path = {
+const paths = {
   src: {
     html: [`${srcFolder}**/*.pug`, `!${srcFolder}**/_*.pug`],
     css: [`${srcFolder}**/*.s[ac]ss`, `!${srcFolder}**/_*.s[ac]ss`],
@@ -25,4 +25,4 @@ const path = {
   buildFolder,
 }
 
-export default path
+export default paths

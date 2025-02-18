@@ -1,5 +1,5 @@
 import gulp from 'gulp'
-import path from '../config/path.js'
+import paths from '../config/paths.js'
 import process from 'node:process'
 import sourcemaps from 'gulp-sourcemaps'
 import * as sass from 'sass'
@@ -13,12 +13,12 @@ const scss = gulpSass(sass)
 
 const css = () =>
   gulp
-    .src(path.src.css)
+    .src(paths.src.css)
     .pipe(ifPlugin(!isProduction, sourcemaps.init()))
     .pipe(scss().on('error', scss.logError))
     .pipe(ifPlugin(isProduction, postcss()))
     .pipe(ifPlugin(!isProduction, sourcemaps.write('./')))
-    .pipe(gulp.dest(path.dist.css))
+    .pipe(gulp.dest(paths.dist.css))
     .pipe(browserSync.stream())
 
 export default css

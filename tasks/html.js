@@ -1,5 +1,5 @@
 import gulp from 'gulp'
-import path from '../config/path.js'
+import paths from '../config/paths.js'
 import pug from 'gulp-pug'
 import versionNumber from 'gulp-version-number'
 import ifPlugin from 'gulp-if'
@@ -11,12 +11,12 @@ const isProduction = process.argv.includes('--build')
 
 const html = () =>
   gulp
-    .src(path.src.html)
+    .src(paths.src.html)
     .pipe(
       pug({
         pretty: !isProduction,
         verbose: false,
-        basedir: path.srcFolder,
+        basedir: paths.srcFolder,
         data: {
           root: isProduction ? '/js_homework_2025/' : '/',
         },
@@ -47,7 +47,7 @@ const html = () =>
         }),
       ),
     )
-    .pipe(gulp.dest(path.dist.html))
+    .pipe(gulp.dest(paths.dist.html))
     .pipe(browserSync.stream())
 
 export default html

@@ -1,9 +1,9 @@
-import path from '../config/path.js'
+import paths from '../config/paths.js'
 import { rm } from 'node:fs/promises'
 
 const reset = async (cb) => {
   try {
-    await rm(path.buildFolder, { recursive: true, force: true })
+    await rm(paths.buildFolder, { recursive: true, force: true })
     cb()
   } catch (error) {
     console.log(error)
