@@ -17,7 +17,7 @@
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@fullhuman/postcss-purgecss": "^7.0.2",
-    "@prettier/plugin-pug": "^3.2.0",
+    "@prettier/plugin-pug": "^3.2.1",
     "autoprefixer": "^10.4.20",
     "browser-sync": "^3.0.3",
     "cssnano": "^7.0.6",
