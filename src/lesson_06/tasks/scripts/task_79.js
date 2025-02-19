@@ -5,6 +5,7 @@ const ORIGINAL_SQUARE_SIZE = 30
 const DECREASE_RATE = 0.09
 
 let hue = 120
+let hueRotate = 17
 let gap = 2
 let currentSize = ORIGINAL_SQUARE_SIZE
 let previousSize
@@ -39,9 +40,9 @@ for (let cubeCount = 1; cubeCount <= SQUARES_AMOUNT; cubeCount++) {
   previousSize = currentSize
   currentSize *= 1 - DECREASE_RATE
   gap *= 1 - DECREASE_RATE
-  hue += 17
+  hue += hueRotate
 
-  // обертати квадрат, якщо він виліз вперся у сусідній
+  // обертати квадрат, якщо він вперся у сусідній квадрат
   switch (area) {
     case 'top':
       if (rightPosition - currentSize - gap < sizeTopRight) {

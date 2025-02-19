@@ -17,7 +17,7 @@ if (confirm('Почати тестування?')) {
 
     for (let col = 0; col < SIZE; col++) {
       if (col === tankX) field += '🚜'
-      else field += '〰️'
+      else field += '🟫'
     }
 
     field += '🧱\n──────────────────────'
@@ -31,7 +31,7 @@ if (confirm('Почати тестування?')) {
     if (tankX < 0) tankX = Math.floor(Math.random() * 2)
 
     if (shotX === tankX) life -= 30
-    if (life < 0) {
+    if (life <= 0) {
       hasWon = true
       break
     }

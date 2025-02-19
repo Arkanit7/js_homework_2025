@@ -1,24 +1,25 @@
 if (confirm('Почати тестування?')) {
-  let previousDirection = null,
-    currentDirection = null
-  let previousNumber = null,
-    currentNumber = null
+  let previousDirection, currentDirection
+  let previousNumber, currentNumber
 
   do {
     previousNumber = currentNumber
     currentNumber = parseFloat(prompt('Введіть число', ''))
 
-    document.write(`<p>${currentNumber}`)
+    document.write('<p>' + currentNumber)
 
     // Якщо число вводять перший раз - то у нас недостатньо даних для перевірок
-    if (previousNumber === null) continue
+    if (previousNumber === undefined) continue
 
     // Якщо послідовність стала - перервати
     if (previousNumber === currentNumber) break
 
     previousDirection = currentDirection
-    currentDirection = currentNumber - previousNumber > 0
+    currentDirection = currentNumber > previousNumber
 
-    // Якщо ще не визначено напрям для порівняння (null), то їдемо далі
-  } while (previousDirection === currentDirection || previousDirection === null)
+    // Якщо ще не визначено напрям для порівняння (undefined), то їдемо далі
+  } while (
+    previousDirection === currentDirection ||
+    previousDirection === undefined
+  )
 }
