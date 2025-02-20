@@ -1,0 +1,86 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 8),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 8)
+
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  style
+    :scss
+      @use "./src/styles/abstracts" as *;
+
+      .c-banner {
+        display: block;
+        inline-size: 100%;
+        padding: get-spacing("400");
+        border-radius: get-border-radius("2xl");
+        color: get-color("neutral", "950");
+        background-color: get-color("neutral", "50");
+        box-shadow: 8px 8px get-color("emerald", "500");
+        // .c-banner__inner
+
+        &__inner {
+          display: grid;
+          gap: get-spacing("200");
+        }
+
+        // .c-banner__title
+
+        &__title {
+          font-size: get-font-size("500");
+          transition: color 0.3s;
+        }
+
+        &:hover &__title {
+          @media (any-hover) {
+            color: get-color("emerald", "500");
+          }
+        }
+
+        &:focus-visible &__title {
+          color: get-color("emerald", "500");
+        }
+
+        // .c-banner__text-group
+
+        &__text-group {
+        }
+
+        // .c-banner__frame
+
+        &__frame {
+          order: -1;
+          overflow: hidden;
+          aspect-ratio: 4 /3;
+          border-radius: get-border-radius("lg");
+        }
+
+        // .c-banner__img
+
+        &__img {
+          object-fit: cover;
+          inline-size: 100%;
+          block-size: 100%;
+          transition: transform 0.3s;
+        }
+
+        &:hover &__frame &__img {
+          @media (any-hover) {
+            transform: rotate(3deg) scale(1.05);
+          }
+        }
+
+        &:focus-visible &__frame &__img {
+          transform: rotate(3deg) scale(1.05);
+        }
+      }
+
+  script(src="./scripts/task_08.js")

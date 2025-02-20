@@ -1,0 +1,20 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentGroup = taskGroups.find((group) =>
+      group.tasks.find((task) => task.id === 5),
+    )
+    const currentTask = currentGroup.tasks.find((task) => task.id === 5)
+
+
+block content
+  p= currentTask.description
+  ol
+    li Сантиметри у дюйми;
+    li Кілограми у фунти;
+    li Кілометри у милі
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_05.js")
