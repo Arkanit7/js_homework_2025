@@ -2,4 +2,4 @@ mixin CardTask({title, number, href, description})
   a.c-card-task(href=`tasks/${href}`)
     article.c-card-task__inner
       h3.c-card-task__title= title
-      p.c-card-task__text!= description
+      p.c-card-task__text= description
