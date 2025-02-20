@@ -1,3 +1,5 @@
+'use strict'
+
 const scrollIntoView = () => {
   const currentTask = document.querySelector('.js-scroll-into-view')
 
