@@ -8,7 +8,9 @@ function calcPositiveAverage(...temperatures) {
   let positiveCount = 0,
     positiveSum = 0
 
-  for (const temperature of temperatures) {
+  for (let index = 0; index < temperatures.length; index++) {
+    const temperature = temperatures[index]
+
     if (temperature < 0) continue
 
     positiveCount++

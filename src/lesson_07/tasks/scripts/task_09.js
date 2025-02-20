@@ -7,8 +7,8 @@
 function calcNegative(...temperatures) {
   let negativeCount = 0
 
-  for (const temperature of temperatures) {
-    if (temperature < 0) negativeCount++
+  for (let index = 0; index < temperatures.length; index++) {
+    if (temperatures[index] < 0) negativeCount++
   }
 
   return negativeCount
