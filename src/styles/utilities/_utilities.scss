@@ -63,6 +63,12 @@
   }
 }
 
+@each $key, $value in map.get($config, "width") {
+  .u-is-#{str-replace($key, "/", "\/")} {
+    inline-size: $value;
+  }
+}
+
 @each $key, $value in map.get($config, "font-family") {
   .u-font-#{$key} {
     font-family: $value;
