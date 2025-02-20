@@ -64,7 +64,7 @@
 }
 
 @each $key, $value in map.get($config, "width") {
-  .u-is-#{str-replace($key, "/", "\/")} {
+  .u-is-#{str-replace($key, "/", "\\/")} {
     inline-size: $value;
   }
 }

@@ -2,6 +2,7 @@
 @use "sass:meta";
 @use "sass:list";
 @use "sass:map";
+@use "sass:string";
 @use "variables" as *;
 @use "config" as *;
 
@@ -174,4 +175,16 @@ $fs-root: 16px !default;
 ///
 @function shade($color, $percentage) {
   @return color.mix(black, $color, $percentage);
+}
+
+/* Custom function to replace a substring in a string */
+@function str-replace($string, $search, $replace: "") {
+  $index: string.index($string, $search);
+
+  @if $index {
+    @return string.slice($string, 1, $index - 1) + $replace +
+      string.slice($string, $index + string.length($search));
+  }
+
+  @return $string;
 }
