@@ -6,19 +6,7 @@ if (confirm('Почати тестування?')) {
    * @returns {boolean}
    */
   function isWeekday(dayNumber) {
-    let result
-
-    switch (dayNumber) {
-      case 6:
-      case 7:
-        result = false
-        break
-      default:
-        result = true
-        break
-    }
-
-    return result
+    return dayNumber !== 6 && dayNumber !== 7
   }
 
   const userDayNumber = parseInt(prompt('Введіть номер дня тижня (1-7)', '7'))
