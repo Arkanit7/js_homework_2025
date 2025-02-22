@@ -21,7 +21,7 @@ if (confirm('Почати тестування?')) {
   const MAX_ADDITIONS = 5
   let additions = 0
   let totalSum = 0
-  let minNumber = parseInt(prompt('Введіть найменше число', '-5'))
+  const minNumber = parseInt(prompt('Введіть найменше число', '-5'))
   const maxNumber = parseInt(
     prompt(`Введіть число більше за ${minNumber}`, '99'),
   )

@@ -22,6 +22,6 @@ if (confirm('Почати тестування?')) {
     if (!tryAgain) break
   }
 
-  if (bought) document.write(`Нові кросівки ваші!`)
-  else document.write(`Схоже, що нові кросівки, не дуже вам то й потрібні...`)
+  if (bought) document.write('Нові кросівки ваші!')
+  else document.write('Схоже, що нові кросівки, не дуже вам то й потрібні...')
 }

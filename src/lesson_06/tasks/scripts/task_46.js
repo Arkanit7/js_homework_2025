@@ -11,6 +11,6 @@ for (
     const gluedNumber = Number('' + firstCoupleOfDigits + lastCoupleOfDigits)
 
     if (gluedNumber % (firstCoupleOfDigits * lastCoupleOfDigits) === 0)
-      document.write(`<p>` + gluedNumber)
+      document.write('<p>' + gluedNumber)
   }
 }

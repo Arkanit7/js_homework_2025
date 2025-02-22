@@ -18,7 +18,7 @@
 if (confirm('Почати тестування?')) {
   const fieldRows = parseInt(prompt('Кількість рядків поля:', '2'))
   const fieldColumns = parseInt(prompt('Кількість стовпців поля:', '2'))
-  let shotsLeft = parseInt(prompt('Введіть кількість снарядів', '4'))
+  const shotsLeft = parseInt(prompt('Введіть кількість снарядів', '4'))
   const shipX = 1 + Math.floor(Math.random() * (fieldColumns - 1 + 1))
   const shipY = 1 + Math.floor(Math.random() * (fieldRows - 1 + 1))
 

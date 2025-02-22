@@ -46,11 +46,11 @@ const vueBanner = createBanner(
   './images/vuejs.webp',
 )
 
-document.write(`<div class="u-flex u-flex-wrap u-gap-800">`)
-document.write(`<div style="flex-basis: 20rem; display: grid;">`)
+document.write('<div class="u-flex u-flex-wrap u-gap-800">')
+document.write('<div style="flex-basis: 20rem; display: grid;">')
 document.write(jsBanner)
-document.write(`</div>`)
-document.write(`<div style="flex-basis: 20rem; display: grid;">`)
+document.write('</div>')
+document.write('<div style="flex-basis: 20rem; display: grid;">')
 document.write(vueBanner)
-document.write(`</div>`)
-document.write(`</div>`)
+document.write('</div>')
+document.write('</div>')

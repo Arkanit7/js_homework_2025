@@ -34,7 +34,7 @@
 // ## Варіант 2
 // Розбиває матрицю на діагоналі та для кожної з них наповнює числами
 {
-  document.write(`<div class="c-matrix">`)
+  document.write('<div class="c-matrix">')
 
   const SIZE = 4
   const diagonalSIZE = SIZE * 2 - 1
@@ -50,13 +50,13 @@
     }
   }
 
-  document.write(`</div>`)
+  document.write('</div>')
 }
 
 // # Задача 2
 // Розбиває матрицю на діагоналі та для кожної з них наповнює числами
 {
-  document.write(`<div class="c-matrix">`)
+  document.write('<div class="c-matrix">')
 
   const SIZE = 4
   const diagonalSIZE = SIZE * 2 - 1
@@ -73,5 +73,5 @@
     }
   }
 
-  document.write(`</div>`)
+  document.write('</div>')
 }

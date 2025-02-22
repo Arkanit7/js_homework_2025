@@ -62,11 +62,11 @@ const x1 = 1,
   x4 = 4
 
 document.write(`<p>Числа: ${x1}, ${x2}, ${x3}, ${x4};`)
-document.write(`<ol>`)
+document.write('<ol>')
 document.write(`<li>Сума чисел = ${sumOfFour(x1, x2, x3, x4)};`)
 document.write(`<li>Добуток чисел = ${multipleOfFour(x1, x2, x3, x4)};`)
 document.write(
   `<li>Середнє арифметичне чисел = ${averageFour(x1, x2, x3, x4)};`,
 )
 document.write(`<li>Мінімальне значення чисел = ${minOfFour(x1, x2, x3, x4)};`)
-document.write(`</ol>`)
+document.write('</ol>')

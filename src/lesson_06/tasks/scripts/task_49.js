@@ -11,7 +11,7 @@ if (confirm('Почати тестування?')) {
     )
 
     if (toCut > textileLength) {
-      alert(`Матеріалу не вистачає!`)
+      alert('Матеріалу не вистачає!')
       continue
     }
 

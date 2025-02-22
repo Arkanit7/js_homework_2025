@@ -20,7 +20,7 @@ if (confirm('Почати тестування?')) {
     credit -= parseFloat(prompt(`Сплатіть ${credit}\nСкільки грошей дати?`, ''))
   } while (credit > 0)
 
-  document.write(`<p>Ви оплатили товар.`)
+  document.write('<p>Ви оплатили товар.')
 
   if (credit < 0) document.write(`<p>Ось ваша решта ${-credit}`)
 }

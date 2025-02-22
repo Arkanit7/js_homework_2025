@@ -32,6 +32,6 @@ if (confirm('Почати тестування?')) {
     rightGuess = confirm(`Чи ваше число це – ${randomNumber}?`)
   }
 
-  if (rightGuess) document.write(`Я вгадав ваше число!`)
-  else document.write(`Мені не вдалося вгадати ваше число.`)
+  if (rightGuess) document.write('Я вгадав ваше число!')
+  else document.write('Мені не вдалося вгадати ваше число.')
 }

@@ -9,5 +9,5 @@ for (let amount = 1; amount <= 10; amount++) {
   document.write(`<p>${amount} аршин - це ${(amount * 0.7112).toFixed(2)} м`)
   document.write(`<p>${amount} золотник - це ${(amount * 4.2657).toFixed(2)} г`)
   document.write(`<p>${amount} дюйм - це ${(amount * 25.3995).toFixed(2)} мм`)
-  document.write(`<hr>`)
+  document.write('<hr>')
 }

@@ -1,7 +1,7 @@
 if (confirm('Почати тестування?')) {
   const FIELD_SIZE = 10
 
-  let ammo = parseInt(prompt('Кількість снарядів 🖍️:', '20🖍️'))
+  const ammo = parseInt(prompt('Кількість снарядів 🖍️:', '20🖍️'))
   let shotsCount = 0
 
   let playerLife = 100
@@ -50,6 +50,6 @@ if (confirm('Почати тестування?')) {
     alert(
       `🎖️Ворожий Т-90 знищено!🎖️ 🔥🚜🔥\nЗагальна кількість пострілів: ${shotsCount}🖍️.`,
     )
-  else if (playerLife < 0) alert(`💥Вашу гармату знищено! 🔥🔫🔥`)
+  else if (playerLife < 0) alert('💥Вашу гармату знищено! 🔥🔫🔥')
   else alert('🪓 У вас закінчилися снаряди 🖍️!')
 }

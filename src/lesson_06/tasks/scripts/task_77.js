@@ -1,6 +1,6 @@
 if (confirm('Почати тестування?')) {
   const SIZE = 10
-  let ammo = parseInt(prompt('Кількість снарядів 🖍️:', '8🖍️'))
+  const ammo = parseInt(prompt('Кількість снарядів 🖍️:', '8🖍️'))
   let life = 100
   let shotsCount = 1
   let hasWon = false

@@ -5,7 +5,7 @@ const ORIGINAL_SQUARE_SIZE = 30
 const DECREASE_RATE = 0.09
 
 let hue = 120
-let hueRotate = 17
+const hueRotate = 17
 let gap = 2
 let currentSize = ORIGINAL_SQUARE_SIZE
 let previousSize

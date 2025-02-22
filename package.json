@@ -6,7 +6,13 @@
   "main": "gulpfile.js",
   "scripts": {
     "dev": "gulp dev",
-    "build": "gulp build --build"
+    "build": "gulp build --build",
+    "check": "npx prettier ./src --check",
+    "format": "npx prettier ./src --write",
+    "lint scss": "stylelint \"./src/**/*.scss\"",
+    "fix scss": "stylelint \"./src/**/*.scss\" --fix ",
+    "lint js": "eslint ./src/",
+    "fix js": "eslint ./src/ --fix "
   },
   "keywords": [
     "gulp",

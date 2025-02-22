@@ -1,6 +1,6 @@
 if (confirm('Почати тестування?')) {
   let capital = parseFloat(prompt('Стартовий капітал:', '180000'))
-  let increaseRate = parseFloat(prompt('Щомісячний відсоток, %:', '4%')) / 100
+  const increaseRate = parseFloat(prompt('Щомісячний відсоток, %:', '4%')) / 100
   const targetMoney = parseFloat(
     prompt('Цільова сума (на купівлю магазина):', '3696000'),
   )

@@ -1,7 +1,7 @@
 if (confirm('Почати тестування?')) {
   document.write(`Усього кубів: ${4 ** 6}!`)
 
-  document.write(`<div class="l-cubes u-mbs-600">`)
+  document.write('<div class="l-cubes u-mbs-600">')
 
   for (let back = 0; back < 4; back++) {
     let backColor
@@ -131,5 +131,5 @@ if (confirm('Почати тестування?')) {
     }
   }
 
-  document.write(`</div>`)
+  document.write('</div>')
 }
