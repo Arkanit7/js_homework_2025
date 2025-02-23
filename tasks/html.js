@@ -5,13 +5,14 @@ import pug from 'gulp-pug'
 import versionNumber from 'gulp-version-number'
 import ifPlugin from 'gulp-if'
 import browserSync from 'browser-sync'
-import temml from 'temml'
 import process from 'node:process'
+import highlightMath from '../filters/highlightMath.js'
+import highlightCode from '../filters/highlightCode.js'
 
 const isProduction = process.argv.includes('--build')
 
-const html = () =>
-  gulp
+const html = () => {
+  return gulp
     .src(paths.src.html)
     .pipe(newer({ dest: paths.dist.html, ext: '.html' }))
     .pipe(
@@ -23,16 +24,8 @@ const html = () =>
           root: isProduction ? '/js_homework_2025/' : '/',
         },
         filters: {
-          math: (mathString, options = {}) => {
-            const { inline = true } = options
-
-            try {
-              return temml.renderToString(mathString, { displayMode: !inline })
-            } catch (error) {
-              console.error('Temml rendering error:', error)
-              return `<span style="color:red">Temml rendering error: ${error.message}</span>`
-            }
-          },
+          math: highlightMath,
+          code: highlightCode,
         },
       }),
     )
@@ -51,5 +44,6 @@ const html = () =>
     )
     .pipe(gulp.dest(paths.dist.html))
     .pipe(browserSync.stream())
+}
 
 export default html
