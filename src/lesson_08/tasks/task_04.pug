@@ -1,0 +1,19 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 4)
+
+
+block content
+  p= currentTask.description
+  ul
+    li починаються на букву «А»;
+    li перша і остання літери збігаються;
+    li складаються з більше ніш 5 символів;
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_04.js")

@@ -1,0 +1,20 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 2)
+
+
+block content
+  p= currentTask.description
+  ul
+    li номери днів, протягом яких кількість відвідувачів була меншою за 20;
+    li номери днів, коли кількість відвідувачів була максимальною;
+    li номери днів, коли кількість відвідувачів була мінімальною;
+    li загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_02.js")

@@ -1,0 +1,23 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 7)
+
+
+block content
+  p= currentTask.description
+  ol
+    li за весь рік;
+    li у першій половині року;
+    li у другій половині року;
+    li за літо;
+    li за ІІ квартал;
+    li за парні місяці (з парними номерами);
+    li за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_07.js")

@@ -1,0 +1,19 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 6)
+
+
+block content
+  p= currentTask.description
+  p Приклад збереження даних:
+  :code(lang="javascript")
+    const productsPrices = [1000, 20, 31]
+    const productsTitles = ['cheese', 'juice', 'bread']
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_06.js")
