@@ -7,16 +7,16 @@
  * @returns {number[]}
  */
 function getRandomNumbersArray(length, minNumber = 1, maxNumber = 5) {
-  const gradesArray = []
+  const randomNumbersArray = []
 
   for (let i = 0; i < length; i++) {
-    const grade =
+    const randomNumber =
       minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
 
-    gradesArray.push(grade)
+    randomNumbersArray.push(randomNumber)
   }
 
-  return gradesArray
+  return randomNumbersArray
 }
 
 /**
@@ -49,7 +49,7 @@ function getComparator(comparisonType) {
 /**
  * Get all indexes that evaluate to true using the specified comparison type
  *
- * @param {any[]} array Array to filter
+ * @param {any[]} array Array to search through
  * @param {'less'|'more'|'equal'} comparisonType
  * @param {any} comparable Value to compare with
  * @returns {number[]} Returns index + 1
