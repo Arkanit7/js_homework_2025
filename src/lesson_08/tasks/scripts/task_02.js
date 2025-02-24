@@ -69,9 +69,7 @@ function getMaxNumber(numbersArray) {
   let maxNumber = -Infinity
 
   for (let i = 0; i < numbersArray.length; i++) {
-    const number = numbersArray[i]
-
-    maxNumber = Math.max(maxNumber, number)
+    maxNumber = Math.max(maxNumber, numbersArray[i])
   }
 
   return maxNumber
@@ -82,9 +80,7 @@ function getMinNumber(numbersArray) {
   let minNumber = Infinity
 
   for (let i = 0; i < numbersArray.length; i++) {
-    const number = numbersArray[i]
-
-    minNumber = Math.min(minNumber, number)
+    minNumber = Math.min(minNumber, numbersArray[i])
   }
 
   return minNumber

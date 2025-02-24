@@ -28,10 +28,7 @@ if (confirm('Почати тестування?')) {
     document.write('<ul>')
 
     for (let i = 0; i < productsTitles.length; i++) {
-      const title = productsTitles[i]
-      const price = productsPrices[i]
-
-      document.write(`<li>${title}: ${price} грн.`)
+      document.write(`<li>${productsTitles[i]}: ${productsPrices[i]} грн.`)
     }
 
     document.write('</ul>')

@@ -8,16 +8,16 @@ if (confirm('Почати тестування?')) {
    * @returns {number[]}
    */
   function getRandomNumbersArray(length, minNumber = 1, maxNumber = 5) {
-    const gradesArray = []
+    const randomNumbersArray = []
 
     for (let i = 0; i < length; i++) {
-      const grade =
+      const randomNumber =
         minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
 
-      gradesArray.push(grade)
+      randomNumbersArray.push(randomNumber)
     }
 
-    return gradesArray
+    return randomNumbersArray
   }
 
   /**
@@ -28,9 +28,7 @@ if (confirm('Почати тестування?')) {
     let sum = 0
 
     for (let i = 0; i < gradesArray.length; i++) {
-      const grade = gradesArray[i]
-
-      sum += grade
+      sum += gradesArray[i]
     }
 
     return sum / gradesArray.length
@@ -47,9 +45,7 @@ if (confirm('Почати тестування?')) {
     let minGrade = Infinity
 
     for (let i = 0; i < gradesArray.length; i++) {
-      const grade = gradesArray[i]
-
-      minGrade = Math.min(minGrade, grade)
+      minGrade = Math.min(minGrade, gradesArray[i])
     }
 
     let learnerType

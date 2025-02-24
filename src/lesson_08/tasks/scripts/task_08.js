@@ -8,16 +8,16 @@ if (confirm('Почати тестування?')) {
    * @returns {number[]}
    */
   function getRandomNumbersArray(length, minNumber = 1, maxNumber = 5) {
-    const gradesArray = []
+    const randomNumbersArray = []
 
     for (let i = 0; i < length; i++) {
-      const grade =
+      const randomNumber =
         minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
 
-      gradesArray.push(grade)
+      randomNumbersArray.push(randomNumber)
     }
 
-    return gradesArray
+    return randomNumbersArray
   }
 
   /**
