@@ -21,20 +21,6 @@ if (confirm('Почати тестування?')) {
   }
 
   /**
-   * Check if the input is in between the given constrains.
-   * Otherwise throw an error.
-   *
-   * @param {number} input
-   * @param {number} from integer
-   * @param {number} to integer
-   * @throws Will throw an error if the input is not valid.
-   */
-  function checkUserInput(input, from, to) {
-    if (!isFinite(input) || input < from || input >= to)
-      throw new Error("Invalid user's input.")
-  }
-
-  /**
    * Simulates a game where the user selects cells to reveal prize amounts.
    * The user is prompted to choose a cell number to calculate prize amount.
    * The game continues until the user cancels the prompt.
@@ -61,7 +47,12 @@ if (confirm('Почати тестування?')) {
 
       const parsedUserChoice = parseInt(userChoice) - 1
 
-      checkUserInput(parsedUserChoice, 0, 10)
+      if (
+        !isFinite(parsedUserChoice) ||
+        parsedUserChoice < 0 ||
+        parsedUserChoice >= size
+      )
+        throw new Error("Invalid user's input.")
 
       alert('Виграш перераховано!')
       prizeAmount += prizeMoneyList[parsedUserChoice]
@@ -70,10 +61,9 @@ if (confirm('Почати тестування?')) {
     return prizeAmount
   }
 
-  const prizeMoney = getRandomNumbersArray(10, -500, 500)
-
   try {
-    const prizeAmount = playPrizeGame(prizeMoney)
+    const prizeMoneyList = getRandomNumbersArray(10, -500, 500)
+    const prizeAmount = playPrizeGame(prizeMoneyList)
 
     if (prizeAmount <= 0) document.write('На жаль, ви нічого не виграли.')
     else document.write(`Ваш виграш: ${prizeAmount} грн.!`)

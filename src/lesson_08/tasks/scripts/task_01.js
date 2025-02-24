@@ -83,12 +83,11 @@ if (confirm('Почати тестування?')) {
 
     const learnerGrades = getRandomNumbersArray(subjectsAmount, 1, 5)
     const average = getAverage(learnerGrades)
+    const learnerType = getLearnerType(learnerGrades)
 
     document.write(`<p>Кількість предметів: ${subjectsAmount}.`)
     document.write(`<p>Оцінки: ${learnerGrades}.`)
     document.write(`<p>Середнє значення: ${average.toFixed(1)}.`)
-
-    const learnerType = getLearnerType(learnerGrades)
     document.write(`<p>Учень ${learnerType}.`)
   } catch (error) {
     console.log(error)

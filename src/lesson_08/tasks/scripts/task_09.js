@@ -2,21 +2,21 @@ if (confirm('Почати тестування?')) {
   /**
    * Shuffles an array using the Fisher-Yates algorithm.
    *
-   * @param {number[]} array The array to shuffle.
-   * @returns {number[]} The shuffled array.
+   * @param {string[]} array The array to shuffle.
+   * @returns {string[]} The shuffled array.
    */
   function fisherShuffle(array) {
-    const arrayCopy = [...array]
+    // const array = [...array]
 
-    for (let i = arrayCopy.length - 1; i > 0; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
-      const temp = arrayCopy[i]
+      const temp = array[i]
 
-      arrayCopy[i] = arrayCopy[j]
-      arrayCopy[j] = temp
+      array[i] = array[j]
+      array[j] = temp
     }
 
-    return arrayCopy
+    return array
   }
 
   /**
@@ -24,78 +24,110 @@ if (confirm('Почати тестування?')) {
    *
    * @param {number} size The size of the game field.
    * @param {number} shipsAmount The number of ships to place on the field.
-   * @returns {number[]} The game field with ships placed.
+   * @returns {string[]} The game field with ships placed.
    */
-  function createGameField(size, shipsAmount) {
+  function createBattleField(size, shipsAmount) {
     const field = []
 
     // create the field
-    for (let i = 0; i < shipsAmount; i++) field.push(1)
-    for (let i = shipsAmount; i < size; i++) field.push(0)
+    for (let i = 0; i < shipsAmount; i++) field.push('ship')
+    for (let i = shipsAmount; i < size; i++) field.push('water')
 
     return fisherShuffle(field)
   }
 
   /**
-   * Checks if the input is a valid number within the specified range.
+   * Prompts the user to set the game values.
    *
-   * @param {number} input The input to check.
-   * @param {number} min The minimum valid value.
-   * @param {number} max The maximum valid value.
-   * @throws Will throw an error if the input is not valid.
+   * @returns {[number, number]} The field length and ships amount.
+   * @throws Will throw an error if the input values are not valid.
    */
-  function checkInput(input, min, max) {
-    if (!isFinite(input) || input < min || input >= max)
-      throw new Error('Invalid shot position')
-  }
-
-  /**
-   * Simulates a battleship game.
-   *
-   * @param {number[]} field The game field.
-   * @param {number} shipsAmount The number of ships to destroy.
-   */
-  function battleShip(field, shipsAmount) {
-    const fieldLength = field.length
-
-    while (shipsAmount) {
-      const shotPosition =
-        parseInt(prompt(`Введіть позицію пострілу (1-${fieldLength})`, '')) - 1
-
-      checkInput(shotPosition, 0, fieldLength)
-
-      if (field[shotPosition]) {
-        field[shotPosition] = 0
-        shipsAmount--
-        alert(`Корабель знищено! Залишилося кораблів ${shipsAmount}`)
-      } else {
-        alert('Промах!')
-      }
-    }
-  }
-
-  try {
-    alert('Морський бій')
-
-    const fieldLength = parseInt(prompt('Введіть розмір ігрового поля', '10'))
+  function initBattleShip() {
+    const fieldLength = parseInt(
+      prompt('Введіть розмір ігрового поля 🌊', '10'),
+    )
 
     if (!isFinite(fieldLength) || fieldLength < 1)
       throw new Error('Field length must be a natural number')
 
     const shipsAmount = parseInt(
-      prompt(`Введіть кількість ворожих кораблів (0-${fieldLength})`, '4'),
+      prompt(`Введіть кількість ворожих кораблів (0-${fieldLength}) 🚢`, '4'),
     )
 
     if (!isFinite(shipsAmount) || shipsAmount < 1 || shipsAmount > fieldLength)
       throw new Error('Incorrect ships amount')
 
-    const field = createGameField(fieldLength, shipsAmount)
+    return [fieldLength, shipsAmount]
+  }
 
-    battleShip(field, shipsAmount)
-    alert('Перемога!')
+  /**
+   * Renders the game field using emojis.
+   *
+   * @param {string[]} gameField The game field to render.
+   * @returns {string} The rendered game field as a string.
+   */
+  function getRenderedField(gameField) {
+    let render = ''
+
+    for (let i = 0; i < gameField.length; i++) {
+      const tile = gameField[i]
+
+      if (tile === 'shot') render += '💥'
+      else if (tile === 'lifeboat') render += '🚣‍♂️'
+      else if (tile === 'destroyed') render += '🔥'
+      else render += '🌊'
+    }
+
+    return render
+  }
+
+  /**
+   * Simulates a battleship game.
+   */
+  function playBattleShip() {
+    alert('⚓ Морський бій ⚓')
+
+    let [fieldLength, shipsAmount] = initBattleShip()
+    const gameField = createBattleField(fieldLength, shipsAmount)
+
+    while (shipsAmount) {
+      const fieldRender = getRenderedField(gameField)
+      let message = `Введіть позицію пострілу 🚀 (1-${fieldLength})`
+
+      message += '\n' + fieldRender
+
+      const shotPosition = parseInt(prompt(message, '1')) - 1
+
+      // check what we've hit
+      switch (gameField[shotPosition]) {
+        case 'ship':
+          gameField[shotPosition] = 'lifeboat'
+          shipsAmount--
+          alert(`Корабель знищено! 🔥\nЗалишилося кораблів ${shipsAmount}🚢.`)
+          break
+
+        case 'lifeboat':
+          gameField[shotPosition] = 'destroyed'
+          alert('Рятувального човна знищено...')
+          break
+        case 'water':
+        case 'destroyed':
+        case 'shot':
+          gameField[shotPosition] = 'shot'
+          alert('Промах! 🌊')
+          break
+        default:
+          throw new Error('Invalid shot position')
+      }
+    }
+
+    alert('Вітаємо! Всі кораблі потоплені! 🔱')
+  }
+
+  try {
+    playBattleShip()
   } catch (error) {
-    alert(error)
     console.log(error)
-    document.write('На жаль, трапилася помилка!')
+    alert(error.message)
   }
 }

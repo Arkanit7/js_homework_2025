@@ -19,75 +19,84 @@ function getRandomNumbersArray(length, minNumber = 1, maxNumber = 5) {
   return gradesArray
 }
 
-function getIndexesOfNumbersLesserThan(numbersArray, lesserThan = 20) {
-  const lesserNumbersIndexesArray = []
+/**
+ * Get comparison function based on the comparison type
+ *
+ * @param {'less'|'more'|'equal'} comparisonType
+ * @returns {(a: any, b: any) => boolean}
+ * @throws Error if the comparison type is invalid
+ */
+function getComparator(comparisonType) {
+  let comparator
 
-  for (let i = 0; i < numbersArray.length; i++) {
-    const number = numbersArray[i]
-
-    if (number < lesserThan) lesserNumbersIndexesArray.push(i + 1)
+  switch (comparisonType) {
+    case 'less':
+      comparator = (a, b) => a < b
+      break
+    case 'more':
+      comparator = (a, b) => a > b
+      break
+    case 'equal':
+      comparator = (a, b) => a === b
+      break
+    default:
+      throw new Error('Invalid comparator name')
   }
 
-  return lesserNumbersIndexesArray
+  return comparator
 }
 
 /**
- * Returns index + 1
+ * Get all indexes that evaluate to true using the specified comparison type
  *
- * @param {number[]} numbersArray
- * @returns {number[]}
+ * @param {any[]} array Array to filter
+ * @param {'less'|'more'|'equal'} comparisonType
+ * @param {any} comparable Value to compare with
+ * @returns {number[]} Returns index + 1
  */
-function getIndexesOfMaxNumbers(numbersArray) {
-  const maxNumberIndexesArray = []
+function getComparedEntryIndexes(array, comparisonType, comparable) {
+  const indexes = []
+  const isCompared = getComparator(comparisonType)
+
+  for (let i = 0; i < array.length; i++) {
+    if (isCompared(array[i], comparable)) indexes.push(i + 1)
+  }
+
+  return indexes
+}
+
+function getMaxNumber(numbersArray) {
   let maxNumber = -Infinity
-  // determine the max number in the array
+
   for (let i = 0; i < numbersArray.length; i++) {
     const number = numbersArray[i]
 
     maxNumber = Math.max(maxNumber, number)
   }
 
-  // get indexes of all elements that are max numbers
-  for (let i = 0; i < numbersArray.length; i++) {
-    const number = numbersArray[i]
-
-    if (number === maxNumber) maxNumberIndexesArray.push(i + 1)
-  }
-
-  return maxNumberIndexesArray
+  return maxNumber
+  // return Math.max(...numbersArray)
 }
 
-/**
- * Returns index + 1
- *
- * @param {number[]} numbersArray
- * @returns {number[]}
- */
-function getIndexesOfMinNumbers(numbersArray) {
-  const minNumberIndexesArray = []
+function getMinNumber(numbersArray) {
   let minNumber = Infinity
 
-  // determine the min number in the array
   for (let i = 0; i < numbersArray.length; i++) {
     const number = numbersArray[i]
 
     minNumber = Math.min(minNumber, number)
   }
 
-  // get indexes of all elements that are min numbers
-  for (let i = 0; i < numbersArray.length; i++) {
-    const number = numbersArray[i]
-
-    if (number === minNumber) minNumberIndexesArray.push(i + 1)
-  }
-
-  return minNumberIndexesArray
+  return minNumber
+  // return Math.min(...numbersArray)
 }
 
 /**
+ * Get a portion of the original array
+ *
  * @param {any[]} array
- * @param {number} from
- * @param {number} to
+ * @param {number} from from where slice
+ * @param {number} to to where slice
  * @returns {any[]}
  */
 function sliceArray(array, from, to) {
@@ -114,26 +123,50 @@ function getArraySum(array) {
   return sum
 }
 
-const visitorsAmountList = getRandomNumbersArray(7, 0, 40)
-const lowVisitorsDays = getIndexesOfNumbersLesserThan(visitorsAmountList)
-const maxVisitorsDays = getIndexesOfMaxNumbers(visitorsAmountList)
-const minVisitorsDays = getIndexesOfMinNumbers(visitorsAmountList)
-const visitorsAmountOnWeekdaysList = sliceArray(visitorsAmountList, 0, 5)
-const visitorsAmountOnWeekdays = getArraySum(visitorsAmountOnWeekdaysList)
-const visitorsAmountOnWeekendsList = sliceArray(visitorsAmountList, 5, 7)
-const visitorsAmountOnWeekends = getArraySum(visitorsAmountOnWeekendsList)
+try {
+  const visitorsAmountList = getRandomNumbersArray(7, 0, 40)
+  const lowVisitorsDays = getComparedEntryIndexes(
+    visitorsAmountList,
+    'less',
+    20,
+  )
 
-document.write(`<p>Кількість відвідувачів по днях (1-7): ${visitorsAmountList}`)
-document.write(`<p>Дні, коли відвідувачів було менше 20: ${lowVisitorsDays}`)
-document.write(
-  `<p>Дні, коли кількість відвідувачів була найбільшою: ${maxVisitorsDays}`,
-)
-document.write(
-  `<p>Дні, коли кількість відвідувачів була найменшою: ${minVisitorsDays}`,
-)
-document.write(
-  `<p>Кількість відвідувачів у робочі дні: ${visitorsAmountOnWeekdays}`,
-)
-document.write(
-  `<p>Кількість відвідувачів у вихідні дні: ${visitorsAmountOnWeekends}`,
-)
+  const maxVisitors = getMaxNumber(visitorsAmountList)
+  const maxVisitorsDays = getComparedEntryIndexes(
+    visitorsAmountList,
+    'equal',
+    maxVisitors,
+  )
+
+  const minVisitors = getMinNumber(visitorsAmountList)
+  const minVisitorsDays = getComparedEntryIndexes(
+    visitorsAmountList,
+    'equal',
+    minVisitors,
+  )
+
+  const visitorsAmountOnWeekdaysList = sliceArray(visitorsAmountList, 0, 5)
+  const visitorsAmountOnWeekdays = getArraySum(visitorsAmountOnWeekdaysList)
+
+  const visitorsAmountOnWeekendsList = sliceArray(visitorsAmountList, 5, 7)
+  const visitorsAmountOnWeekends = getArraySum(visitorsAmountOnWeekendsList)
+
+  document.write(
+    `<p>Кількість відвідувачів по днях (1-7): ${visitorsAmountList}`,
+  )
+  document.write(`<p>Дні, коли відвідувачів було менше 20: ${lowVisitorsDays}`)
+  document.write(
+    `<p>Дні, коли кількість відвідувачів була найбільшою: ${maxVisitorsDays}`,
+  )
+  document.write(
+    `<p>Дні, коли кількість відвідувачів була найменшою: ${minVisitorsDays}`,
+  )
+  document.write(
+    `<p>Кількість відвідувачів у робочі дні: ${visitorsAmountOnWeekdays}`,
+  )
+  document.write(
+    `<p>Кількість відвідувачів у вихідні дні: ${visitorsAmountOnWeekends}`,
+  )
+} catch (error) {
+  console.log(error)
+}
