@@ -1,107 +1,21 @@
-// ## Варіант №1
-// /**
-//  * Get count of: plates that start with an "A",
-//  * symmetric plates, length more than 5
-//  *
-//  * @param {string[]} carPlatesArray
-//  * @returns {number[]}
-//  */
-// function parseCarPlates(carPlatesArray) {
-//   let startsWithA = 0,
-//     symmetricEdges = 0,
-//     lengthMoreThanFive = 0
-
-//   for (let i = 0; i < carPlatesArray.length; i++) {
-//     const plate = carPlatesArray[i]
-
-//     if (plate[0] === 'A') startsWithA++
-//     if (plate[0] === plate[plate.length - 1]) symmetricEdges++
-//     if (plate.length > 5) lengthMoreThanFive++
-//   }
-
-//   return [startsWithA, symmetricEdges, lengthMoreThanFive]
-// }
-
-// const carsPlates = [
-//   'A123BC',
-//   'B456AB',
-//   'C789CC',
-//   'A555AA',
-//   'X1X',
-//   'AA999AA',
-//   'M1234M',
-//   'A77A',
-// ]
-// const parsedCarPlates = parseCarPlates(carsPlates)
-
-// document.write(`<p>Номери машин: ${carsPlates};`)
-// document.write(
-//   `<p>Кількість номерів, які починаються на букву "А": ${parsedCarPlates[0]};`,
-// )
-// document.write(
-//   `<p>Кількість номерів, у яких перша і остання літери збігаються: ${parsedCarPlates[1]};`,
-// )
-// document.write(
-//   `<p>Кількість номерів, які складаються з більше ніш 5 символів: ${parsedCarPlates[2]}.`,
-// )
-
-// ================================================================================
-
-// ## Варіант №2
-
 /**
- * Count array elements that starts with the specified string
+ * Counts the total evaluations in an array based on a comparison function.
  *
- * @param {string[]} array
- * @param {string} startsWith
- * @returns {number}
+ * @param {any[]} array The array to evaluate.
+ * @param {function(): boolean} comparisonFunction The function to compare each element.
+ * @returns {number} The count of elements that satisfy the comparison function.
  */
-function countArrayElementsThatStartsWith(array, startsWith) {
+function countEvaluations(array, comparisonFunction) {
   let counter = 0
 
   for (let i = 0; i < array.length; i++) {
-    if (array[i][0] === startsWith) counter++
+    if (comparisonFunction(array[i])) counter++
   }
 
   return counter
 }
 
-/**
- * Count array elements that starts and ends with the same character
- *
- * @param {string[]} array
- * @returns {number}
- */
-function countSymmetricEdges(array) {
-  let counter = 0
-
-  for (let i = 0; i < array.length; i++) {
-    const plate = array[i]
-
-    if (plate[0] === plate[plate.length - 1]) counter++
-  }
-
-  return counter
-}
-
-/**
- * Count array elements that has more symbols than specified length
- *
- * @param {string[]} array
- * @param {number} moreThan
- * @returns {number}
- */
-function countLengthMoreThan(array, moreThan) {
-  let counter = 0
-
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].length > moreThan) counter++
-  }
-
-  return counter
-}
-
-const carNumbers = [
+const carPlates = [
   'A123BC',
   'B456AB',
   'C789CA',
@@ -111,14 +25,23 @@ const carNumbers = [
   'M1234M',
   'A77A',
 ]
+const startsWithA = countEvaluations(carPlates, (plate) => plate[0] === 'A')
+const symmetricEdges = countEvaluations(
+  carPlates,
+  (plate) => plate[0] === plate[plate.length - 1],
+)
+const lengthMoreThanFive = countEvaluations(
+  carPlates,
+  (plate) => plate.length > 5,
+)
 
-document.write(`<p>Номери машин: ${carNumbers};`)
+document.write(`<p>Номери машин: ${carPlates};`)
 document.write(
-  `<p>Кількість номерів, які починаються на букву "А": ${countArrayElementsThatStartsWith(carNumbers, 'A')};`,
+  `<p>Кількість номерів, які починаються на букву "А": ${startsWithA};`,
 )
 document.write(
-  `<p>Кількість номерів, у яких перша і остання літери збігаються: ${countSymmetricEdges(carNumbers)};`,
+  `<p>Кількість номерів, у яких перша і остання літери збігаються: ${symmetricEdges};`,
 )
 document.write(
-  `<p>Кількість номерів, які складаються з більше ніш 5 символів: ${countLengthMoreThan(carNumbers, 5)}.`,
+  `<p>Кількість номерів, які складаються з більше ніш 5 символів: ${lengthMoreThanFive}.`,
 )
