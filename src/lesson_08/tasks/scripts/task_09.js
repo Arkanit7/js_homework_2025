@@ -72,10 +72,20 @@ if (confirm('Почати тестування?')) {
     for (let i = 0; i < gameField.length; i++) {
       const tile = gameField[i]
 
-      if (tile === 'shot') render += '💥'
-      else if (tile === 'lifeboat') render += '🚣‍♂️'
-      else if (tile === 'destroyed') render += '🔥'
-      else render += '🌊'
+      switch (tile) {
+        case 'shot':
+          render += '💥'
+          break
+        case 'lifeboat':
+          render += '🚣‍♂️'
+          break
+        case 'destroyed':
+          render += '🔥'
+          break
+        default:
+          render += '🌊'
+          break
+      }
     }
 
     return render
