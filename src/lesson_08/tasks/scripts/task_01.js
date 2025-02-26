@@ -42,9 +42,9 @@ if (confirm('Почати тестування?')) {
    * @throws Will throw an error if a grade is not valid.
    */
   function getLearnerType(gradesArray) {
-    let minGrade = Infinity
+    let minGrade = gradesArray[0]
 
-    for (let i = 0; i < gradesArray.length; i++) {
+    for (let i = 1; i < gradesArray.length; i++) {
       minGrade = Math.min(minGrade, gradesArray[i])
     }
 

@@ -66,9 +66,9 @@ function getComparedEntryIndexes(array, comparisonType, comparable) {
 }
 
 function getMaxNumber(numbersArray) {
-  let maxNumber = -Infinity
+  let maxNumber = numbersArray[0]
 
-  for (let i = 0; i < numbersArray.length; i++) {
+  for (let i = 1; i < numbersArray.length; i++) {
     maxNumber = Math.max(maxNumber, numbersArray[i])
   }
 
@@ -77,9 +77,9 @@ function getMaxNumber(numbersArray) {
 }
 
 function getMinNumber(numbersArray) {
-  let minNumber = Infinity
+  let minNumber = numbersArray[0]
 
-  for (let i = 0; i < numbersArray.length; i++) {
+  for (let i = 1; i < numbersArray.length; i++) {
     minNumber = Math.min(minNumber, numbersArray[i])
   }
 
