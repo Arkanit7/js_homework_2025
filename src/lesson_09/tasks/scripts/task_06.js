@@ -27,12 +27,11 @@ function createRandomNumbersArray(length, minNumber, maxNumber) {
 
 // ## Option 1
 const numbersArray = createRandomNumbersArray(10, 0, 20)
-const firstNumber = numbersArray[0]
 
 document.write(`<p>Оригінальний масив: ${numbersArray};`)
 
 numbersArray.forEach((number, index, array) => {
-  if (number > firstNumber) array[index] *= 2
+  if (number > array[0]) array[index] *= 2
 })
 
 document.write(`<p>Новий масив: ${numbersArray};`)
@@ -41,7 +40,7 @@ document.write(`<p>Новий масив: ${numbersArray};`)
 // const numbersArray = createRandomNumbersArray(10, 0, 20)
 
 // const transformedArray = numbersArray.map((number, i, array) =>
-//   number > array[0] ? (number *= 2) : number,
+//   number > array[0] ? (number * 2) : number,
 // )
 
 // document.write(`<p>Оригінальний масив: ${numbersArray};`)
