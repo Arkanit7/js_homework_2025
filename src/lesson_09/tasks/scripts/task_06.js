@@ -39,15 +39,10 @@ document.write(`<p>Новий масив: ${numbersArray};`)
 
 // ## Option 2
 // const numbersArray = createRandomNumbersArray(10, 0, 20)
-// const firstNumber = numbersArray[0]
 
-// const transformedArray = numbersArray.map((number) => {
-//   let newNumber = number
-
-//   if (number > firstNumber) newNumber *= 2
-
-//   return newNumber
-// })
+// const transformedArray = numbersArray.map((number, i, array) =>
+//   number > array[0] ? (number *= 2) : number,
+// )
 
 // document.write(`<p>Оригінальний масив: ${numbersArray};`)
 // document.write(`<p>Новий масив: ${transformedArray};`)
