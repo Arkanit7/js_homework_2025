@@ -1,0 +1,20 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 29)
+
+
+block content
+  p Дано масив #[:math x] із #[:math n] елементів. Знайдіть
+    |
+    |
+    :math
+      x_1 - x_2 + x_3 - … - x_{n - 1} + x_n
+    | .
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_29.js")

@@ -1,0 +1,20 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 31)
+
+
+block content
+  p Дано масив #[:math x] із #[:math n] елементів. Знайдіть
+    |
+    |
+    :math
+      x_n (x_n+x_{n-1}) (x_n+x_{n-1}+x_{n-2}) ... (x_n+...+x_1)
+    | .
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_31.js")
