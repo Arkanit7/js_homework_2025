@@ -62,7 +62,7 @@ document.write('<li>' + indexesOfMoreThanTarget.join(', '))
 
 // 3. Сформувати список з тих цін, які більші за попереднє значення
 const moreThanPrevPrice = priceHistory.filter(
-  (price, i, arr) => price > arr[i - 1],
+  (price, i, arr) => price > arr[i - 1] && i > 0,
 )
 
 document.write('<li>' + moreThanPrevPrice.join(', '))
@@ -117,27 +117,31 @@ const sumOfMoreThanTarget = priceHistory.reduce(
 document.write('<li>' + sumOfMoreThanTarget)
 
 // 10. Знайти першу ціну, що більше за 1000
-const firstMoreThanTarget = priceHistory.find((price) => price > 1000)
+const firstMoreThanTarget = priceHistory.find((price) => price > TARGET_PRICE)
 
 if (firstMoreThanTarget) document.write('<li>' + firstMoreThanTarget)
 else document.write('<li>Такої ціни немає')
 
 // 11. Знайти індекс першої ціни, що більше за 1000
-const firstIndexMoreThanTarget = priceHistory.findIndex((price) => price > 1000)
+const firstIndexMoreThanTarget = priceHistory.findIndex(
+  (price) => price > TARGET_PRICE,
+)
 
 if (firstIndexMoreThanTarget !== -1)
   document.write('<li>' + firstIndexMoreThanTarget)
 else document.write('<li>Такої ціни немає')
 
 // 12. Знайти останню ціну, що більше за 1000
-const lastMoreThanTarget = priceHistory.findLast((price) => price > 1000)
+const lastMoreThanTarget = priceHistory.findLast(
+  (price) => price > TARGET_PRICE,
+)
 
 if (lastMoreThanTarget) document.write('<li>' + lastMoreThanTarget)
 else document.write('<li>Такої ціни немає')
 
 // 13. Знайти індекс останньої ціни, що більше за 1000
 const lastIndexMoreThanTarget = priceHistory.findLastIndex(
-  (price) => price > 1000,
+  (price) => price > TARGET_PRICE,
 )
 
 if (lastIndexMoreThanTarget !== -1)
