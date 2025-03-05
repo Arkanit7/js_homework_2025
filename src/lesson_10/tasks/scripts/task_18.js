@@ -15,15 +15,25 @@ function createGeometricProgression(length, firstNumber, commonRatio) {
 }
 
 /**
- * @param {any[]} array
+ * @param {number[]} array
  * @returns {boolean}
  */
 function isGeometricProgression(array) {
-  const commonRatio = array[1] / array[0]
+  if (array.length < 3)
+    throw new Error('Array must include more than two elements.')
 
-  return array.every(
-    (item, i, arr) => commonRatio === item / arr[i - 1] || i === 0,
-  )
+  const commonRatio = array[0] === 0 ? 0 : array[1] / array[0]
+
+  return array.every((item, i, arr) => {
+    // commonRatio === (arr[i - 1] === 0 ? 0 : item / arr[i - 1]) || i === 0
+    let result
+
+    if (i === 0) result = true
+    else if (arr[i - 1 === 0]) result = commonRatio === 0
+    else result = commonRatio === item / arr[i - 1]
+
+    return result
+  })
 }
 
 /**

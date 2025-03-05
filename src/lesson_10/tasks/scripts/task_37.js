@@ -1,11 +1,14 @@
+// ---
+// ✅ AI approved
+// ---
+
 /**
- * Create a new array filled with random numbers.
- * Generates a random number between minNumber and maxNumber (inclusive).
- * @param {number} length - Length of the new array
- * @param {number} minNumber - Minimal random number
- * @param {number} maxNumber - Maximal random number
+ * Creates random numbers array in the given range.
+ * @param {number} length - Length of the array
+ * @param {number} minNumber - Minimal number
+ * @param {number} maxNumber - Maximal number
  * @returns {number[]} Random numbers array
- * @throws Throws an error if the input consists of non-finite numbers
+ * @throws If the input consists of non-finite numbers
  */
 function createRandomNumbersArray(length, minNumber, maxNumber) {
   if (!isFinite(length) || !isFinite(minNumber) || !isFinite(maxNumber))
@@ -18,16 +21,16 @@ function createRandomNumbersArray(length, minNumber, maxNumber) {
 
 // =============================================================================
 
-// ## Option 1 (AI reviewed and approved)
+// ## Option 1 (fast)
 
 /**
  * Find two numbers from the array that have the closest sum to the target number
  * @param {number[]} array - Array of numbers to pick numbers from
- * @param {number} target - The target sum that the two numbers should be closest to
+ * @param {number} target - The number to which the sum should be closest
  * @param {boolean} [inPlace] - If you may sort the array in place then say true
- * @returns {[number, number]}
+ * @returns {[number, number] | null}
  * @remarks Time complexity: O(log n) - Logarithmic time complexity.
- * @throws Get an error if the array has less than 2 elements
+ * @throws If the array has less than 2 elements
  */
 function findClosestPair(array, target, inPlace = false) {
   if (array.length < 2)
@@ -40,7 +43,7 @@ function findClosestPair(array, target, inPlace = false) {
   let [leftPointer, rightPointer] = [0, sortedArray.length - 1]
 
   let minDelta = Infinity
-  let pair = null
+  let bestPair = null
 
   while (leftPointer < rightPointer) {
     const sum = sortedArray[leftPointer] + sortedArray[rightPointer]
@@ -48,7 +51,7 @@ function findClosestPair(array, target, inPlace = false) {
 
     if (delta < minDelta) {
       minDelta = delta
-      pair = [sortedArray[leftPointer], sortedArray[rightPointer]]
+      bestPair = [sortedArray[leftPointer], sortedArray[rightPointer]]
     }
 
     if (sum > target) rightPointer--
@@ -56,7 +59,7 @@ function findClosestPair(array, target, inPlace = false) {
     else break
   }
 
-  return pair
+  return bestPair
 }
 
 const targetNumber = Math.floor(Math.random() * 40)

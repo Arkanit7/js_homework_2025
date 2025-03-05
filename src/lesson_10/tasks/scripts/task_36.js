@@ -1,11 +1,10 @@
 /**
- * Create a new array filled with random numbers.
- * Generates a random number between minNumber and maxNumber (inclusive).
- * @param {number} length - Length of the new array
- * @param {number} minNumber - Minimal random number
- * @param {number} maxNumber - Maximal random number
+ * Creates random numbers array in the given range.
+ * @param {number} length - Length of the array
+ * @param {number} minNumber - Minimal number
+ * @param {number} maxNumber - Maximal number
  * @returns {number[]} Random numbers array
- * @throws Throws an error if the input consists of non-finite numbers
+ * @throws If the input consists of non-finite numbers
  */
 function createRandomNumbersArray(length, minNumber, maxNumber) {
   if (!isFinite(length) || !isFinite(minNumber) || !isFinite(maxNumber))
