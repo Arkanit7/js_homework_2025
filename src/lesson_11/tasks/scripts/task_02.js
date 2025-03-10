@@ -9,6 +9,17 @@ const UA_DAYS_NAMES = [
   'Неділя',
 ]
 
+/**
+ * Sum numbers in conjure with the reduce higher order function.
+ *
+ * @param {number} previousSum - The sum from the previous callback.
+ * @param {number} current - The current number to add to the sum.
+ * @returns {number} The sum of total and current.
+ */
+function calcSum(previousSum, current) {
+  return previousSum + current
+}
+
 const storesProfitsByWeek = [
   //0    1    2    3    4    5    6
   [279, 948, 259, 978, 645, 459, 174], // 0
@@ -33,10 +44,7 @@ document.write('<ol>')
 document.write('<li><strong>Тижневий прибуток</strong>:')
 
 storesProfitsByWeek.forEach((storeProfits, storeIndex) => {
-  const weeklyProfit = storeProfits.reduce(
-    (sum, dayProfit) => sum + dayProfit,
-    0,
-  )
+  const weeklyProfit = storeProfits.reduce(calcSum, 0)
 
   document.write(`<p>Магазин №${storeIndex + 1}: $${weeklyProfit}.`)
 })
@@ -122,9 +130,7 @@ document.write(
 
 // 9. упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
 const sortedBySum = [...storesProfitsByWeek].sort(
-  (weekA, weekB) =>
-    weekB.reduce((sum, dayProfit) => sum + dayProfit, 0) -
-    weekA.reduce((sum, dayProfit) => sum + dayProfit, 0),
+  (weekA, weekB) => weekB.reduce(calcSum, 0) - weekA.reduce(calcSum, 0),
 )
 
 document.write(

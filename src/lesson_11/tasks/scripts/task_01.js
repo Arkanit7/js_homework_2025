@@ -13,6 +13,17 @@ function printTest(expect, toBe, message = 'Test') {
   }
 }
 
+/**
+ * Sum numbers in conjure with the reduce higher order function.
+ *
+ * @param {number} previousSum - The sum from the previous callback.
+ * @param {number} current - The current number to add to the sum.
+ * @returns {number} The sum of total and current.
+ */
+function calcSum(previousSum, current) {
+  return previousSum + current
+}
+
 // =============================================================================
 
 // ## ⚙️ Solution
@@ -51,7 +62,7 @@ document.write('<ol>')
   const secondQuarterSum = testTable
     .slice(0, Math.floor(testTable.length / 2))
     .flatMap((row) => row.slice(0, Math.floor(row.length / 2)))
-    .reduce((sum, profit) => sum + profit, 0)
+    .reduce(calcSum, 0)
 
   printTest(secondQuarterSum, 31, 'Second quarter sum test (functional)')
 }
@@ -81,7 +92,7 @@ document.write('<ol>')
   const firstQuarterSum = testTable
     .slice(0, Math.floor(testTable.length / 2))
     .flatMap((row) => row.slice(Math.floor(row.length / 2)))
-    .reduce((sum, profit) => sum + profit, 0)
+    .reduce(calcSum, 0)
 
   printTest(firstQuarterSum, 27, 'First quarter sum test (functional)')
 }
@@ -108,7 +119,7 @@ document.write('<ol>')
   const thirdQuarterSum = testTable
     .slice(Math.floor(testTable.length / 2))
     .flatMap((row) => row.slice(0, Math.floor(row.length / 2)))
-    .reduce((sum, profit) => sum + profit, 0)
+    .reduce(calcSum, 0)
 
   printTest(thirdQuarterSum, 40, 'Third quarter sum test (functional)')
 }
@@ -139,7 +150,7 @@ document.write('<ol>')
   const firstQuarterSum = testTable
     .slice(Math.floor(testTable.length / 2))
     .flatMap((row) => row.slice(Math.floor(row.length / 2)))
-    .reduce((sum, profit) => sum + profit, 0)
+    .reduce(calcSum, 0)
 
   printTest(firstQuarterSum, 43, 'First quarter sum test (functional)')
 }
@@ -150,7 +161,7 @@ document.write('<ol>')
   let evenRowsSum = 0
 
   for (let rowIndex = 0; rowIndex < testTable.length; rowIndex += 2) {
-    evenRowsSum += testTable[rowIndex].reduce((sum, item) => sum + item, 0)
+    evenRowsSum += testTable[rowIndex].reduce(calcSum, 0)
   }
 
   printTest(evenRowsSum, 74, 'Even rows sum test')
@@ -161,7 +172,7 @@ document.write('<ol>')
   const evenRowsSum = testTable
     .filter((_, rowIndex) => rowIndex % 2 === 0)
     .flat()
-    .reduce((sum, profit) => sum + profit, 0)
+    .reduce(calcSum, 0)
 
   printTest(evenRowsSum, 74, 'Even rows sum test (functional)')
 }
@@ -181,7 +192,7 @@ document.write('<ol>')
 {
   const evenRowsSum = testTable
     .flatMap((row) => row.filter((_, colIndex) => colIndex % 2))
-    .reduce((sum, profit) => sum + profit, 0)
+    .reduce(calcSum, 0)
 
   printTest(evenRowsSum, 66, 'Odd columns sum test (functional)')
 }
@@ -219,7 +230,7 @@ document.write('<ol>')
   const oddEvenReverseSum = evenRowsOddCols
     .concat(oddRowsEvenCols)
     .flat()
-    .reduce((sum, profit) => sum + profit, 0)
+    .reduce(calcSum, 0)
 
   printTest(
     oddEvenReverseSum,
