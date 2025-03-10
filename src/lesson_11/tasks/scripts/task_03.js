@@ -317,6 +317,7 @@ function playSeaBattle(rows, cols, shipsAmount, shotsAmount) {
   fillGameFieldWithObjects('whale', gameField, 2)
   fillGameFieldWithObjects('island', gameField, 10)
   fillGameFieldWithObjects('ship', gameField, shipsAmount)
+
   alert('⚔️ Морський Бій V3.0 ⚔️')
 
   while (shipsAmount && shotsAmount >= shipsAmount) {
@@ -326,6 +327,7 @@ function playSeaBattle(rows, cols, shipsAmount, shotsAmount) {
       shotsAmount,
     )
 
+    // exit the game if the user press 'cancel'
     if (shotPosition === null) return
 
     shipsAmount = handleShot(...shotPosition, gameField, shipsAmount)
@@ -342,5 +344,5 @@ try {
   }
 } catch (error) {
   console.log(error)
-  alert(error.message)
+  alert('❌ Критична помилка!')
 }
