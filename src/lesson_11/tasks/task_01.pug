@@ -1,0 +1,24 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 1)
+
+
+block content
+  p= currentTask.description
+  ol
+    li номери рядків від 0 до половини, стовпці від 0 до половини;
+    li номери рядків від 0 до половини, стовпці від половини до кінця;
+    li номери рядків від половини до кінця, стовпці від 0 до половини;
+    li номери рядків від половини до кінця, стовпці від половини до кінця;
+    li суму парних рядків;
+    li суму непарних стовпців;
+    li у парних рядках – непарні стовпці, у непарних – парні.
+
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_01.js")
