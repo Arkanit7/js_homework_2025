@@ -112,7 +112,7 @@ document.write(
 
 // 7. відсортувати кожен тиждень за зростанням;
 const sortedWeeklyProfits = storesProfitsByWeek.map((week) =>
-  [...week].sort((dayA, dayB) => dayA - dayB),
+  week.toSorted((dayA, dayB) => dayA - dayB),
 )
 
 document.write(
@@ -120,7 +120,7 @@ document.write(
 )
 
 // 8. відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків;
-const sortedByMax = [...storesProfitsByWeek].sort(
+const sortedByMax = storesProfitsByWeek.toSorted(
   (weekA, weekB) => Math.max(...weekB) - Math.max(...weekA),
 )
 
@@ -129,7 +129,7 @@ document.write(
 )
 
 // 9. упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
-const sortedBySum = [...storesProfitsByWeek].sort(
+const sortedBySum = storesProfitsByWeek.toSorted(
   (weekA, weekB) => weekB.reduce(calcSum, 0) - weekA.reduce(calcSum, 0),
 )
 
