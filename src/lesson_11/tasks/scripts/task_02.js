@@ -120,18 +120,20 @@ document.write(
 )
 
 // 8. відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків;
-const sortedByMax = storesProfitsByWeek.toSorted(
-  (weekA, weekB) => Math.max(...weekB) - Math.max(...weekA),
-)
+const sortedByMax = storesProfitsByWeek
+  .map((week) => [week, Math.max(...week)])
+  .sort((weekA, weekB) => weekB[1] - weekA[1])
+  .map((week) => week[0])
 
 document.write(
   `<li><strong>Тижні за максимальним днем</strong>: [${JSON.stringify(sortedByMax)}]`,
 )
 
 // 9. упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
-const sortedBySum = storesProfitsByWeek.toSorted(
-  (weekA, weekB) => weekB.reduce(calcSum, 0) - weekA.reduce(calcSum, 0),
-)
+const sortedBySum = storesProfitsByWeek
+  .map((week) => [week, week.reduce(calcSum, 0)])
+  .sort((weekA, weekB) => weekB[1] - weekA[1])
+  .map((week) => week[0])
 
 document.write(
   `<li><strong>Тижні за максимальним прибутком</strong>: [${JSON.stringify(sortedBySum)}]`,
