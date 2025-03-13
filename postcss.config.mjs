@@ -9,7 +9,13 @@ export default {
     purgecss({
       content: ['./src/**/*.{pug,html}', './src/**/*.js'],
       safelist: {
-        standard: [/^receipt/, /^c-cube/, /^l-cubes/],
+        standard: [
+          /^receipt/,
+          /^c-cube/,
+          /^l-cubes/,
+          /^u-border-red/,
+          /^u-border-blue/,
+        ],
       },
     }),
     postcssSortMediaQueries,
