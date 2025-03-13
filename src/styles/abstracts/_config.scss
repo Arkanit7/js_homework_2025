@@ -302,8 +302,15 @@ $config: (
       georgia,
       serif,
     ),
+    "monospace": (
+      "Consolas",
+      currentColor,
+      monospace,
+    ),
   ),
   "font-size": (
+    "50": 0.25rem,
+    "100": 0.5rem,
     "200": 0.75rem,
     "250": 0.875rem,
     "300": 1rem,
@@ -375,6 +382,25 @@ $config: (
     "lg": 1024px,
     "xl": 1280px,
     "2xl": 1536px,
+  ),
+  "border-width": (
+    "DEFAULT": 1px,
+    "0": 0px,
+    "2": 2px,
+    "4": 4px,
+    "8": 8px,
+  ),
+  "border-style": (
+    "DEFAULT": solid,
+    "none": none,
+    "hidden": hidden,
+    "dotted": dotted,
+    "dashed": dashed,
+    "double": double,
+    "groove": groove,
+    "ridge": ridge,
+    "inset": inset,
+    "outset": outset,
   ),
   "border-radius": (
     "none": 0px,
@@ -469,5 +495,13 @@ $config: (
     "5": 5,
     "6": 6,
   ),
+  "overflow": (
+    "auto": auto,
+    "hidden": hidden,
+    "clip": clip,
+    "visible": visible,
+    "scroll": scroll,
+  ),
 );
 $config: map.merge($config, "width", map.get($config, "spacing"));
+$config: map.set($config, "border-color", map.get($config, "color"));
