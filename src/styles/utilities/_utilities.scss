@@ -93,6 +93,38 @@
   }
 }
 
+// border
+[class*="u-border"] {
+  border-width: map.get($config, "border-width", "DEFAULT");
+  border-style: map.get($config, "border-style", "DEFAULT");
+}
+
+@each $key, $value in map.get($config, "border-width") {
+  .u-border-#{$key} {
+    border-width: $value;
+  }
+}
+
+@each $key, $value in map.get($config, "border-style") {
+  .u-border-#{$key} {
+    border-style: $value;
+  }
+}
+
+@each $key-master, $value-master in map.get($config, "border-color") {
+  @each $key, $value in $value-master {
+    .u-border-#{$key-master}-#{$key} {
+      border-color: $value;
+    }
+  }
+}
+
+@each $key, $value in map.get($config, "overflow") {
+  .u-overflow-#{$key} {
+    overflow: $value;
+  }
+}
+
 .u-uppercase {
   text-transform: uppercase;
 }
