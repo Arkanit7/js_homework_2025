@@ -1,0 +1,54 @@
+@use "../abstracts" as *;
+
+.c-steps {
+  display: grid;
+  gap: 0.5em 0.125em;
+  justify-content: start;
+  text-align: center;
+
+  &__array {
+    position: relative;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    align-items: center;
+    padding-inline: get-spacing("300");
+    font-size: get-font-size("400");
+    font-family: get-font-family("monospace");
+    counter-reset: index-counter -1;
+
+    &::before,
+    &::after {
+      position: absolute;
+      inset-block-end: get-spacing("50");
+      align-self: end;
+    }
+
+    &::before {
+      content: "[";
+      inset-inline-start: 0;
+    }
+
+    &::after {
+      content: "]";
+      inset-inline-end: 0;
+    }
+  }
+
+  &__item {
+    line-height: 1;
+
+    &::before {
+      content: counter(index-counter);
+      color: get-color("green", "500");
+      font-style: italic;
+      font-size: 0.7em;
+      counter-increment: index-counter;
+    }
+  }
+
+  &__number {
+    padding-inline: get-spacing("100");
+    padding-block: get-spacing("50");
+  }
+}

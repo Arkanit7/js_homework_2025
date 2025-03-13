@@ -1,0 +1,50 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 4)
+
+block content
+  p= currentTask.description
+  img(src="./images/sorting_scheme.webp", alt="Приклад сортувальної схеми.")
+  p Тобто кожного разу після обміну елементів вивести поточний стан масиву на екран (стрілки не потрібні).
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_04.js")
+  //- .c-steps
+  //-   .c-steps__array
+  //-     .c-steps__item
+  //-       .c-steps__number 99
+  //-     .c-steps__item
+  //-       .c-steps__number 1
+  //-     .c-steps__item
+  //-       .c-steps__number -323
+  //-     .c-steps__item
+  //-       .c-steps__number 6
+  //-     .c-steps__item
+  //-       .c-steps__number 22
+  //-   .c-steps__array
+  //-     .c-steps__item
+  //-       .c-steps__number -323
+  //-     .c-steps__item
+  //-       .c-steps__number 1
+  //-     .c-steps__item
+  //-       .c-steps__number 99
+  //-     .c-steps__item
+  //-       .c-steps__number 6
+  //-     .c-steps__item
+  //-       .c-steps__number 22
+  //-   .c-steps__array
+  //-     .c-steps__item
+  //-       .c-steps__number 1
+  //-     .c-steps__item
+  //-       .c-steps__number 6
+  //-     .c-steps__item
+  //-       .c-steps__number 99
+  //-     .c-steps__item
+  //-       .c-steps__number 22
+  //-     .c-steps__item
+  //-       .c-steps__number -323
