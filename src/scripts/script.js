@@ -15,8 +15,6 @@ scrollIntoView()
 const handleSearch = (e, tasks) => {
   const query = e.currentTarget.value.trim().toLowerCase()
 
-  console.log(query)
-
   tasks.forEach((task) => {
     if (task.innerText.toLowerCase().includes(query)) task.style.display = ''
     else task.style.display = 'none'
