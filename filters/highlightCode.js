@@ -18,9 +18,21 @@ function highlightCode(text, options = {}) {
     return text
   }
 
-  const { lang = 'text', theme = 'material-theme-ocean' } = options
+  const {
+    lang = 'text',
+    theme = 'material-theme-ocean',
+    inline = false,
+  } = options
 
-  return highlighter.codeToHtml(text, { theme, lang })
+  let highlighted = highlighter.codeToHtml(text, { theme, lang })
+
+  if (inline) {
+    highlighted = highlighted
+      .replace(/<pre[^>]*>/, '') // Remove `<pre>` tag
+      .replace(/<\/pre>/, '') // Remove closing `</pre>`
+  }
+
+  return highlighted
 }
 
 initShiki()
