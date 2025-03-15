@@ -1,27 +1,3 @@
-const names = [
-  'Thomas',
-  'David',
-  'Grace',
-  'Kate',
-  'Frank',
-  'Eve',
-  'Charlie',
-  'Liam',
-  'Sophia',
-  'Henry',
-  'Alice',
-  'Jack',
-  'Noah',
-  'Peter',
-  'Olga',
-  'Quinn',
-  'Mia',
-  'Ivy',
-  'Ryan',
-  'Olivia',
-  'Bob',
-]
-
 /**
  * Swaps the elements at the specified positions in the given array.
  *
@@ -81,12 +57,37 @@ function findIndexByLength(
     : findIndexByLength(targetLength, arr, left, middle - 1)
 }
 
+const names = [
+  'Thomas',
+  'David',
+  'Grace',
+  'Kate',
+  'Frank',
+  'Eve',
+  'Charlie',
+  'Liam',
+  'Sophia',
+  'Henry',
+  'Alice',
+  'Jack',
+  'Noah',
+  'Peter',
+  'Olga',
+  'Quinn',
+  'Mia',
+  'Ivy',
+  'Ryan',
+  'Olivia',
+  'Bob',
+]
+
+document.write(`<p>Масив: [${names.join(', ')}]`)
 selectionSortByLength(names)
 
 const lengthToFind = 5
 const indexOfName5Chars = findIndexByLength(lengthToFind, names)
 
-document.write(`<p>Масив: [${names.join(', ')}]`)
+document.write(`<p>Посортований масив: [${names.join(', ')}]`)
 
 if (indexOfName5Chars === -1)
   document.write(`<p>Масив не містить імені довжиною ${lengthToFind} символи.`)

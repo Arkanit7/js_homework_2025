@@ -37,8 +37,6 @@ function generateNumbersArray(length, minNumber, maxNumber) {
 
 // ## ⚙️ Solution
 
-const numbersList = generateNumbersArray(30, -99, 99)
-
 /**
  * Swaps the elements at the specified positions in the given array.
  *
@@ -96,8 +94,12 @@ function cocktailSort(arr) {
   return [comparisons, exchanges]
 }
 
-const [cocktailComparisons, cocktailExchanges] = cocktailSort(numbersList)
+const numbersList = generateNumbersArray(30, -99, 99)
 
 document.write(`<p>Масив: [${numbersList.join(', ')}]`)
+
+const [cocktailComparisons, cocktailExchanges] = cocktailSort(numbersList)
+
+document.write(`<p>Посортований масив: [${numbersList.join(', ')}]`)
 document.write(`<p>Порівнянь: ${cocktailComparisons}`)
 document.write(`<p>Обмінів: ${cocktailExchanges}`)

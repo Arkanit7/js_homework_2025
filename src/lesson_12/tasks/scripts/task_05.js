@@ -1,27 +1,3 @@
-const names = [
-  'Thomas',
-  'David',
-  'Grace',
-  'Kate',
-  'Frank',
-  'Eve',
-  'Charlie',
-  'Liam',
-  'Sophia',
-  'Henry',
-  'Alice',
-  'Jack',
-  'Noah',
-  'Peter',
-  'Olga',
-  'Quinn',
-  'Mia',
-  'Ivy',
-  'Ryan',
-  'Olivia',
-  'Bob',
-]
-
 /**
  * Swaps the elements at the specified positions in the given array.
  *
@@ -83,12 +59,37 @@ function indexOfUsingBinarySearch(searchValue, arr) {
   return index
 }
 
+const names = [
+  'Thomas',
+  'David',
+  'Grace',
+  'Kate',
+  'Frank',
+  'Eve',
+  'Charlie',
+  'Liam',
+  'Sophia',
+  'Henry',
+  'Alice',
+  'Jack',
+  'Noah',
+  'Peter',
+  'Olga',
+  'Quinn',
+  'Mia',
+  'Ivy',
+  'Ryan',
+  'Olivia',
+  'Bob',
+]
+
+document.write(`<p>Масив: [${names.join(', ')}]`)
 selectionSort(names)
 
 const nameToFind = 'Olga'
 const indexOfOlga = indexOfUsingBinarySearch(nameToFind, names)
 
-document.write(`<p>Масив: [${names.join(', ')}]`)
+document.write(`<p>Посортований масив: [${names.join(', ')}]`)
 
 if (indexOfOlga === -1)
   document.write(`<p>Масив не містить імені "${nameToFind}".`)

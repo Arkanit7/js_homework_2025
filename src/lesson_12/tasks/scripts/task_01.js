@@ -37,8 +37,6 @@ function generateNumbersArray(length, minNumber, maxNumber) {
 
 // ## ⚙️ Solution
 
-const numbersList = generateNumbersArray(30, -99, 99)
-
 /**
  * Swaps the elements at the specified positions in the given array.
  *
@@ -56,7 +54,7 @@ function swap(arr, i, j) {
  * @param {number[]} arr - The array to be sorted.
  * @returns {[number, number]} An array where the first element is the number of comparisons and the second element is the number of exchanges.
  */
-function bubleSort(arr) {
+function bubbleSort(arr) {
   let exchanges = 0
   let comparisons = 0
 
@@ -68,7 +66,7 @@ function bubleSort(arr) {
     for (let i = 1; i <= right; i++) {
       if (arr[i] < arr[i - 1]) {
         swap(arr, i, i - 1)
-        newRight = i
+        newRight = i - 1
         exchanges++
       }
       comparisons++
@@ -80,8 +78,12 @@ function bubleSort(arr) {
   return [comparisons, exchanges]
 }
 
-const [bubbleComparisons, bubbleExchanges] = bubleSort(numbersList)
+const numbersList = generateNumbersArray(30, -99, 99)
 
 document.write(`<p>Масив: [${numbersList.join(', ')}]`)
+
+const [bubbleComparisons, bubbleExchanges] = bubbleSort(numbersList)
+
+document.write(`<p>Посортований масив: [${numbersList.join(', ')}]`)
 document.write(`<p>Порівнянь: ${bubbleComparisons}`)
 document.write(`<p>Обмінів: ${bubbleExchanges}`)

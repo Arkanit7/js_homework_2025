@@ -37,8 +37,6 @@ function generateNumbersArray(length, minNumber, maxNumber) {
 
 // ## ⚙️ Solution
 
-const numbersList = generateNumbersArray(30, -99, 99)
-
 /**
  * Sorts an array using the insertion sort algorithm and counts the number of comparisons and exchanges made.
  *
@@ -69,8 +67,12 @@ function insertionSort(arr) {
   return [comparisons, exchanges]
 }
 
-const [insertionComparisons, insertionExchanges] = insertionSort(numbersList)
+const numbersList = generateNumbersArray(30, -99, 99)
 
 document.write(`<p>Масив: [${numbersList.join(', ')}]`)
+
+const [insertionComparisons, insertionExchanges] = insertionSort(numbersList)
+
+document.write(`<p>Посортований масив: [${numbersList.join(', ')}]`)
 document.write(`<p>Порівнянь: ${insertionComparisons}`)
 document.write(`<p>Обмінів: ${insertionExchanges}`)

@@ -106,7 +106,7 @@ function createBubleSortScheme(arr) {
 
       if (arrCopy[i] < arrCopy[i - 1]) {
         swap(arrCopy, i, i - 1)
-        newRight = i
+        newRight = i - 1
         html += createComparisonStage(arrCopy, 'blue', i, i - 1)
       }
     }
