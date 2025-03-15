@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "target": "ESNext",
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "moduleDetection": "force"
+  }
+}

@@ -49,7 +49,8 @@
     "stylelint-config-standard-scss": "^14.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
     "stylelint-order": "^6.0.4",
-    "stylelint-use-logical-spec": "^5.0.1"
+    "stylelint-use-logical-spec": "^5.0.1",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "temml": "^0.10.32"
