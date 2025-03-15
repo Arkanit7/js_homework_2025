@@ -83,7 +83,7 @@ function swap(arr, i, j) {
  * @param {Array} arr - The array to sort.
  * @returns {string} - The markup.
  */
-function createBubleSortScheme(arr) {
+function createBubbleSortScheme(arr) {
   let html = `
     <div>
       <h3 class="u-text-center">Bubble Sort</h3>
@@ -233,7 +233,7 @@ function createComparisonTable(arr, ...sortingSchemeFn) {
 const numbersList = generateNumbersArray(5, -188, 188)
 const comparisonTable = createComparisonTable(
   numbersList,
-  createBubleSortScheme,
+  createBubbleSortScheme,
   createCocktailSortScheme,
   createInsertionSortScheme,
 )
