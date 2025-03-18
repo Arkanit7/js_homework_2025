@@ -34,6 +34,10 @@
   @return map.get($config, "screens", $screen);
 }
 
+@function get-border-width($border-width) {
+  @return map.get($config, "border-width", $border-width);
+}
+
 @function get-border-radius($border-radius) {
   @return map.get($config, "border-radius", $border-radius);
 }

@@ -15,6 +15,8 @@ export default {
           /^l-cubes/,
           /^u-border-red/,
           /^u-border-blue/,
+          /^u-text-pink/,
+          /^u-text-blue/,
         ],
       },
     }),
