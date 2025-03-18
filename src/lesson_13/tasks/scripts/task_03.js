@@ -3,20 +3,24 @@ function getAllTicTacToeCases(board) {
   for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
     for (let colIndex = 0; colIndex < board[rowIndex].length; colIndex++) {
       if (board[rowIndex][colIndex] === ' ') {
-        const boardClone = structuredClone(board)
+        // Create an option with 'X'
+        const boardWithX = structuredClone(board)
+        boardWithX[rowIndex][colIndex] = 'X'
 
-        board[rowIndex][colIndex] = 0
-        boardClone[rowIndex][colIndex] = 'X'
+        // Create an option with '0'
+        const boardWithZero = structuredClone(board)
+        boardWithZero[rowIndex][colIndex] = 0
 
-        const oBoards = getAllTicTacToeCases(board)
-        const xBoards = getAllTicTacToeCases(boardClone)
-
-        return [...oBoards, ...xBoards]
+        // Do the same, but for one empty space less
+        return [
+          ...getAllTicTacToeCases(boardWithX),
+          ...getAllTicTacToeCases(boardWithZero),
+        ]
       }
     }
   }
 
-  return [board]
+  return [board] // Base case
 }
 
 /** @type {(board: any[][]) => boolean} */
@@ -73,7 +77,7 @@ function createMarkupBoard(board) {
 const ticTacToeCase = [
   [' ', ' ', 'X'],
   [' ', ' ', 0],
-  [0, 'X', ' '],
+  [0, ' ', ' '],
 ]
 document.write('<p>Початкова таблиця:')
 document.write(createMarkupBoard(ticTacToeCase))

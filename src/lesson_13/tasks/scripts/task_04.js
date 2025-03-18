@@ -1,22 +1,29 @@
-/** @type {(table: any[][]) => string} */
-function createTable(table) {
-  let markup = '<table>'
+/** @type {(table: string[][]) => string} */
+function createDancePairsTable(pairs) {
+  if (!pairs.length) return '<p>❌ Немає можливих пар</p>'
 
-  for (const row of table) {
+  let markup = `
+    <table>
+      <thead>
+        <tr><th>Хлопець 🕺</th><th>Дівчина 💃</th></tr>
+      </thead>
+      <tbody>`
+
+  for (const pair of pairs) {
     markup += '<tr>'
 
-    for (const col of row) {
-      markup += `<td>${col}</td>`
+    for (const person of pair) {
+      markup += `<td>${person}</td>`
     }
 
     markup += '</tr>'
   }
 
-  return markup + '</table>'
+  return (markup += '</tbody></table>')
 }
 
 /** @type {(boys: string[], girls: string[]) => string[][]} */
-function getAllPairsLoop(boys, girls) {
+function getAllDancePairsLoop(boys, girls) {
   const allPairs = []
 
   for (const boy of boys) {
@@ -29,11 +36,11 @@ function getAllPairsLoop(boys, girls) {
 }
 
 /** @type {(boys: string[], girls: string[]) => string[][]} */
-function getAllPairsRecursive(boys, girls) {
-  if (boys.length === 0 || girls.length === 0) return [[]]
+function getAllDancePairsRecursive(boys, girls) {
+  if (boys.length === 0 || girls.length === 0) return []
 
   const [boy, ...restBoys] = boys
-  const pairsWithoutTheBoy = getAllPairsLoop(restBoys, girls)
+  const pairsWithoutTheBoy = getAllDancePairsRecursive(restBoys, girls)
   const pairsWithTheBoy = girls.map((girl) => [boy, girl])
 
   return [...pairsWithTheBoy, ...pairsWithoutTheBoy]
@@ -42,13 +49,13 @@ function getAllPairsRecursive(boys, girls) {
 const girls = ['Галина', 'Світлана', 'Тетяна', 'Анна']
 const boys = ['Іван', 'Богдан', 'Андрій']
 
-const allPairsLoop = getAllPairsLoop(boys, girls)
+const allPairsLoop = getAllDancePairsLoop(boys, girls)
 console.table(allPairsLoop)
 
-const allPairsRecursive = getAllPairsRecursive(boys, girls)
+const allPairsRecursive = getAllDancePairsRecursive(boys, girls)
 console.table(allPairsRecursive)
 
-const table = createTable(allPairsRecursive)
-document.write('<p>Хлопці 🕺: ' + boys.join(', '))
-document.write('<p>Дівчата 💃: ' + girls.join(', '))
+const table = createDancePairsTable(allPairsRecursive)
+document.write('<p>Хлопці: ' + boys.join(', '))
+document.write('<p>Дівчата: ' + girls.join(', '))
 document.write(table)
