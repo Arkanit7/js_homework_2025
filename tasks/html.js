@@ -8,12 +8,22 @@ import browserSync from 'browser-sync'
 import process from 'node:process'
 import highlightMath from '../filters/highlightMath.js'
 import highlightCode from '../filters/highlightCode.js'
+import plumber from 'gulp-plumber'
+import notify from 'gulp-notify'
 
 const isProduction = process.argv.includes('--build')
 
 const html = () => {
   return gulp
     .src(paths.src.html)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError({
+          title: 'Gulp Error',
+          message: '<%= error.message %>',
+        }),
+      }),
+    )
     .pipe(newer({ dest: paths.dist.html, ext: '.html' }))
     .pipe(
       pug({

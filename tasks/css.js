@@ -7,6 +7,8 @@ import gulpSass from 'gulp-sass'
 import postcss from 'gulp-postcss'
 import ifPlugin from 'gulp-if'
 import browserSync from 'browser-sync'
+import plumber from 'gulp-plumber'
+import notify from 'gulp-notify'
 
 const isProduction = process.argv.includes('--build')
 const scss = gulpSass(sass)
@@ -14,6 +16,14 @@ const scss = gulpSass(sass)
 const css = () =>
   gulp
     .src(paths.src.css)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError({
+          title: 'Gulp Error',
+          message: '<%= error.message %>',
+        }),
+      }),
+    )
     .pipe(ifPlugin(!isProduction, sourcemaps.init()))
     .pipe(scss().on('error', scss.logError))
     .pipe(ifPlugin(isProduction, postcss()))
