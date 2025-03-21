@@ -39,7 +39,6 @@
     "gulp-pug": "^5.0.0",
     "gulp-sass": "^6.0.0",
     "gulp-sourcemaps": "^3.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-version-number": "^0.2.4",
     "jstransformer-scss": "^2.0.0",
     "postcss-sort-media-queries": "^5.2.0",
