@@ -32,7 +32,7 @@ function getAllPermutations(originList, currentList = []) {
 }
 
 /** @type {(table: any[][]) => string} */
-function createTable(table) {
+function createTableResults(table) {
   let markup = '<table><tr>'
 
   for (let i = 0; i < table[0].length; i++) {
@@ -69,7 +69,7 @@ const allPositions = getAllPermutations(sportsmen)
 
 console.table(allPositions)
 document.write(`<p>Спортсмени: ${sportsmen.join(', ')}`)
-document.write(createTable(allPositions))
+document.write(createTableResults(allPositions))
 
 // document.write(prettyString.join(''))
 
