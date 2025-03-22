@@ -28,8 +28,10 @@ function highlightCode(text, options = {}) {
 
   if (inline) {
     highlighted = highlighted
-      .replace(/<pre[^>]*>/, '') // Remove `<pre>` tag
-      .replace(/<\/pre>/, '') // Remove closing `</pre>`
+      .replace(/<code[^>]*>/, '') // Remove `<code>` tag
+      .replace(/<\/code>/, '') // Remove closing `</code>`
+      .replace('pre', 'code')
+      .replace(/<\/pre>/, '</code>') // Remove closing `</code>`
   }
 
   return highlighted

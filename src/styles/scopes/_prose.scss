@@ -140,4 +140,11 @@
       border-radius: get-border-radius("lg");
     }
   }
+
+  // :not(pre) > code {
+  code:not(pre code) {
+    padding-inline: get-spacing("100");
+    padding-block: get-spacing("50");
+    border-radius: get-border-radius("DEFAULT");
+  }
 }
