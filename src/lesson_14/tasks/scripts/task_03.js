@@ -505,6 +505,7 @@ const briefDescriptionAvailableGoods = availableGoods.map(
     usd_price,
   }),
 )
+
 console.groupCollapsed("Стислий об'єкт доступних товарів:")
 console.table(briefDescriptionAvailableGoods)
 console.groupEnd()

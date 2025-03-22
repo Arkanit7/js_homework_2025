@@ -1,16 +1,12 @@
 @use "../abstracts" as *;
 
 .l-compose {
-  display: grid;
-  grid-template-areas: "aside main";
-  grid-template-columns: 0 1fr;
-
   @include media-width-from("md") {
-    grid-template-columns: 14rem 1fr;
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
   }
 
   &__aside {
-    grid-area: aside;
   }
 
   &__sidebar {
@@ -21,6 +17,5 @@
   }
 
   &__main {
-    grid-area: main;
   }
 }
