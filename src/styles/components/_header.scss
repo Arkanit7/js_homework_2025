@@ -1,33 +1,14 @@
 @use "../abstracts" as *;
 
 .c-header {
-  display: grid;
-  align-content: center;
   block-size: $header-height;
   padding-block: get-spacing("200");
-  border-block-end: 1px solid get-color("stone", "400");
+  border-block-end: get-border-width("DEFAULT") solid get-color("stone", "400");
   background-color: get-color("stone", "200");
 
   @media (prefers-color-scheme: dark) {
-    border-block-end: 1px solid get-color("zinc", "950");
+    border-block-end: get-border-width("DEFAULT") solid get-color("zinc", "950");
     background-color: get-color("zinc", "800");
-  }
-
-  // .c-header__inner
-
-  &__inner {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding-inline: get-spacing("400");
-  }
-
-  // .c-header__sidebar-button
-
-  &__sidebar-button {
-    @include media-width-from("md") {
-      display: none;
-    }
   }
 
   // .c-header__brand
@@ -39,10 +20,6 @@
     align-items: center;
     font-weight: bolder;
     transition: color 0.3s;
-
-    @include media-width-from("md") {
-      flex-basis: 14rem;
-    }
 
     &:focus-visible {
       color: get-color("emerald", "500");
@@ -76,10 +53,5 @@
     @include media-width-to("xs") {
       display: none;
     }
-  }
-
-  // .c-header__search
-
-  &__search {
   }
 }

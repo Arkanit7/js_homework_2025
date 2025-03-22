@@ -1,0 +1,40 @@
+@use "../abstracts" as *;
+
+.l-header {
+  display: flex;
+  gap: get-spacing("400");
+  align-items: center;
+  block-size: 100%;
+  padding-inline: get-spacing("400");
+
+  // .l-header__aside
+
+  &__aside {
+    display: flex;
+    flex: none;
+    gap: get-spacing("400");
+    align-items: center;
+
+    @include media-width-from("md") {
+      flex-basis: 14rem - get-spacing("400");
+    }
+  }
+
+  // .l-header__main
+
+  &__main {
+  }
+
+  // .l-header__sidebar-button
+
+  &__sidebar-button {
+    @include media-width-from("md") {
+      display: none;
+    }
+  }
+
+  // .l-header__search
+
+  &__search {
+  }
+}
