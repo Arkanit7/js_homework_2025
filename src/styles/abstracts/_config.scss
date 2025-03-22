@@ -290,41 +290,42 @@ $config: (
       "950": hsl(343deg 88% 16%),
     ),
   ),
-  "font-family": (
-    "primary": (
-      "Segoe UI",
-      tahoma,
-      geneva,
-      verdana,
-      sans-serif,
+  /* stylelint-disable value-keyword-case */
+    "font-family": (
+      "primary": (
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif,
+      ),
+      "secondary": (
+        Georgia,
+        serif,
+      ),
+      "monospace": (
+        "Consolas",
+        monospace,
+      ),
     ),
-    "secondary": (
-      georgia,
-      serif,
+  /* stylelint-enable value-keyword-case */
+    "font-size": (
+      "50": 0.25rem,
+      "100": 0.5rem,
+      "200": 0.75rem,
+      "250": 0.875rem,
+      "300": 1rem,
+      "350": 1.125rem,
+      "400": 1.25rem,
+      "450": 1.5rem,
+      "500": 1.875rem,
+      "550": 2.25rem,
+      "600": 3rem,
+      "650": 3.75rem,
+      "700": 4.5rem,
+      "800": 6rem,
+      "900": 8rem,
     ),
-    "monospace": (
-      "Consolas",
-      currentColor,
-      monospace,
-    ),
-  ),
-  "font-size": (
-    "50": 0.25rem,
-    "100": 0.5rem,
-    "200": 0.75rem,
-    "250": 0.875rem,
-    "300": 1rem,
-    "350": 1.125rem,
-    "400": 1.25rem,
-    "450": 1.5rem,
-    "500": 1.875rem,
-    "550": 2.25rem,
-    "600": 3rem,
-    "650": 3.75rem,
-    "700": 4.5rem,
-    "800": 6rem,
-    "900": 8rem,
-  ),
   "font-weight": (
     "thin": 100,
     "extralight": 200,
@@ -374,14 +375,22 @@ $config: (
     "9600": 24rem,
   ),
   "screens": (
-    "3xs": 375px,
-    "2xs": 480px,
-    "xs": 576px,
-    "sm": 640px,
-    "md": 768px,
-    "lg": 1024px,
-    "xl": 1280px,
-    "2xl": 1536px,
+    "3xs": 20em,
+    // 320px
+    "2xs": 30em,
+    // 480px
+    "xs": 36em,
+    // 576px
+    "sm": 40em,
+    // 640px
+    "md": 48em,
+    // 768px
+    "lg": 64em,
+    // 1024px
+    "xl": 80em,
+    // 1280px
+    "2xl": 96em,
+    // 1536px
   ),
   "border-width": (
     "DEFAULT": 1px,
@@ -478,7 +487,7 @@ $config: (
     "5xl": 64rem,
     "6xl": 72rem,
     "7xl": 80rem,
-    "prose": 65ch,
+    "prose": 75ch,
     "screen": 100vw,
     "svw": 100svw,
     "lvw": 100lvw,

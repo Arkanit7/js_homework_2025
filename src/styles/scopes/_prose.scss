@@ -1,16 +1,9 @@
 @use "../abstracts" as *;
 
 .s-prose {
-  max-inline-size: get-screen("md");
+  max-inline-size: get-width("prose");
   margin-inline: auto;
-  padding-inline: 1rem;
-
-  @media (prefers-color-scheme: dark) {
-    thead tr,
-    tr:nth-child(even) {
-      background-color: hsl(0deg 0% 20%);
-    }
-  }
+  padding-inline: get-spacing("400");
 
   & :where(h1, h2, h3, h4, h5, h6) {
     font-weight: bolder;
@@ -35,7 +28,7 @@
 
   h2 {
     font-size: get-font-size("400");
-    line-height: get-line-height("thin");
+    line-height: get-line-height("tight");
 
     @include media-width-from("sm") {
       font-size: get-font-size("450");
@@ -43,6 +36,19 @@
 
     @include media-width-from("lg") {
       font-size: get-font-size("500");
+    }
+  }
+
+  h3 {
+    font-size: get-font-size("350");
+    line-height: get-line-height("snug");
+
+    @include media-width-from("sm") {
+      font-size: get-font-size("400");
+    }
+
+    @include media-width-from("lg") {
+      font-size: get-font-size("450");
     }
   }
 
@@ -70,7 +76,7 @@
   input {
     padding-inline: get-spacing("150");
     padding-block: get-spacing("50");
-    border: 1px solid get-color("yellow", "300");
+    border: get-border-width("DEFAULT") solid get-color("yellow", "300");
     border-radius: get-border-radius("lg");
     background-color: get-color("zinc", "300");
 
@@ -112,8 +118,8 @@
 
   td,
   th {
-    padding: 8px;
-    border: 1px solid get-color("zinc", "400");
+    padding: get-spacing("200");
+    border: get-border-width("DEFAULT") solid get-color("zinc", "400");
     text-align: start;
   }
 
