@@ -1,8 +1,8 @@
 @use "../../styles/abstracts" as *;
 
 .receipt {
-  padding-inline: 1rem;
-  padding-block: 2rem;
+  padding-inline: get-spacing("400");
+  padding-block: get-spacing("800");
   border: 2px solid get-color("gray", "600");
   color: black;
   font-family: "Courier New", Courier, monospace;
