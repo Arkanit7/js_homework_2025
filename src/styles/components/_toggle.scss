@@ -1,0 +1,52 @@
+@use "../abstracts" as *;
+
+/* From Uiverse.io by cuzpq */
+.c-toggle {
+  --toggle-size: 8px;
+
+  appearance: none;
+  position: relative;
+  display: block;
+  inline-size: 6.25em;
+  block-size: 3.125em;
+  border-radius: 99em;
+  font-size: var(--toggle-size);
+  background: linear-gradient(
+      to right,
+      get-color("stone", "300") 50%,
+      get-color("zinc", "900") 50%
+    )
+    no-repeat;
+  background-position: 0;
+  background-size: 205%;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.c-toggle::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0.438em;
+  inset-block-start: 0.438em;
+  inline-size: 2.25em;
+  block-size: 2.25em;
+  border-radius: 50%;
+  background: linear-gradient(
+      to right,
+      get-color("stone", "300") 50%,
+      get-color("zinc", "950") 50%
+    )
+    no-repeat;
+  background-position: 100%;
+  background-size: 205%;
+  transition: 0.4s;
+}
+
+.c-toggle:checked::before {
+  inset-inline-start: calc(100% - 2.25em - 0.438em);
+  background-position: 0;
+}
+
+.c-toggle:checked {
+  background-position: 100%;
+}

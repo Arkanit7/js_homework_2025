@@ -12,17 +12,12 @@
   &__aside {
     display: flex;
     flex: none;
-    gap: get-spacing("400");
+    gap: inherit;
     align-items: center;
 
     @include media-width-from("md") {
       flex-basis: 14rem - get-spacing("400");
     }
-  }
-
-  // .l-header__main
-
-  &__main {
   }
 
   // .l-header__sidebar-button
@@ -33,8 +28,23 @@
     }
   }
 
+  // .l-header__main
+
+  &__main {
+    display: flex;
+    flex: auto;
+    gap: inherit;
+    align-items: center;
+  }
+
   // .l-header__search
 
   &__search {
+  }
+
+  // .l-header__theme
+
+  &__theme {
+    margin-inline-start: auto;
   }
 }

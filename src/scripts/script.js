@@ -60,3 +60,22 @@ const sidebarToggle = () => {
 }
 
 sidebarToggle()
+
+function handleToggle() {
+  document.documentElement.classList.toggle('t-dark')
+
+  const isDark = document.documentElement.classList.contains('t-dark')
+
+  localStorage.setItem('theme', isDark ? 'dark' : 'light')
+}
+
+/** @type {HTMLInputElement | null} */
+const themeCheckbox = document.querySelector('.js-theme-toggle')
+
+if (themeCheckbox) {
+  themeCheckbox.addEventListener('click', handleToggle)
+
+  const isDark = document.documentElement.classList.contains('t-dark')
+
+  if (isDark) themeCheckbox.checked = true
+}

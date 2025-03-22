@@ -17,3 +17,5 @@ mixin Header(options = {})
         if (search)
           .l-header__search
             +Search
+        .l-header__theme
+          +Toggle('js-theme-toggle')

@@ -6,7 +6,7 @@
   border-block-end: get-border-width("DEFAULT") solid get-color("stone", "400");
   background-color: get-color("stone", "200");
 
-  @media (prefers-color-scheme: dark) {
+  @include dark-mode {
     border-block-end: get-border-width("DEFAULT") solid get-color("zinc", "950");
     background-color: get-color("zinc", "800");
   }

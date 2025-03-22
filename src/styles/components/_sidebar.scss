@@ -9,7 +9,7 @@
   transition-property: visibility, transform;
   transition-duration: 0.5s;
 
-  @media (prefers-color-scheme: dark) {
+  @include dark-mode {
     background-color: get-color("zinc", "800");
   }
 
