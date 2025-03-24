@@ -1,34 +1,18 @@
-// /** @type {(list: any[]) => any[][]} */
-// function getAllPermutations(list) {
-//   if (list.length === 0) return [[]]
+/** @type {(list: any[]) => any[][]} */
+function getAllPermutations(list) {
+  if (list.length === 0) return [[]]
 
-//   const [firstItem, ...restItems] = list
-//   const permutationsNoFirstItem = getAllPermutations(restItems)
-//   /** @type {any[][]} */
-//   const allPermutations = []
+  const [firstItem, ...restItems] = list
+  const permutationsNoFirstItem = getAllPermutations(restItems)
+  const allPermutations = []
 
-//   for (const perm of permutationsNoFirstItem) {
-//     for (let i = 0; i <= perm.length; i++) {
-//       allPermutations.push(perm.toSpliced(i, 0, firstItem))
-//     }
-//   }
-
-//   return allPermutations
-// }
-
-/** @type {(list: any[], currentList: any[]) => any[][]} */
-function getAllPermutations(originList, currentList = []) {
-  if (originList.length <= currentList.length) return [currentList]
-
-  const permutations = []
-
-  for (const item of originList) {
-    if (currentList.includes(item)) continue
-
-    permutations.push(...getAllPermutations(originList, [item, ...currentList]))
+  for (const perm of permutationsNoFirstItem) {
+    for (let i = 0; i <= perm.length; i++) {
+      allPermutations.push(perm.toSpliced(i, 0, firstItem))
+    }
   }
 
-  return permutations
+  return allPermutations
 }
 
 /** @type {(table: any[][]) => string} */

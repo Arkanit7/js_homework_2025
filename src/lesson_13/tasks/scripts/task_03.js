@@ -1,48 +1,46 @@
-/** @type {(board: any[][]) => any[][][]} */
-function getAllTicTacToeCases(board) {
-  for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
-    for (let colIndex = 0; colIndex < board[rowIndex].length; colIndex++) {
-      if (board[rowIndex][colIndex] === ' ') {
-        // Create an option with 'X'
-        const boardWithX = structuredClone(board)
-        boardWithX[rowIndex][colIndex] = 'X'
+/** @type {(board: string[][], result?: string[][][]) => string[][][]} */
+function getAllTicTacToeCases(board, result = []) {
+  for (let curRow = 0; curRow < board.length; curRow++) {
+    for (let curCol = 0; curCol < board[curRow].length; curCol++) {
+      if (board[curRow][curCol] === ' ') {
+        // Explore an option with 'X'
+        board[curRow][curCol] = 'X'
+        getAllTicTacToeCases(board, result)
 
-        // Create an option with '0'
-        const boardWithZero = structuredClone(board)
-        boardWithZero[rowIndex][colIndex] = 0
+        // Explore an option with 'O'
+        board[curRow][curCol] = 'O'
+        getAllTicTacToeCases(board, result)
 
-        // Do the same, but for one empty space less
-        return [
-          ...getAllTicTacToeCases(boardWithX),
-          ...getAllTicTacToeCases(boardWithZero),
-        ]
+        // Backtrack to the initial option
+        board[curRow][curCol] = ' '
+
+        return result
       }
     }
   }
 
-  return [board] // Base case
+  result.push(structuredClone(board))
+
+  return result
 }
 
-/** @type {(board: any[][]) => boolean} */
+/** @type {(board: string[][]) => boolean} */
 function isValidBoard(board) {
-  let [exes, zeroes] = [0, 0]
-  const [exesThreshold, zeroesThreshold] = [5, 4]
+  let [x, o] = [0, 0]
 
   for (const row of board) {
     for (const col of row) {
-      if (col === 'X') exes++
-      else if (col === 0) zeroes++
-
-      if (exes > exesThreshold || zeroes > zeroesThreshold) return false
+      if (col === 'X') x++
+      else if (col === 'O') o++
     }
   }
 
-  // if (exes !== zeroes && zeroes + 1 !== exes) return false
+  if (x !== o && o + 1 !== x) return false
 
   return true
 }
 
-/** @type {(board: any[][]) => string} */
+/** @type {(board: string[][]) => string} */
 function createMarkupBoard(board) {
   let markup = '<div class="c-board">'
 
@@ -54,7 +52,7 @@ function createMarkupBoard(board) {
         case 'X':
           ;[sign, color] = ['✗', 'pink']
           break
-        case 0:
+        case 'O':
           ;[sign, color] = ['○', 'blue']
           break
         default:
@@ -76,8 +74,8 @@ function createMarkupBoard(board) {
 
 const ticTacToeCase = [
   [' ', ' ', 'X'],
-  [' ', ' ', 0],
-  [0, ' ', ' '],
+  [' ', ' ', 'O'],
+  ['O', ' ', ' '],
 ]
 document.write('<p>Початкова таблиця:')
 document.write(createMarkupBoard(ticTacToeCase))
