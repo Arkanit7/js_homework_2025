@@ -20,7 +20,6 @@
   background-position: 0;
   background-size: 205%;
   cursor: pointer;
-  transition: 0.4s;
 }
 
 .c-toggle::before {
@@ -39,7 +38,6 @@
     no-repeat;
   background-position: 100%;
   background-size: 205%;
-  transition: 0.4s;
 }
 
 .c-toggle:checked::before {
