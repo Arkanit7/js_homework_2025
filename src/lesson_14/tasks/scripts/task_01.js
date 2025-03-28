@@ -111,10 +111,7 @@ const websitesList = [
 // ## Знайти:
 
 // 1. загальну вартість усіх сайтів
-const totalCost = websitesList.reduce(
-  (totalCost, { cost }) => totalCost + cost,
-  0,
-)
+const totalCost = websitesList.reduce((costSum, { cost }) => costSum + cost, 0)
 
 console.log('Загальна вартість:', totalCost)
 
@@ -162,7 +159,7 @@ console.groupEnd()
 
 // 5. знайти рік, коли прибуток був найбільшим
 const profitsByYear = websitesList.reduce(
-  (/** @type {Record<number, number>} */ profits, { releaseYear, cost }) => {
+  (/** @type {Object<string, number>} */ profits, { releaseYear, cost }) => {
     if (releaseYear in profits) profits[releaseYear] += cost
     else profits[releaseYear] = cost
 
@@ -173,30 +170,30 @@ const profitsByYear = websitesList.reduce(
 
 // ---
 /**
- * @param {Record<number, number>} profitsByYear
+ * @param {Object<string, number>} yearProfitMap
  * @returns {number}
  */
-function getMaxYearlyProfit(profitsByYear) {
+function getMaxYearlyProfit(yearProfitMap) {
   let maxYearlyProfit = 0
 
-  for (const year in profitsByYear) {
-    if (profitsByYear[year] > maxYearlyProfit)
-      maxYearlyProfit = profitsByYear[year]
+  for (const year in yearProfitMap) {
+    if (yearProfitMap[year] > maxYearlyProfit)
+      maxYearlyProfit = yearProfitMap[year]
   }
 
   return maxYearlyProfit
 }
 
 /**
- * @param {Record<number, number>} profitsByYear
+ * @param {Object<string, number>} yearProfitMap
  * @returns {string[]}
  */
-function getTheMostProfitableYears(profitsByYear) {
-  const maxYearlyProfit = getMaxYearlyProfit(profitsByYear)
+function getTheMostProfitableYears(yearProfitMap) {
+  const maxYearlyProfit = getMaxYearlyProfit(yearProfitMap)
   const theMostProfitableYears = []
 
-  for (const year in profitsByYear) {
-    if (profitsByYear[year] === maxYearlyProfit)
+  for (const year in yearProfitMap) {
+    if (yearProfitMap[year] === maxYearlyProfit)
       theMostProfitableYears.push(year)
   }
 
@@ -226,9 +223,8 @@ const inexpensiveWebsites = []
 const expensiveWebsites = []
 
 for (const website of websitesList) {
-  website.cost < 1e4
-    ? inexpensiveWebsites.push(website)
-    : expensiveWebsites.push(website)
+  if (website.cost < 1e4) inexpensiveWebsites.push(website)
+  else expensiveWebsites.push(website)
 }
 
 console.groupCollapsed('Сайти, вартість до 10000:')
