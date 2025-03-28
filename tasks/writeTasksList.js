@@ -210,7 +210,7 @@ function writeTasksList() {
   // create scripts
   const scriptsDir = `${paths.srcFolder}lesson_${lessonId.padStart(2, '0')}/tasks/scripts`
 
-  createFileList(scriptsDir, '.js', fromTask, toTask)
+  createFileList(scriptsDir, '.js', fromTask, toTask, () => "'use strict'\n")
 
   return Promise.resolve()
 }
