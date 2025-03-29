@@ -2,6 +2,33 @@
 @use "variables" as *;
 
 $config: (
+  "aspect-ratio": (
+    "auto": auto,
+    "square": 1,
+    "video": "16 / 9",
+  ),
+  "box-shadow": (
+    "sm": 0 1px 2px 0 hsl(0deg 0% 0% / 5%),
+    "DEFAULT": (
+      0 1px 3px 0 hsl(0deg 0% 0% / 10%),
+      0 1px 2px -1px hsl(0deg 0% 0% / 10%),
+    ),
+    "md": (
+      0 4px 6px -1px hsl(0deg 0% 0% / 10%),
+      0 2px 4px -2px hsl(0deg 0% 0% / 10%),
+    ),
+    "lg": (
+      0 10px 15px -3px hsl(0deg 0% 0% / 10%),
+      0 4px 6px -4px hsl(0deg 0% 0% / 10%),
+    ),
+    "xl": (
+      0 20px 25px -5px hsl(0deg 0% 0% / 10%),
+      0 8px 10px -6px hsl(0deg 0% 0% / 10%),
+    ),
+    "2xl": 0 25px 50px -12px hsl(0deg 0% 0% / 25%),
+    "inner": inset 0 2px 4px 0 hsl(0deg 0% 0% / 5%),
+    "none": none,
+  ),
   "color": (
     "slate": (
       "50": hsl(210deg 40% 98%),
@@ -290,42 +317,42 @@ $config: (
       "950": hsl(343deg 88% 16%),
     ),
   ),
-  /* stylelint-disable value-keyword-case */
-    "font-family": (
-      "primary": (
-        "Segoe UI",
-        Tahoma,
-        Geneva,
-        Verdana,
-        sans-serif,
-      ),
-      "secondary": (
-        Georgia,
-        serif,
-      ),
-      "monospace": (
-        "Consolas",
-        monospace,
-      ),
+
+  "font-family": (
+    "primary": (
+      "Segoe UI",
+      tahoma,
+      geneva,
+      verdana,
+      sans-serif,
     ),
-  /* stylelint-enable value-keyword-case */
-    "font-size": (
-      "50": 0.25rem,
-      "100": 0.5rem,
-      "200": 0.75rem,
-      "250": 0.875rem,
-      "300": 1rem,
-      "350": 1.125rem,
-      "400": 1.25rem,
-      "450": 1.5rem,
-      "500": 1.875rem,
-      "550": 2.25rem,
-      "600": 3rem,
-      "650": 3.75rem,
-      "700": 4.5rem,
-      "800": 6rem,
-      "900": 8rem,
+    "secondary": (
+      georgia,
+      serif,
     ),
+    "monospace": (
+      "Consolas",
+      monospace,
+    ),
+  ),
+
+  "font-size": (
+    "50": 0.25rem,
+    "100": 0.5rem,
+    "200": 0.75rem,
+    "250": 0.875rem,
+    "300": 1rem,
+    "350": 1.125rem,
+    "400": 1.25rem,
+    "450": 1.5rem,
+    "500": 1.875rem,
+    "550": 2.25rem,
+    "600": 3rem,
+    "650": 3.75rem,
+    "700": 4.5rem,
+    "800": 6rem,
+    "900": 8rem,
+  ),
   "font-weight": (
     "thin": 100,
     "extralight": 200,
@@ -376,21 +403,20 @@ $config: (
   ),
   "screens": (
     "3xs": 20em,
-    // 320px
+
     "2xs": 30em,
-    // 480px
+
     "xs": 36em,
-    // 576px
+
     "sm": 40em,
-    // 640px
+
     "md": 48em,
-    // 768px
+
     "lg": 64em,
-    // 1024px
+
     "xl": 80em,
-    // 1280px
+
     "2xl": 96em,
-    // 1536px
   ),
   "border-width": (
     "DEFAULT": 1px,

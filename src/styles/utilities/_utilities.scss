@@ -3,11 +3,21 @@
 
 /* { utility classes } */
 
+@each $key, $value in map.get($config, "aspect-ratio") {
+  .u-aspect-#{$key} {
+    aspect-ratio: $value;
+  }
+}
+
 @each $key, $value in map.get($config, "spacing") {
   .u-flow-#{$key} {
     & > * + * {
       margin-block-start: $value;
     }
+  }
+
+  .u-m-#{$key} {
+    margin: $value;
   }
 
   .u-mb-#{$key} {
@@ -32,6 +42,10 @@
 
   .u-mie-#{$key} {
     margin-inline-end: $value;
+  }
+
+  .u-p-#{$key} {
+    padding: $value;
   }
 
   .u-pb-#{$key} {
@@ -119,10 +133,44 @@
   }
 }
 
+@each $key, $value in map.get($config, "border-radius") {
+  .u-rounded-#{$key} {
+    border-radius: $value;
+  }
+}
+
 @each $key, $value in map.get($config, "overflow") {
   .u-overflow-#{$key} {
     overflow: $value;
   }
+}
+
+.u-block {
+  display: block;
+}
+
+.u-inline-block {
+  display: inline-block;
+}
+
+.u-inline {
+  display: inline;
+}
+
+.u-hidden {
+  display: none;
+}
+
+.u-sr-only {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border-width: 0;
+  white-space: nowrap;
 }
 
 .u-uppercase {
