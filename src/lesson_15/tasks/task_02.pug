@@ -1,0 +1,45 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 2)
+
+
+block content
+  p= currentTask.description
+  table
+    thead
+      tr
+        th(colspan="2") Авто
+    tbody
+      tr
+        td(rowspan="5") Поля (властивості)
+        td Марка
+      tr
+        td Розмір бака
+      tr
+        td Кількість наявних літрів
+      tr
+        td Кількість місць
+      tr
+        td Кількість пасажирів
+
+      tr
+        td(rowspan="4") Методи (дії)
+        td Заправка на вказану кількість літрів
+      tr
+        td Виведення кількості пасажирів
+      tr
+        td Додавання пасажирів
+      tr
+        td Висадка пасажирів
+
+  hr
+  h2 Рішення:
+
+  script(src="./scripts/task_02.js")
+
+  include:code(lang="javascript") ./scripts/task_02.js

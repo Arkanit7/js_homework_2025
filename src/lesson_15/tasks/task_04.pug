@@ -1,0 +1,31 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 4)
+
+
+block content
+  p= currentTask.description
+  table
+    tbody
+      tr
+        td Поля
+        td Масив об'єктів (графічних зображень та посилань на сайти)
+
+      tr
+        td(rowspan="2") Методи
+        td Метод випадкового вибору об'єкта (графічного зображення та посилання)
+
+      tr
+        td Метод виведення випадкового банера
+
+  hr
+  h2 Рішення:
+
+  script(src="./scripts/task_04.js")
+
+  include:code(lang="javascript") ./scripts/task_04.js

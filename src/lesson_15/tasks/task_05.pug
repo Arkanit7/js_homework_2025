@@ -1,0 +1,36 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 5)
+
+
+block content
+  p= currentTask.description
+  table
+    tbody
+      tr
+        td(rowspan="2") Поля
+        td Масив імен хлопців
+      tr
+        td Масив імен дівчат
+
+      tr
+        td(rowspan="4") Методи
+        td Метод випадкового вибору імені хлопця
+      tr
+        td Метод випадкового вибору імені дівчини
+      tr
+        td Метод виведення пари для танців
+      tr
+        td Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+
+  hr
+  h2 Рішення:
+
+  script(src="./scripts/task_05.js")
+
+  include:code(lang="javascript") ./scripts/task_05.js

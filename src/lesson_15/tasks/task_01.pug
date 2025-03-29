@@ -1,0 +1,33 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 1)
+
+
+block content
+  p= currentTask.description
+
+  table
+    thead
+      tr
+        th(colspan="2") Тир
+    tbody
+      tr
+        td Поля (властивості)
+        td Масив, у якому зберігається поле з зайцями
+      tr
+        td(rowspan="2") Методи (дії)
+        td Метод пострілу (задається позиція пострілу)
+      tr
+        td Виведення ігрового поля
+
+  hr
+  h2 Рішення:
+
+  script(src="./scripts/task_01.js")
+
+  include:code(lang="javascript") ./scripts/task_01.js
