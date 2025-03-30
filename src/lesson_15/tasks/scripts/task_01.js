@@ -43,4 +43,13 @@ ShootingRange.prototype.displayField = function () {
 
 const rabbitShootingRange = new ShootingRange(10)
 
-rabbitShootingRange.displayField().shoot(0).displayField()
+try {
+  rabbitShootingRange
+    .displayField()
+    .shoot(0)
+    .displayField()
+    .shoot(4)
+    .displayField()
+} catch (error) {
+  console.error('Caught', error)
+}
