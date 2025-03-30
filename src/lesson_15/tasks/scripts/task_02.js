@@ -6,10 +6,13 @@
  * @throws {Error} If the number is negative.
  */
 function ensurePositive(value, label) {
-  if (value < 0) throw new Error(`${label} must be a positive number.`)
+  if (value < 0) throw new Error(label)
 }
 
 /**
+ * A constructor for a car, that enables refueling and
+ * managing passengers of the car.
+ *
  * @constructor
  * @param {string} brand
  * @param {number} fuelTankVolumeL
@@ -41,7 +44,7 @@ function Auto(
 
 /** @type {(liters: number) => this} */
 Auto.prototype.refuel = function (liters) {
-  ensurePositive(liters, "Can't add a negative amount.")
+  ensurePositive(liters, "Can't add a negative amount of liters.")
 
   const newFuelVolumeL = liters + this.fuelVolumeL
 
@@ -68,7 +71,10 @@ Auto.prototype.displayFuelAmount = function () {
 
 /** @type {(passengersAmountToFit: number) => this} */
 Auto.prototype.addPassengers = function (passengersAmountToFit) {
-  ensurePositive(passengersAmountToFit, "Can't add a negative amount.")
+  ensurePositive(
+    passengersAmountToFit,
+    "Can't add a negative amount of passengers.",
+  )
 
   const newPassengersAmount = passengersAmountToFit + this.passengersAmount
 
@@ -82,7 +88,10 @@ Auto.prototype.addPassengers = function (passengersAmountToFit) {
 
 /** @type {(passengersAmountToRemove: number) => this} */
 Auto.prototype.removePassengers = function (passengersAmountToRemove) {
-  ensurePositive(passengersAmountToRemove, "Can't remove a negative amount.")
+  ensurePositive(
+    passengersAmountToRemove,
+    "Can't remove a negative amount of passengers.",
+  )
 
   if (passengersAmountToRemove > this.passengersAmount)
     throw new Error("Can't remove more passengers than present.")

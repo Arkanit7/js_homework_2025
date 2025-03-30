@@ -12,6 +12,11 @@ function generateIntegerInRange(from, to) {
   return from + Math.floor(Math.random() * (to - from + 1))
 }
 
+/**
+ * Represents a banner manager that handles a list of site banners and
+ * provides functionality to display random banners without immediate
+ * repetition.
+ */
 class Banner {
   /** @param {SiteBanner[]} bannersList */
   constructor(bannersList) {

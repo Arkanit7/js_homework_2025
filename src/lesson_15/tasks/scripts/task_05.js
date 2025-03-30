@@ -5,6 +5,10 @@ function generateIntegerInRange(from, to) {
   return from + Math.floor(Math.random() * (to - from + 1))
 }
 
+/**
+ * The DanceManager class is responsible for managing a dance event
+ * where random pairs of boys and girls are displayed as dancing together.
+ */
 class DanceManager {
   /**
    * @param {string[]} boys
