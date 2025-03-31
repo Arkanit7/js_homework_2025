@@ -52,9 +52,11 @@ block frontmatter
 
 block content
   p= currentTask.description
+
   hr
   h2 Рішення:
   script(src="./scripts/task_${id.padStart(2, '0')}.js")
+  include:code(lang="javascript") ./scripts//task_${id.padStart(2, '0')}.js
 `
 }
 
@@ -170,7 +172,7 @@ function createFileList(
   toNumber,
   contentFn = () => '',
 ) {
-  for (let i = fromNumber; i < toNumber; i++) {
+  for (let i = fromNumber; i <= toNumber; i++) {
     if (i - fromNumber > 100)
       throw new Error('[Safety] Writing too many files!')
 
@@ -210,7 +212,7 @@ function writeTasksList() {
   // create scripts
   const scriptsDir = `${paths.srcFolder}lesson_${lessonId.padStart(2, '0')}/tasks/scripts`
 
-  createFileList(scriptsDir, '.js', fromTask, toTask, () => "'use strict'\n")
+  createFileList(scriptsDir, '.js', fromTask, toTask, () => "'use strict'\n\n")
 
   return Promise.resolve()
 }
