@@ -25,11 +25,24 @@ const objectTwo = {
   },
 }
 
-const productInRange = objectTwo.calcProductInRange.call(objectOne, -50, 50)
+const productInRangeObjOne = objectTwo.calcProductInRange.call(
+  objectOne,
+  -50,
+  50,
+)
 console.log(
   '🎯 Добуток чисел з objectOne у діапазоні [-50, 50]:',
-  productInRange,
+  productInRangeObjOne,
 )
 
-const numbersSum = objectOne.calcSum.apply(objectTwo)
-console.log('➕ Сума чисел з objectTwo:', numbersSum)
+const productInRangeObjTwo = objectTwo.calcProductInRange(-50, 50)
+console.log(
+  '🎯 Добуток чисел з objectTwo у діапазоні [-50, 50]:',
+  productInRangeObjTwo,
+)
+
+const sumObjOne = objectOne.calcSum()
+console.log('➕ Сума чисел з objectOne:', sumObjOne)
+
+const sumObjTwo = objectOne.calcSum.apply(objectTwo)
+console.log('➕ Сума чисел з objectTwo:', sumObjTwo)

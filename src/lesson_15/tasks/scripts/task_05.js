@@ -39,7 +39,7 @@ class DanceManager {
   /**
    * @param {number} [intervalSeconds = 1]
    */
-  run(intervalSeconds = 1) {
+  run(intervalSeconds = 5) {
     if (this.interval) {
       console.warn(`${this.constructor.name} вже запущено.`)
       return
@@ -64,7 +64,7 @@ const boys = ['Іван', 'Богдан', 'Андрій', 'Петро', 'Сте�
 const girls = ['Галина', 'Світлана', 'Тетяна', 'Анна', 'Христина']
 const privateDanceClub = new DanceManager(boys, girls)
 
-privateDanceClub.run(5)
+privateDanceClub.run()
 
 setTimeout(() => {
   privateDanceClub.stop()

@@ -13,7 +13,6 @@ class MultChecker {
   /** @param {number} primaryNumber - A number to conduct quizzes with. */
   constructor(primaryNumber) {
     this.primaryNumber = primaryNumber
-    this.secondaryNumber = 0
     this.correctAnswers = 0
     this.incorrectAnswers = 0
   }
@@ -27,11 +26,11 @@ class MultChecker {
    * question as a string and the correct answer as a number.
    */
   getQuestion(from = 1, to = 9) {
-    this.secondaryNumber = generateIntegerInRange(from, to)
+    const secondaryNumber = generateIntegerInRange(from, to)
 
     return {
-      question: `Скільки буде ${this.primaryNumber} x ${this.secondaryNumber}?`,
-      answer: this.primaryNumber * this.secondaryNumber,
+      question: `Скільки буде ${this.primaryNumber} x ${secondaryNumber}?`,
+      answer: this.primaryNumber * secondaryNumber,
     }
   }
 
@@ -80,5 +79,5 @@ class MultChecker {
 if (confirm('Почати тестування?')) {
   const hardMultiplicationQuiz = new MultChecker(9)
 
-  hardMultiplicationQuiz.makeQuiz(4)
+  hardMultiplicationQuiz.makeQuiz(3)
 }
