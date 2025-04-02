@@ -1,7 +1,7 @@
 'use strict'
 
 class Bill {
-  #worth = 0
+  #worth = 1
 
   get worth() {
     return this.#worth
@@ -80,32 +80,50 @@ class TBankomat {
   /**
    * @param {number} toWithdraw
    */
+  getRequiredBills(toWithdraw) {
+    const bills = []
+
+    for (const bill of this.bills) {
+      if (toWithdraw === 0) break
+
+      const { worth, amount } = bill
+      const possibleAmount = Math.min(Math.floor(toWithdraw / worth), amount)
+
+      if (possibleAmount) {
+        bills.push({ bill, possibleAmount })
+        toWithdraw -= worth * possibleAmount
+      }
+    }
+
+    return toWithdraw === 0 ? bills : []
+  }
+
+  /**
+   * @param {number} toWithdraw
+   */
   withdrawal(toWithdraw) {
     if (toWithdraw <= 0)
       throw new Error('You can only withdraw positive amounts.')
     if (toWithdraw < this.minimalSum)
-      throw new Error(`You can't withdraw less, than ${this.minimalSum}.`)
+      throw new Error(`Minimum withdrawal amount is: $${this.minimalSum}.`)
     if (toWithdraw > this.maximalSum)
       throw new Error(
-        `There's not enough money. Maximal available sum: ${this.maximalSum}.`,
+        `Insufficient funds. Maximum available: $${this.maximalSum}.`,
       )
 
-    let leftToWithdraw = toWithdraw
+    const billsToWithdraw = this.getRequiredBills(toWithdraw)
 
-    for (let i = 0; i < this.bills.length && leftToWithdraw > 0; i++) {
-      const { worth, amount } = this.bills[i]
+    if (billsToWithdraw.length === 0)
+      throw new Error(`Cannot dispense ${toWithdraw}. Try a different amount.`)
 
-      if (amount === 0 || worth > leftToWithdraw) continue
+    let log = ''
 
-      leftToWithdraw -= worth
-      this.#bills[i].amount--
-      i--
+    for (const { bill, possibleAmount } of billsToWithdraw) {
+      bill.amount -= possibleAmount
+      log += `Withdrawn ${possibleAmount} x 💲${bill.worth}\n`
     }
 
-    if (leftToWithdraw !== 0)
-      throw new Error(
-        `Can't withdraw ${toWithdraw}. Closest available sum ${toWithdraw - leftToWithdraw}`,
-      )
+    return log
   }
 
   toString() {
@@ -121,23 +139,34 @@ const billsList = [
   new Bill(5, 100),
   new Bill(10, 100),
   new Bill(20, 100),
-  new Bill(50, 100),
+  new Bill(50, 1000),
   new Bill(100, 1000),
   new Bill(200, 10000),
 ]
 
-const privatBankATM = new TBankomat(billsList)
+const personalBankATM = new TBankomat(billsList)
 
-try {
-  console.log(privatBankATM.minimalSum)
-  console.log(privatBankATM.maximalSum)
-  console.log(String(privatBankATM))
-  privatBankATM.withdrawal(947555)
-  console.log(privatBankATM.maximalSum)
-  console.log(String(privatBankATM))
-  privatBankATM.withdrawal(257555)
-  console.log(privatBankATM.maximalSum)
-  console.log(String(privatBankATM))
-} catch (error) {
-  console.error('Caught', error)
+if (confirm('Почати тестування?')) {
+  while (personalBankATM.minimalSum) {
+    const userWants = prompt(
+      `🏧 Personal Bank ATM 🏧\nAvailable sum: 💲${personalBankATM.maximalSum}\nEnter money amount:`,
+      '0',
+    )
+
+    if (userWants === null) break
+
+    const userWantAmount = parseInt(userWants)
+
+    if (!isFinite(userWantAmount)) {
+      alert('⚠️ Incorrect input. Please, enter a valid number.')
+      continue
+    }
+
+    try {
+      const log = personalBankATM.withdrawal(userWantAmount)
+      alert(log)
+    } catch (error) {
+      alert('⚠️ ' + error)
+    }
+  }
 }
