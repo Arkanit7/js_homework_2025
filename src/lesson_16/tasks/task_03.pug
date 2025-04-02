@@ -1,0 +1,39 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 3)
+
+
+block content
+  table
+    thead
+      tr
+        th(colspan="2") Об’єкт “Фірма” (використати члени-класи)
+
+    tbody
+      tr
+        td(rowspan="4") Поля
+        td назва фірми;
+      tr
+        td дата заснування (рік, місяць);
+      tr
+        td послуги (назва послуги, вартість, термін виконання);
+      tr
+        td адреси філіалів (країна, місто, вулиця, номер будинку)
+
+      tr
+        td(rowspan="3") Методи
+        td визначення кількості років існування фірми;
+      tr
+        td виведення всіх філіалів фірми у вказаному місті;
+      tr
+        td виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_03.js")
+  include:code(lang="javascript") ./scripts//task_03.js
