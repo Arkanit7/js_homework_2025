@@ -41,15 +41,14 @@ class TBankomat {
       )
 
     let leftToWithdraw = toWithdraw
-    const billsCopy = structuredClone(this.#bills)
 
-    for (let i = 0; i < billsCopy.length && leftToWithdraw > 0; i++) {
-      const [worth, amount] = billsCopy[i]
+    for (let i = 0; i < this.#bills.length && leftToWithdraw > 0; i++) {
+      const [worth, amount] = this.#bills[i]
 
       if (amount === 0 || worth > leftToWithdraw) continue
 
       leftToWithdraw -= worth
-      billsCopy[i][1]--
+      this.#bills[i][1]--
       i--
     }
 
@@ -57,8 +56,6 @@ class TBankomat {
       throw new Error(
         `Can't withdraw ${toWithdraw}. Closest available sum ${toWithdraw - leftToWithdraw}`,
       )
-
-    this.#bills = billsCopy
   }
 
   toString() {
