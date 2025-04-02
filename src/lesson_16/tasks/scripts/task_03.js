@@ -42,7 +42,7 @@ class Service {
   }
 
   set costDollars(newCostDollars) {
-    if (newCostDollars <= 0) throw new Error("A cost can't be negative.")
+    if (newCostDollars < 0) throw new Error("A cost can't be negative.")
 
     this.#costDollars = newCostDollars
   }
@@ -55,7 +55,7 @@ class Service {
   }
 
   set durationDays(newDurationDays) {
-    if (newDurationDays <= 0) throw new Error("A duration can't be negative.")
+    if (newDurationDays < 0) throw new Error("A duration can't be negative.")
 
     this.#durationDays = newDurationDays
   }
