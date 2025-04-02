@@ -78,7 +78,7 @@ class Company {
    * @param {Service[]} services - List of services provided by the company.
    * @param  {Branch[]} branches -List of all company's branches.
    */
-  constructor(brand, founded, services, branches) {
+  constructor(brand, founded, services = [], branches = []) {
     if (founded.year < 1) throw new Error('A foundation year must be valid.')
     if (founded.month < 1 || founded.month > 12)
       throw new Error('A foundation month must be valid.')

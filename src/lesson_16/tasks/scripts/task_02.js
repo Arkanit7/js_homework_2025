@@ -1,71 +1,94 @@
 'use strict'
 
+/**
+ * @param {number} value
+ * @param {string} errorLabel
+ */
+function ensurePositive(value, errorLabel = '') {
+  if (value < 0) throw new Error(errorLabel)
+}
+
 class TMoney {
-  #balanceUSD
-  #USDtoUAH
+  // exchange rate
+  #USDToUAHRate = 0
+
+  get USDToUAHRate() {
+    return this.#USDToUAHRate
+  }
+
+  set USDToUAHRate(newUSDToUAHRate) {
+    ensurePositive(newUSDToUAHRate, "Exchange rate can't be negative.")
+
+    this.#USDToUAHRate = newUSDToUAHRate
+  }
+
+  // ===========================================================================
+  // balance
+  #balanceUSD = 0
+
+  get balanceUAH() {
+    return this.#balanceUSD * this.USDToUAHRate
+  }
+
+  set balanceUAH(newUAHBalance) {
+    ensurePositive(newUAHBalance, "Balance can't be negative.")
+
+    this.#balanceUSD = newUAHBalance / this.USDToUAHRate
+  }
+
+  // ===========================================================================
 
   /**
-   * @param {number} balanceUSD
-   * @param {number} USDtoUAH
+   * @param {number} balanceUAH
+   * @param {number} USDToUAHRate
    */
-  constructor(balanceUSD, USDtoUAH) {
-    if (balanceUSD < 0) throw new Error("Balance can't be negative.")
-    if (USDtoUAH < 0) throw new Error("Exchange rate can't be negative.")
-
-    this.#balanceUSD = balanceUSD
-    this.#USDtoUAH = USDtoUAH
-  }
-
-  get balanceUSD() {
-    return this.#balanceUSD
-  }
-
-  get USDtoUAH() {
-    return this.#USDtoUAH
+  constructor(balanceUAH, USDToUAHRate) {
+    this.USDToUAHRate = USDToUAHRate // must be set before the balance
+    this.balanceUAH = balanceUAH
   }
 
   /**
    * @param {number} amountUAH
    */
   refill(amountUAH) {
-    if (amountUAH < 0) throw new Error("Can't refill a negative amount.")
+    ensurePositive(amountUAH, "Can't refill a negative amount.")
 
-    this.#balanceUSD += amountUAH / this.#USDtoUAH
+    this.balanceUAH += amountUAH
   }
 
   /**
    * @param {number} amountUAH
    */
   withdrawal(amountUAH) {
-    if (amountUAH < 0) throw new Error("Can't withdraw a negative amount.")
+    ensurePositive(amountUAH, "Can't withdraw a negative amount.")
 
-    const newBalanceUSD = this.balanceUSD - amountUAH / this.#USDtoUAH
-
-    if (newBalanceUSD < 0) throw new Error('Not enough money.')
-
-    this.#balanceUSD = newBalanceUSD
+    this.balanceUAH -= amountUAH
   }
 
-  getUSDtoUAHBalanceChange(changeUAH = 100) {
-    if (this.balanceUSD === 0) return 0
+  getUSDToUAHRateForBallanceChange(changeUAH = 100) {
+    if (this.#balanceUSD === 0)
+      throw new Error("Can't predict the exchange rate for an empty balance!")
 
-    const targetBalance = this.balanceUSD * this.#USDtoUAH + changeUAH
-
-    return targetBalance / this.balanceUSD
+    return (this.balanceUAH + changeUAH) / this.#balanceUSD
   }
 
   toString() {
-    return `Balance: $${this.balanceUSD.toFixed(2)}; Exchange rate: ${this.#USDtoUAH.toFixed(2)}`
+    return `Balance: ${this.balanceUAH.toFixed(2)} UAH; Exchange rate: ${this.USDToUAHRate.toFixed(2)}`
   }
 }
 
 try {
-  const myMoneyManager = new TMoney(100, 41.41)
+  const exchanger = new TMoney(50000, 41.41)
+  console.log(String(exchanger))
+  exchanger.refill(2500)
+  console.log(String(exchanger))
+  exchanger.withdrawal(51500)
+  console.log(String(exchanger))
 
-  console.log(myMoneyManager.getUSDtoUAHBalanceChange(500))
-  myMoneyManager.refill(500)
-  myMoneyManager.withdrawal(2500)
-  console.log(String(myMoneyManager))
+  const goodUSDToUAHRate = exchanger.getUSDToUAHRateForBallanceChange(100)
+
+  exchanger.USDToUAHRate = goodUSDToUAHRate
+  console.log(String(exchanger))
 } catch (error) {
   console.error('Caught', error)
 }
