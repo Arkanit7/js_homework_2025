@@ -20,8 +20,8 @@ class Branch {
 }
 
 class Service {
-  #costDollars = 0
-  #durationDays = 0
+  #costDollars
+  #durationDays
 
   /**
    * @param {string} title
@@ -70,7 +70,7 @@ class Service {
 
 class Company {
   #founded
-  #brand = ''
+  #brand
 
   /**
    * @param {string} brand - The company name.

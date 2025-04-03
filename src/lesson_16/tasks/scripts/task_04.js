@@ -1,7 +1,17 @@
 'use strict'
 
 class Bill {
-  #worth = 1
+  #worth
+  #amount
+
+  /**
+   * @param {number} worth
+   * @param {number} amount
+   */
+  constructor(worth, amount) {
+    this.worth = worth
+    this.amount = amount
+  }
 
   get worth() {
     return this.#worth
@@ -13,8 +23,6 @@ class Bill {
     this.#worth = newWorth
   }
 
-  #amount = 0
-
   get amount() {
     return this.#amount
   }
@@ -23,15 +31,6 @@ class Bill {
     if (newAmount < 0) throw new Error("Amount of bills can't be negative.")
 
     this.#amount = newAmount
-  }
-
-  /**
-   * @param {number} worth
-   * @param {number} amount
-   */
-  constructor(worth, amount) {
-    this.worth = worth
-    this.amount = amount
   }
 
   toString() {
@@ -45,7 +44,13 @@ class Bill {
 
 class TBankomat {
   /** @type {Bill[]} newBills */
-  #bills = []
+  #bills
+
+  /** @param {Bill[]} bills */
+  constructor(bills) {
+    // store an array of bills by worth in descending order
+    this.bills = bills.sort((billA, billB) => billB.worth - billA.worth)
+  }
 
   get bills() {
     return this.#bills
@@ -57,12 +62,6 @@ class TBankomat {
       throw new Error('A bill must be an instance of the Bill class.')
 
     this.#bills = newBills
-  }
-
-  /** @param {Bill[]} bills */
-  constructor(bills = []) {
-    // store an array of bills by worth in descending order
-    this.bills = bills.sort((billA, billB) => billB.worth - billA.worth)
   }
 
   get minimalSum() {

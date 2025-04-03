@@ -1,9 +1,9 @@
 'use strict'
 
 class TDate {
-  #year = 1
-  #month = 1
-  #day = 1
+  #year
+  #month
+  #day
 
   /**
    * Creates an instance of a date object.

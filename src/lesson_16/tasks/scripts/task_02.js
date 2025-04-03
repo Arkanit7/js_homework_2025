@@ -9,8 +9,20 @@ function ensurePositive(value, errorLabel = '') {
 }
 
 class TMoney {
-  // exchange rate
-  #USDToUAHRate = 0
+  #USDToUAHRate
+  #balanceUSD
+
+  /**
+   * @param {number} balanceUAH
+   * @param {number} USDToUAHRate
+   */
+  constructor(balanceUAH, USDToUAHRate) {
+    this.USDToUAHRate = USDToUAHRate // must be set before the balance
+    this.balanceUAH = balanceUAH
+  }
+
+  // ===========================================================================
+  // Exchange rate
 
   get USDToUAHRate() {
     return this.#USDToUAHRate
@@ -23,8 +35,7 @@ class TMoney {
   }
 
   // ===========================================================================
-  // balance
-  #balanceUSD = 0
+  // Balance
 
   get balanceUAH() {
     return this.#balanceUSD * this.USDToUAHRate
@@ -37,15 +48,6 @@ class TMoney {
   }
 
   // ===========================================================================
-
-  /**
-   * @param {number} balanceUAH
-   * @param {number} USDToUAHRate
-   */
-  constructor(balanceUAH, USDToUAHRate) {
-    this.USDToUAHRate = USDToUAHRate // must be set before the balance
-    this.balanceUAH = balanceUAH
-  }
 
   /**
    * @param {number} amountUAH
