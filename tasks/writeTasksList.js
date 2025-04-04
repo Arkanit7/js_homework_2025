@@ -56,7 +56,7 @@ block content
   hr
   h2 Рішення:
   script(src="./scripts/task_${id.padStart(2, '0')}.js")
-  include:code(lang="javascript") ./scripts//task_${id.padStart(2, '0')}.js
+  include:code(lang="javascript") ./scripts/task_${id.padStart(2, '0')}.js
 `
 }
 
