@@ -67,9 +67,7 @@ class TBankomat {
   get minimalSum() {
     const minBill = this.bills.findLast(({ amount }) => amount > 0)
 
-    if (minBill) return minBill.worth
-
-    return 0
+    return minBill ? minBill.worth : 0
   }
 
   get maximalSum() {
