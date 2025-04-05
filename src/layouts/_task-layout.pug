@@ -7,7 +7,7 @@ html(lang="uk")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title #{ currentTask.title } | JS 2025
+    title #{currentTask.title} | JS 2025
     link(rel="icon", type="image/x-icon", href="../../favicon.ico")
     block styles
       link(rel="stylesheet", href="../../styles/style.css")
@@ -34,7 +34,7 @@ html(lang="uk")
                   p!= group.title
                   ol.u-flow-50
                     each task in group.tasks
-                      - const isCurrent = task.id === currentTask.id;
+                      - const isCurrent = task.id === currentTask.id
                       li.c-sidebar__item
                         +Pill(task, isCurrent)
 

@@ -34,14 +34,14 @@ block content
     // s3 : number
     // s4 : number
     // Крок 1. Введення необхідних даних
-    const a = parseFloat(prompt("Введіть значення числа a", "1"));
-    const b = parseFloat(prompt("Введіть значення числа b", "1"));
-    const c = parseFloat(prompt("Введіть значення числа c", "1"));
+    const a = parseFloat(prompt("Введіть значення числа a", "1"))
+    const b = parseFloat(prompt("Введіть значення числа b", "1"))
+    const c = parseFloat(prompt("Введіть значення числа c", "1"))
     // Крок 2. Обчислення результатів
-    const s1 = a + 12 + b;
-    const s2 = Math.sqrt((a + b) / (2 * a));
-    const s3 = Math.cbrt((a + b) * c);
-    const s4 = Math.sin(a / -b);
+    const s1 = a + 12 + b
+    const s2 = Math.sqrt((a + b) / (2 * a))
+    const s3 = Math.cbrt((a + b) * c)
+    const s4 = Math.sin(a / -b)
     // Крок 3. Виведення результатів
     document.write(`
     <ol>
@@ -49,4 +49,4 @@ block content
     <li>S<sub>2</sub> = ${s2.toFixed(2)}</li>
     <li>S<sub>3</sub> = ${s3.toFixed(2)}</li>
     <li>S<sub>4</sub> = ${s4.toFixed(2)}</li>
-    </ol>`);
+    </ol>`)

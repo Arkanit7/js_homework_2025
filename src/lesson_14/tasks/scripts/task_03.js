@@ -475,13 +475,13 @@ const goodsList = [
 
 // ## Знайти
 // 1. Загальну вартість (нові ціни - price)
-const totalCost = goodsList.reduce((sum, { price }) => sum + price, 0)
+const totalCost = goodsList.reduce((sum, {price}) => sum + price, 0)
 
 console.log('Загальна вартість:', totalCost)
 
 // 2. Знайти кількість товарів, у яких ціна зменшилась price < old_price.
 const discountedGoodsCount = goodsList.reduce(
-  (count, { price, old_price }) => (price < old_price ? count + 1 : count),
+  (count, {price, old_price}) => (price < old_price ? count + 1 : count),
   0,
 )
 
@@ -489,7 +489,7 @@ console.log('Кількість товарів, у яких ціна зменш�
 
 // 3. Товари, які доступні sell_status: "available"
 const availableGoods = goodsList.filter(
-  ({ sell_status }) => sell_status === 'available',
+  ({sell_status}) => sell_status === 'available',
 )
 
 console.groupCollapsed('Товари, які доступні:')
@@ -498,7 +498,7 @@ console.groupEnd()
 
 // 4. сформувати новий список об'єктів тільки доступних для продажу товарів, які міститимуть тільки ідентифікатор товару id, нову ціну price, стару ціну old_price, та ціну у доларах usd_price
 const briefDescriptionAvailableGoods = availableGoods.map(
-  ({ id, price, old_price, usd_price }) => ({
+  ({id, price, old_price, usd_price}) => ({
     id,
     price,
     old_price,

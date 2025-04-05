@@ -23,7 +23,7 @@ function insertOnes(array, length, from, to) {
  * @returns {number[]} - The generated array with the specified properties.
  */
 function createSpecificArray(length, minNumber, maxNumber) {
-  const array = Array.from({ length })
+  const array = Array.from({length})
 
   insertOnes(array, length, 3, 5)
 

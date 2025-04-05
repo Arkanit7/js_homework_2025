@@ -2,7 +2,7 @@
 
 /** @param {number} size - The size of the field. */
 function generateField(size) {
-  return Array.from({ length: size }, () => Math.floor(Math.random() * 2))
+  return Array.from({length: size}, () => Math.floor(Math.random() * 2))
 }
 
 /**

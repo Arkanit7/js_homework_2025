@@ -1,7 +1,7 @@
 // ## Option 1
 
 function createFibArray(length) {
-  const fibArray = Array.from({ length })
+  const fibArray = Array.from({length})
 
   fibArray.forEach(
     (_, i, arr) => (arr[i] = i < 2 ? 1 : arr[i - 1] + arr[i - 2]),

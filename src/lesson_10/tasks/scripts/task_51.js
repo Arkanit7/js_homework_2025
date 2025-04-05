@@ -23,7 +23,7 @@ function createRandomNumbersArray(
   )
     throw new Error('Arguments must be finite numbers.')
 
-  return Array.from({ length }, () => {
+  return Array.from({length}, () => {
     const randomNumber = minNumber + Math.random() * (maxNumber - minNumber + 1)
     return Number(randomNumber.toFixed(decimalPoints))
   })
@@ -88,12 +88,12 @@ function findTwoMin(array) {
 
       return minimals
     },
-    { first: Infinity, second: Infinity },
+    {first: Infinity, second: Infinity},
   )
 }
 
 const array = createRandomNumbersArray(7, -20, 20, 2)
-const { first, second } = findTwoMin(array)
+const {first, second} = findTwoMin(array)
 
 document.write(`<p>Масив: [${array.join(', ')}];`)
 document.write(`<p>Два найменші елементи: ${first}, ${second}.`)
@@ -102,7 +102,7 @@ document.write(`<p>Два найменші елементи: ${first}, ${second}
 
 // ## 🧪 Tests
 
-printTest(findTwoMin([2, 2]), { first: 2, second: 2 })
+printTest(findTwoMin([2, 2]), {first: 2, second: 2})
 printTest(findTwoMin([-6.89, 13, -1.82, -15.96, -19.06, -2.68, -14.11]), {
   first: -19.06,
   second: -14.11,

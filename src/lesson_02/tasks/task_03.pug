@@ -22,12 +22,12 @@ block content
     // total : number
     // totalVat : number
     // Крок 1. Введення необхідних даних
-    const VAT = 5 / 100;
-    const pricePerUnit = parseFloat(prompt("Введіть вартість за одиницю товару", "49"));
-    const amount = parseInt(prompt("Введіть кількість товарів", "7"));
+    const VAT = 5 / 100
+    const pricePerUnit = parseFloat(prompt("Введіть вартість за одиницю товару", "49"))
+    const amount = parseInt(prompt("Введіть кількість товарів", "7"))
     // Крок 2. Обчислення результатів
-    const total = pricePerUnit * amount;
-    const totalVat = total * VAT;
+    const total = pricePerUnit * amount
+    const totalVat = total * VAT
     // Крок 3. Виведення результатів
-    document.write(`<p>Загальна вартість: ${total.toFixed(2)}</p>`);
-    document.write(`<p>ПДВ: ${totalVat.toFixed(2)}</p>`);
+    document.write(`<p>Загальна вартість: ${total.toFixed(2)}</p>`)
+    document.write(`<p>ПДВ: ${totalVat.toFixed(2)}</p>`)

@@ -36,7 +36,7 @@ class Banner {
 
   renderRandomBanners(times = 1) {
     for (let i = 0; i < times; i++) {
-      const { href, imgSrc, imgAlt } = this.getRandomBanner()
+      const {href, imgSrc, imgAlt} = this.getRandomBanner()
 
       document.write(`
         <a class="u-inline-block u-p-400 u-bg-stone-200 u-rounded-lg u-border-zinc-800 u-text-zinc-800" href="${href}" title="${imgAlt}">

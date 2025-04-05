@@ -7,7 +7,7 @@ class Manufacturer {
    * @param {string} params.name
    * @param {string} params.registrationNumber
    */
-  constructor({ name, registrationNumber }) {
+  constructor({name, registrationNumber}) {
     this.name = name
     this.registrationNumber = registrationNumber
   }
@@ -28,7 +28,7 @@ class Product {
    * @param {number} params.amount - The quantity of the product.
    * @param {Manufacturer} params.manufacturer - The manufacturer of the product.
    */
-  constructor({ title, measurement, amount, manufacturer }) {
+  constructor({title, measurement, amount, manufacturer}) {
     this.title = title
     this.measurement = measurement
     this.amount = amount
@@ -63,7 +63,7 @@ class Store {
 
   /** @param {Product} product */
   isProductRegistered(product) {
-    return !!this.productList.find(({ data }) => data === product)
+    return !!this.productList.find(({data}) => data === product)
   }
 
   /** @param {Product} product */
@@ -82,7 +82,7 @@ class Store {
    */
   removeProduct(product) {
     const productIndex = this.productList.findIndex(
-      ({ data }) => data === product,
+      ({data}) => data === product,
     )
 
     if (productIndex === -1) throw new Error(`There's no ${product.title}.`)
@@ -94,9 +94,7 @@ class Store {
    * @param {number} productId
    */
   removeProductById(productId) {
-    const productIndex = this.productList.findIndex(
-      ({ id }) => id === productId,
-    )
+    const productIndex = this.productList.findIndex(({id}) => id === productId)
 
     if (productIndex === -1)
       throw new Error(`There's no product with the "${productId}" id.`)
@@ -109,7 +107,7 @@ class Store {
    */
   removeProductsByTitle(productTitle) {
     this.productList = this.productList.filter(
-      ({ data: { title } }) => title !== productTitle,
+      ({data: {title}}) => title !== productTitle,
     )
   }
 
@@ -117,9 +115,7 @@ class Store {
    * @param {string} productTitle
    */
   getProductsByTitle(productTitle) {
-    return this.productList.filter(
-      ({ data: { title } }) => title === productTitle,
-    )
+    return this.productList.filter(({data: {title}}) => title === productTitle)
   }
 
   /**
@@ -129,7 +125,7 @@ class Store {
     return this.productList.filter(
       ({
         data: {
-          manufacturer: { name },
+          manufacturer: {name},
         },
       }) => name === manufacturerName,
     )
@@ -138,7 +134,7 @@ class Store {
   toString() {
     return (
       `Store "${this.title}"\n` +
-      this.productList.map(({ data }) => data).join('\n')
+      this.productList.map(({data}) => data).join('\n')
     )
   }
 }

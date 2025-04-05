@@ -35,18 +35,18 @@ block breakaway
     // totalPrice : number
 
     // Крок 1. Введення необхідних даних
-    const priceProductA = parseFloat(prompt("Введіть вартість за одиницю товару №1", "19.99"));
-    const amountProductA = parseInt(prompt("Введіть кількість товарів №1", "7"));
-    const priceProductB = parseFloat(prompt("Введіть вартість за одиницю товару №2", "9.99"));
-    const amountProductB = parseInt(prompt("Введіть кількість товарів №2", "3"));
-    const priceProductC = parseFloat(prompt("Введіть вартість за одиницю товару №3", "30000"));
-    const amountProductC = parseInt(prompt("Введіть кількість товарів №3", "2"));
+    const priceProductA = parseFloat(prompt("Введіть вартість за одиницю товару №1", "19.99"))
+    const amountProductA = parseInt(prompt("Введіть кількість товарів №1", "7"))
+    const priceProductB = parseFloat(prompt("Введіть вартість за одиницю товару №2", "9.99"))
+    const amountProductB = parseInt(prompt("Введіть кількість товарів №2", "3"))
+    const priceProductC = parseFloat(prompt("Введіть вартість за одиницю товару №3", "30000"))
+    const amountProductC = parseInt(prompt("Введіть кількість товарів №3", "2"))
 
     // Крок 2. Обчислення результатів
-    const totalPriceProductA = priceProductA * amountProductA;
-    const totalPriceProductB = priceProductB * amountProductB;
-    const totalPriceProductC = priceProductC * amountProductC;
-    const totalPrice = totalPriceProductA + totalPriceProductB + totalPriceProductC;
+    const totalPriceProductA = priceProductA * amountProductA
+    const totalPriceProductB = priceProductB * amountProductB
+    const totalPriceProductC = priceProductC * amountProductC
+    const totalPrice = totalPriceProductA + totalPriceProductB + totalPriceProductC
 
     // Крок 3. Виведення результатів
     document.write(`
@@ -64,7 +64,7 @@ block breakaway
     </header>
     <div>
     <ul class="u-flow-400">
-    `);
+    `)
 
     // Продукт А
     document.write(`
@@ -81,7 +81,7 @@ block breakaway
     </div>
     </div>
     </li>
-    `);
+    `)
 
     // Продукт B
     document.write(`
@@ -98,7 +98,7 @@ block breakaway
     </div>
     </div>
     </li>
-    `);
+    `)
 
     // Продукт C
     document.write(`
@@ -115,7 +115,7 @@ block breakaway
     </div>
     </div>
     </li>
-    `);
+    `)
 
     document.write(`
     </ul>
@@ -168,4 +168,4 @@ block breakaway
     <p>ФН ПРРО 999997988976877</p>
     </div>
     </article>
-    `);
+    `)

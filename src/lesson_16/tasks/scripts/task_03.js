@@ -118,7 +118,7 @@ class Company {
 
   /** @param {string} inCity */
   getBranchesByCity(inCity) {
-    return this.branches.filter(({ city }) => city === inCity)
+    return this.branches.filter(({city}) => city === inCity)
   }
 
   /**
@@ -130,7 +130,7 @@ class Company {
     preferredDurationDays = Infinity,
   ) {
     return this.services.filter(
-      ({ costDollars, durationDays }) =>
+      ({costDollars, durationDays}) =>
         preferredCostDollars >= costDollars &&
         preferredDurationDays >= durationDays,
     )
@@ -166,7 +166,7 @@ const itAngelsServices = [
 try {
   const itAngels = new Company(
     'IT Angels',
-    { month: 4, year: 2010 },
+    {month: 4, year: 2010},
     itAngelsServices,
     itAngelsBranches,
   )

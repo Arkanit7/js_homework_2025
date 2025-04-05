@@ -155,7 +155,7 @@ function renderTile(tile) {
  * @returns {number[][]} A 2D array representing the game field.
  */
 function createGameField(rows = 6, columns = 6) {
-  return Array.from({ length: rows }, () =>
+  return Array.from({length: rows}, () =>
     new Array(columns).fill(cipherTile('water')),
   )
 }

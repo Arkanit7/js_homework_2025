@@ -18,7 +18,7 @@ function createRandomNumbersArray(
   if (!isFinite(length) || !isFinite(minNumber) || !isFinite(maxNumber))
     throw new Error('Arguments must be finite numbers.')
 
-  return Array.from({ length }, () => {
+  return Array.from({length}, () => {
     let randomNumber
 
     do {

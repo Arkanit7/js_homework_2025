@@ -21,7 +21,7 @@ function createRandomNumbersArray(
   )
     throw new Error('Arguments must be finite numbers.')
 
-  return Array.from({ length }, () => {
+  return Array.from({length}, () => {
     const randomNumber = minNumber + Math.random() * (maxNumber - minNumber + 1)
     return Number(randomNumber.toFixed(decimalPoints))
   })
@@ -37,7 +37,7 @@ function printTest(expect, toBe, message = 'Test') {
   if (expect === toBe) console.info(`${message} passed`)
   else {
     console.error(`${message} failed. Expected: ${toBe}, but got: ${expect}.`)
-    console.dir({ expect, toBe })
+    console.dir({expect, toBe})
   }
 }
 

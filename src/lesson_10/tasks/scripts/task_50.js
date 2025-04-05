@@ -23,7 +23,7 @@ function createRandomNumbersArray(
   )
     throw new Error('Arguments must be finite numbers.')
 
-  return Array.from({ length }, () => {
+  return Array.from({length}, () => {
     const randomNumber = minNumber + Math.random() * (maxNumber - minNumber + 1)
     return Number(randomNumber.toFixed(decimalPoints))
   })

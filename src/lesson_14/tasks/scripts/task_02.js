@@ -10,7 +10,7 @@
  * @param {number} monthsPassed
  * @returns {number}
  */
-function calcYearAfterMonths({ month, year }, monthsPassed) {
+function calcYearAfterMonths({month, year}, monthsPassed) {
   const yearsPassed = Math.floor((month + monthsPassed - 1) / 12)
 
   return year + yearsPassed

@@ -65,7 +65,7 @@ class TBankomat {
   }
 
   get minimalSum() {
-    const minBill = this.bills.findLast(({ amount }) => amount > 0)
+    const minBill = this.bills.findLast(({amount}) => amount > 0)
 
     return minBill ? minBill.worth : 0
   }
@@ -83,11 +83,11 @@ class TBankomat {
     for (const bill of this.bills) {
       if (toWithdraw === 0) break
 
-      const { worth, amount } = bill
+      const {worth, amount} = bill
       const possibleAmount = Math.min(Math.floor(toWithdraw / worth), amount)
 
       if (possibleAmount) {
-        bills.push({ bill, possibleAmount })
+        bills.push({bill, possibleAmount})
         toWithdraw -= worth * possibleAmount
       }
     }
@@ -115,7 +115,7 @@ class TBankomat {
 
     let log = ''
 
-    for (const { bill, possibleAmount } of billsToWithdraw) {
+    for (const {bill, possibleAmount} of billsToWithdraw) {
       bill.amount -= possibleAmount
       log += `Withdrawn ${possibleAmount} x 💲${bill.worth}\n`
     }

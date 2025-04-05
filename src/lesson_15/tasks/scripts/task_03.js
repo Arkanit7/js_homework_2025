@@ -53,7 +53,7 @@ class MultChecker {
    */
   makeQuiz(times) {
     for (let i = 0; i < times; i++) {
-      const { question, answer } = this.getQuestion()
+      const {question, answer} = this.getQuestion()
       const userAnswer = parseInt(prompt(question) ?? '0')
 
       this.checkAnswer(userAnswer, answer)

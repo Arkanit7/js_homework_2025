@@ -31,7 +31,7 @@ html(lang="uk")
                         p.header-card__published Опубліковано
                           |
                           |
-                          time(datetime=lesson.datetime)= lesson.datetime.toLocaleDateString("uk-UA", { year: "numeric", month: "long", day: "2-digit" })
+                          time(datetime=lesson.datetime)= lesson.datetime.toLocaleDateString("uk-UA", {year: "numeric", month: "long", day: "2-digit"})
                     .card__image
                       img(
                         src=`./images/${lesson.img.src}`,

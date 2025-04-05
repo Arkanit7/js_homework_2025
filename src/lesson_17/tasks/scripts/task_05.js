@@ -78,7 +78,7 @@ class TestData {
    * @param {number} params.userAnswer - The answer provided by the user.
    * @param {number} params.correctAnswer - The correct answer to the operation.
    */
-  constructor({ firstNum, secondNum, operation, userAnswer, correctAnswer }) {
+  constructor({firstNum, secondNum, operation, userAnswer, correctAnswer}) {
     this.firstNum = firstNum
     this.secondNum = secondNum
     this.operation = operation
@@ -123,7 +123,7 @@ class TestManager {
     const question = new MathChecker(operation)
     const userAnswer = parseInt(prompt(String(question)) ?? '')
 
-    this.history.save(new TestData({ ...question, userAnswer }))
+    this.history.save(new TestData({...question, userAnswer}))
   }
 
   askRandomQuestion() {

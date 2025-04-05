@@ -105,18 +105,18 @@ document.write('<li>' + fourthQuarterSum)
 printTest(fourthQuarterSum, 43, 'Fourth quarter sum test')
 
 // 5. суму парних рядків;
-const evenRowsSum = calcTableSegmentSum(testTable, { rowStep: 2 })
+const evenRowsSum = calcTableSegmentSum(testTable, {rowStep: 2})
 
 document.write('<li>' + evenRowsSum)
 printTest(evenRowsSum, 74, 'Even rows sum test')
 
 // 5.1 суму непарних рядків;
-const oddRowsSum = calcTableSegmentSum(testTable, { rowStart: 1, rowStep: 2 })
+const oddRowsSum = calcTableSegmentSum(testTable, {rowStart: 1, rowStep: 2})
 
 printTest(oddRowsSum, 67, 'Odd rows sum test')
 
 // 6. суму непарних стовпців;
-const oddColsSum = calcTableSegmentSum(testTable, { colStart: 1, colStep: 2 })
+const oddColsSum = calcTableSegmentSum(testTable, {colStart: 1, colStep: 2})
 
 document.write('<li>' + oddColsSum)
 printTest(oddColsSum, 66, 'Odd columns sum test')
