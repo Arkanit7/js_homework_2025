@@ -109,6 +109,11 @@
     &:not(:active) {
       box-shadow: 0 3px 0 0 get-color("yellow", "900");
     }
+
+    &:disabled {
+      background-color: get-color("gray", "500");
+      pointer-events: none;
+    }
   }
 
   table {

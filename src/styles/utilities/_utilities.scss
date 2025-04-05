@@ -83,6 +83,12 @@
   }
 }
 
+@each $key, $value in map.get($config, "height") {
+  .u-bs-#{str-replace($key, "/", "\\/")} {
+    block-size: $value;
+  }
+}
+
 @each $key, $value in map.get($config, "font-family") {
   .u-font-#{$key} {
     font-family: $value;
@@ -183,6 +189,22 @@
 
 .u-flex {
   display: flex;
+}
+
+.u-flex-row {
+  flex-direction: row;
+}
+
+.u-flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.u-flex-col {
+  flex-direction: column;
+}
+
+.u-flex-col-reverse {
+  flex-direction: column-reverse;
 }
 
 .u-flex-wrap-reverse {
