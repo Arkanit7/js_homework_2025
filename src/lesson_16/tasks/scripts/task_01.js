@@ -7,7 +7,6 @@ class TDate {
 
   /**
    * Creates an instance of a date object.
-   * @constructor
    * @param {number} day - The day of the month.
    * @param {number} month - The month of the year.
    * @param {number} year - The year.
