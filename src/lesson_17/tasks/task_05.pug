@@ -1,0 +1,38 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 5)
+
+block append scripts
+  script(src="./scripts/task_05.js", defer)
+
+block content
+  p= currentTask.description
+  p Приклад:
+  :code(lang="javascript")
+    testsList = [
+      {
+        firstNum: 1,
+        secondNum: 5,
+        operation: '*',
+        userAnswer: 7,
+        correctAnswer: 5,
+      },
+      {
+        firstNum: 3,
+        secondNum: 4,
+        operation: '+',
+        userAnswer: 7,
+        correctAnswer: 7,
+      },
+    ]
+  p Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля.
+  p Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати тестування додаються в об’єкт History. Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач вивести усю історію на екран.
+  hr
+  h2 Рішення:
+  #output
+  include:code(lang="javascript") ./scripts/task_05.js

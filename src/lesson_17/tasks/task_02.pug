@@ -1,0 +1,16 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 2)
+
+block content
+  p= currentTask.description
+
+  hr
+  h2 Рішення:
+  script(src="./scripts/task_02.js")
+  include:code(lang="javascript") ./scripts/task_02.js
