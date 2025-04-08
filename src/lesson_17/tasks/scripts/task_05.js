@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * @typedef {'*' | '/' | '**' | '%' | '+' | '-'} operation
+ * @typedef {'*' | '/' | '**' | '%' | '+' | '-'} operator
  */
 
 /**
@@ -15,7 +15,7 @@ function getRandomNum(min = 1, max = 9) {
 /** Provides math test objects. */
 class MathQuestion {
   /** @type {Object<string, (a: number, b: number) => number>} */
-  static operators = {
+  static operations = {
     '+': (a, b) => a + b,
     '*': (a, b) => a * b,
     '%': (a, b) => a % b,
@@ -25,13 +25,13 @@ class MathQuestion {
   }
 
   /**
-   * @param {operation} operation
+   * @param {operator} operator
    */
-  constructor(operation) {
+  constructor(operator) {
     this.firstNum = getRandomNum()
     this.secondNum = getRandomNum()
-    this.operation = operation
-    this.correctAnswer = MathQuestion.operators[operation](
+    this.operation = operator
+    this.correctAnswer = MathQuestion.operations[operator](
       this.firstNum,
       this.secondNum,
     )
@@ -104,8 +104,6 @@ class TestData {
 class TestManager {
   /** @type {TestManager} */
   static #instance
-  /** @type {operation[]} */
-  static #operations = ['*', '%', '+', '-']
 
   static get instance() {
     return this.#instance
@@ -113,17 +111,19 @@ class TestManager {
 
   /**
    * @param {string} selector - An CSS selector to identify where to render the statistics.
+   * @param {operator[]} operators - An array of JS operators to use in tests.
    */
-  constructor(selector) {
+  constructor(selector, operators = ['*', '%', '+', '-', '/', '**']) {
     if (TestManager.instance) return TestManager.instance
 
     /** @type {HistoryManager} */
     this.history = new HistoryManager()
     this.outputElement = document.querySelector(selector)
+    this.operators = operators
     TestManager.#instance = this
   }
 
-  /** @param {operation} operation */
+  /** @param {operator} operation */
   askQuestion(operation) {
     const question = new MathQuestion(operation)
     const userAnswer = prompt(String(question)) ?? '-'
@@ -132,9 +132,9 @@ class TestManager {
   }
 
   getRandomOperation() {
-    const index = getRandomNum(0, TestManager.#operations.length - 1)
+    const index = getRandomNum(0, this.operators.length - 1)
 
-    return TestManager.#operations[index]
+    return this.operators[index]
   }
 
   /** @param {number} times */
@@ -174,7 +174,7 @@ class TestManager {
 // ---
 
 if (confirm('Почати тестування?')) {
-  const mathColloquium = new TestManager('#output')
+  const mathColloquium = new TestManager('#output', ['*', '%', '+', '-'])
 
   mathColloquium.start(4)
 }
