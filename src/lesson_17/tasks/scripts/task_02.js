@@ -8,7 +8,7 @@ class ServiceCar {
   /** @type {ServiceCar} */
   static #instance
 
-  static get providedCar() {
+  static get instance() {
     return this.#instance
   }
 
@@ -18,7 +18,7 @@ class ServiceCar {
    * @param {string} licensePlate
    */
   constructor(driver, brand, licensePlate) {
-    if (ServiceCar.providedCar) return ServiceCar.providedCar
+    if (ServiceCar.instance) return ServiceCar.instance
 
     this.driver = driver
     this.brand = brand
@@ -37,4 +37,4 @@ class ServiceCar {
 new ServiceCar('Oksana', 'Daewoo', 'ВС3247АС')
 const maybach = new ServiceCar('Boris', 'Mercedes-Benz', 'ВС7777СВ')
 
-console.log(maybach) // lanos
+console.log(maybach) // Daewoo

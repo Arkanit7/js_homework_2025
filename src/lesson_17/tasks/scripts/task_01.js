@@ -19,8 +19,8 @@ class NumberUtils {
   }
 
   /**
-   * @param {number} entry
-   * @param {number[]} list
+   * @param {any} entry
+   * @param {any[]} list
    * @returns {number}
    */
   static entriesCount(entry, list) {

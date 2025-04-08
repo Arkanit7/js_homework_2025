@@ -13,7 +13,7 @@ function getRandomNum(min = 1, max = 9) {
 }
 
 /** Provides math test objects. */
-class MathChecker {
+class MathQuestion {
   /** @type {Object<string, (a: number, b: number) => number>} */
   static operators = {
     '+': (a, b) => a + b,
@@ -31,7 +31,7 @@ class MathChecker {
     this.firstNum = getRandomNum()
     this.secondNum = getRandomNum()
     this.operation = operation
-    this.correctAnswer = MathChecker.operators[operation](
+    this.correctAnswer = MathQuestion.operators[operation](
       this.firstNum,
       this.secondNum,
     )
@@ -66,6 +66,10 @@ class HistoryManager {
 
     if (indexOfValue !== -1) this.#history.splice(indexOfValue, 1)
   }
+
+  toString() {
+    return this.entries.map((entry) => String(entry)).join('\n')
+  }
 }
 
 /** Creates an instance of a mathematical operation task. */
@@ -75,7 +79,7 @@ class TestData {
    * @param {number} params.firstNum - The first number in the operation.
    * @param {number} params.secondNum - The second number in the operation.
    * @param {string} params.operation - The mathematical operation (e.g., "+", "-", "*", "/").
-   * @param {number} params.userAnswer - The answer provided by the user.
+   * @param {string} params.userAnswer - The answer provided by the user.
    * @param {number} params.correctAnswer - The correct answer to the operation.
    */
   constructor({firstNum, secondNum, operation, userAnswer, correctAnswer}) {
@@ -86,8 +90,9 @@ class TestData {
     this.correctAnswer = correctAnswer
   }
 
+  /** Use Number instead of parseInt to enforce strict answers */
   isCorrect() {
-    return this.correctAnswer === this.userAnswer
+    return this.correctAnswer === Number(this.userAnswer)
   }
 
   toString() {
@@ -120,25 +125,21 @@ class TestManager {
 
   /** @param {operation} operation */
   askQuestion(operation) {
-    const question = new MathChecker(operation)
-    const userAnswer = parseInt(prompt(String(question)) ?? '')
+    const question = new MathQuestion(operation)
+    const userAnswer = prompt(String(question)) ?? '-'
 
     this.history.save(new TestData({...question, userAnswer}))
   }
 
-  askRandomQuestion() {
-    const randomOperationIndex = getRandomNum(
-      0,
-      TestManager.#operations.length - 1,
-    )
-    const randomOperation = TestManager.#operations[randomOperationIndex]
+  getRandomOperation() {
+    const index = getRandomNum(0, TestManager.#operations.length - 1)
 
-    this.askQuestion(randomOperation)
+    return TestManager.#operations[index]
   }
 
   /** @param {number} times */
   start(times, intervalSeconds = 1) {
-    this.askRandomQuestion()
+    this.askQuestion(this.getRandomOperation())
 
     if (times <= 1) {
       this.renderStatsMarkup()
@@ -156,7 +157,7 @@ class TestManager {
       <div class="u-p-200 u-border u-rounded-lg u-flow-200">
         <h3>Приклади 📊</h3>
         <ol>
-          ${this.history.entries.map((entry) => `<li>${entry}</li>`).join('')}
+          ${this.history.entries.map((entry) => `<li>${String(entry)}</li>`).join('')}
         </ol>
       </div>
     `

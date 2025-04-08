@@ -13,7 +13,7 @@ class Reminder {
   }
 
   /** @type {ReturnType<typeof setInterval> | null} */
-  #intervalId = null
+  #intervalId
   /** @type {number} */
   #intervalMilliseconds
   #times = 0
@@ -25,7 +25,7 @@ class Reminder {
    * @param {number} intervalSeconds - An interval between remainders.
    */
   constructor(note, intervalSeconds = 1) {
-    if (Reminder.#instance) return Reminder.#instance
+    if (Reminder.instance) return Reminder.instance
 
     this.note = note
     this.intervalSeconds = intervalSeconds
