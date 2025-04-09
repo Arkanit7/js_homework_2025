@@ -318,41 +318,42 @@ $config: (
     ),
   ),
 
-  "font-family": (
-    "primary": (
-      "Segoe UI",
-      tahoma,
-      geneva,
-      verdana,
-      sans-serif,
+  /* stylelint-disable value-keyword-case */
+    "font-family": (
+      "primary": (
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif,
+      ),
+      "secondary": (
+        Georgia,
+        serif,
+      ),
+      "monospace": (
+        Consolas,
+        monospace,
+      ),
     ),
-    "secondary": (
-      georgia,
-      serif,
+  /* stylelint-enable value-keyword-case */
+    "font-size": (
+      "50": 0.25rem,
+      "100": 0.5rem,
+      "200": 0.75rem,
+      "250": 0.875rem,
+      "300": 1rem,
+      "350": 1.125rem,
+      "400": 1.25rem,
+      "450": 1.5rem,
+      "500": 1.875rem,
+      "550": 2.25rem,
+      "600": 3rem,
+      "650": 3.75rem,
+      "700": 4.5rem,
+      "800": 6rem,
+      "900": 8rem,
     ),
-    "monospace": (
-      "Consolas",
-      monospace,
-    ),
-  ),
-
-  "font-size": (
-    "50": 0.25rem,
-    "100": 0.5rem,
-    "200": 0.75rem,
-    "250": 0.875rem,
-    "300": 1rem,
-    "350": 1.125rem,
-    "400": 1.25rem,
-    "450": 1.5rem,
-    "500": 1.875rem,
-    "550": 2.25rem,
-    "600": 3rem,
-    "650": 3.75rem,
-    "700": 4.5rem,
-    "800": 6rem,
-    "900": 8rem,
-  ),
   "font-weight": (
     "thin": 100,
     "extralight": 200,
