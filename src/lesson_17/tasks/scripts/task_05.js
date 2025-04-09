@@ -174,7 +174,11 @@ class TestManager {
 // ---
 
 if (confirm('Почати тестування?')) {
-  const mathColloquium = new TestManager('#output', ['*', '%', '+', '-'])
+  try {
+    const mathColloquium = new TestManager('#output', ['*', '%', '+', '-'])
 
-  mathColloquium.start(4)
+    mathColloquium.start(4)
+  } catch (error) {
+    alert(error)
+  }
 }

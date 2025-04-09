@@ -219,25 +219,29 @@ const productList = [
 
 // ---
 
-const telemart = new Store('Telemart')
+try {
+  const telemart = new Store('Telemart')
 
-productList.forEach((product) => telemart.addProduct(product))
-console.log('Products in the store', telemart.productList)
-telemart.removeProductsByTitle('Mechanical Keyboard')
-console.log('Products in the store', telemart.productList)
-console.log(
-  `Is the product "${productList[3].title}" inside:`,
-  telemart.isProductRegistered(productList[3]),
-)
-console.log(
-  `Is the product "${productList[0].title}" inside:`,
-  telemart.isProductRegistered(productList[0]),
-)
-console.log('Product "Tablet Pro"', telemart.getProductsByTitle('Tablet Pro'))
-telemart.removeProduct(productList[5])
-console.log('Product "4K Monitor"', telemart.getProductsByTitle('4K Monitor'))
-console.log(
-  'Products by manufactured "Gamma Ltd"',
-  telemart.getProductsByManufacturer('Gamma Ltd'),
-)
-console.log(String(telemart))
+  productList.forEach((product) => telemart.addProduct(product))
+  console.log('Products in the store', telemart.productList.length)
+  telemart.removeProductsByTitle('Mechanical Keyboard')
+  console.log('Products in the store', telemart.productList.length)
+  console.log(
+    `Is the product "${productList[3].title}" inside:`,
+    telemart.isProductRegistered(productList[3]),
+  )
+  console.log(
+    `Is the product "${productList[0].title}" inside:`,
+    telemart.isProductRegistered(productList[0]),
+  )
+  console.log('Product "Tablet Pro"', telemart.getProductsByTitle('Tablet Pro'))
+  telemart.removeProduct(productList[5])
+  console.log('Product "4K Monitor"', telemart.getProductsByTitle('4K Monitor'))
+  console.log(
+    'Products by manufactured "Gamma Ltd"',
+    telemart.getProductsByManufacturer('Gamma Ltd'),
+  )
+  console.log(String(telemart))
+} catch (error) {
+  console.error('Caught', error)
+}
