@@ -12,7 +12,7 @@ import paths from '../config/paths.js'
  */
 function getArgvValue(attribute) {
   const value = process.argv.find(
-    (arg, index, array) => array[index - 1] === '--' + attribute,
+    (_, index, array) => array[index - 1] === '--' + attribute,
   )
 
   if (value === undefined)
@@ -49,13 +49,14 @@ block frontmatter
       .flatMap((group) => group.tasks)
       .find((task) => task.id === ${id})
 
+append scripts
+  script(defer src="./scripts/task_${id.padStart(2, '0')}.js")
 
 block content
   p= currentTask.description
-
   hr
   h2 Рішення:
-  script(src="./scripts/task_${id.padStart(2, '0')}.js")
+  .js-app
   include:code(lang="javascript") ./scripts/task_${id.padStart(2, '0')}.js
 `
 }
@@ -75,7 +76,7 @@ function createFile(name, dirPath, content) {
     return
   }
 
-  fs.mkdirSync(dirPath, { recursive: true })
+  fs.mkdirSync(dirPath, {recursive: true})
   fs.writeFileSync(fullPath, content)
 }
 
