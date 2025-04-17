@@ -50,6 +50,8 @@
   // .l-keyboard-calc__item
 
   &__item {
+    display: inline-grid;
+
     &--area {
       // .l-keyboard-calc__item--area--clear
 
