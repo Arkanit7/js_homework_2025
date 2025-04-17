@@ -91,6 +91,12 @@
   }
 }
 
+@each $key, $value in map.get($config, "width") {
+  .u-max-is-#{str-replace($key, "/", "\\/")} {
+    max-inline-size: $value;
+  }
+}
+
 @each $key, $value in map.get($config, "height") {
   .u-bs-#{str-replace($key, "/", "\\/")} {
     block-size: $value;
@@ -205,7 +211,15 @@
   display: grid;
 }
 
+.u-inline-grid {
+  display: grid;
+}
+
 .u-flex {
+  display: flex;
+}
+
+.u-inline-flex {
   display: flex;
 }
 

@@ -91,6 +91,10 @@
       background-color: get-color("yellow", "700");
     }
 
+    @include media-width-to("3xs") {
+      inline-size: 100%;
+    }
+
     &:active {
       transform: translateY(3px);
     }

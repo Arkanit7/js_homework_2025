@@ -92,8 +92,9 @@ function createGradesForm(gradesAmount) {
   const tableEl = createTable(gradesAmount)
   const submitEl = document.createElement('button')
   const outputEl = document.createElement('output')
+  const footerEl = document.createElement('div')
 
-  outputEl.className = 'u-text-bolder'
+  outputEl.className = 'u-text-bolder u-text-400'
 
   captionEl.innerText = 'Оцінки'
   captionEl.className = 'u-mbe-100'
@@ -102,8 +103,11 @@ function createGradesForm(gradesAmount) {
 
   submitEl.innerText = 'Обчислити середнє'
 
+  footerEl.className = 'u-flex u-flex-wrap u-gap-200 u-items-center'
+  footerEl.append(submitEl, outputEl)
+
   formEl.className = 'js-form-average u-flow-200 u-overflow-auto u-pb-500'
-  formEl.append(tableEl, submitEl, outputEl)
+  formEl.append(tableEl, footerEl)
   formEl.addEventListener('submit', handleSubmit)
 
   return formEl
