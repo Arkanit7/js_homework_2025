@@ -1,0 +1,45 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 7)
+
+block append scripts
+  script(defer, src="./scripts/task_07.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+  // Template
+  template.js-template-milestone
+    .u-flow-400.u-border.u-p-400.u-rounded-lg
+      h4.js-title.u-text-center
+      fieldset.u-flow-200
+        legend Транспорт
+        select.js-select
+
+      fieldset.u-flow-200
+        legend Харчування
+        ul.js-checkbox-list
+
+      fieldset.u-flow-200
+        legend Гід
+        ul.js-radio-list
+
+  // Form
+  form.js-cost-form.u-flow-400
+    .u-flex.u-gap-200.u-items-baseline
+      h3 Розрахунок вартості подорожі
+
+    .l-columns.js-container-milestone
+
+    .u-flex.u-items-center.u-gap-200
+      button Розрахувати вартість
+      output.u-text-400(name="total-cost") $0
+
+  include:code(lang="javascript") ./scripts/task_07.js

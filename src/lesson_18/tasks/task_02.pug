@@ -1,0 +1,54 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 2)
+
+block append scripts
+  script(defer, src="./scripts/task_02.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  form.js-exchange.u-flow-400.u-border.u-rounded-lg.u-p-400
+    h3 Конвертер
+
+    .u-flow-200
+      label(for="give") Віддаю
+      .u-flex
+        input#give.js-give(
+          type="number",
+          name="give",
+          min="0",
+          placeholder="0"
+        )
+        select.js-give-currency(name="give-currency")
+          option(value="uah") UAH
+          option(value="usd", selected) USD
+          option(value="eur") EUR
+
+    button.js-swap-rates.u-text-500(
+      type="button",
+      title="Обміняти валюти місцями"
+    )
+      +Icon("arrow-double-edge")
+
+    .u-flow-200
+      label(for="receive") Отримую
+      .u-flex
+        input#receive.js-receive(
+          type="number",
+          name="receive",
+          min="0",
+          placeholder="0"
+        )
+        select.js-receive-currency(name="receive-currency")
+          option(value="uah") UAH
+          option(value="usd") USD
+          option(value="eur") EUR
+
+  include:code(lang="javascript") ./scripts/task_02.js

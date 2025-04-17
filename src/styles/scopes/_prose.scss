@@ -73,25 +73,14 @@
     list-style: revert;
   }
 
-  input {
-    padding-inline: get-spacing("150");
-    padding-block: get-spacing("50");
-    border: get-border-width("DEFAULT") solid get-color("yellow", "300");
-    border-radius: get-border-radius("lg");
-    background-color: get-color("zinc", "300");
-
-    @include dark-mode {
-      background-color: get-color("zinc", "800");
-    }
-  }
-
-  label {
-    cursor: pointer;
+  input,
+  select {
+    @extend %c-input;
   }
 
   button {
-    padding-inline: get-spacing("500");
-    padding-block: get-spacing("250");
+    padding-inline: get-spacing("300");
+    padding-block: get-spacing("150");
     border-radius: get-border-radius("lg");
     color: get-color("zinc", "950");
     background-color: get-color("yellow", "400");
@@ -116,9 +105,16 @@
     }
   }
 
+  // ===========================================================================
+  // table
+
   table {
     inline-size: 100%;
     border-collapse: collapse;
+  }
+
+  caption {
+    font-weight: bolder;
   }
 
   td,

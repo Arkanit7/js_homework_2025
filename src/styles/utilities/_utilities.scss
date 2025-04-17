@@ -3,6 +3,14 @@
 
 /* { utility classes } */
 
+.u-icon {
+  inline-size: 1em;
+  block-size: 1em;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+}
+
 @each $key, $value in map.get($config, "aspect-ratio") {
   .u-aspect-#{$key} {
     aspect-ratio: $value;
@@ -92,6 +100,12 @@
 @each $key, $value in map.get($config, "font-family") {
   .u-font-#{$key} {
     font-family: $value;
+  }
+}
+
+@each $key, $value in map.get($config, "line-height") {
+  .u-leading-#{$key} {
+    line-height: $value;
   }
 }
 
@@ -187,6 +201,10 @@
   font-weight: bolder;
 }
 
+.u-grid {
+  display: grid;
+}
+
 .u-flex {
   display: flex;
 }
@@ -225,6 +243,58 @@
 
 .u-content-center {
   justify-content: center;
+}
+
+.u-items-start {
+  align-items: flex-start;
+}
+
+.u-items-end {
+  align-items: flex-end;
+}
+
+.u-items-end-safe {
+  align-items: safe flex-end;
+}
+
+.u-items-center {
+  align-items: center;
+}
+
+.u-items-center-safe {
+  align-items: safe center;
+}
+
+.u-items-baseline {
+  align-items: baseline;
+}
+
+.u-items-baseline-last {
+  align-items: last baseline;
+}
+
+.u-items-stretch {
+  align-items: stretch;
+}
+
+.u-place-items-start {
+  place-items: start;
+}
+
+.u-place-items-end {
+  place-items: end;
+}
+
+.u-place-items-center {
+  place-items: center;
+}
+
+.u-place-items-baseline {
+  place-items: baseline;
+}
+
+.u-place-items-stretch {
+  place-items: stretch;
 }
 
 .u-text-center {

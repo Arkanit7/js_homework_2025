@@ -1,9 +1,5 @@
 @use "../abstracts" as *;
 
-:root {
-  color-scheme: light;
-}
-
 body {
   font-size: get-font-size("300");
   font-family: get-font-family("primary");
@@ -23,4 +19,14 @@ body {
   max-inline-size: get-width("5xl");
   margin-inline: auto;
   padding-inline: get-spacing("400");
+
+  &--prose {
+    max-inline-size: get-width("prose");
+  }
+}
+
+option {
+  @include dark-mode {
+    background-color: get-color("zinc", "900");
+  }
 }

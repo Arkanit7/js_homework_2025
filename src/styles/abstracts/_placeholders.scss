@@ -1,0 +1,47 @@
+@use "variables" as *;
+@use "functions" as *;
+@use "mixins" as *;
+
+// ie9+
+%visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: rem(1px);
+  block-size: rem(1px);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+%c-input {
+  padding-inline: get-spacing("300");
+  padding-block: get-spacing("100");
+  border: get-border-width("DEFAULT") solid get-color("neutral", "400");
+  border-radius: get-border-radius("lg");
+  font-size: get-font-size("300");
+  background-color: get-color("neutral", "50");
+  transition: border-color 0.3s;
+
+  @include dark-mode {
+    border-color: get-color("zinc", "700");
+    background-color: get-color("zinc", "900");
+  }
+
+  &:focus-visible {
+    border-color: get-color("emerald", "500");
+
+    @include dark-mode {
+      border-color: get-color("yellow", "400");
+    }
+  }
+
+  &:hover {
+    @media (any-hover) {
+      border-color: get-color("emerald", "500");
+
+      @include dark-mode {
+        border-color: get-color("yellow", "400");
+      }
+    }
+  }
+}

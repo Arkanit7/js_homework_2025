@@ -1,0 +1,28 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 6)
+
+block append scripts
+  script(defer, src="./scripts/task_06.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+  .u-flow-400
+    form.u-flow-200.js-build-table
+      .u-flow-100
+        label(for="amount") Кількість оцінок
+        input#amount(type="number", name="amount", placeholder="0")
+      .u-flow-100
+        button Збудувати таблицю
+
+      .js-form-average
+
+  include:code(lang="javascript") ./scripts/task_06.js

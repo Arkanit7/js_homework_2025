@@ -69,7 +69,7 @@ select {
 button,
 select,
 option,
-label[for] {
+label {
   cursor: pointer;
 }
 
@@ -78,6 +78,11 @@ input[type="email"],
 input[type="tel"],
 textarea {
   appearance: unset;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
 }
 
 input[type="text"],

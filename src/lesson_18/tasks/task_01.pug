@@ -1,0 +1,85 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 1)
+
+block append scripts
+  script(defer, src="./scripts/task_01.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+block breakaway
+  .l-container.l-container--prose
+    .c-calc._calc-size.js-calc
+      .l-calc.u-flow-200
+        h3.u-text-center.u-text-200.u-leading-none.u-uppercase Electron
+
+        .l-calc__display
+          .c-display-calc
+            output.c-display-calc__upper.js-secondary-display
+            output.c-display-calc__lower.js-primary-display
+
+        .l-calc__actions
+          ul.l-keyboard-calc
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--clear
+              button.c-btn-calc.u-text-yellow-400(
+                type="button",
+                data-clear,
+                title="Clear"
+              ) ac
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--del
+              button.c-btn-calc.u-text-yellow-400(
+                type="button",
+                data-del,
+                title="Delete"
+              )
+                +Icon("delete-left")
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--percent
+              button.c-btn-calc.u-text-yellow-400(type="button", data-char="%") %
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--divide
+              button.c-btn-calc.u-text-yellow-400(type="button", data-char="/") ÷
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--multiply
+              button.c-btn-calc.u-text-yellow-400(type="button", data-char="*") ×
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--minus
+              button.c-btn-calc.u-text-yellow-400(type="button", data-char="-") -
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--plus
+              button.c-btn-calc.u-text-yellow-400(type="button", data-char="+") +
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--equal
+              button.c-btn-calc.u-text-zinc-900.u-bg-yellow-400(
+                type="button",
+                data-equal
+              ) =
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--double-zero
+              button.c-btn-calc(type="button", data-char="00") 00
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--zero
+              button.c-btn-calc(type="button", data-char="0") 0
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--one
+              button.c-btn-calc(type="button", data-char="1") 1
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--two
+              button.c-btn-calc(type="button", data-char="2") 2
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--three
+              button.c-btn-calc(type="button", data-char="3") 3
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--four
+              button.c-btn-calc(type="button", data-char="4") 4
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--five
+              button.c-btn-calc(type="button", data-char="5") 5
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--six
+              button.c-btn-calc(type="button", data-char="6") 6
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--seven
+              button.c-btn-calc(type="button", data-char="7") 7
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--eight
+              button.c-btn-calc(type="button", data-char="8") 8
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--nine
+              button.c-btn-calc(type="button", data-char="9") 9
+            li.l-keyboard-calc__item.l-keyboard-calc__item--area--dot
+              button.c-btn-calc(type="button", data-char=".") .
+
+  .s-prose
+    include:code(lang="javascript") ./scripts/task_01.js

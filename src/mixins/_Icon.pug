@@ -1,0 +1,4 @@
+//- Get an icon from the SVG sprite
+mixin Icon(name, className)
+  svg.u-icon(class=className)&attributes(attributes)
+    use(xlink:href=`${root}icons/symbol-defs.svg#${name}`)

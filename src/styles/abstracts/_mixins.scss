@@ -16,7 +16,7 @@
 }
 
 @mixin hover-focus {
-  &:focus {
+  &:focus-visible {
     @content;
   }
 

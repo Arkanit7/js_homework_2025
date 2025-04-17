@@ -1,0 +1,196 @@
+@use "../abstracts" as *;
+
+.c-calc {
+  padding-inline: get-spacing("200");
+  padding-block: get-spacing("200");
+  border: get-border-width("DEFAULT") solid get-color("zinc", "700");
+  border-radius: get-border-radius("lg");
+  color: get-color("neutral", "50");
+  font-size: get-font-size("400");
+}
+
+._calc-size {
+  max-inline-size: fit-content;
+}
+
+.l-calc {
+  // .l-calc__display
+
+  &__display {
+  }
+
+  // .l-calc__actions
+
+  &__actions {
+  }
+}
+
+.c-display-calc {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(1lh, auto));
+  gap: get-spacing("50");
+  padding-inline: get-spacing("200");
+  padding-block: get-spacing("100");
+  border-radius: get-border-radius("lg");
+  text-align: end;
+  background-color: get-color("zinc", "800");
+}
+
+.l-keyboard-calc {
+  display: grid;
+  grid-template-areas:
+    "clear del percent divide"
+    "seven eight nine multiply"
+    "four five six minus"
+    "one two three plus"
+    "double-zero zero dot equal";
+  grid-template-columns: repeat(4, 1fr);
+  gap: get-spacing("150");
+
+  // .l-keyboard-calc__item
+
+  &__item {
+    &--area {
+      // .l-keyboard-calc__item--area--clear
+
+      &--clear {
+        grid-area: clear;
+      }
+
+      // .l-keyboard-calc__item--area--del
+
+      &--del {
+        grid-area: del;
+      }
+
+      // .l-keyboard-calc__item--area--percent
+
+      &--percent {
+        grid-area: percent;
+      }
+
+      // .l-keyboard-calc__item--area--divide
+
+      &--divide {
+        grid-area: divide;
+      }
+
+      // .l-keyboard-calc__item--area--multiply
+
+      &--multiply {
+        grid-area: multiply;
+      }
+
+      // .l-keyboard-calc__item--area--minus
+
+      &--minus {
+        grid-area: minus;
+      }
+
+      // .l-keyboard-calc__item--area--plus
+
+      &--plus {
+        grid-area: plus;
+      }
+
+      // .l-keyboard-calc__item--area--equal
+
+      &--equal {
+        grid-area: equal;
+      }
+
+      // .l-keyboard-calc__item--area--double-zero
+
+      &--double-zero {
+        grid-area: double-zero;
+      }
+
+      // .l-keyboard-calc__item--area--zero
+
+      &--zero {
+        grid-area: zero;
+      }
+
+      // .l-keyboard-calc__item--area--one
+
+      &--one {
+        grid-area: one;
+      }
+
+      // .l-keyboard-calc__item--area--two
+
+      &--two {
+        grid-area: two;
+      }
+
+      // .l-keyboard-calc__item--area--three
+
+      &--three {
+        grid-area: three;
+      }
+
+      // .l-keyboard-calc__item--area--four
+
+      &--four {
+        grid-area: four;
+      }
+
+      // .l-keyboard-calc__item--area--five
+
+      &--five {
+        grid-area: five;
+      }
+
+      // .l-keyboard-calc__item--area--six
+
+      &--six {
+        grid-area: six;
+      }
+
+      // .l-keyboard-calc__item--area--seven
+
+      &--seven {
+        grid-area: seven;
+      }
+
+      // .l-keyboard-calc__item--area--eight
+
+      &--eight {
+        grid-area: eight;
+      }
+
+      // .l-keyboard-calc__item--area--nine
+
+      &--nine {
+        grid-area: nine;
+      }
+
+      // .l-keyboard-calc__item--area--dot
+
+      &--dot {
+        grid-area: dot;
+      }
+    }
+  }
+}
+
+.c-btn-calc {
+  display: inline-grid;
+  place-content: center;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  padding: get-spacing("200");
+  border-radius: get-border-radius("xl");
+  text-transform: uppercase;
+  background-color: get-color("zinc", "700");
+  transition-property: background-color, transform;
+  transition-duration: 0.3s;
+
+  @include hover-focus {
+    background-color: get-color("zinc", "800");
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
