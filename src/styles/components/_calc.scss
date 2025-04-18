@@ -10,7 +10,7 @@
 }
 
 ._calc-size {
-  max-inline-size: fit-content;
+  max-inline-size: get-width("5200");
 }
 
 .l-calc {
@@ -33,6 +33,7 @@
   padding-block: get-spacing("100");
   border-radius: get-border-radius("lg");
   text-align: end;
+  word-break: break-all;
   background-color: get-color("zinc", "800");
 }
 

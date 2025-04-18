@@ -77,6 +77,8 @@ class Calculator {
   }
 
   compute() {
+    if (!this.primaryExpression) return
+
     this.secondaryExpression = this.primaryExpression
 
     try {
