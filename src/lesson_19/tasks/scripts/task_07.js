@@ -32,7 +32,7 @@ class ColorHSL {
 
 class Snowflake {
   static template = document.querySelector('.js-snowflake-template')
-  static intervalMs = 300
+  static intervalMs = 1000
   static minSize = 36
   static maxSize = 72
   static minHue = 190
@@ -41,8 +41,8 @@ class Snowflake {
   static maxSaturation = 80
   static minLightness = 70
   static maxLightness = 90
-  static minSpeed = 15
-  static maxSpeed = 80
+  static minSpeed = 45
+  static maxSpeed = 240
 
   /**
    * @param {HTMLElement} container
@@ -61,7 +61,7 @@ class Snowflake {
   }
 
   get availableHeight() {
-    return document.documentElement.clientHeight + 2 * this.size
+    return document.documentElement.clientHeight + this.size + this.speed
   }
 
   #createEl() {
@@ -154,6 +154,6 @@ class Snowfall {
 
 // =============================================================================
 
-const blizzard = new Snowfall('.js-snowfall', 50)
+const blizzard = new Snowfall('.js-snowfall', 80)
 
 blizzard.fall()
