@@ -1,0 +1,40 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 2)
+
+block append scripts
+  script(defer, src="./scripts/task_02.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  .js-app
+    form.js-form
+      ul
+        li
+          label.u-flex.u-gap-200.u-items-center
+            span Value 1
+            input.u-flex-1(type="number")
+        li
+          label.u-flex.u-gap-200.u-items-center
+            span Value 2
+            input.u-flex-1(type="number")
+        li
+          label.u-flex.u-gap-200.u-items-center
+            span Value 3
+            input.u-flex-1(type="number")
+        li
+          label.u-flex.u-gap-200.u-items-center
+            span Value 4
+            input.u-flex-1(type="number")
+        li
+          label.u-flex.u-gap-200.u-items-center
+            span Value 5
+            input.u-flex-1(type="number")
+  include:code(lang="javascript") ./scripts/task_02.js

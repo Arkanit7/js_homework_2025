@@ -1,0 +1,36 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 6)
+
+block append scripts
+  script(defer, src="./scripts/task_06.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+block breakaway
+  template.js-athlete-template
+    li.u-flex.u-content-between.u-items-center.u-gap-200.u-border.u-p-100.js-athlete
+      span.js-athlete-name
+      button.u-text-green-500.u-text-450.js-athlete-move(type="button")
+        +Icon("arrow-right-square")
+
+  .l-container.l-container--prose
+    .js-app.u-flex.u-flex-wrap.u-gap-300
+      section.u-flow-250
+        h3.u-font-bolder.u-text-center Загальний список
+        ul.u-border.u-p-200.u-is-7200.u-flow-200.js-general-athletes
+
+      section.u-flow-250
+        h3.u-font-bolder.u-text-center Обрані для змагання
+        ul.u-border.u-p-200.u-is-7200.u-flow-200.js-chosen-athletes.u-min-bs-1000
+
+  .l-prose
+    include:code(lang="javascript") ./scripts/task_06.js

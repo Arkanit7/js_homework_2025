@@ -1,0 +1,10 @@
+@use "../abstracts" as *;
+
+.l-products {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, get-width("4000")), 1fr)
+  );
+  gap: 1rem 0.5rem;
+}

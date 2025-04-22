@@ -1,0 +1,102 @@
+@use "../abstracts" as *;
+
+.c-product {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid transparent;
+
+  &.is-selected {
+    border-color: get-color("green", "500");
+  }
+
+  // .c-product__title
+
+  &__title {
+    display: -webkit-box;
+    flex: auto;
+    overflow: hidden;
+    font-size: 0.875rem;
+    word-break: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  // .c-product__link
+
+  &__link {
+    transition: color 0.3s;
+
+    @include hover-focus {
+      color: get-color("red", "600");
+    }
+  }
+
+  // .c-product__price
+
+  &__price {
+    color: get-color("red", "600");
+    font-weight: bolder;
+  }
+}
+
+.c-frame-product {
+  display: grid;
+  grid-template-areas: "stack";
+  aspect-ratio: 1;
+
+  // .c-frame-product__link
+
+  &__link {
+    grid-area: stack;
+  }
+
+  // .c-frame-product__image
+
+  &__image {
+    object-fit: contain;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  // .c-frame-product__badges
+
+  &__badges {
+    grid-area: stack;
+    pointer-events: none;
+  }
+}
+
+.l-badges-product {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  // .l-badges-product__item
+
+  &__item {
+    flex: none;
+    pointer-events: initial;
+  }
+}
+
+.c-badge-product {
+  padding-inline: 0.5rem;
+  border-radius: get-border-radius("full");
+  color: white;
+  font-weight: bolder;
+  font-size: get-font-size("200");
+  text-transform: uppercase;
+  background-color: get-color("orange", "500");
+
+  &--type {
+    &--promo {
+      background-color: get-color("red", "500");
+    }
+
+    &--featured {
+      background-color: get-color("blue", "500");
+    }
+  }
+}

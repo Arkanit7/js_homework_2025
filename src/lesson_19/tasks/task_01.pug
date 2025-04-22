@@ -1,0 +1,48 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 1)
+
+block append styles
+  style
+    :scss
+      .s-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+
+        & > * {
+          cursor: pointer;
+          padding-block: 0.25em;
+          padding-inline: 0.5em;
+          border-radius: 0.25em;
+          border: 1px solid hsl(240, 5%, 26%);
+          transition: color 0.5s;
+        }
+      }
+
+block append scripts
+  script(defer, src="./scripts/task_01.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+  .s-pills.js-app
+    div Hello!
+    div Hello!
+    div Hello!
+    div Hello!
+    div Hello!
+    div Hello!
+    div Hello!
+    div Hello!
+    div Hello!
+    div Hello!
+
+  include:code(lang="javascript") ./scripts/task_01.js

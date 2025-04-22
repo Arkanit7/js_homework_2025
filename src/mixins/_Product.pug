@@ -1,0 +1,16 @@
+mixin Product({href='#', imgSrc, imgAlt='', title, price, badges=[]})
+  article.c-product
+    .c-frame-product
+      a.c-frame-product__link.js-product-link(href=href)
+        img.c-frame-product__image.js-product-image(src=imgSrc, alt=imgAlt)
+
+      .c-frame-product__badges
+        ul.l-badges-product.js-product-badges
+          each badge in badges
+            li.l-badges-product__item
+              .c-badge-product(class=`c-badge-product--type--${badge.type}`)= badge.title
+
+    h3.c-product__title
+      a.c-product__link.js-product-link.js-product-title(href=href)= title
+
+    .c-product__price.js-product-price #{price} ₴

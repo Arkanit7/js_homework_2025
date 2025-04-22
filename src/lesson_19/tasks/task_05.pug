@@ -1,0 +1,40 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 5)
+
+block append scripts
+  script(defer, src="./scripts/task_05.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+block breakaway
+  .l-container.l-container--prose
+    .l-products.js-products
+      template.js-product-template
+        article.c-product.js-product
+          .c-frame-product
+            a.c-frame-product__link.js-product-link(href="")
+              img.c-frame-product__image.js-product-image(
+                src="",
+                alt="",
+                loading="lazy"
+              )
+
+            .c-frame-product__badges
+              ul.l-badges-product.js-product-badges
+
+          h3.c-product__title
+            a.c-product__link.js-product-link.js-product-title(href="")
+
+          .c-product__price.js-product-price
+
+  .s-prose
+    include:code(lang="javascript") ./scripts/task_05.js

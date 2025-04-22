@@ -1,0 +1,22 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 3)
+
+block append scripts
+  script(defer, src="./scripts/task_03.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  .js-lists-wrapper.u-flow-300
+    .js-lists-container.u-flex.u-gap-200.u-flex-wrap
+    .u-flex.u-gap-200.u-flex-wrap
+      button.js-paint-lists(type="button") Розфарбувати списки
+      button.js-reset-lists(type="button") Скинути
+  include:code(lang="javascript") ./scripts/task_03.js
