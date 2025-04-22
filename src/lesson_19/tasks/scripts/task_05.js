@@ -24,7 +24,7 @@ class Badge {
 }
 
 class Product {
-  static createTemplate() {
+  static createFromTemplate() {
     const template = document.querySelector('.js-product-template')
 
     if (!template)
@@ -58,7 +58,7 @@ class Product {
   }
 
   render() {
-    const productEl = Product.createTemplate()
+    const productEl = Product.createFromTemplate()
 
     const anchors = productEl.querySelectorAll('.js-product-link')
     for (const a of anchors) {
