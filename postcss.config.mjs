@@ -1,4 +1,4 @@
-import { purgeCSSPlugin as purgecss } from '@fullhuman/postcss-purgecss'
+import {purgeCSSPlugin as purgecss} from '@fullhuman/postcss-purgecss'
 import postcssSortMediaQueries from 'postcss-sort-media-queries'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
@@ -17,6 +17,7 @@ export default {
           /^u-border-blue/,
           /^u-text-pink/,
           /^u-text-blue/,
+          /^c-badge-product--type--/,
         ],
       },
     }),
