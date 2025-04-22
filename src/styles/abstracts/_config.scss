@@ -542,6 +542,12 @@ $config: (
     "max": max-content,
     "fit": fit-content,
   ),
+  "flex": (
+    "1": 1,
+    "auto": auto,
+    "initial": initial,
+    "none": none,
+  ),
   "line-clamp": (
     "1": 1,
     "2": 2,
@@ -556,6 +562,13 @@ $config: (
     "clip": clip,
     "visible": visible,
     "scroll": scroll,
+  ),
+  "object-fit": (
+    "none": none,
+    "fill": fill,
+    "cover": cover,
+    "contain": contain,
+    "scale-down": scale-down,
   ),
 );
 $config: map.merge($config, "width", map.get($config, "spacing"));

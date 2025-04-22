@@ -11,6 +11,13 @@
   stroke-width: 0;
 }
 
+.u-ibg {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
 @each $key, $value in map.get($config, "aspect-ratio") {
   .u-aspect-#{$key} {
     aspect-ratio: $value;
@@ -97,9 +104,27 @@
   }
 }
 
+@each $key, $value in map.get($config, "width") {
+  .u-min-is-#{str-replace($key, "/", "\\/")} {
+    min-inline-size: $value;
+  }
+}
+
 @each $key, $value in map.get($config, "height") {
   .u-bs-#{str-replace($key, "/", "\\/")} {
     block-size: $value;
+  }
+}
+
+@each $key, $value in map.get($config, "height") {
+  .u-max-bs-#{str-replace($key, "/", "\\/")} {
+    max-block-size: $value;
+  }
+}
+
+@each $key, $value in map.get($config, "height") {
+  .u-min-bs-#{str-replace($key, "/", "\\/")} {
+    min-block-size: $value;
   }
 }
 
@@ -168,6 +193,18 @@
 @each $key, $value in map.get($config, "overflow") {
   .u-overflow-#{$key} {
     overflow: $value;
+  }
+}
+
+@each $key, $value in map.get($config, "object-fit") {
+  .u-object-#{$key} {
+    object-fit: $value;
+  }
+}
+
+@each $key, $value in map.get($config, "flex") {
+  .u-flex-#{$key} {
+    flex: $value;
   }
 }
 
@@ -321,6 +358,10 @@
 
 .u-text-end {
   text-align: end;
+}
+
+.u-flip {
+  rotate: 0.5turn;
 }
 
 /* { end of utility classes } */
