@@ -7,7 +7,14 @@ block frontmatter
       .flatMap((group) => group.tasks)
       .find((task) => task.id === 1)
 
-block append styles
+block append scripts
+  script(defer, src="./scripts/task_01.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
   style
     :scss
       .s-pills {
@@ -24,14 +31,6 @@ block append styles
           transition: color 0.5s;
         }
       }
-
-block append scripts
-  script(defer, src="./scripts/task_01.js")
-
-block content
-  p= currentTask.description
-  hr
-  h2 Рішення:
 
   .s-pills.js-app
     div Hello!
