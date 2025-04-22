@@ -9,15 +9,15 @@ html(lang="uk")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title #{currentLesson.title} | JS 2025
-    link(rel="icon", type="image/x-icon", href="../favicon.ico")
+    link(rel="icon", type="image/x-icon", href=`${root}favicon.ico`)
     block styles
-      link(rel="stylesheet", href="../styles/style.css")
+      link(rel="stylesheet", href=`${root}styles/style.css`)
 
     block scripts
       script
         include ../scripts/setTheme.js
 
-      script(src="../scripts/script.js", defer) 
+      script(defer, src=`${root}scripts/script.js`) 
   body
     .l-wrapper
       .l-wrapper__header
@@ -27,7 +27,7 @@ html(lang="uk")
           nav.c-sidebar.l-compose__sidebar.js-sidebar
             ul.c-sidebar__list.u-flow-250
               li.c-sidebar__item
-                a.c-pill(href="../index.html") &#8592; До списку робіт
+                a.c-pill(href=`${root}index.html`) &#8592; До списку робіт
               li
                 ol.u-flow-50
                   each lesson in lessons.sort((a,b)=>b.id - a.id)

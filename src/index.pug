@@ -7,8 +7,8 @@ html(lang="uk")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Головна | JS 2025
-    link(rel="icon", type="image/x-icon", href="./favicon.ico")
-    link(rel="stylesheet", href="./styles/style.css")
+    link(rel="icon", type="image/x-icon", href=`${root}favicon.ico`)
+    link(rel="stylesheet", href=`${root}styles/style.css`)
 
     script
       include ./scripts/setTheme.js
@@ -21,7 +21,7 @@ html(lang="uk")
             h1.c-title Домашні роботи з курсу по JavaScript 2025
             p Учень Борис
           ol.l-cards.u-mbs-600
-            each lesson in lessons.sort((a,b)=>b.id - a.id)
+            each lesson in lessons.sort((a, b) => b.id - a.id)
               li.l-cards__item
                 a.card(href=lesson.href)
                   article.card__inner
@@ -34,7 +34,7 @@ html(lang="uk")
                           time(datetime=lesson.datetime)= lesson.datetime.toLocaleDateString("uk-UA", {year: "numeric", month: "long", day: "2-digit"})
                     .card__image
                       img(
-                        src=`./images/${lesson.img.src}`,
+                        src=`${root}images/${lesson.img.src}`,
                         alt=lesson.img.alt,
                         loading="lazy"
                       )
