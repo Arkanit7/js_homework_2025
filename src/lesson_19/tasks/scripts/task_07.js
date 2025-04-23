@@ -1,6 +1,22 @@
 'use strict'
 
 /**
+ * @see {Snowflake}
+ * @typedef {Object} SnowflakeOptions - Configuration options for a snowflake instance.
+ * @property {number} [options.intervalMs=1000] - The interval in milliseconds for some operation.
+ * @property {number} [options.minSize=36] - The minimum size of the snowflake.
+ * @property {number} [options.maxSize=72] - The maximum size of the snowflake.
+ * @property {number} [options.minHue=190] - The minimum hue value for the snowflake's color.
+ * @property {number} [options.maxHue=210] - The maximum hue value for the snowflake's color.
+ * @property {number} [options.minSaturation=30] - The minimum saturation percentage for the snowflake's color.
+ * @property {number} [options.maxSaturation=80] - The maximum saturation percentage for the snowflake's color.
+ * @property {number} [options.minLightness=70] - The minimum lightness percentage for the snowflake's color.
+ * @property {number} [options.maxLightness=90] - The maximum lightness percentage for the snowflake's color.
+ * @property {number} [options.minSpeed=45] - The minimum speed value for some operation.
+ * @property {number} [options.maxSpeed=240] - The maximum speed value for some operation.
+ */
+
+/**
  * @param {number} from
  * @param {number} to
  * @returns {number}
@@ -32,24 +48,30 @@ class ColorHSL {
 
 class Snowflake {
   static template = document.querySelector('.js-snowflake-template')
-  static intervalMs = 1000
-  static minSize = 36
-  static maxSize = 72
-  static minHue = 190
-  static maxHue = 210
-  static minSaturation = 30
-  static maxSaturation = 80
-  static minLightness = 70
-  static maxLightness = 90
-  static minSpeed = 45
-  static maxSpeed = 240
 
   /**
-   * @param {HTMLElement} container
+   * @param {Element} container
+   * @param {SnowflakeOptions} [options]
    */
-  constructor(container) {
+  constructor(container, options = {}) {
+    /** @type {SnowflakeOptions} */
+    this.options = {
+      intervalMs: 1000,
+      minSize: 36,
+      maxSize: 72,
+      minHue: 190,
+      maxHue: 210,
+      minSaturation: 30,
+      maxSaturation: 80,
+      minLightness: 70,
+      maxLightness: 90,
+      minSpeed: 45,
+      maxSpeed: 240,
+      ...options,
+    }
+
     this.intervalId = null
-    this.size = getRandomInteger(Snowflake.minSize, Snowflake.maxSize)
+    this.size = getRandomInteger(this.options.minSize, this.options.maxSize)
     this.element = this.#createEl()
     this.#initializePositionAndColor()
     this.#applyInitialStyles()
@@ -76,12 +98,12 @@ class Snowflake {
     this.top = -this.size
     this.left = getRandomInteger(0, this.availableWidth)
     this.color = new ColorHSL(
-      getRandomInteger(Snowflake.minHue, Snowflake.maxHue),
-      getRandomInteger(Snowflake.minSaturation, Snowflake.maxSaturation),
-      getRandomInteger(Snowflake.minLightness, Snowflake.maxLightness),
+      getRandomInteger(this.options.minHue, this.options.maxHue),
+      getRandomInteger(this.options.minSaturation, this.options.maxSaturation),
+      getRandomInteger(this.options.minLightness, this.options.maxLightness),
     )
 
-    this.speed = getRandomInteger(Snowflake.minSpeed, Snowflake.maxSpeed)
+    this.speed = getRandomInteger(this.options.minSpeed, this.options.maxSpeed)
   }
 
   #applyInitialStyles() {
@@ -98,7 +120,7 @@ class Snowflake {
 
     this.intervalId = setInterval(() => {
       this.top += this.speed
-      this.element.style.transitionDuration = Snowflake.intervalMs + 'ms'
+      this.element.style.transitionDuration = this.options.intervalMs + 'ms'
 
       if (this.top > this.availableHeight) {
         this.element.style.transitionDuration = '0ms'
@@ -107,7 +129,7 @@ class Snowflake {
       } else {
         this.element.style.translate = `0 ${this.top}px`
       }
-    }, Snowflake.intervalMs)
+    }, this.options.intervalMs)
   }
 
   stop() {
@@ -135,7 +157,7 @@ class Snowfall {
     /** @type {Snowflake[]} */
     this.snowflakes = Array.from(
       {length: snowAmount},
-      () => new Snowflake(this.container),
+      () => new Snowflake(this.container, {minSaturation: 10}),
     )
   }
 
