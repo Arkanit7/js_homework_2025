@@ -6,5 +6,6 @@
     auto-fill,
     minmax(min(100%, get-width("4000")), 1fr)
   );
-  gap: 1rem 0.5rem;
+  border-inline-start: 1px solid get-color("zinc", "700");
+  border-block-start: 1px solid get-color("zinc", "700");
 }

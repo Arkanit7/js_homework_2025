@@ -6,7 +6,7 @@
  */
 function getRandomInteger(min = 0, max = 99) {
   if (typeof min !== 'number' || typeof max !== 'number')
-    throw new TypeError('Range must be numeric.')
+    throw new TypeError('Min and max must be numbers.')
 
   return min + Math.floor(Math.random() * (max - min + 1))
 }
@@ -34,9 +34,9 @@ class Table {
 
   set rowsAmount(newRowsAmount) {
     if (typeof newRowsAmount !== 'number')
-      throw new TypeError('Rows amount amount must be number.')
+      throw new TypeError('Rows amount must be number.')
     if (newRowsAmount <= 0)
-      throw new RangeError('Rows amount amount must be positive.')
+      throw new RangeError('Rows amount must be positive.')
 
     this.#rowsAmount = newRowsAmount
   }
@@ -47,9 +47,9 @@ class Table {
 
   set colsAmount(newColsAmount) {
     if (typeof newColsAmount !== 'number')
-      throw new TypeError('Cols amount amount must be number.')
+      throw new TypeError('Columns amount must be number.')
     if (newColsAmount <= 0)
-      throw new RangeError('Cols amount amount must be positive.')
+      throw new RangeError('Columns amount must be positive.')
 
     this.#colsAmount = newColsAmount
   }
@@ -105,10 +105,7 @@ class Table {
   render(selector) {
     const table = this.createTable()
 
-    if (selector) {
-      const target = document.querySelector(selector)
-      target.append(table)
-    }
+    if (selector) document.querySelector(selector).append(table)
 
     return table
   }
@@ -156,6 +153,7 @@ function increaseTableCounter({target}) {
 }
 
 // =============================================================================
+
 try {
   const container = document.querySelector('.js-app')
 

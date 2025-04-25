@@ -5,10 +5,11 @@
   flex-direction: column;
   gap: 0.25rem;
   padding: 0.5rem;
-  border: 1px solid transparent;
+  border-inline-end: 1px solid get-color("zinc", "700");
+  border-block-end: 1px solid get-color("zinc", "700");
 
   &.is-selected {
-    border-color: get-color("green", "500");
+    outline: 1px solid get-color("green", "500");
   }
 
   // .c-product__title
@@ -44,7 +45,7 @@
 .c-frame-product {
   display: grid;
   grid-template-areas: "stack";
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 5;
 
   // .c-frame-product__link
 

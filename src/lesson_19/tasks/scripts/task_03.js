@@ -14,7 +14,7 @@
  */
 function getRandomInteger(min, max) {
   if (typeof min !== 'number' || typeof max !== 'number')
-    throw new TypeError('Range must be number.')
+    throw new TypeError('Min and max must be numbers.')
 
   return min + Math.floor(Math.random() * (max - min + 1))
 }
@@ -27,6 +27,8 @@ function getRandomInteger(min, max) {
 function createRandomOrderedList(itemsAmount, minNumber, maxNumber) {
   if (typeof itemsAmount !== 'number')
     throw new TypeError('Amount of items must be a number.')
+  if (itemsAmount <= 0)
+    throw new RangeError('Amount of items must be positive.')
 
   const listEl = document.createElement('OL')
 
@@ -47,6 +49,8 @@ function createRandomOrderedList(itemsAmount, minNumber, maxNumber) {
 function createListsFragment(listsAmount, options = {}) {
   if (typeof listsAmount !== 'number')
     throw new TypeError('Amount of lists must be a number.')
+  if (listsAmount <= 0)
+    throw new RangeError('Amount of lists must be positive.')
 
   const {
     listItemsMinAmount = 1,

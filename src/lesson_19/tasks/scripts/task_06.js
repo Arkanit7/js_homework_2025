@@ -43,12 +43,14 @@ chosenAthletesList?.addEventListener('click', moveToGeneral)
 // =============================================================================
 
 /**
+ * @param {string} templateSelector
  * @param {string} name
  */
-function createAthlete(name) {
-  const template = document.querySelector('.js-athlete-template')
+function createAthleteFromTemplate(templateSelector, name) {
+  const template = document.querySelector(templateSelector)
 
-  if (!template) throw new ReferenceError("Can't find athlete template.")
+  if (!(template instanceof HTMLTemplateElement))
+    throw new TypeError("Can't find the template.")
 
   const athleteEl = template.content.firstElementChild.cloneNode(true)
 
@@ -58,7 +60,7 @@ function createAthlete(name) {
   return athleteEl
 }
 
-const athletes = [
+const athletesList = [
   'Білостоцький Ростислав',
   'Ковальчук Анастасія',
   'Коб Тетяна',
@@ -69,6 +71,12 @@ const athletes = [
   'Корець Вероніка',
 ]
 
-for (const athlete of athletes) {
-  generalAthletesList?.append(createAthlete(athlete))
+try {
+  for (const athlete of athletesList) {
+    generalAthletesList.append(
+      createAthleteFromTemplate('.js-athlete-template', athlete),
+    )
+  }
+} catch (error) {
+  console.error(error)
 }

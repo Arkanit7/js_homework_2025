@@ -3,7 +3,7 @@
 /**
  * @see {Snowflake}
  * @typedef {Object} SnowflakeOptions - Configuration options for a snowflake instance.
- * @property {number} [options.intervalMs=1000] - The interval in milliseconds for some operation.
+ * @property {number} [options.intervalMs=1000] - The update position interval in milliseconds.
  * @property {number} [options.minSize=36] - The minimum size of the snowflake.
  * @property {number} [options.maxSize=72] - The maximum size of the snowflake.
  * @property {number} [options.minHue=190] - The minimum hue value for the snowflake's color.
@@ -12,8 +12,8 @@
  * @property {number} [options.maxSaturation=80] - The maximum saturation percentage for the snowflake's color.
  * @property {number} [options.minLightness=70] - The minimum lightness percentage for the snowflake's color.
  * @property {number} [options.maxLightness=90] - The maximum lightness percentage for the snowflake's color.
- * @property {number} [options.minSpeed=45] - The minimum speed value for some operation.
- * @property {number} [options.maxSpeed=240] - The maximum speed value for some operation.
+ * @property {number} [options.minSpeed=45] - The minimal snowflake step.
+ * @property {number} [options.maxSpeed=240] - The maximal snowflake step.
  */
 
 /**
@@ -47,13 +47,13 @@ class ColorHSL {
 }
 
 class Snowflake {
-  static template = document.querySelector('.js-snowflake-template')
-
   /**
-   * @param {Element} container
+   * @param {Element} containerSelector
+   * @param {string} templateSelector
    * @param {SnowflakeOptions} [options]
    */
-  constructor(container, options = {}) {
+  constructor(containerSelector, templateSelector, options = {}) {
+    this.templateSelector = templateSelector
     /** @type {SnowflakeOptions} */
     this.options = {
       intervalMs: 1000,
@@ -72,10 +72,16 @@ class Snowflake {
 
     this.intervalId = null
     this.size = getRandomInteger(this.options.minSize, this.options.maxSize)
-    this.element = this.#createEl()
+    this.element = this.#createFromTemplate()
     this.#initializePositionAndColor()
     this.#applyInitialStyles()
-    container.append(this.element)
+
+    this.container = document.querySelector(containerSelector)
+
+    if (!this.container)
+      throw new ReferenceError(`Selector '${containerSelector}' not found.`)
+
+    this.container.append(this.element)
   }
 
   get availableWidth() {
@@ -86,10 +92,14 @@ class Snowflake {
     return document.documentElement.clientHeight + this.size + this.speed
   }
 
-  #createEl() {
+  #createFromTemplate() {
+    const template = document.querySelector(this.templateSelector)
+
+    if (!(template instanceof HTMLTemplateElement))
+      throw new TypeError("Can't find the template.")
+
     /** @type {HTMLElement}  */
-    const snowflakeEl =
-      Snowflake.template.content.firstElementChild.cloneNode(true)
+    const snowflakeEl = template.content.firstElementChild.cloneNode(true)
 
     return snowflakeEl
   }
@@ -142,22 +152,20 @@ class Snowflake {
 
 class Snowfall {
   /**
-   * @param {string} selector
+   * @param {string} containerSelector
+   * @param {string} templateSelector
    * @param {number} snowAmount
-   * @throws {ReferenceError} If the container selector is not found.
+   * @param {SnowflakeOptions} options
    */
-  constructor(selector, snowAmount) {
-    this.container = document.querySelector(selector)
+  constructor(containerSelector, templateSelector, snowAmount, options = {}) {
+    this.container = document.querySelector(containerSelector)
 
-    if (!this.container)
-      throw new ReferenceError(`Selector '${selector}' not found.`)
-
-    this.intensity = snowAmount
+    this.snowAmount = snowAmount
 
     /** @type {Snowflake[]} */
     this.snowflakes = Array.from(
       {length: snowAmount},
-      () => new Snowflake(this.container, {minSaturation: 10}),
+      () => new Snowflake(containerSelector, templateSelector, options),
     )
   }
 
@@ -176,6 +184,6 @@ class Snowfall {
 
 // =============================================================================
 
-const blizzard = new Snowfall('.js-snowfall', 80)
+const blizzard = new Snowfall('.js-snowfall', '.js-snowflake-template', 80)
 
 blizzard.fall()
