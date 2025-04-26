@@ -48,7 +48,7 @@ class ColorHSL {
 
 class Snowflake {
   /**
-   * @param {Element} containerSelector
+   * @param {string} containerSelector
    * @param {string} templateSelector
    * @param {SnowflakeOptions} [options]
    */
