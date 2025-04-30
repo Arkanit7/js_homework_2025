@@ -18,6 +18,7 @@ export default {
           /^u-text-pink/,
           /^u-text-blue/,
           /^c-badge-product--type--/,
+          /\d\/\d/,
         ],
       },
     }),
