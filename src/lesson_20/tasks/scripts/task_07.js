@@ -101,7 +101,6 @@ class Counter {
     const inputEl = document.createElement('INPUT')
     inputEl.className = this.options.valueClass
     inputEl.type = 'number'
-    inputEl.value = String(this.value)
     inputEl.min = String(this.minValue)
     inputEl.max = String(this.maxValue)
     inputEl.step = '1'
@@ -126,6 +125,8 @@ class Counter {
     this.inputEl = this.renderInput()
     this.minusBtn = this.renderBtn('-', () => this.handleValueChangeBy(-1))
     this.plusBtn = this.renderBtn('+', () => this.handleValueChangeBy(1))
+
+    this.updateUI()
 
     this.$el = document.createElement('DIV')
     this.$el.className = this.options.baseClass
