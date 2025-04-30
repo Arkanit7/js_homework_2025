@@ -2,4 +2,8 @@
 
 .c-input {
   @extend %c-input;
+
+  &.has-error {
+    border-color: get-color("red", "700");
+  }
 }

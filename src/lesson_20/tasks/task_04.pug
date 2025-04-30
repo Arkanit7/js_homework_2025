@@ -1,0 +1,43 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 4)
+
+block append scripts
+  script(defer, src="./scripts/task_04.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  .js-app.u-flow-400
+    .u-flow-200
+      p Натискань на кнопки:
+        |
+        |
+        span.js-button-counter
+      p Натискань на інпути:
+        |
+        |
+        span.js-input-counter
+    .u-flex.u-flex-wrap.u-gap-200
+      button Кнопка №1
+      button Кнопка №2
+      input(placeholder="Інпут №1")
+      button Кнопка №3
+      input(placeholder="Інпут №2")
+      button Кнопка №4
+      button Кнопка №5
+      button Кнопка №6
+      button Кнопка №7
+      input(placeholder="Інпут №3")
+      button Кнопка №8
+      button Кнопка №9
+      input(placeholder="Інпут №3")
+      button Кнопка №10
+      input(placeholder="Інпут №5")
+  include:code(lang="javascript") ./scripts/task_04.js

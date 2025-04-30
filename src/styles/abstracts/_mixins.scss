@@ -15,6 +15,18 @@
   }
 }
 
+@mixin container-width-from($breakpoint) {
+  @container (#{get-screen($breakpoint)} <= width) {
+    @content;
+  }
+}
+
+@mixin container-width-to($breakpoint) {
+  @container (width < #{get-screen($breakpoint)}) {
+    @content;
+  }
+}
+
 @mixin hover-focus {
   &:focus-visible {
     @content;

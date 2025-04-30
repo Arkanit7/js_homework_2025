@@ -1,0 +1,45 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 1)
+
+block append scripts
+  script(defer, src="./scripts/task_01.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+  style
+    :scss
+      .star {
+        position: fixed;
+        z-index: 9999;
+        aspect-ratio: 1;
+        pointer-events: none;
+        transition-property: inline-size, opacity;
+        transition-timing-function: linear;
+        transform: translate(-50%, -50%);
+        will-change: inline-size;
+        filter: drop-shadow(0 0 15px white); 
+      }
+
+  form.u-max-is-4000.u-flow-200.js-stars-form
+    p.u-flow-100
+      label(for="stars") Кількість зірок:
+      input#stars.js-stars-amount(
+        type="number",
+        required,
+        min="1",
+        step="1",
+        value="20"
+      )
+    button Створити зорі
+  .js-stars
+
+  include:code(lang="javascript") ./scripts/task_01.js

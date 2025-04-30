@@ -1,0 +1,57 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 7)
+
+block append scripts
+  script(defer, src="./scripts/task_07.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+block breakaway
+  style
+    :scss
+      @use "./src/styles/abstracts" as *;
+
+      .product {
+        container-type: inline-size;
+        border-block-end: 1px solid get-color('zinc', '700');
+
+        &__upper {
+          @include container-width-to('2xs') {
+            flex-wrap: wrap;
+          }
+        }
+
+        &__picture {
+          max-block-size: 8rem;
+
+          @include container-width-to('2xs') {
+            flex: auto;
+          }
+        }
+
+        &__header {
+          @include container-width-to('2xs') {
+            order: 1;
+          }
+        }
+      }
+
+      .cart {
+        &__list {
+          border-block-start: 1px solid get-color('zinc', '700');
+        }
+      }
+
+  .l-container.l-container--prose.js-app
+
+  .s-prose
+    include:code(lang="javascript") ./scripts/task_07.js

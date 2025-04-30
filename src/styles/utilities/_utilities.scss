@@ -18,8 +18,28 @@
   block-size: 100%;
 }
 
+.u-static {
+  position: static;
+}
+
+.u-fixed {
+  position: fixed;
+}
+
+.u-absolute {
+  position: absolute;
+}
+
+.u-relative {
+  position: relative;
+}
+
+.u-sticky {
+  position: sticky;
+}
+
 @each $key, $value in map.get($config, "aspect-ratio") {
-  .u-aspect-#{$key} {
+  .u-aspect-#{str-replace($key, "/", "\\/")} {
     aspect-ratio: $value;
   }
 }
@@ -240,6 +260,18 @@
   text-transform: uppercase;
 }
 
+.u-lowercase {
+  text-transform: lowercase;
+}
+
+.u-capitalize {
+  text-transform: capitalize;
+}
+
+.u-normal-case {
+  text-transform: none;
+}
+
 .u-font-bolder {
   font-weight: bolder;
 }
@@ -288,12 +320,48 @@
   flex-wrap: nowrap;
 }
 
-.u-content-between {
+.u-justify-start {
+  justify-content: flex-start;
+}
+
+.u-justify-end {
+  justify-content: flex-end;
+}
+
+.u-justify-end-safe {
+  justify-content: safe flex-end;
+}
+
+.u-justify-center {
+  justify-content: center;
+}
+
+.u-justify-center-safe {
+  justify-content: safe center;
+}
+
+.u-justify-between {
   justify-content: space-between;
 }
 
-.u-content-center {
-  justify-content: center;
+.u-justify-around {
+  justify-content: space-around;
+}
+
+.u-justify-evenly {
+  justify-content: space-evenly;
+}
+
+.u-justify-stretch {
+  justify-content: stretch;
+}
+
+.u-justify-baseline {
+  justify-content: baseline;
+}
+
+.u-justify-normal {
+  justify-content: normal;
 }
 
 .u-items-start {
@@ -346,6 +414,78 @@
 
 .u-place-items-stretch {
   place-items: stretch;
+}
+
+.u-place-content-center {
+  place-content: center;
+}
+
+.u-place-content-center-safe {
+  place-content: safe center;
+}
+
+.u-place-content-start {
+  place-content: start;
+}
+
+.u-place-content-end {
+  place-content: end;
+}
+
+.u-place-content-end-safe {
+  place-content: safe end;
+}
+
+.u-place-content-between {
+  place-content: space-between;
+}
+
+.u-place-content-around {
+  place-content: space-around;
+}
+
+.u-place-content-evenly {
+  place-content: space-evenly;
+}
+
+.u-place-content-baseline {
+  place-content: baseline;
+}
+
+.u-place-content-stretch {
+  place-content: stretch;
+}
+
+.u-self-auto {
+  align-self: auto;
+}
+
+.u-self-start {
+  align-self: flex-start;
+}
+
+.u-self-end {
+  align-self: flex-end;
+}
+
+.u-self-end-safe {
+  align-self: safe flex-end;
+}
+
+.u-self-center {
+  align-self: center;
+}
+
+.u-self-center-safe {
+  align-self: safe center;
+}
+
+.u-self-stretch {
+  align-self: stretch;
+}
+
+.u-self-baseline {
+  align-self: baseline;
 }
 
 .u-text-center {

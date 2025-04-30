@@ -1,0 +1,44 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 3)
+
+block append scripts
+  script(defer, src="./scripts/task_03.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  form.js-form.u-rounded-lg.u-border.u-pb-200.u-pi-400.u-flow-400.u-max-is-xs
+    h3 Картка працівника
+    .u-flow-300
+      p
+        label Вік
+          input(type="number", name="age")
+      p
+        label Зріст
+          input(type="number", name="tall")
+      p
+        label Вага
+          input(type="number", name="weight")
+      p
+        label Заробітна плата
+          input(type="number", name="salary")
+      p
+        label Стаж
+          input(type="number", name="seniority")
+      p
+        label Номер відділу
+          input(type="number", name="department")
+      p
+        label Порядковий номер
+          input(type="number", name="number")
+      p
+        button Відправити
+
+  include:code(lang="javascript") ./scripts/task_03.js

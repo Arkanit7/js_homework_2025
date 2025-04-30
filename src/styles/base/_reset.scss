@@ -22,7 +22,7 @@ a {
   color: unset;
   text-decoration: unset;
 
-  &[href^="tel:"] {
+  &:where([href^="tel:"]) {
     white-space: nowrap;
   }
 }
@@ -73,24 +73,23 @@ label {
   cursor: pointer;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
+input:where([type="text"], [type="email"], [type="tel"]),
 textarea {
   appearance: unset;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+input:where([type="checkbox"], [type="radio"]) {
   cursor: pointer;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="number"],
-input[type="tel"],
-input[type="password"],
-input[type="search"] {
+input:where(
+    [type="text"],
+    [type="email"],
+    [type="number"],
+    [type="tel"],
+    [type="password"],
+    [type="search"]
+  ) {
   inline-size: 100%;
 }
 
@@ -100,7 +99,7 @@ textarea {
 }
 
 // Remove an X button from search input
-input[type="search"] {
+input:where([type="search"]) {
   &::-webkit-search-cancel-button,
   &::-webkit-search-decoration {
     display: none;
@@ -108,7 +107,7 @@ input[type="search"] {
 }
 
 // Remove number arrows from number input
-input[type="number"] {
+input:where([type="number"]) {
   appearance: textfield; // Firefox
 
   &::-webkit-inner-spin-button,
@@ -117,7 +116,7 @@ input[type="number"] {
   }
 }
 
-details summary {
+summary {
   cursor: pointer;
 }
 

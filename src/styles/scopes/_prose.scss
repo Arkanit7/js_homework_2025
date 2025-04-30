@@ -79,34 +79,7 @@
   }
 
   button {
-    padding-inline: get-spacing("300");
-    padding-block: get-spacing("150");
-    border-radius: get-border-radius("lg");
-    color: get-color("zinc", "950");
-    background-color: get-color("yellow", "400");
-    transition-property: transform, background-color, box-shadow;
-    transition-duration: 0.3s;
-
-    @include hover-focus {
-      background-color: get-color("yellow", "700");
-    }
-
-    @include media-width-to("3xs") {
-      inline-size: 100%;
-    }
-
-    &:active {
-      transform: translateY(3px);
-    }
-
-    &:not(:active) {
-      box-shadow: 0 3px 0 0 get-color("yellow", "900");
-    }
-
-    &:disabled {
-      background-color: get-color("gray", "500");
-      pointer-events: none;
-    }
+    @extend %c-button;
   }
 
   // ===========================================================================

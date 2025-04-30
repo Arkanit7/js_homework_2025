@@ -1,0 +1,46 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 6)
+
+block append scripts
+  script(defer, src="./scripts/task_06.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  style
+    :scss
+      @use "./src/styles/abstracts" as *;
+
+      //- .car {
+      //-   display: grid;
+      //-   grid-template-columns: repeat(3, 1fr);
+      //-   gap: get-spacing('200');
+      //- }
+
+      .showroom {
+        &__body {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: start;
+        }
+
+        &__filter {
+          flex: 1 0 get-width('4000');
+        }
+
+        &__table {
+          overflow: auto;
+          flex: auto;
+        }
+      }
+
+
+  .js-app
+  include:code(lang="javascript") ./scripts/task_06.js

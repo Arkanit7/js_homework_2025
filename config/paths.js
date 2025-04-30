@@ -7,7 +7,7 @@ const paths = {
     css: [`${srcFolder}**/*.s[ac]ss`, `!${srcFolder}**/_*.s[ac]ss`],
     js: [`${srcFolder}**/*.js`, `!${srcFolder}**/_*.js`],
     img: [
-      `${srcFolder}**/*.{svg,png,jpg,ico,webp,avif,gif}`,
+      `${srcFolder}**/*.{svg,png,jpg,ico,webp,avif,gif,cur}`,
       `!${srcFolder}svg-icons/**/*.svg`,
     ],
     svgIcons: `${srcFolder}svg-icons/**/*.svg`,
@@ -17,7 +17,7 @@ const paths = {
     css: `${srcFolder}**/*.scss`,
     js: `${srcFolder}**/*.js`,
     img: [
-      `${srcFolder}**/*.{svg,png,jpg,ico,webp,avif,gif}`,
+      `${srcFolder}**/*.{svg,png,jpg,ico,webp,avif,gif,cur}`,
       `!${srcFolder}svg-icons/**/*.svg`,
     ],
     svgIcons: `${srcFolder}svg-icons/**/*.svg`,

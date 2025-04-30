@@ -1,0 +1,105 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 2)
+
+block append scripts
+  script(defer, src="./scripts/task_02.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  style
+    :scss
+      .tank {
+        position: fixed;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        grid-template-areas: 'stack';
+        transition-property: top;
+        transition-timing-function: linear;
+        translate: 0 -100%; // for easy appearance out of upper window border
+        cursor: url('./cursors/attack_tower_oor.cur'), auto;
+
+        &.has-blown-up {
+          animation: vanish 3s linear forwards;
+
+          @keyframes vanish {
+            to {
+              opacity: 0;
+            }
+          }
+        }
+
+        &__hull {
+            grid-area: stack;
+        }
+
+        &__turret {
+          position: absolute;
+          pointer-events: none;
+          animation: swing 6s infinite alternate;
+          grid-area: stack;
+
+          .has-blown-up & {
+            display: none;
+          }
+
+          &--offset {
+            &--regular {
+              top: 20px;
+              transform-origin: center 30px;
+            }
+
+            &--pixel {
+              top: 10px;
+              transform-origin: center 25px;
+            }
+          }
+
+
+          @keyframes swing {
+            0% {
+              transform: rotate(45deg);
+            }
+
+            50% {
+              transform: rotate(0deg);
+            }
+
+            100% {
+              transform: rotate(-45deg);
+            }
+          }
+        }
+
+        &__bang {
+          position: absolute;
+          pointer-events: none;
+          translate: -50% -50%;
+          animation: bang 1.2s both;
+          max-inline-size: unset;
+
+          @keyframes bang {
+            0% {
+              scale: 0;
+            }
+
+            50% {
+              opacity: 1;
+            }
+
+            100% {
+              opacity: 0;
+            }
+          }
+        }
+      }
+  .js-app
+  include:code(lang="javascript") ./scripts/task_02.js
