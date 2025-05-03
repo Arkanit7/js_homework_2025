@@ -31,7 +31,7 @@ html(lang="uk")
 
               each group in taskGroups
                 li.u-flow-100
-                  p!= group.title
+                  p.u-font-bolder!= group.title
                   ol.u-flow-50
                     each task in group.tasks
                       - const isCurrent = task.id === currentTask.id
