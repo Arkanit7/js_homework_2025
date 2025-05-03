@@ -1,6 +1,6 @@
 'use strict'
 
-class Component {
+class StyledImage {
   xPx
   yPx
   imgSrc
@@ -68,7 +68,7 @@ class Component {
 
 // =============================================================================
 
-class House extends Component {
+class House extends StyledImage {
   scale = 1
 
   action() {
@@ -85,7 +85,7 @@ h1.render('.js-app')
 h1.start()
 
 // =============================================================================
-class MovableComponent extends Component {
+class MovableImage extends StyledImage {
   deltaX
   deltaY
 
@@ -102,7 +102,7 @@ class MovableComponent extends Component {
   }
 }
 
-class Dog extends MovableComponent {
+class Dog extends MovableImage {
   constructor(xPx, yPx, imgSrc, updateIntervalS, deltaX) {
     super(xPx, yPx, imgSrc, updateIntervalS, deltaX, 0)
   }
@@ -120,7 +120,7 @@ d1.start()
 
 // =============================================================================
 
-class Bird extends MovableComponent {}
+class Bird extends MovableImage {}
 
 // ---
 
