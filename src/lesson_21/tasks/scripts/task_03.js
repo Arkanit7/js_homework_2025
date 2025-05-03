@@ -85,8 +85,27 @@ h1.render('.js-app')
 h1.start()
 
 // =============================================================================
+class MovableComponent extends Component {
+  deltaX
+  deltaY
 
-class Dog extends Component {
+  constructor(xPx, yPx, imgSrc, updateIntervalS, deltaX = 0, deltaY = 0) {
+    super(xPx, yPx, imgSrc, updateIntervalS)
+    this.deltaX = deltaX
+    this.deltaY = deltaY
+  }
+
+  action() {
+    this.xPx += this.getRandomInteger(-this.deltaX, this.deltaX)
+    this.yPx += this.getRandomInteger(-this.deltaY, this.deltaY)
+    super.action()
+  }
+}
+
+class Dog extends MovableComponent {
+  constructor(xPx, yPx, imgSrc, updateIntervalS, deltaX) {
+    super(xPx, yPx, imgSrc, updateIntervalS, deltaX, 0)
+  }
   action() {
     this.xPx += this.getRandomInteger(-40, 40)
     super.action()
@@ -95,22 +114,16 @@ class Dog extends Component {
 
 // ---
 
-const d1 = new Dog(10, 200, './images/dog.webp', 1)
+const d1 = new Dog(10, 200, './images/dog.webp', 1, 40)
 d1.render('.js-app')
 d1.start()
 
 // =============================================================================
 
-class Bird extends Component {
-  action() {
-    this.xPx += this.getRandomInteger(-40, 40)
-    this.yPx += this.getRandomInteger(-40, 40)
-    super.action()
-  }
-}
+class Bird extends MovableComponent {}
 
 // ---
 
-const b1 = new Bird(10, 70, './images/bird.webp', 1)
+const b1 = new Bird(10, 70, './images/bird.webp', 1, 40, 40)
 b1.render('.js-app')
 b1.start()
