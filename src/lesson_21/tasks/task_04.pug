@@ -1,0 +1,35 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 4)
+
+block append scripts
+  script(defer, src="./scripts/task_04.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+
+block breakaway
+  .l-container.l-container--prose
+    form.js-form.u-flow-300.u-max-is-xs.u-p-400.u-border-zinc-700.u-rounded-lg(
+      autocomplete="off"
+    )
+      h3.u-font-bolder.u-text-400 Можливість виправити оцінку
+      p
+        label.u-grid.u-gap-100 Оцінка
+          input.c-input(type="text", name="grade", required)
+      p
+        label.u-grid.u-gap-100 Навчальний місяць
+          input.c-input(type="text", name="month", required)
+      p.u-flex.u-gap-200.u-items-baseline
+        button.c-button Перевірити
+        output(name="canBeCorrected")
+
+  .s-prose
+    include:code(lang="javascript") ./scripts/task_04.js

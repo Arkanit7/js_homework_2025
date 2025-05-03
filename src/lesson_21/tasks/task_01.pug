@@ -1,0 +1,57 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 1)
+
+block append scripts
+  script(defer, src="./scripts/task_01.js")
+
+block content
+  p= currentTask.description
+  table
+    tbody
+      tr
+        td(rowspan="3") Властивості
+        td ID
+      tr
+        td ПІБ
+      tr
+        td Кількість грошей на рахунку
+      tr
+        td(rowspan="3") Методи
+        td Додавання грошей
+      tr
+        td Зняття грошей
+      tr
+        td ToString
+  p На основі цього класу створити клас GoldenClient
+  table
+    tbody
+      tr
+        td(rowspan="5") Властивості
+        td ID
+      tr
+        td ПІБ
+      tr
+        td Кількість грошей на рахунку
+      tr
+        td Ліміт кредитних коштів
+      tr
+        td Відсоток за використання кредитних коштів
+      tr
+        td(rowspan="4") Методи
+        td Додавання грошей
+      tr
+        td Зняття грошей
+      tr
+        td Визначення пені за використання кредитних коштів
+      tr
+        td ToString
+  hr
+  h2 Рішення:
+  .js-app
+  include:code(lang="javascript") ./scripts/task_01.js

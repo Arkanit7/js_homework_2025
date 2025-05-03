@@ -1,0 +1,64 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 3)
+
+block append scripts
+  script(defer, src="./scripts/task_03.js")
+
+block content
+  p= currentTask.description
+
+  table
+    thead
+      tr
+        th House
+        th Dog
+        th Bird
+    tbody
+      tr
+        td
+          | --- властивості ---
+          ul
+            li Координата Х
+            li Координата У
+            li шлях до зображення
+            li інтервал оновлення
+          | --- методи ---
+          ul
+            li генерування елемента розмітки
+            li оновлення через вказаний інтервал (збільшення або зменшення масштабу (об’єкт не рухається)
+
+        td
+          | --- властивості ---
+          ul
+            li Координата Х
+            li Координата У
+            li шлях до зображення
+            li інтервал оновлення
+          | --- методи ---
+          ul
+            li генерування елемента розмітки
+            li оновлення через вказаний інтервал (випадкове зміщення по горизонталі (зміна координати Х))
+
+        td
+          | --- властивості ---
+          ul
+            li Координата Х
+            li Координата У
+            li шлях до зображення
+            li інтервал оновлення
+          | --- методи ---
+          ul
+            li генерування елемента розмітки
+            li оновлення через вказаний інтервал (випадкове переміщення у довільному напрямку)
+
+  p Подумайте яким має бути спільний клас предок.
+  hr
+  h2 Рішення:
+  .js-app
+  include:code(lang="javascript") ./scripts/task_03.js

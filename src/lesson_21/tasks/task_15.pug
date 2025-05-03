@@ -1,0 +1,33 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 15)
+
+block append scripts
+  script(defer, src="./scripts/task_15.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  form.js-form.u-flow-200.u-max-is-xs
+    p
+      label Дата виробництва
+        input.js-date(
+          type="date",
+          required,
+          value=new Date().toISOString().slice(0, 10)
+        )
+    p
+      label Кількість днів придатності
+        input.js-duration(type="number", required, min="0", value="60")
+    p
+      button Обчислити
+    p
+      output.js-output.u-font-bolder.u-text-400
+
+  include:code(lang="javascript") ./scripts/task_15.js

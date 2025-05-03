@@ -1,0 +1,25 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 2)
+
+block append scripts
+  script(defer, src="./scripts/task_01.js")
+  script(defer, src="./scripts/task_02.js")
+
+block content
+  p= currentTask.description
+  ul
+    li Вивести всіх простих клієнтів;
+    li Вивести всіх клієнтів #[i GoldenClient];
+    li Знайти сумарну кількість грошей на рахунку;
+
+  hr
+  h2 Рішення:
+  p Я підключив скрипт із задачі №1 для доступу до класів #[i Client] та #[i GoldenClient].
+  .js-app
+  include:code(lang="javascript") ./scripts/task_02.js

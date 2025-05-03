@@ -1,0 +1,19 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 13)
+
+block append scripts
+  script(defer, src="./scripts/task_13.js")
+
+block content
+  p= currentTask.description
+  hr
+  h2 Рішення:
+  .js-app Пройшло:
+    | &nbsp;
+  include:code(lang="javascript") ./scripts/task_13.js
