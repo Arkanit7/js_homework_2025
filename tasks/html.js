@@ -8,6 +8,7 @@ import browserSync from 'browser-sync'
 import process from 'node:process'
 import highlightMath from '../filters/highlightMath.js'
 import highlightCode from '../filters/highlightCode.js'
+import escape from '../filters/escape.js'
 import plumber from 'gulp-plumber'
 import notify from 'gulp-notify'
 
@@ -24,7 +25,7 @@ const html = () => {
         }),
       }),
     )
-    .pipe(newer({ dest: paths.dist.html, ext: '.html' }))
+    .pipe(newer({dest: paths.dist.html, ext: '.html'}))
     .pipe(
       pug({
         pretty: !isProduction,
@@ -36,6 +37,7 @@ const html = () => {
         filters: {
           math: highlightMath,
           code: highlightCode,
+          escape,
         },
       }),
     )
