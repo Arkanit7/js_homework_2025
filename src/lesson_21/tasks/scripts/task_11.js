@@ -32,14 +32,14 @@ class Clock {
   }
 
   getDateNow() {
-    const startDate = new Date()
-    const localTimeOffsetM = startDate.getTimezoneOffset()
+    const startUTCDate = new Date()
 
-    startDate.setMinutes(
-      startDate.getMinutes() + localTimeOffsetM + this.options.timeZoneOffsetM,
+    startUTCDate.setHours(
+      startUTCDate.getUTCHours(),
+      startUTCDate.getUTCMinutes() + this.options.timeZoneOffsetM,
     )
 
-    return startDate
+    return startUTCDate
   }
 
   updateUI() {

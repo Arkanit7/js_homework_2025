@@ -59,10 +59,7 @@ class Countdown {
     this.countdownEl.textContent = `${this.formatTimeUnit(hours)}:${this.formatTimeUnit(minutes)}:${this.formatTimeUnit(seconds)}`
 
     // If the timer expires, stop
-    if (hours === 0 && minutes === 0 && seconds === 0) {
-      this.stop()
-      this.countdownEl.textContent = '00:00:00'
-    }
+    if (hours === 0 && minutes === 0 && seconds === 0) this.stop()
   }
 
   start() {
@@ -113,12 +110,11 @@ new Countdown('.js-app', {
 })
 
 const now = new Date()
-now.setSeconds(now.getSeconds() + 10)
 
 new Countdown('.js-app', {
   hours: now.getHours(),
   minutes: now.getMinutes(),
-  seconds: now.getSeconds(),
+  seconds: now.getSeconds() + 10,
   intervalS: 1,
   className: {
     base: 'u-min-is-3200 u-p-400 u-rounded-full u-bg-natural-400 u-font-bolder u-inline-grid u-place-content-center u-aspect-square u-border-4 u-text-center',

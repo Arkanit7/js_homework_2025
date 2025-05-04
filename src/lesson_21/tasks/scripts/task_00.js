@@ -153,10 +153,10 @@ class TWorker extends TPerson {
 
 try {
   const w1 = new TWorker(
-    'Boris',
+    'Felix',
     30,
     'Reikland, Old World',
-    'Inquisitor',
+    'Adventurer',
     1000,
     10,
   )
