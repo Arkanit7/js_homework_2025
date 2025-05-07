@@ -1,0 +1,32 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 1)
+
+block append scripts
+  script(defer, src="./scripts/task_01.js")
+
+block content
+  p Користувач може змінювати колір фону, що вибирає користувач з використанням
+    |
+    :code(lang="javascript", inline="true")
+      <input type="color">
+    | .
+  p Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом одного сеансу.
+  hr
+  h2 Рішення:
+
+  .js-app
+    label Колірна тема:
+      |
+      input.js-color-input(type="color")
+    p Кількість змін:
+      |
+      |
+      span.js-color-counter 0
+
+  include:code(lang="javascript") ./scripts/task_01.js

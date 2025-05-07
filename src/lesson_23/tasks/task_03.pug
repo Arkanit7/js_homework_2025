@@ -1,0 +1,23 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 3)
+
+block append scripts
+  script(defer, src="./scripts/task_03.js")
+
+block content
+  ol
+    li Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).
+    li Дано масив рядків. Вивести ті, у яких немає цифр.
+    li Дано масив рядків. Вивести ті, у яких є голосні літери.
+    li Дано масив рядків. Вивести ті, у яких немає голосних літер.
+    li Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.
+  hr
+  h2 Рішення:
+  .js-app.u-flex.u-flex-wrap.u-gap-400
+  include:code(lang="javascript") ./scripts/task_03.js

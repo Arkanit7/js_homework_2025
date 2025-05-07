@@ -82,6 +82,7 @@ input:where([type="checkbox"], [type="radio"]) {
   cursor: pointer;
 }
 
+textarea,
 input:where(
     [type="text"],
     [type="email"],
