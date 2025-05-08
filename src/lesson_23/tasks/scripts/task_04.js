@@ -26,7 +26,7 @@ class TextFilterWidget {
       listClass: 'u-flow-200',
       itemClass: 'u-flow-100',
       labelClass: 'u-font-bolder',
-      inputClass: 'c-input | u-min-bs-1600 u-max-bs-4000',
+      inputClass: 'c-input | u-min-bs-1600 u-max-bs-4000 u-is-full',
       outputClass: 'u-block u-min-bs-700',
       ...options,
     }
