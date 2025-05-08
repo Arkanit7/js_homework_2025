@@ -19,6 +19,7 @@ export default {
           /^u-text-blue/,
           /^c-badge-product--type--/,
           /\d\/\d/,
+          'textarea',
         ],
       },
     }),
