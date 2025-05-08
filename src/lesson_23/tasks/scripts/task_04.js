@@ -21,7 +21,7 @@ class TextFilterWidget {
     this.label = label
     this.options = {
       widgetClass:
-        'u-flex u-flex-col u-gap-300 u-p-400 u-rounded-lg u-border-zinc-700 u-max-is-xs',
+        'u-flex-auto u-flex u-flex-col u-gap-300 u-p-400 u-rounded-lg u-border-zinc-700 u-is-xs',
       headerClass: 'u-flex-auto u-text-center u-font-bolder u-text-350',
       listClass: 'u-flow-200',
       itemClass: 'u-flow-100',
