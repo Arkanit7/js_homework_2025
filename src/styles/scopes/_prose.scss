@@ -9,11 +9,11 @@
     margin-block: 1.125em 0.5em;
     font-weight: bolder;
 
-    &:where(:first-child) {
+    &:first-child {
       margin-block-start: 0;
     }
 
-    &:where(:last-child) {
+    &:last-child {
       margin-block-end: 0;
     }
   }
@@ -21,11 +21,11 @@
   :where(p, ul, ol, dl, menu, blockquote, table, pre, hr) {
     margin-block: 1em;
 
-    &:where(:first-child) {
+    &:first-child {
       margin-block-start: 0;
     }
 
-    &:where(:last-child) {
+    &:last-child {
       margin-block-end: 0;
     }
   }
