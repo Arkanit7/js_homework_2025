@@ -10,8 +10,7 @@ class Course {
 
   /** @param {'string'|'number'|'default'} hint */
   [Symbol.toPrimitive](hint) {
-    if (hint === 'string') return this.name
-    return NaN
+    return hint === 'string' ? this.name : NaN
   }
 }
 
@@ -29,9 +28,9 @@ class Student {
 
   /** @param {'string'|'number'|'default'} hint */
   [Symbol.toPrimitive](hint) {
-    if (hint === 'string')
-      return `${this.name} – ${this.course} – ${this.faculty}`
-    return NaN
+    return hint === 'string'
+      ? `${this.name} – ${this.course} – ${this.faculty}`
+      : NaN
   }
 }
 

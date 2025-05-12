@@ -12,9 +12,9 @@ class Author {
 
   /** @param {'string'|'number'|'default'} hint */
   [Symbol.toPrimitive](hint) {
-    if (hint === 'string')
-      return `автор: ${this.name}, рік народження: ${this.year}`
-    return this.year
+    return hint === 'string'
+      ? `автор: ${this.name}, рік народження: ${this.year}`
+      : this.year
   }
 }
 
@@ -34,9 +34,9 @@ class Book {
 
   /** @param {'string'|'number'|'default'} hint */
   [Symbol.toPrimitive](hint) {
-    if (hint === 'string')
-      return `книга ${this.title}, опубліковано: ${this.year}, ціна: ${this.price}, ${this.author}`
-    return this.year
+    return hint === 'string'
+      ? `книга ${this.title}, опубліковано: ${this.year}, ціна: ${this.price}, ${this.author}`
+      : this.year
   }
 }
 

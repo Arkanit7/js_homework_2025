@@ -104,8 +104,9 @@ class Product {
 
   /** @param {'string'|'number'|'default'} hint */
   [Symbol.toPrimitive](hint) {
-    if (hint === 'string') return `${this.name} - ${this.totalPrice}`
-    return this.totalPrice
+    return hint === 'string'
+      ? `${this.name} - ${this.totalPrice}`
+      : this.totalPrice
   }
 }
 

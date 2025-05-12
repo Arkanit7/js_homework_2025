@@ -26,9 +26,9 @@ class Visitor {
 
   /** @param {'string'|'number'|'default'} hint */
   [Symbol.toPrimitive](hint) {
-    if (hint === 'string')
-      return `відвідувач ${this.login}, час візиту: ${this.registrationDate.toLocaleDateString('uk-UA')}`
-    return this.registrationDate.getTime()
+    return hint === 'string'
+      ? `відвідувач ${this.login}, час візиту: ${this.registrationDate.toLocaleDateString('uk-UA')}`
+      : this.registrationDate.getTime()
   }
 }
 
