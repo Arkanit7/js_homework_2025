@@ -5,12 +5,29 @@
   margin-inline: auto;
   padding-inline: get-spacing("400");
 
-  & :where(h1, h2, h3, h4, h5, h6) {
+  :where(h1, h2, h3, h4, h5, h6) {
+    margin-block: 1.125em 0.5em;
     font-weight: bolder;
+
+    &:where(:first-child) {
+      margin-block-start: 0;
+    }
+
+    &:where(:last-child) {
+      margin-block-end: 0;
+    }
   }
 
-  & > * + * {
-    margin-block-start: get-spacing("200");
+  :where(p, ul, ol, dl, menu, blockquote, table, pre, hr) {
+    margin-block: 1em;
+
+    &:where(:first-child) {
+      margin-block-start: 0;
+    }
+
+    &:where(:last-child) {
+      margin-block-end: 0;
+    }
   }
 
   h1 {
@@ -53,12 +70,11 @@
   }
 
   hr {
-    margin: revert;
     border: revert;
   }
 
   * + li {
-    margin-block-start: get-spacing("200");
+    margin-block-start: 0.125em;
   }
 
   ol,
@@ -117,6 +133,7 @@
 
   pre {
     overflow-y: auto;
+    scrollbar-width: thin;
 
     &:has(code) {
       padding-inline: get-spacing("500");
