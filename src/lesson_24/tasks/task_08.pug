@@ -1,0 +1,22 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 8)
+
+block append scripts
+  script(defer, src="./scripts/task_08.js")
+
+block content
+  p= currentTask.description
+  :code(lang="javascript")
+    const temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9]
+  p Заокруглити вверх значення та підрахувати кількість різних показів.
+
+  hr
+  h2 Рішення:
+  .js-app
+  include:code(lang="javascript") ./scripts/task_08.js
