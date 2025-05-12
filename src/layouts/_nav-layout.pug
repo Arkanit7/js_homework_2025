@@ -37,11 +37,11 @@ html(lang="uk")
 
         main.l-compose__main.u-pb-800
           .l-container
-            .u-flow-800
+            .u-flow-600
               h1.c-title.u-text-center #{currentLesson.title}
 
               each group in taskGroups
-                .u-flow-300
+                .u-flow-400
                   h2.c-subtitle!= group.title
                   ul.l-tasks
                     each task in group.tasks
