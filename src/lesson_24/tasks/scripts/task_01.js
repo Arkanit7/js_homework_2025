@@ -2,7 +2,7 @@
 
 class PhoneNumber {
   static regexp =
-    /^\+?(?:38)?[ -]?\(?(?<operatorCode>0\d{2})\)?[ -]?\d{3}[ -]?\d{2}[ -]?\d{2}$/
+    /^(?:\+?3?8[ -]?)?\(?(?<operatorCode>\d{3})\)?[ -]?\d{3}[ -]?\d{2}[ -]?\d{2}$/
 
   static operatorCodesByName = {
     Київстар: ['067', '068', '096', '097', '098', '077'],
@@ -86,7 +86,7 @@ class PhoneNumber {
       return `${this.number} – (${operatorName})`
     }
 
-    return this.number.replace(/[+() ]/g, '')
+    return Number(this.number.replace(/[+() ]/g, ''))
   }
 }
 
