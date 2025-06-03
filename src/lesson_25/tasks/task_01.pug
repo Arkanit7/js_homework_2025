@@ -1,0 +1,24 @@
+extends ../../layouts/_task-layout.pug
+
+block frontmatter
+  include ../_collection
+  -
+    const currentTask = taskGroups
+      .flatMap((group) => group.tasks)
+      .find((task) => task.id === 1)
+
+block append scripts
+  script(type="module", src="./scripts/task_01.js")
+
+block content
+  p Використовуючи один з АРІ
+    |
+    |
+    a(href="https://github.com/public-apis/public-apis#animals") https://github.com/public-apis/public-apis#animals
+    |
+    | та функцію #[code fetch] організувати завантаження та відображення даних. Намагайтесь зробити це з використанням класів. Окремо клас для побудови розмітки. Окремо клас, який буде робити запити і повертати результати.
+
+  hr
+  h2 Рішення:
+  .js-app
+  include:code(lang="javascript") ./scripts/task_01.js

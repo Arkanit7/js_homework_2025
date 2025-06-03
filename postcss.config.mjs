@@ -20,6 +20,7 @@ export default {
           /^c-badge-product--type--/,
           /\d\/\d/,
           'textarea',
+          /^c-spinner/,
         ],
       },
     }),

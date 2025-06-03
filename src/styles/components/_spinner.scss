@@ -1,0 +1,73 @@
+@use "../abstracts" as *;
+
+.c-spinner {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  inline-size: 10em;
+  aspect-ratio: 1;
+
+  span {
+    animation: fade 1.5s ease-in infinite alternate;
+  }
+
+  &__sector {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 50%;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+
+    // border: 0.75em transparent solid;
+    mix-blend-mode: saturation;
+
+    &--type {
+      &--red {
+        border-block-start: 0.75em solid crimson;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-in-out;
+      }
+
+      &--green {
+        border-inline-end: 0.75em solid lime;
+        animation-duration: 2s;
+        animation-timing-function: ease;
+      }
+
+      &--blue {
+        border-block-end: 0.75em solid royalblue;
+        animation-duration: 2.5s;
+        animation-timing-function: ease-in;
+      }
+
+      &--yellow {
+        border-inline-start: 0.75em solid yellow;
+        animation-duration: 3s;
+        animation-timing-function: ease-out;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

@@ -11,6 +11,7 @@
     "outDir": "./dist",
     "skipLibCheck": true,
     "noEmit": true,
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "module": "esnext"
   }
 }
