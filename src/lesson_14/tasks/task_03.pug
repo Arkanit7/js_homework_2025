@@ -11,10 +11,10 @@ block frontmatter
 block content
   p= currentTask.description
   ol
-    li Загальну вартість (нові ціни - #[:code(lang="javascript", inline="true") price])
-    li Знайти кількість товарів, у яких ціна зменшилась #[:code(lang="javascript", inline="true") price < old_price].
-    li Товари, які доступні #[:code(lang="javascript", inline="true") sell_status: "available"]
-    li сформувати новий список об'єктів тільки доступних для продажу товарів, які міститимуть тільки ідентифікатор товару #[:code(lang="javascript", inline="true") id], нову ціну #[:code(lang="javascript", inline="true") price], стару ціну #[:code(lang="javascript", inline="true") old_price], та ціну у доларах #[:code(lang="javascript", inline="true") usd_price]
+    li Загальну вартість (нові ціни - #[code price]).
+    li Знайти кількість товарів, у яких ціна зменшилась #[code price] #{'<'} #[code old_price].
+    li Товари, які доступні #[code sell_status: "available"].
+    li сформувати новий список об'єктів тільки доступних для продажу товарів, які міститимуть тільки ідентифікатор товару #[code id], нову ціну #[code price], стару ціну #[code old_price], та ціну у доларах #[code usd_price].
 
   details
     summary Вміст масиву
