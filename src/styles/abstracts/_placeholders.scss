@@ -28,20 +28,12 @@
   }
 
   &:focus-visible {
-    border-color: get-color("emerald", "500");
-
-    @include dark-mode {
-      border-color: get-color("yellow", "400");
-    }
+    border-color: get-color("yellow", "400");
   }
 
   &:hover {
     @media (any-hover) {
-      border-color: get-color("emerald", "500");
-
-      @include dark-mode {
-        border-color: get-color("yellow", "400");
-      }
+      border-color: get-color("yellow", "400");
     }
   }
 }

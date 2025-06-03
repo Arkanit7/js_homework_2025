@@ -5,11 +5,15 @@
   overflow: auto;
   inline-size: min(100%, 14rem);
   padding: 1rem;
-  background-color: get-color("stone", "200");
+  border-inline-end: get-border-width("DEFAULT") solid
+    get-color("neutral", "300");
+  background-color: get-color("neutral", "100");
   transition-property: visibility, transform;
   transition-duration: 0.5s;
 
   @include dark-mode {
+    border-inline-end: get-border-width("DEFAULT") solid
+      get-color("zinc", "950");
     background-color: get-color("zinc", "800");
   }
 

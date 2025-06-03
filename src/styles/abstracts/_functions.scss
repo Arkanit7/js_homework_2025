@@ -6,7 +6,11 @@
 @use "variables" as *;
 @use "config" as *;
 
-@function get-color($color, $strength) {
+@function get-color($color, $strength: null) {
+  @if $strength == null {
+    @return map.get($config, "color", $color);
+  }
+
   @return map.get($config, "color", $color, $strength);
 }
 

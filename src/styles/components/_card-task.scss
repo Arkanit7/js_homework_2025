@@ -18,20 +18,12 @@
   }
 
   &:focus-visible {
-    border-color: get-color("emerald", "500");
-
-    @include dark-mode {
-      border-color: get-color("yellow", "400");
-    }
+    border-color: get-color("yellow", "400");
   }
 
   &:hover {
     @media (any-hover) {
-      border-color: get-color("emerald", "500");
-
-      @include dark-mode {
-        border-color: get-color("yellow", "400");
-      }
+      border-color: get-color("yellow", "400");
     }
   }
 
@@ -61,19 +53,11 @@
   }
 
   &:focus-visible &__title {
-    color: get-color("emerald", "500");
-
-    @include dark-mode {
-      color: get-color("yellow", "400");
-    }
+    color: get-color("yellow", "400");
   }
 
   &:hover &__title {
-    color: get-color("emerald", "500");
-
-    @include dark-mode {
-      color: get-color("yellow", "400");
-    }
+    color: get-color("yellow", "400");
   }
 
   // .c-card-task__text

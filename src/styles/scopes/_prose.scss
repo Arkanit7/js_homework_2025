@@ -30,6 +30,15 @@
     }
   }
 
+  a {
+    color: get-color("yellow", "500");
+
+    @include hover-focus {
+      color: get-color("yellow", "600");
+      text-decoration: underline;
+    }
+  }
+
   h1 {
     font-size: get-font-size("450");
     line-height: get-line-height("none");
@@ -147,5 +156,10 @@
     padding-inline: get-spacing("100");
     padding-block: get-spacing("50");
     border-radius: get-border-radius("DEFAULT");
+    background-color: get-color("neutral", "200");
+
+    @include dark-mode {
+      background-color: get-color("zinc", "800");
+    }
   }
 }

@@ -4,7 +4,7 @@ body {
   font-size: get-font-size("300");
   font-family: get-font-family("primary");
   line-height: get-line-height("normal");
-  background-color: get-color("neutral", "50");
+  background-color: get-color("white");
 
   @include dark-mode {
     background-color: get-color("zinc", "900");

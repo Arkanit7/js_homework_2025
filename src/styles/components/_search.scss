@@ -14,9 +14,9 @@
     grid-area: stack;
     padding-inline: get-spacing("1000") get-spacing("300");
     padding-block: get-spacing("100");
-    border: 1px solid get-color("neutral", "700");
+    border: 1px solid get-color("neutral", "200");
     border-radius: get-border-radius("lg");
-    background-color: get-color("stone", "300");
+    background-color: get-color("white");
     transition: border-color 0.3s;
 
     @include dark-mode {
@@ -24,20 +24,12 @@
     }
 
     &:focus-visible {
-      border-color: get-color("emerald", "500");
-
-      @include dark-mode {
-        border-color: get-color("yellow", "400");
-      }
+      border-color: get-color("yellow", "400");
     }
 
     &:hover {
       @media (any-hover) {
-        border-color: get-color("emerald", "500");
-
-        @include dark-mode {
-          border-color: get-color("yellow", "400");
-        }
+        border-color: get-color("yellow", "400");
       }
     }
   }

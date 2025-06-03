@@ -3,8 +3,9 @@
 .c-header {
   block-size: $header-height;
   padding-block: get-spacing("200");
-  border-block-end: get-border-width("DEFAULT") solid get-color("stone", "400");
-  background-color: get-color("stone", "200");
+  border-block-end: get-border-width("DEFAULT") solid
+    get-color("neutral", "300");
+  background-color: get-color("neutral", "100");
 
   @include dark-mode {
     border-block-end: get-border-width("DEFAULT") solid get-color("zinc", "950");
@@ -22,20 +23,12 @@
     transition: color 0.3s;
 
     &:focus-visible {
-      color: get-color("emerald", "500");
-
-      @include dark-mode {
-        color: get-color("yellow", "400");
-      }
+      color: get-color("yellow", "400");
     }
 
     &:hover {
       @media (any-hover) {
-        color: get-color("emerald", "500");
-
-        @include dark-mode {
-          color: get-color("yellow", "400");
-        }
+        color: get-color("yellow", "400");
       }
     }
 
