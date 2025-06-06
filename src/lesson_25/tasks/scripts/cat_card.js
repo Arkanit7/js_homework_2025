@@ -3,15 +3,17 @@ import Field from './field.js'
 import Spinner from './spinner.js'
 
 export default class CatCard {
-  options
-  spinnerEl
-  imgEl
-  fieldEl
-  getBtn
   $el
+  options
+  #getBtn
+  #imgContainer
+  #imgEl
+  #inputEl
+  #spinnerEl
 
   constructor(options) {
     this.options = {
+      imgSrc: '',
       btnLabel: 'Get a cat!',
       placeholder: 'A cat says:',
       alt: 'A cat',
@@ -20,29 +22,33 @@ export default class CatCard {
         main: 'u-flow-400',
         controls: 'u-flex u-gap-200',
         btn: 'u-flex-none',
-        img: 'u-min-bs-4000 u-max-bs-8000 u-text-none',
+        img: 'u-min-bs-4000 u-max-bs-8000 u-text-none u-rounded-lg',
         imgContainer:
           'u-relative u-grid u-place-items-center u-is-fit u-rounded-lg u-mi-auto',
-        spinner: 'c-spinner u-absolute',
+        spinner: 'u-text-yellow-400 u-absolute',
       },
       ...options,
     }
   }
 
   #renderSpinner() {
-    const spinnerEl = new Spinner(this.options.spinnerLabel).render()
-    spinnerEl.className = this.options.cssObj.spinner
+    const spinnerEl = new Spinner({
+      className: this.options.cssObj.spinner,
+      label: this.options.spinnerLabel,
+    }).render()
+
     return spinnerEl
   }
 
   #renderImg() {
     const imgEl = document.createElement('img')
 
+    imgEl.src = this.options.imgSrc
     imgEl.alt = this.options.alt
-    imgEl.classList = this.options.cssObj.img
+    imgEl.className = this.options.cssObj.img
 
     const imgContainer = document.createElement('div')
-    imgContainer.classList = this.options.cssObj.imgContainer
+    imgContainer.className = this.options.cssObj.imgContainer
     imgContainer.append(imgEl)
 
     return {imgContainer, imgEl}
@@ -61,6 +67,7 @@ export default class CatCard {
     return {controlsEl, fieldEl, getBtn, inputEl}
   }
 
+  /** @param {string} label */
   #renderBtn(label) {
     const btnEl = document.createElement('button')
     btnEl.textContent = label
@@ -71,10 +78,11 @@ export default class CatCard {
   }
 
   async #renderPicture() {
-    const phrase = this.inputEl.value.trim()
+    const phrase = this.#inputEl.value.trim()
 
-    this.getBtn.disabled = true
-    this.imgContainer.append(this.spinnerEl)
+    this.#getBtn.textContent = this.options.btnLabel
+    this.#getBtn.disabled = true
+    this.#imgContainer.append(this.#spinnerEl)
 
     try {
       const imgURL =
@@ -82,10 +90,13 @@ export default class CatCard {
           ? await CataasAPI.getCatSays(phrase)
           : await CataasAPI.getCat()
 
-      this.imgEl.src = imgURL
+      this.#imgEl.src = imgURL
+    } catch (error) {
+      console.error(error)
+      this.#getBtn.textContent = 'Error'
     } finally {
-      this.getBtn.disabled = false
-      this.spinnerEl.remove()
+      this.#getBtn.disabled = false
+      this.#spinnerEl.remove()
     }
   }
 
@@ -96,27 +107,22 @@ export default class CatCard {
     return this.#renderPicture()
   }
 
-  async render(cssSelector) {
-    this.spinnerEl = this.#renderSpinner()
+  /** @param {string} [cssSelector] */
+  render(cssSelector) {
+    this.#spinnerEl = this.#renderSpinner()
 
-    const controls = this.#renderControls()
-    this.fieldEl = controls.fieldEl
+    const {inputEl, getBtn, controlsEl} = this.#renderControls()
+    this.#inputEl = inputEl
+    this.#getBtn = getBtn
 
-    this.inputEl = controls.inputEl
-
-    this.getBtn = controls.getBtn
-
-    const image = this.#renderImg()
-    this.imgEl = image.imgEl
-    this.imgContainer = image.imgContainer
+    const {imgEl, imgContainer} = this.#renderImg()
+    this.#imgEl = imgEl
+    this.#imgContainer = imgContainer
 
     this.$el = document.createElement('form')
-    this.$el.append(controls.controlsEl, this.imgContainer)
+    this.$el.append(controlsEl, this.#imgContainer)
     this.$el.className = this.options.cssObj.main
     this.$el.addEventListener('submit', this.#onGet.bind(this))
-
-    // get a random cat for the init view
-    this.#renderPicture()
 
     if (cssSelector) document.querySelector(cssSelector).append(this.$el)
 

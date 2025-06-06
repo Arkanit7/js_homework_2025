@@ -1,32 +1,26 @@
 export default class Spinner {
-  static SECTORS = ['red', 'blue', 'green', 'yellow']
-
+  options
   $el
-  message
 
-  constructor(message) {
-    this.message = message
-  }
-
-  #renderSector(color) {
-    const sectorEl = document.createElement('div')
-    sectorEl.className = `c-spinner__sector c-spinner__sector--type--${color}`
-
-    return sectorEl
-  }
-
-  render(cssSelector) {
-    const messageEl = document.createElement('span')
-    messageEl.textContent = this.message
-
-    this.$el = document.createElement('div')
-    this.$el.classList = 'c-spinner'
-    this.$el.append(messageEl)
-
-    for (const sector of Spinner.SECTORS) {
-      const sectorEl = this.#renderSector(sector)
-      this.$el.append(sectorEl)
+  constructor(options = {}) {
+    this.options = {
+      className: '',
+      hint: 'Loading...',
+      ...options,
     }
+  }
+
+  /** @param {string} [cssSelector] */
+  render(cssSelector) {
+    this.$el = document.createElement('div')
+    this.$el.className = `c-spinner ${this.options.className}`
+    this.$el.setAttribute('aria-live', 'polite')
+
+    const hint = document.createElement('span')
+    hint.textContent = this.options.hint
+    hint.className = 'c-spinner__hint'
+
+    this.$el.append(hint)
 
     if (cssSelector) document.querySelector(cssSelector).append(this.$el)
 

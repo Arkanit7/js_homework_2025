@@ -1,5 +1,6 @@
 export default class Field {
   options
+  id = crypto.randomUUID()
 
   constructor(options) {
     this.options = {
@@ -29,9 +30,8 @@ export default class Field {
    * @param {HTMLLabelElement} labelEl
    */
   #bindInputWithLabel(inputEl, labelEl) {
-    const id = crypto.randomUUID()
-    inputEl.id = id
-    labelEl.setAttribute('for', id)
+    inputEl.id = this.id
+    labelEl.setAttribute('for', this.id)
   }
 
   /** @param {string} [cssSelector] */

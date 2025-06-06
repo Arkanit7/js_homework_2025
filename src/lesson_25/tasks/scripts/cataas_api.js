@@ -3,14 +3,13 @@ export default class CataasAPI {
 
   /** @param {string} endPoint */
   static async #getURL(endPoint) {
-    try {
-      const resp = await fetch(CataasAPI.API_KEY + endPoint)
-      const blob = await resp.blob()
+    const resp = await fetch(CataasAPI.API_KEY + endPoint)
 
-      return URL.createObjectURL(blob)
-    } catch (error) {
-      console.error(error)
-    }
+    if (!resp.ok) throw new Error(`${resp.status} – bad response.`)
+
+    const blob = await resp.blob()
+
+    return URL.createObjectURL(blob)
   }
 
   static getCat() {

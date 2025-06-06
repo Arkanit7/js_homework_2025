@@ -31,11 +31,19 @@
   }
 
   a {
-    color: get-color("yellow", "500");
+    color: get-color("yellow", "600");
+    text-decoration: revert;
+
+    @include dark-mode {
+      color: get-color("yellow", "400");
+    }
 
     @include hover-focus {
-      color: get-color("yellow", "600");
-      text-decoration: underline;
+      color: get-color("yellow", "700");
+
+      @include dark-mode {
+        color: get-color("yellow", "500");
+      }
     }
   }
 
