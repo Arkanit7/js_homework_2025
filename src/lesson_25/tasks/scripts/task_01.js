@@ -1,7 +1,8 @@
-import CatCard from './cat_card.js'
+import CatCardManager from './cat_card_manager.js'
 
-const card = new CatCard({imgSrc: './images/placeholder_image.webp'})
+const cardManager = new CatCardManager({
+  amount: 6,
+  imgSrc: './images/placeholder_image.webp',
+})
 
-card.render('.js-app')
-
-console.log(card)
+cardManager.render('.js-app')

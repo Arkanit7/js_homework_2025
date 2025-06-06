@@ -5,6 +5,9 @@ export default class Field {
   constructor(options) {
     this.options = {
       type: 'text',
+      initValue: '',
+      placeholder: '',
+      autocomplete: true,
       ...options,
     }
   }
@@ -12,6 +15,9 @@ export default class Field {
   #renderInput() {
     const inputEl = document.createElement('input')
     inputEl.type = this.options.type
+    inputEl.value = this.options.initValue
+
+    if (!this.options.autocomplete) inputEl.autocomplete = 'off'
 
     if (this.options.placeholder) inputEl.placeholder = this.options.placeholder
 
