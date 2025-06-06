@@ -1,8 +1,10 @@
-# Gulp Pug SCSS
+# Gulp Pug SCSS Bundler
+
+Introducing a Gulp based project bundler, specifically designed for featuring JavaScript home assignments.
 
 ## Description
 
-Compile PUG to HTML, SCSS to CSS and mirror JS files & images.
+Compile PUG to HTML, SCSS to CSS and mirror JS files along with images.
 
 ## Installation
 
@@ -21,11 +23,11 @@ Compile PUG to HTML, SCSS to CSS and mirror JS files & images.
 
 ## Usage
 
-Pug comes with custom filters. Check them out:
+Pug is combined with custom filters. Check them out:
 
 ### Math
 
-Allows to easily input TeX math, which will be converted to MathML. Powered by Temml.
+Allows to easily input TeX math, which will be converted to MathML. Powered by Temml:
 
 ```pug
 p Дано масив #[:math x] із #[:math n] елементів. Знайдіть
@@ -40,7 +42,7 @@ p Дано масив #[:math x] із #[:math n] елементів. Знайд�
 Code section with variety of themes. Powered by Shiki.
 
 ```pug
-:code(lang="javascript")
+:code(lang="javascript", theme="material-theme-ocean")
   const productsPrices = [1000, 20, 31]
   const productsTitles = ['cheese', 'juice', 'bread']
 ```
@@ -49,7 +51,7 @@ Currently only JS is supported, but it can be easily changed in the configuratio
 
 ### SCSS
 
-Insert SCSS right in your PUG file:
+Insert SCSS right in to your PUG file:
 
 ```jade
 style
@@ -68,6 +70,8 @@ To start the development server, run:
 ```sh
 npm run dev
 ```
+
+It will stare a server on http://localhost:3000/ and open a Firefox browser (if installed).
 
 ### Build
 
@@ -89,3 +93,7 @@ Arkanit
 ## License
 
 ISC
+
+## Certificate
+
+![JavaScript Certificate](https://raw.githubusercontent.com/Arkanit7/certificates/refs/heads/main/fls-certificate-js-en.png)
