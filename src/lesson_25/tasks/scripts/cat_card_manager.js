@@ -12,7 +12,7 @@ export default class CatCardManager {
       spinnerLabel: 'Loading...',
       styles: {
         main: 'u-flow-400',
-        controls: 'u-flex u-gap-200',
+        controls: 'u-flex u-flex-wrap u-gap-200',
         btn: 'u-flex-none',
         imgContainer: 'u-flex u-justify-center u-flex-wrap u-gap-200',
         imgFrame:
@@ -40,6 +40,8 @@ export default class CatCardManager {
     const {$el: fieldEl, inputEl} = new Field({
       placeholder: this.options.placeholder,
     }).render()
+
+    inputEl.classList.add('u-flex-auto', 'u-is-4000')
 
     const controlsEl = document.createElement('div')
     controlsEl.className = this.options.styles.controls
